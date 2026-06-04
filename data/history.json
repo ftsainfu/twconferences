@@ -1,0 +1,64 @@
+{
+  "sources": {
+    "nqu-2026-management": {
+      "hash": "5c468e446f930dbfa150edc0dc07039c9a9867e22cef023720e47475a9018729",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
+    },
+    "must-2026-icmsi": {
+      "hash": "a267291ab367d1b12f98782a2638dd001004e97b559a5254733cca1947be5d38",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367"
+    },
+    "dyu-2026-basummit": {
+      "hash": "85e5c9297b3f4a1ff3ded2d82040e33a5dd2c747ab26e3540e630420100b4c10",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://basummit.dyu.edu.tw/"
+    },
+    "nycu-2026-taiop": {
+      "hash": "2689c83062b88adb4f1fafddd13bd90de8577724a970cf49a0243d8cf99e0b09",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
+    },
+    "urltw-2026-business-paper": {
+      "hash": "b1d305789094e86c79b0b96c14a027211f66cbb4f8b8d0c4ce46f21ea825d7d3",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://www.conference.url.tw/main/"
+    },
+    "papertone-2026-business-law": {
+      "hash": "f81818e78293d0b656b5feef47fc1bac0e8752f7eb695885e3088613191032c0",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://papertone.net/"
+    },
+    "mcu-2026-economics-trade-management": {
+      "hash": "cde25aece8824396fd034fe2818af1d38766012b05b2c9e0a677d2f901ce2061",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
+    },
+    "fgu-2026-sme-management": {
+      "hash": "3536b34626feebbfc6a27039ab38f42493b8c4f09b1b5f9cb7cc523c804d4c30",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
+    },
+    "ntub-2026-digital-business": {
+      "hash": "4d3554b39fe6b31bd1b89d0ec828fb3764dcd4b786503102ec75966ce74def29",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw"
+    },
+    "cmr-2026-marketing": {
+      "hash": "7e78793c6966d381f6d76339756692f919e52124d3c9db060aac84784f0da866",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://cmr-crrmkt.pccu.edu.tw/"
+    }
+  }
+}

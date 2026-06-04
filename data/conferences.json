@@ -1,0 +1,635 @@
+{
+  "generated_at": "2026-06-05 07:27:02 UTC+08:00",
+  "source_count": 12,
+  "errors": [
+    "dyu-2026-basummit: <urlopen error timed out>"
+  ],
+  "conferences": [
+    {
+      "id": "nqu-2026-management",
+      "title": "2026 管理學術研討會",
+      "organizer": "國立金門大學管理學院",
+      "homepage_url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
+      "submission_url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "金門",
+      "submission_deadline": "2026-05-18",
+      "fields": [
+        "管理",
+        "商管"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral",
+        "other"
+      ],
+      "attention_notes": [
+        "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "must-2026-icmsi",
+      "title": "2026 管理與服務創新國際學術研討會",
+      "organizer": "明新科技大學民生學院",
+      "homepage_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367",
+      "submission_url": "https://icmsi.must.edu.tw/Documents/2026/2026_ICMSI_%E4%B8%AD%E6%96%87%E5%BE%B5%E6%96%87%E5%85%AC%E5%91%8A.pdf",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "新竹",
+      "submission_deadline": "2026-04-10",
+      "fields": [
+        "管理",
+        "服務創新",
+        "民生產業"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "attention_notes": [
+        "摘要投稿截稿日期為 2026-04-10。",
+        "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified"
+    },
+    {
+      "id": "cmr-2026-marketing",
+      "title": "2026 第11屆行銷研究學術研討會",
+      "organizer": "中國文化大學行銷系所、台灣行銷研究學會",
+      "homepage_url": "https://cmr-crrmkt.pccu.edu.tw/",
+      "submission_url": "https://cmr-crrmkt.pccu.edu.tw/",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "台北",
+      "submission_deadline": "2026-04-15",
+      "fields": [
+        "行銷管理",
+        "品牌",
+        "消費者研究"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "new",
+      "change_label": "新增",
+      "change_summary": "首次納入追蹤。",
+      "review_status": "verified"
+    },
+    {
+      "id": "dyu-2026-basummit",
+      "title": "2026 當代管理國際學術研討會",
+      "organizer": "大葉大學",
+      "homepage_url": "https://basummit.dyu.edu.tw/",
+      "submission_url": "https://basummit.dyu.edu.tw/",
+      "registration_url": "https://basummit.dyu.edu.tw/",
+      "event_start": "",
+      "event_end": "",
+      "location": "彰化",
+      "submission_deadline": "2026-04-30",
+      "fields": [
+        "財務管理",
+        "投資策略",
+        "公司治理",
+        "當代管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "attention_notes": [
+        "投稿截止日期為 2026-04-30。",
+        "提供中、英、日語發表場次，以及海報發表場次。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "review_status": "verified"
+    },
+    {
+      "id": "nycu-2026-taiop",
+      "title": "2026 TAIOP 年會暨國際學術研討會",
+      "organizer": "國立陽明交通大學經營管理研究所",
+      "homepage_url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
+      "submission_url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
+      "registration_url": "",
+      "event_start": "2026-05-16",
+      "event_end": "",
+      "location": "台北",
+      "submission_deadline": "2026-01-31",
+      "fields": [
+        "工商心理學",
+        "人力資源管理",
+        "組織行為"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "接受中英文投稿；每人參與稿件以三篇為限。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "urltw-2026-business-paper",
+      "title": "2026 全國商管論文研討會暨論文競賽",
+      "organizer": "社團法人台灣智慧創新應用學會、龍華科技大學企業管理系",
+      "homepage_url": "https://www.conference.url.tw/main/",
+      "submission_url": "https://www.conference.url.tw/main/",
+      "registration_url": "https://www.conference.url.tw/main/",
+      "event_start": "2026-05-29",
+      "event_end": "",
+      "location": "桃園",
+      "submission_deadline": "2026-05-08",
+      "fields": [
+        "商管",
+        "論文競賽",
+        "企業管理"
+      ],
+      "presentation_formats": [
+        "online",
+        "other"
+      ],
+      "attention_notes": [
+        "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified"
+    },
+    {
+      "id": "papertone-2026-business-law",
+      "title": "2026 中華民國商管及法律論文研討會",
+      "organizer": "開南大學商學院",
+      "homepage_url": "https://papertone.net/",
+      "submission_url": "https://papertone.net/",
+      "registration_url": "https://papertone.net/",
+      "event_start": "",
+      "event_end": "",
+      "location": "桃園",
+      "submission_deadline": "2026-01-10",
+      "fields": [
+        "商業管理",
+        "科技創新",
+        "法律制度"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "attention_notes": [
+        "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "mcu-2026-economics-trade-management",
+      "title": "The 21st Academic Conference on Economics, International Trade and Global Business Management",
+      "organizer": "銘傳大學國際企業學系",
+      "homepage_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+      "submission_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+      "registration_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+      "event_start": "",
+      "event_end": "",
+      "location": "台北",
+      "submission_deadline": "2026-05-15",
+      "fields": [
+        "經濟",
+        "國際貿易",
+        "全球企業管理"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "attention_notes": [
+        "透過 Google 表單報名並上傳論文摘要。",
+        "可選線上或現場報告，以及中文或英文場次。",
+        "全文繳交截止日為 2026-05-21。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "fgu-2026-sme-management",
+      "title": "2026 年中小企業經營管理研討會",
+      "organizer": "佛光大學管理學系",
+      "homepage_url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
+      "submission_url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
+      "registration_url": "mailto:management@gm.fgu.edu.tw",
+      "event_start": "",
+      "event_end": "",
+      "location": "宜蘭",
+      "submission_deadline": "2026-03-31",
+      "fields": [
+        "中小企業",
+        "經營管理"
+      ],
+      "presentation_formats": [
+        "other",
+        "poster"
+      ],
+      "attention_notes": [
+        "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "ntub-2026-digital-business",
+      "title": "2026 全國數位商管創能與實務應用研討會",
+      "organizer": "德明財經科技大學管理學院",
+      "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
+      "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
+      "registration_url": "",
+      "event_start": "2026-06-13",
+      "event_end": "",
+      "location": "台北",
+      "submission_deadline": "2026-05-15",
+      "fields": [
+        "數位商管",
+        "實務應用",
+        "管理"
+      ],
+      "presentation_formats": [
+        "other",
+        "poster"
+      ],
+      "attention_notes": [
+        "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "candidate-news-google-com-84b3010d",
+      "title": "亞大經管系舉辦「企業數位轉型新思維與創新應用」研討會 - 亞洲大學",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE13MHA2aWR2RV84UHZZcnBYa2VEVWZLekRzbXdRVW1lUDNTeFN3NlJ6THhPeXJ3bUZ6M1VSNkRrbnRVRHRuTmkxM2IyZjY3aFN0VVhnZEVCX09DNEMxMlA0ajlWdzk?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE13MHA2aWR2RV84UHZZcnBYa2VEVWZLekRzbXdRVW1lUDNTeFN3NlJ6THhPeXJ3bUZ6M1VSNkRrbnRVRHRuTmkxM2IyZjY3aFN0VVhnZEVCX09DNEMxMlA0ajlWdzk?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2025-11-18",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-d0d9db35",
+      "title": "全國商管與創新研討會圓滿落幕 龍華科大展現優質學術研究能力 - 桃園電子報",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBCODdIcy0tR3B2Nm1DQTB0Q0hiVVNiWUMzYmxDNDhSUlJ1MmZNYkItUWhxQXdmRy04ejFLY2lRc0V4MEFYTVVOeVVhdw?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBCODdIcy0tR3B2Nm1DQTB0Q0hiVVNiWUMzYmxDNDhSUlJ1MmZNYkItUWhxQXdmRy04ejFLY2lRc0V4MEFYTVVOeVVhdw?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2023-06-14",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-b2d70b4f",
+      "title": "德明科大榮獲CBPM2025商管學術研討會最佳論文獎 | 產學研訓 | 商情 - 經濟日報",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBFVWwzeGloYURrTnhMOEl1NVIwQ2JwX21nOHBfc2M3dkpucEhDcEQzUl9OYmVVR0JxUHNFci0xMkQ5RWtYQW9jUzZVcmZ6T0llQ015SEdyNW0yQQ?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBFVWwzeGloYURrTnhMOEl1NVIwQ2JwX21nOHBfc2M3dkpucEhDcEQzUl9OYmVVR0JxUHNFci0xMkQ5RWtYQW9jUzZVcmZ6T0llQ015SEdyNW0yQQ?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2025-05-31",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-11c5a171",
+      "title": "第28屆資訊科技應用與管理研討會 國際學者齊聚大葉大學 - 中央社 CNA",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwbXB2di1aWVFMaVJDSlhhSWtmdWUxaURpRDBHRVJFMzZ1bG5zTkhTeno2LW9LbmNkcWM1TG4xZUVtTndIZ1YtWVh4aVVFZ1VzRHhlWkVn?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBwbXB2di1aWVFMaVJDSlhhSWtmdWUxaURpRDBHRVJFMzZ1bG5zTkhTeno2LW9LbmNkcWM1TG4xZUVtTndIZ1YtWVh4aVVFZ1VzRHhlWkVn?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2024-02-23",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-2034dbd4",
+      "title": "金大董燊主持臺灣體育運動管理國際學術研討會 聚焦運動科技新局 - 勁報",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1SX3YxczNUa21qcFFobUEtVW9pMWlPRFBQdTVyai1ydGFIXzlCaktRZlpkRHFmbjcwNFExTlhjQmQ1ZVFhaWRrcVlkSWtCVEFQakl1RkFVTW1jMDBJN1FiMw?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1SX3YxczNUa21qcFFobUEtVW9pMWlPRFBQdTVyai1ydGFIXzlCaktRZlpkRHFmbjcwNFExTlhjQmQ1ZVFhaWRrcVlkSWtCVEFQakl1RkFVTW1jMDBJN1FiMw?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-05-17",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-2245de3a",
+      "title": "【徵稿】2024年國家公園保育成果與經營管理研討會暨國家公園青年論文競賽- 比賽 - 獎金獵人",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0zS0pjNE9hSGdGSlNURDBpVEN5ZHppUjJxY0VKY1Fld01EOUNxUlZ3X3laZnNIdUFJNHhuZTRCOUJBcVZYc28wQnl0UlJCWTVXeEQzdUFsUVZZQS1GWHdCTnozdw?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0zS0pjNE9hSGdGSlNURDBpVEN5ZHppUjJxY0VKY1Fld01EOUNxUlZ3X3laZnNIdUFJNHhuZTRCOUJBcVZYc28wQnl0UlJCWTVXeEQzdUFsUVZZQS1GWHdCTnozdw?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2024-05-12",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-29c1caf3",
+      "title": "元培連續23年主辦健康管理學術研討會 關注醫療與管理新知 - 中央社 CNA",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE42N2NaNkZhM2owcFluRzdIeDVkVTJaTTI2VWNkR2FMbjU0QUVMSkJFcW91Z3NjeWJSai10UHBVQ2dKYU42TUFfc0RVWGhjRmhNblNfZVJ3?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE42N2NaNkZhM2owcFluRzdIeDVkVTJaTTI2VWNkR2FMbjU0QUVMSkJFcW91Z3NjeWJSai10UHBVQ2dKYU42TUFfc0RVWGhjRmhNblNfZVJ3?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2023-11-03",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-46a4e3a9",
+      "title": "台灣數千本期刊中，首本針對藝術和文化政策與管理徵稿的學刊：《文化：政策．管理．新創》如何被催生？ - 典藏ARTouch.com",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9pNlpSS0ZMTHV6aW8tYXNobHI0dFhsekY5UG12LTBpZ2t0cUU2TDBkZUdkNTFLajNiVUJOMnFBM3JJdk5WTy16NXNXQnVUOXlzZzVxXzFSQ3BZdEJ2UDNaWHpJbFdYYVJkdEs1TDFBX0hjdw?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9pNlpSS0ZMTHV6aW8tYXNobHI0dFhsekY5UG12LTBpZ2t0cUU2TDBkZUdkNTFLajNiVUJOMnFBM3JJdk5WTy16NXNXQnVUOXlzZzVxXzFSQ3BZdEJ2UDNaWHpJbFdYYVJkdEs1TDFBX0hjdw?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2022-06-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-14fb9ffd",
+      "title": "明新科大管理與服務創新研討會 分享創業創新經驗 - 台灣好新聞",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxNXzNSRWtVMFhnWG9UQ3NGVDFZYkl3NWlteWlESWxLMjBHLURMemFtWXdQZGd1aDBhdUZneG5JQVFQU3RCSWR5RkpMNHdsV3U3YTBaTU9NOVFjTjBHbUprdGxMVXJ4SXdEZnoxLXNfOUZjVTZ1a0k3a2tIbzY2QnBZajZBT3hYZVliZVRJQ0F0d3VXVjhYcVdWN2NmQ3IzVkN3ZVVlbmN2S2Z3NjN3NkRPSTQ4TUlqSUJjY0hoMU1SZTRrM0d4cWdQR1RhU1lMTnNORzNnWnp1b3lWTkM4YzJCenhXSFNjMXhjVVBScDlKTC1WQ2NqYzQ3LVFWbnJ2TTJrcmhDMU5NYjF1c0g5UFRYeTl6TUU0Y2VSNktVYUk5YXIyRkpyOUJXMldkQ3NrRzBLM01CdVFaT3lLaWIxcU9wY0dwcGVtQ1BBMjNCQWM0VjQxZzVkTHl2Rk5B?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxNXzNSRWtVMFhnWG9UQ3NGVDFZYkl3NWlteWlESWxLMjBHLURMemFtWXdQZGd1aDBhdUZneG5JQVFQU3RCSWR5RkpMNHdsV3U3YTBaTU9NOVFjTjBHbUprdGxMVXJ4SXdEZnoxLXNfOUZjVTZ1a0k3a2tIbzY2QnBZajZBT3hYZVliZVRJQ0F0d3VXVjhYcVdWN2NmQ3IzVkN3ZVVlbmN2S2Z3NjN3NkRPSTQ4TUlqSUJjY0hoMU1SZTRrM0d4cWdQR1RhU1lMTnNORzNnWnp1b3lWTkM4YzJCenhXSFNjMXhjVVBScDlKTC1WQ2NqYzQ3LVFWbnJ2TTJrcmhDMU5NYjF1c0g5UFRYeTl6TUU0Y2VSNktVYUk5YXIyRkpyOUJXMldkQ3NrRzBLM01CdVFaT3lLaWIxcU9wY0dwcGVtQ1BBMjNCQWM0VjQxZzVkTHl2Rk5B?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2024-05-10",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-9900690f",
+      "title": "學術研究成果分享 明新科大辦理管理與服務創新研討會 - 台灣好新聞",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2025-05-12",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-838fc4be",
+      "title": "2020健康管理學術研討會 提出後疫情時期新思維 - atanews.net",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9OeXk3eVI4V3VvNHJiR05DMXpzeDEtamg0WExwQk1tcnh5V0w1Q0I4d0J5YUhURlhBS2FIWHhwajc4S0dKT0Y3SFUxTWxLVThrZnFDeTMtRDU?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9OeXk3eVI4V3VvNHJiR05DMXpzeDEtamg0WExwQk1tcnh5V0w1Q0I4d0J5YUhURlhBS2FIWHhwajc4S0dKT0Y3SFUxTWxLVThrZnFDeTMtRDU?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2020-11-06",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-c6789323",
+      "title": "2019災害管理研討會 銘傳都防獲年度最佳論文獎 - week.mcu.edu.tw",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBoTHdWUnZJQ0dMcnFxbkE1T090ZTlDUDhkZGQ0YllDa1E2NmRBT183SURjbWh5V1hiMDRSaE1ZZHVEcVVxdFpsMWtn?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBoTHdWUnZJQ0dMcnFxbkE1T090ZTlDUDhkZGQ0YllDa1E2NmRBT183SURjbWh5V1hiMDRSaE1ZZHVEcVVxdFpsMWtn?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-05",
+      "last_changed": "2020-08-21",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "搜尋來源發現的新候選項目。",
+      "review_status": "candidate"
+    }
+  ]
+}

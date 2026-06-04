@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>台灣商管研討會資訊站</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Taiwan Business & Management Conferences</p>
+        <h1>台灣商管研討會資訊站</h1>
+        <p class="intro">
+          每日彙整台灣商業、管理、行銷、財金、國貿、組織與服務創新等領域研討會資訊，追蹤主頁與徵稿資訊異動。
+        </p>
+      </div>
+      <div class="status-panel" aria-live="polite">
+        <span>資料更新</span>
+        <strong id="lastUpdated">讀取中</strong>
+        <small id="sourceCount">來源檢查中</small>
+      </div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="篩選排序">
+        <label>
+          關鍵字
+          <input id="keywordFilter" type="search" placeholder="研討會、主辦單位、領域" />
+        </label>
+        <label>
+          舉辦年月
+          <input id="monthFilter" type="month" />
+        </label>
+        <label>
+          地點
+          <select id="locationFilter">
+            <option value="">全部地點</option>
+          </select>
+        </label>
+        <label>
+          投稿截止日在
+          <input id="deadlineBeforeFilter" type="date" />
+        </label>
+        <label>
+          發表形式
+          <select id="formatFilter">
+            <option value="">全部形式</option>
+            <option value="oral">口頭發表</option>
+            <option value="poster">海報發表</option>
+            <option value="online">線上發表</option>
+            <option value="other">其他或未明</option>
+          </select>
+        </label>
+        <label>
+          排序
+          <select id="sortSelect">
+            <option value="updated_desc">最近更新優先</option>
+            <option value="event_asc">舉辦日期由近到遠</option>
+            <option value="deadline_asc">投稿截止由近到遠</option>
+            <option value="name_asc">名稱 A-Z</option>
+          </select>
+        </label>
+        <button id="resetFilters" type="button">清除</button>
+      </section>
+
+      <section class="summary-row" aria-label="統計">
+        <div><strong id="visibleCount">0</strong><span>符合條件</span></div>
+        <div><strong id="newCount">0</strong><span>近期更新</span></div>
+        <div><strong id="deadlineCount">0</strong><span>投稿未截止</span></div>
+      </section>
+
+      <section id="conferenceList" class="conference-list" aria-live="polite"></section>
+      <section id="emptyState" class="empty-state" hidden>
+        沒有符合篩選條件的研討會。
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        資料由每日更新腳本彙整。候選或待確認項目請回到會議主頁確認，以主辦單位公告為準。
+      </p>
+    </footer>
+
+    <script src="assets/app.js" type="module"></script>
+  </body>
+</html>
