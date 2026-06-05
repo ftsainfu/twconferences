@@ -11,9 +11,11 @@ const els = {
   visibleCount: document.querySelector("#visibleCount"),
   newCount: document.querySelector("#newCount"),
   deadlineCount: document.querySelector("#deadlineCount"),
+  upcomingCount: document.querySelector("#upcomingCount"),
   keyword: document.querySelector("#keywordFilter"),
   month: document.querySelector("#monthFilter"),
   location: document.querySelector("#locationFilter"),
+  eventStatus: document.querySelector("#eventStatusFilter"),
   deadlineBefore: document.querySelector("#deadlineBeforeFilter"),
   deadlineStatus: document.querySelector("#deadlineStatusFilter"),
   format: document.querySelector("#formatFilter"),
@@ -53,6 +55,25 @@ function isDeadlineOpen(item) {
   return deadline && deadline >= today;
 }
 
+function eventStatus(item) {
+  const start = parseDate(item.event_start);
+  const end = parseDate(item.event_end) || start;
+  if (!start) return "unknown";
+  if (end < today) return "past";
+  if (start <= today && end >= today) return "ongoing";
+  return "upcoming";
+}
+
+function eventStatusLabel(item) {
+  const labels = {
+    upcoming: "即將舉辦",
+    ongoing: "進行中",
+    past: "已結束",
+    unknown: "未公告日期",
+  };
+  return labels[eventStatus(item)];
+}
+
 function matchesFormat(item, format) {
   if (!format) return true;
   const formats = item.presentation_formats || [];
@@ -70,10 +91,15 @@ function matchesDeadlineStatus(item, status) {
   return true;
 }
 
+function matchesEventStatus(item, status) {
+  return !status || eventStatus(item) === status;
+}
+
 function applyFilters() {
   const keyword = els.keyword.value.trim().toLowerCase();
   const month = els.month.value;
   const location = els.location.value;
+  const selectedEventStatus = els.eventStatus.value;
   const deadlineBefore = parseDate(els.deadlineBefore.value);
   const deadlineStatus = els.deadlineStatus.value;
   const format = els.format.value;
@@ -95,6 +121,7 @@ function applyFilters() {
       (!keyword || haystack.includes(keyword)) &&
       (!month || eventMonth === month) &&
       (!location || item.location === location) &&
+      matchesEventStatus(item, selectedEventStatus) &&
       (!deadlineBefore || (deadline && deadline <= deadlineBefore)) &&
       matchesDeadlineStatus(item, deadlineStatus) &&
       matchesFormat(item, format)
@@ -142,6 +169,7 @@ function render() {
   els.visibleCount.textContent = state.filtered.length;
   els.newCount.textContent = state.filtered.filter(isRecent).length;
   els.deadlineCount.textContent = state.filtered.filter(isDeadlineOpen).length;
+  els.upcomingCount.textContent = state.filtered.filter((item) => ["upcoming", "ongoing"].includes(eventStatus(item))).length;
   els.empty.hidden = state.filtered.length > 0;
   els.list.innerHTML = state.filtered.map(renderCard).join("");
 }
@@ -171,6 +199,7 @@ function renderCard(item) {
         <div class="meta-grid">
           <div><span>舉辦日期</span><strong>${formatDate(item.event_start)}</strong></div>
           <div><span>地點</span><strong>${escapeHtml(item.location || "未公告")}</strong></div>
+          <div><span>舉辦狀態</span><strong>${escapeHtml(eventStatusLabel(item))}</strong></div>
           <div><span>投稿截止</span><strong>${formatDate(item.submission_deadline)}</strong></div>
           <div><span>主辦單位</span><strong>${escapeHtml(item.organizer || "未公告")}</strong></div>
           <div><span>發表形式</span><strong>${escapeHtml(presentationLabel(item))}</strong></div>
@@ -212,7 +241,7 @@ function hydrateLocationFilter() {
 }
 
 function bindEvents() {
-  [els.keyword, els.month, els.location, els.deadlineBefore, els.deadlineStatus, els.format, els.sort].forEach((input) => {
+  [els.keyword, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
     input.addEventListener("change", applyFilters);
   });
@@ -220,6 +249,7 @@ function bindEvents() {
     els.keyword.value = "";
     els.month.value = "";
     els.location.value = "";
+    els.eventStatus.value = "";
     els.deadlineBefore.value = "";
     els.deadlineStatus.value = "";
     els.format.value = "";

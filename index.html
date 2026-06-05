@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260605b" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260605c" />
   </head>
   <body>
     <header class="site-header">
@@ -36,6 +36,16 @@
           地點
           <select id="locationFilter">
             <option value="">全部地點</option>
+          </select>
+        </label>
+        <label>
+          舉辦狀態
+          <select id="eventStatusFilter">
+            <option value="">全部狀態</option>
+            <option value="upcoming">即將舉辦</option>
+            <option value="ongoing">進行中</option>
+            <option value="past">已結束</option>
+            <option value="unknown">未公告日期</option>
           </select>
         </label>
         <label>
@@ -77,6 +87,7 @@
         <div><strong id="visibleCount">0</strong><span>符合條件</span></div>
         <div><strong id="newCount">0</strong><span>近期更新</span></div>
         <div><strong id="deadlineCount">0</strong><span>投稿未截止</span></div>
+        <div><strong id="upcomingCount">0</strong><span>尚未舉辦</span></div>
       </section>
 
       <section id="conferenceList" class="conference-list" aria-live="polite"></section>
@@ -91,6 +102,6 @@
       </p>
     </footer>
 
-    <script src="assets/app.js?v=20260605b" type="module"></script>
+    <script src="assets/app.js?v=20260605c" type="module"></script>
   </body>
 </html>

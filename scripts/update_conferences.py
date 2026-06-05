@@ -23,6 +23,8 @@ TZ = timezone(timedelta(hours=8))
 
 KEYWORDS = ("商管", "管理", "行銷", "財務", "財金", "國貿", "企業", "服務創新", "經營")
 CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文")
+FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單")
+LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 
 
 def now_tw() -> datetime:
@@ -196,6 +198,76 @@ def unwrap_google_news_link(url: str) -> str:
     return url
 
 
+def normalize_url(base_url: str, href: str) -> str:
+    href = html.unescape(href).strip()
+    if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+        return ""
+    return urllib.parse.urljoin(base_url, href)
+
+
+def canonical_url(url: str) -> str:
+    parsed = urllib.parse.urlparse(urllib.parse.unquote(url))
+    path = re.sub(r"/+", "/", parsed.path).rstrip("/")
+    query = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+    query = [(key, value) for key, value in query if key.lower() not in {"lang", "authuser"}]
+    return urllib.parse.urlunparse(
+        (
+            parsed.scheme.lower(),
+            parsed.netloc.lower(),
+            path,
+            "",
+            urllib.parse.urlencode(sorted(query)),
+            "",
+        )
+    )
+
+
+def candidate_id(prefix: str, url: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", urllib.parse.urlparse(url).netloc.lower()).strip("-")
+    return f"{prefix}-{slug}-{hashlib.sha1(url.encode('utf-8')).hexdigest()[:8]}"
+
+
+def title_key(title: str) -> str:
+    return re.sub(r"[\W_]+", "", title.lower())
+
+
+def duplicates_known_title(title: str, known_titles: set[str]) -> bool:
+    key = title_key(title)
+    return bool(key) and any(key in known or known in key for known in known_titles)
+
+
+def make_candidate(
+    *,
+    candidate_prefix: str,
+    title: str,
+    link: str,
+    organizer: str,
+    published: str,
+    summary: str,
+) -> dict:
+    return {
+        "id": candidate_id(candidate_prefix, link),
+        "title": title,
+        "organizer": organizer,
+        "homepage_url": link,
+        "submission_url": link,
+        "registration_url": "",
+        "event_start": "",
+        "event_end": "",
+        "location": "待確認",
+        "submission_deadline": "",
+        "fields": ["待確認"],
+        "presentation_formats": ["other"],
+        "attention_notes": [summary],
+        "last_checked": today_iso(),
+        "last_changed": published,
+        "change_status": "new",
+        "change_label": "候選新增",
+        "change_summary": "每日來源掃描發現的新候選項目。",
+        "review_status": "candidate",
+    }
+
+
 def parse_rss_date(value: str) -> str:
     if not value:
         return today_iso()
@@ -224,47 +296,99 @@ def discover_candidates(feeds: list[str], existing_ids: set[str]) -> list[dict]:
                 continue
             if not any(word in text for word in KEYWORDS) or not any(word in text for word in CONFERENCE_WORDS):
                 continue
-            slug = re.sub(r"[^a-z0-9]+", "-", urllib.parse.urlparse(link).netloc.lower()).strip("-")
-            candidate_id = f"candidate-{slug}-{hashlib.sha1(link.encode('utf-8')).hexdigest()[:8]}"
-            if candidate_id in existing_ids:
+            item_id = candidate_id("candidate", link)
+            if item_id in existing_ids:
                 continue
             seen_urls.add(link)
             candidates.append(
-                {
-                    "id": candidate_id,
-                    "title": title,
-                    "organizer": "待確認",
-                    "homepage_url": link,
-                    "submission_url": link,
-                    "registration_url": "",
-                    "event_start": "",
-                    "event_end": "",
-                    "location": "待確認",
-                    "submission_deadline": "",
-                    "fields": ["待確認"],
-                    "presentation_formats": ["other"],
-                    "attention_notes": ["由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"],
-                    "last_checked": today_iso(),
-                    "last_changed": published,
-                    "change_status": "new",
-                    "change_label": "候選新增",
-                    "change_summary": "搜尋來源發現的新候選項目。",
-                    "review_status": "candidate",
-                }
+                make_candidate(
+                    candidate_prefix="candidate",
+                    title=title,
+                    link=link,
+                    organizer="待確認",
+                    published=published,
+                    summary="由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。",
+                )
             )
     return candidates[:12]
 
 
+def discover_from_organizers(
+    sources: list[dict],
+    existing_ids: set[str],
+    existing_urls: set[str],
+    existing_titles: set[str],
+) -> tuple[list[dict], list[str]]:
+    candidates: list[dict] = []
+    errors: list[str] = []
+    seen_urls: set[str] = set()
+
+    for source in sources:
+        name = source.get("name", "待確認")
+        url = source.get("url", "")
+        if not url:
+            continue
+        try:
+            raw, _ = fetch_url(url, timeout=12)
+        except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
+            errors.append(f"organizer:{name}: {exc}")
+            continue
+
+        for match in LINK_RE.finditer(raw):
+            label = normalize_text(match.group("label"))
+            link = normalize_url(url, match.group("href"))
+            canonical = canonical_url(link)
+            if not link or canonical in seen_urls or canonical in existing_urls:
+                continue
+            text = f"{label} {link}"
+            if any(word in text for word in FOLLOWUP_WORDS):
+                continue
+            if not label or not any(word in text for word in CONFERENCE_WORDS):
+                continue
+            if duplicates_known_title(label, existing_titles):
+                continue
+            if not any(word in text for word in KEYWORDS) and "2026" not in text and "115" not in text:
+                continue
+            item_id = candidate_id("organizer", link)
+            if item_id in existing_ids:
+                continue
+            seen_urls.add(canonical)
+            candidates.append(
+                make_candidate(
+                    candidate_prefix="organizer",
+                    title=label[:120],
+                    link=link,
+                    organizer=name,
+                    published=today_iso(),
+                    summary="由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。",
+                )
+            )
+
+    return candidates[:12], errors
+
+
 def main() -> int:
-    sources = read_json(SOURCES_FILE, {"conferences": [], "discovery_feeds": []})
+    sources = read_json(SOURCES_FILE, {"conferences": [], "discovery_feeds": [], "organizer_sources": []})
     history = read_json(HISTORY_FILE, {"sources": {}})
     conferences, errors = update_known_conferences(sources, history)
-    candidates = discover_candidates(sources.get("discovery_feeds", []), {item["id"] for item in conferences})
+    existing_ids = {item["id"] for item in conferences}
+    existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
+    existing_titles = {title_key(item.get("title", "")) for item in conferences}
+    candidates = discover_candidates(sources.get("discovery_feeds", []), existing_ids)
+    organizer_candidates, organizer_errors = discover_from_organizers(
+        sources.get("organizer_sources", []),
+        existing_ids | {item["id"] for item in candidates},
+        existing_urls | {canonical_url(item.get("homepage_url", "")) for item in candidates},
+        existing_titles | {title_key(item.get("title", "")) for item in candidates},
+    )
+    errors.extend(organizer_errors)
     payload = {
         "generated_at": now_tw().strftime("%Y-%m-%d %H:%M:%S %Z"),
-        "source_count": len(sources.get("conferences", [])) + len(sources.get("discovery_feeds", [])),
+        "source_count": len(sources.get("conferences", []))
+        + len(sources.get("discovery_feeds", []))
+        + len(sources.get("organizer_sources", [])),
         "errors": errors,
-        "conferences": conferences + candidates,
+        "conferences": conferences + candidates + organizer_candidates,
     }
     write_json(OUTPUT_FILE, payload)
     write_json(HISTORY_FILE, history)
