@@ -214,6 +214,7 @@ function hydrateLocationFilter() {
 function bindEvents() {
   [els.keyword, els.month, els.location, els.deadlineBefore, els.deadlineStatus, els.format, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
+    input.addEventListener("change", applyFilters);
   });
   els.reset.addEventListener("click", () => {
     els.keyword.value = "";
