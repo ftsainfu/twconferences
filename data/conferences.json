@@ -1,12 +1,10 @@
 {
-  "generated_at": "2026-06-05 08:26:17 UTC+08:00",
+  "generated_at": "2026-06-06 06:23:23 UTC+08:00",
   "source_count": 30,
   "errors": [
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
-    "iclt-2026: The read operation timed out",
+    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:大葉大學當代管理國際學術研討會: <urlopen error timed out>",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
+    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
   ],
   "conferences": [
     {
@@ -35,7 +33,7 @@
       "attention_notes": [
         "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -70,8 +68,8 @@
         "摘要投稿截稿日期為 2026-04-10。",
         "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
       ],
-      "last_checked": "2026-06-05",
-      "last_changed": "2026-06-05",
+      "last_checked": "2026-06-06",
+      "last_changed": "2026-06-06",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -103,7 +101,7 @@
       "attention_notes": [
         "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -140,7 +138,7 @@
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -173,7 +171,7 @@
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -206,8 +204,8 @@
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
-      "last_checked": "2026-06-05",
-      "last_changed": "2026-06-05",
+      "last_checked": "2026-06-06",
+      "last_changed": "2026-06-06",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -240,7 +238,7 @@
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -276,7 +274,7 @@
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -308,11 +306,11 @@
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
-      "last_checked": "2026-06-05",
-      "last_changed": "2026-06-05",
-      "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "last_checked": "2026-06-06",
+      "last_changed": "2026-06-06",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified"
     },
     {
@@ -341,7 +339,7 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -379,7 +377,7 @@
         "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
         "錄取公告及通知日期為 2026-07-20。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -417,7 +415,7 @@
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
         "此為健康照護管理應用場域，包含領導與管理、長照與 ESG 等管理議題。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -454,7 +452,7 @@
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
         "此為農業資訊科技研討會，納入原因是徵稿主題包含農場管理、供應鏈與地理空間決策等管理應用。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -490,11 +488,11 @@
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -520,7 +518,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2025-11-18",
       "change_status": "new",
       "change_label": "候選新增",
@@ -550,7 +548,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2023-06-14",
       "change_status": "new",
       "change_label": "候選新增",
@@ -580,7 +578,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2025-05-31",
       "change_status": "new",
       "change_label": "候選新增",
@@ -610,7 +608,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2024-02-23",
       "change_status": "new",
       "change_label": "候選新增",
@@ -640,7 +638,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2026-05-17",
       "change_status": "new",
       "change_label": "候選新增",
@@ -670,8 +668,38 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2024-05-12",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "candidate-news-google-com-9900690f",
+      "title": "學術研究成果分享 明新科大辦理管理與服務創新研討會 - 台灣好新聞",
+      "organizer": "待確認",
+      "homepage_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
+      "submission_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-06",
+      "last_changed": "2025-05-12",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -700,7 +728,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2023-11-03",
       "change_status": "new",
       "change_label": "候選新增",
@@ -730,7 +758,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2022-06-08",
       "change_status": "new",
       "change_label": "候選新增",
@@ -760,38 +788,8 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2024-05-10",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate"
-    },
-    {
-      "id": "candidate-news-google-com-9900690f",
-      "title": "學術研究成果分享 明新科大辦理管理與服務創新研討會 - 台灣好新聞",
-      "organizer": "待確認",
-      "homepage_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
-      "submission_url": "https://news.google.com/rss/articles/CBMi8gJBVV95cUxNZVJMWkQ4WW5maUhWZmlYQzdaRDJoNzFvUkgydnNrTURHeE1EaWk1UzRIS2lRLVhzeFk2VzZmVVJiNkpoMG12LTRuR0lnNlcxaTZMbVZmN1dQa1RvRjZBRHF5dzBPQUQyQXVHRW0yc1FlOTgtNDNPZ2o4TjZGX0dvSVcwQWcwUk5CZlJrbHpnN3VRTmtpQm11TnZSaEd4a1duMkdSNDdiYk9pc01Cb3N1NlEyZkZobm9jM2J1MFg0cmlQMlhpUEZabFZNRkF0N3FRd1ozWkUzdVg0UGpoN1ZZd2l4ampUb0JHVVpSYmt0MTdZejNoMXhwSDlzaWZYTXEtMklXd0x1bGpVZDUwZnlQLURBcjM3Sm0zQ1A5aVY4T1dTQlAwck5Xdlo5bFVmemZDTFVOLXZZd1hScTJZak9tQ3NTNGp6c2k2cm9wWHBJWTdXby1FUDhDa2d3MHlDZFJvTXFYRU9lVkxwMUo5MmJodU9B?oc=5",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-06-05",
-      "last_changed": "2025-05-12",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -820,7 +818,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2020-11-06",
       "change_status": "new",
       "change_label": "候選新增",
@@ -850,7 +848,7 @@
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
+      "last_checked": "2026-06-06",
       "last_changed": "2020-08-21",
       "change_status": "new",
       "change_label": "候選新增",
@@ -880,8 +878,8 @@
       "attention_notes": [
         "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-05",
-      "last_changed": "2026-06-05",
+      "last_checked": "2026-06-06",
+      "last_changed": "2026-06-06",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
