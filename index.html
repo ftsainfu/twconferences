@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260605c" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260605d" />
   </head>
   <body>
     <header class="site-header">
@@ -72,6 +72,14 @@
           </select>
         </label>
         <label>
+          英文發表
+          <select id="englishPresentationFilter">
+            <option value="">全部</option>
+            <option value="accepted">接受英文發表</option>
+            <option value="not_accepted">未標示接受英文</option>
+          </select>
+        </label>
+        <label>
           排序
           <select id="sortSelect">
             <option value="updated_desc">最近更新優先</option>
@@ -102,6 +110,6 @@
       </p>
     </footer>
 
-    <script src="assets/app.js?v=20260605c" type="module"></script>
+    <script src="assets/app.js?v=20260605d" type="module"></script>
   </body>
 </html>

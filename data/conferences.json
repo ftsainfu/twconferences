@@ -1,9 +1,11 @@
 {
-  "generated_at": "2026-06-05 08:19:56 UTC+08:00",
+  "generated_at": "2026-06-05 08:26:17 UTC+08:00",
   "source_count": 30,
   "errors": [
     "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+    "iclt-2026: The read operation timed out",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
+    "organizer:大葉大學當代管理國際學術研討會: <urlopen error timed out>",
     "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
   ],
   "conferences": [
@@ -26,6 +28,9 @@
         "online",
         "oral",
         "other"
+      ],
+      "presentation_languages": [
+        "zh"
       ],
       "attention_notes": [
         "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
@@ -57,6 +62,10 @@
         "oral",
         "other"
       ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
       "attention_notes": [
         "摘要投稿截稿日期為 2026-04-10。",
         "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
@@ -86,6 +95,10 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
@@ -118,6 +131,11 @@
         "oral",
         "poster"
       ],
+      "presentation_languages": [
+        "en",
+        "ja",
+        "zh"
+      ],
       "attention_notes": [
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
@@ -147,6 +165,10 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
@@ -178,6 +200,9 @@
         "online",
         "other"
       ],
+      "presentation_languages": [
+        "zh"
+      ],
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
@@ -208,6 +233,10 @@
         "online",
         "oral"
       ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
@@ -237,6 +266,10 @@
       "presentation_formats": [
         "online",
         "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "透過 Google 表單報名並上傳論文摘要。",
@@ -269,6 +302,9 @@
         "other",
         "poster"
       ],
+      "presentation_languages": [
+        "zh"
+      ],
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
@@ -298,6 +334,9 @@
       "presentation_formats": [
         "other",
         "poster"
+      ],
+      "presentation_languages": [
+        "zh"
       ],
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
@@ -331,6 +370,9 @@
         "oral",
         "other",
         "poster"
+      ],
+      "presentation_languages": [
+        "zh"
       ],
       "attention_notes": [
         "摘要投稿與報名期間為 2026-06-01 至 2026-06-30。",
@@ -367,6 +409,9 @@
         "poster",
         "online"
       ],
+      "presentation_languages": [
+        "en"
+      ],
       "attention_notes": [
         "投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。",
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
@@ -401,6 +446,9 @@
         "oral",
         "other"
       ],
+      "presentation_languages": [
+        "en"
+      ],
       "attention_notes": [
         "最終投稿截止日為 2026-07-31；早鳥報名截止日為 2026-08-10。",
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
@@ -434,6 +482,9 @@
         "oral",
         "other"
       ],
+      "presentation_languages": [
+        "en"
+      ],
       "attention_notes": [
         "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
@@ -443,7 +494,7 @@
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -462,6 +513,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -490,6 +544,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -516,6 +573,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -544,6 +604,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -570,6 +633,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -598,6 +664,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -624,6 +693,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -652,6 +724,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -678,6 +753,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -706,6 +784,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -732,6 +813,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
@@ -760,6 +844,9 @@
       "presentation_formats": [
         "other"
       ],
+      "presentation_languages": [
+        "unknown"
+      ],
       "attention_notes": [
         "由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。"
       ],
@@ -786,6 +873,9 @@
       ],
       "presentation_formats": [
         "other"
+      ],
+      "presentation_languages": [
+        "unknown"
       ],
       "attention_notes": [
         "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"

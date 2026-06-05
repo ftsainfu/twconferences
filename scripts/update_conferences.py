@@ -131,6 +131,20 @@ def infer_formats(text: str, fallback: list[str]) -> list[str]:
     return sorted(formats) if formats else ["other"]
 
 
+def infer_languages(text: str, fallback: list[str]) -> list[str]:
+    if fallback:
+        return sorted(set(fallback))
+    languages = set(fallback)
+    lower_text = text.lower()
+    if "英文" in text or "英語" in text or "english" in lower_text:
+        languages.add("en")
+    if "中文" in text or "華語" in text or "chinese" in lower_text:
+        languages.add("zh")
+    if "日文" in text or "日語" in text or "japanese" in lower_text:
+        languages.add("ja")
+    return sorted(languages) if languages else ["unknown"]
+
+
 def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], list[str]]:
     conferences: list[dict] = []
     errors: list[str] = []
@@ -159,6 +173,7 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
             item["submission_deadline"] = infer_deadline(text, item.get("submission_deadline", ""))
             item["event_start"] = infer_event_date(text, item.get("event_start", ""))
             item["presentation_formats"] = infer_formats(text, item.get("presentation_formats", []))
+            item["presentation_languages"] = infer_languages(text, item.get("presentation_languages", []))
             history_sources[source_id] = {
                 "hash": current_hash,
                 "last_checked": today_iso(),
@@ -181,6 +196,7 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
                 change_summary = "本次來源檢查失敗，保留前次資料。"
 
         item["last_checked"] = today_iso()
+        item["presentation_languages"] = item.get("presentation_languages") or ["unknown"]
         item["last_changed"] = history_sources.get(source_id, previous).get("last_changed", "")
         item["change_status"] = change_status
         item["change_label"] = {"new": "新增", "changed": "資訊異動", "unchanged": "已檢查"}.get(change_status, "已檢查")
@@ -258,6 +274,7 @@ def make_candidate(
         "submission_deadline": "",
         "fields": ["待確認"],
         "presentation_formats": ["other"],
+        "presentation_languages": ["unknown"],
         "attention_notes": [summary],
         "last_checked": today_iso(),
         "last_changed": published,

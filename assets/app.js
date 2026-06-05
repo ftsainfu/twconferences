@@ -19,6 +19,7 @@ const els = {
   deadlineBefore: document.querySelector("#deadlineBeforeFilter"),
   deadlineStatus: document.querySelector("#deadlineStatusFilter"),
   format: document.querySelector("#formatFilter"),
+  englishPresentation: document.querySelector("#englishPresentationFilter"),
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
 };
@@ -81,6 +82,18 @@ function matchesFormat(item, format) {
   return formats.includes(format);
 }
 
+function acceptsEnglishPresentation(item) {
+  return (item.presentation_languages || []).includes("en");
+}
+
+function matchesEnglishPresentation(item, value) {
+  if (!value) return true;
+  const acceptsEnglish = acceptsEnglishPresentation(item);
+  if (value === "accepted") return acceptsEnglish;
+  if (value === "not_accepted") return !acceptsEnglish;
+  return true;
+}
+
 function matchesDeadlineStatus(item, status) {
   if (!status) return true;
   const deadline = parseDate(item.submission_deadline);
@@ -103,6 +116,7 @@ function applyFilters() {
   const deadlineBefore = parseDate(els.deadlineBefore.value);
   const deadlineStatus = els.deadlineStatus.value;
   const format = els.format.value;
+  const englishPresentation = els.englishPresentation.value;
 
   state.filtered = state.conferences.filter((item) => {
     const haystack = [
@@ -124,7 +138,8 @@ function applyFilters() {
       matchesEventStatus(item, selectedEventStatus) &&
       (!deadlineBefore || (deadline && deadline <= deadlineBefore)) &&
       matchesDeadlineStatus(item, deadlineStatus) &&
-      matchesFormat(item, format)
+      matchesFormat(item, format) &&
+      matchesEnglishPresentation(item, englishPresentation)
     );
   });
 
@@ -165,6 +180,17 @@ function presentationLabel(item) {
   return formats.length ? formats.map((format) => labels[format] || format).join("、") : "未明";
 }
 
+function languageLabel(item) {
+  const labels = {
+    zh: "中文",
+    en: "英文",
+    ja: "日文",
+    unknown: "未明",
+  };
+  const languages = item.presentation_languages || [];
+  return languages.length ? languages.map((language) => labels[language] || language).join("、") : "未明";
+}
+
 function render() {
   els.visibleCount.textContent = state.filtered.length;
   els.newCount.textContent = state.filtered.filter(isRecent).length;
@@ -203,6 +229,7 @@ function renderCard(item) {
           <div><span>投稿截止</span><strong>${formatDate(item.submission_deadline)}</strong></div>
           <div><span>主辦單位</span><strong>${escapeHtml(item.organizer || "未公告")}</strong></div>
           <div><span>發表形式</span><strong>${escapeHtml(presentationLabel(item))}</strong></div>
+          <div><span>發表語言</span><strong>${escapeHtml(languageLabel(item))}</strong></div>
           <div><span>更新狀態</span><strong>${escapeHtml(item.change_label || "已檢查")}</strong></div>
         </div>
         ${item.change_summary ? `<p class="change-note">${escapeHtml(item.change_summary)}</p>` : ""}
@@ -241,7 +268,7 @@ function hydrateLocationFilter() {
 }
 
 function bindEvents() {
-  [els.keyword, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.sort].forEach((input) => {
+  [els.keyword, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
     input.addEventListener("change", applyFilters);
   });
@@ -253,6 +280,7 @@ function bindEvents() {
     els.deadlineBefore.value = "";
     els.deadlineStatus.value = "";
     els.format.value = "";
+    els.englishPresentation.value = "";
     els.sort.value = "updated_desc";
     applyFilters();
   });

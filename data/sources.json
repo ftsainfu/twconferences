@@ -75,6 +75,7 @@
       "submission_deadline": "2026-05-18",
       "fields": ["管理", "商管"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh"],
       "attention_notes": ["論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"]
     },
     {
@@ -90,6 +91,7 @@
       "submission_deadline": "2026-04-10",
       "fields": ["管理", "服務創新", "民生產業"],
       "presentation_formats": ["oral", "other"],
+      "presentation_languages": ["zh", "en"],
       "attention_notes": ["摘要投稿截稿日期為 2026-04-10。", "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"]
     },
     {
@@ -105,6 +107,7 @@
       "submission_deadline": "",
       "fields": ["行銷管理", "品牌", "消費者研究"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh", "en"],
       "attention_notes": ["以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"]
     },
     {
@@ -120,6 +123,7 @@
       "submission_deadline": "2026-04-30",
       "fields": ["財務管理", "投資策略", "公司治理", "當代管理"],
       "presentation_formats": ["oral", "poster"],
+      "presentation_languages": ["zh", "en", "ja"],
       "attention_notes": ["投稿截止日期為 2026-04-30。", "提供中、英、日語發表場次，以及海報發表場次。"]
     },
     {
@@ -135,6 +139,7 @@
       "submission_deadline": "",
       "fields": ["工商心理學", "人力資源管理", "組織行為"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh", "en"],
       "attention_notes": ["接受中英文投稿；每人參與稿件以三篇為限。"]
     },
     {
@@ -150,6 +155,7 @@
       "submission_deadline": "",
       "fields": ["商管", "論文競賽", "企業管理"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh"],
       "attention_notes": ["審查通過者須依主辦單位期限繳交登記費與上傳收據。"]
     },
     {
@@ -165,6 +171,7 @@
       "submission_deadline": "2026-01-10",
       "fields": ["商業管理", "科技創新", "法律制度"],
       "presentation_formats": ["oral"],
+      "presentation_languages": ["zh", "en"],
       "attention_notes": ["須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"]
     },
     {
@@ -180,6 +187,7 @@
       "submission_deadline": "2026-05-15",
       "fields": ["經濟", "國際貿易", "全球企業管理"],
       "presentation_formats": ["oral", "online"],
+      "presentation_languages": ["zh", "en"],
       "attention_notes": ["透過 Google 表單報名並上傳論文摘要。", "可選線上或現場報告，以及中文或英文場次。", "全文繳交截止日為 2026-05-21。"]
     },
     {
@@ -195,6 +203,7 @@
       "submission_deadline": "2026-03-31",
       "fields": ["中小企業", "經營管理"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh"],
       "attention_notes": ["摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"]
     },
     {
@@ -210,6 +219,7 @@
       "submission_deadline": "2026-05-15",
       "fields": ["數位商管", "實務應用", "管理"],
       "presentation_formats": ["other"],
+      "presentation_languages": ["zh"],
       "attention_notes": ["論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"]
     },
     {
@@ -225,6 +235,7 @@
       "submission_deadline": "2026-06-30",
       "fields": ["健康科技管理", "經營管理", "創意行銷", "人力資源管理", "財務與金融"],
       "presentation_formats": ["oral", "poster", "other"],
+      "presentation_languages": ["zh"],
       "attention_notes": [
         "摘要投稿與報名期間為 2026-06-01 至 2026-06-30。",
         "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
@@ -244,6 +255,7 @@
       "submission_deadline": "2026-07-31",
       "fields": ["健康照護管理", "長照個案管理", "ESG", "智慧照護", "人才培育"],
       "presentation_formats": ["oral", "poster", "online"],
+      "presentation_languages": ["en"],
       "attention_notes": [
         "投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。",
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
@@ -263,6 +275,7 @@
       "submission_deadline": "2026-07-31",
       "fields": ["數位農業", "農場管理", "供應鏈透明度", "地理空間決策", "AI應用"],
       "presentation_formats": ["oral", "other"],
+      "presentation_languages": ["en"],
       "attention_notes": [
         "最終投稿截止日為 2026-07-31；早鳥報名截止日為 2026-08-10。",
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
@@ -282,6 +295,7 @@
       "submission_deadline": "2026-06-30",
       "fields": ["物流管理", "運輸管理", "供應鏈韌性", "全球運籌"],
       "presentation_formats": ["oral", "other"],
+      "presentation_languages": ["en"],
       "attention_notes": [
         "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
