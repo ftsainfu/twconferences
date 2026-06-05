@@ -41,10 +41,10 @@ function formatDate(value) {
 }
 
 function isRecent(item) {
-  const updated = parseDate(item.last_checked || item.last_changed || item.created_at);
+  const updated = parseDate(item.last_changed || item.created_at);
   if (!updated) return false;
   const diffDays = (today - updated) / 86400000;
-  return diffDays <= 14 && (item.change_status === "new" || item.change_status === "changed");
+  return diffDays <= 14;
 }
 
 function isDeadlineOpen(item) {

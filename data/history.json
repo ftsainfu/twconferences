@@ -7,7 +7,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "a267291ab367d1b12f98782a2638dd001004e97b559a5254733cca1947be5d38",
+      "hash": "1a1d3de697899f7307eee58804a52ec2c41d65c3476717def3b82ac58e04cc72",
       "last_checked": "2026-06-05",
       "last_changed": "2026-06-05",
       "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367"
@@ -25,7 +25,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "b1d305789094e86c79b0b96c14a027211f66cbb4f8b8d0c4ce46f21ea825d7d3",
+      "hash": "d44c647efad92cac83bc6f8e213156b464f6a052d812955f49c4c480fa4f80bc",
       "last_checked": "2026-06-05",
       "last_changed": "2026-06-05",
       "url": "https://www.conference.url.tw/main/"
@@ -59,6 +59,30 @@
       "last_checked": "2026-06-05",
       "last_changed": "2026-06-05",
       "url": "https://cmr-crrmkt.pccu.edu.tw/"
+    },
+    "meiho-2026-health-tech-management": {
+      "hash": "f0562c063552f7201ce07d193a86b47c440938fbb55fc129909ad0845cfc91b7",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx"
+    },
+    "apfita-2026": {
+      "hash": "33e11007b2f7119b4acb5f40624901bf0daa61477aca27122dc23e6a4d7f9a8f",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://www.apfita.org/2026/"
+    },
+    "iclt-2026": {
+      "hash": "1ecb63ce2e411125680e61a0ebff5c0e721e205c2bfbf94e0351de12ae79982e",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://iclt.info/paper/2023-024"
+    },
+    "fy-2026-ihc": {
+      "hash": "",
+      "last_checked": "2026-06-05",
+      "last_changed": "2026-06-05",
+      "url": "https://ihc.fy.edu.tw/"
     }
   }
 }

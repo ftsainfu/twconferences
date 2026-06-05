@@ -165,8 +165,18 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
             }
         except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
             errors.append(f"{source_id}: {exc}")
-            change_status = previous.get("last_status", "unchanged")
-            change_summary = "本次來源檢查失敗，保留前次資料。"
+            if not previous:
+                change_status = "new"
+                change_summary = "首次納入追蹤；本次來源自動檢查失敗，保留人工確認資料。"
+                history_sources[source_id] = {
+                    "hash": "",
+                    "last_checked": today_iso(),
+                    "last_changed": today_iso(),
+                    "url": item["homepage_url"],
+                }
+            else:
+                change_status = previous.get("last_status", "unchanged")
+                change_summary = "本次來源檢查失敗，保留前次資料。"
 
         item["last_checked"] = today_iso()
         item["last_changed"] = history_sources.get(source_id, previous).get("last_changed", "")

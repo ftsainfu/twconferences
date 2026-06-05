@@ -153,6 +153,82 @@
       "fields": ["數位商管", "實務應用", "管理"],
       "presentation_formats": ["other"],
       "attention_notes": ["論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"]
+    },
+    {
+      "id": "meiho-2026-health-tech-management",
+      "title": "2026 健康與科技管理學術研討會",
+      "organizer": "美和科技大學健康科學管理學院企業管理系",
+      "homepage_url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx",
+      "submission_url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymFile.aspx?CN_Code=115015&CN_DateE=&CN_DateS=&CN_PlaceType=&CN_Theme=&PgIndex=0",
+      "registration_url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx",
+      "event_start": "2026-08-28",
+      "event_end": "2026-08-28",
+      "location": "屏東",
+      "submission_deadline": "2026-06-30",
+      "fields": ["健康科技管理", "經營管理", "創意行銷", "人力資源管理", "財務與金融"],
+      "presentation_formats": ["oral", "poster", "other"],
+      "attention_notes": [
+        "摘要投稿與報名期間為 2026-06-01 至 2026-06-30。",
+        "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
+        "錄取公告及通知日期為 2026-07-20。"
+      ]
+    },
+    {
+      "id": "fy-2026-ihc",
+      "title": "2026 國際健康照護研討會",
+      "organizer": "輔英科技大學",
+      "homepage_url": "https://ihc.fy.edu.tw/",
+      "submission_url": "https://ihc.fy.edu.tw/",
+      "registration_url": "https://ihc.fy.edu.tw/",
+      "event_start": "2026-12-03",
+      "event_end": "2026-12-04",
+      "location": "高雄",
+      "submission_deadline": "2026-07-31",
+      "fields": ["健康照護管理", "長照個案管理", "ESG", "智慧照護", "人才培育"],
+      "presentation_formats": ["oral", "poster", "online"],
+      "attention_notes": [
+        "投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。",
+        "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
+        "此為健康照護管理應用場域，包含領導與管理、長照與 ESG 等管理議題。"
+      ]
+    },
+    {
+      "id": "apfita-2026",
+      "title": "2026 年亞太農業資訊科技國際研討會 APFITA 2026",
+      "organizer": "社團法人台灣農業資訊科技發展協會",
+      "homepage_url": "https://www.apfita.org/2026/",
+      "submission_url": "https://www.apfita.org/2026/",
+      "registration_url": "https://www.apfita.org/2026/",
+      "event_start": "2026-11-04",
+      "event_end": "2026-11-06",
+      "location": "台北",
+      "submission_deadline": "2026-07-31",
+      "fields": ["數位農業", "農場管理", "供應鏈透明度", "地理空間決策", "AI應用"],
+      "presentation_formats": ["oral", "other"],
+      "attention_notes": [
+        "最終投稿截止日為 2026-07-31；早鳥報名截止日為 2026-08-10。",
+        "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
+        "此為農業資訊科技研討會，納入原因是徵稿主題包含農場管理、供應鏈與地理空間決策等管理應用。"
+      ]
+    },
+    {
+      "id": "iclt-2026",
+      "title": "16th International Conference on Logistics & Transport 2026",
+      "organizer": "International Conference on Logistics & Transport",
+      "homepage_url": "https://iclt.info/paper/2023-024",
+      "submission_url": "https://iclt.info/paper/2023-024",
+      "registration_url": "https://iclt.info/paper/2023-024",
+      "event_start": "2026-10-19",
+      "event_end": "2026-10-23",
+      "location": "高雄",
+      "submission_deadline": "2026-06-30",
+      "fields": ["物流管理", "運輸管理", "供應鏈韌性", "全球運籌"],
+      "presentation_formats": ["oral", "other"],
+      "attention_notes": [
+        "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
+        "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
+        "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
+      ]
     }
   ]
 }
