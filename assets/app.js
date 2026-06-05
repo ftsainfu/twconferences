@@ -15,6 +15,7 @@ const els = {
   month: document.querySelector("#monthFilter"),
   location: document.querySelector("#locationFilter"),
   deadlineBefore: document.querySelector("#deadlineBeforeFilter"),
+  deadlineStatus: document.querySelector("#deadlineStatusFilter"),
   format: document.querySelector("#formatFilter"),
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
@@ -59,11 +60,22 @@ function matchesFormat(item, format) {
   return formats.includes(format);
 }
 
+function matchesDeadlineStatus(item, status) {
+  if (!status) return true;
+  const deadline = parseDate(item.submission_deadline);
+  if (status === "unknown") return !deadline;
+  if (!deadline) return false;
+  if (status === "open") return deadline >= today;
+  if (status === "closed") return deadline < today;
+  return true;
+}
+
 function applyFilters() {
   const keyword = els.keyword.value.trim().toLowerCase();
   const month = els.month.value;
   const location = els.location.value;
   const deadlineBefore = parseDate(els.deadlineBefore.value);
+  const deadlineStatus = els.deadlineStatus.value;
   const format = els.format.value;
 
   state.filtered = state.conferences.filter((item) => {
@@ -84,6 +96,7 @@ function applyFilters() {
       (!month || eventMonth === month) &&
       (!location || item.location === location) &&
       (!deadlineBefore || (deadline && deadline <= deadlineBefore)) &&
+      matchesDeadlineStatus(item, deadlineStatus) &&
       matchesFormat(item, format)
     );
   });
@@ -199,7 +212,7 @@ function hydrateLocationFilter() {
 }
 
 function bindEvents() {
-  [els.keyword, els.month, els.location, els.deadlineBefore, els.format, els.sort].forEach((input) => {
+  [els.keyword, els.month, els.location, els.deadlineBefore, els.deadlineStatus, els.format, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
   });
   els.reset.addEventListener("click", () => {
@@ -207,6 +220,7 @@ function bindEvents() {
     els.month.value = "";
     els.location.value = "";
     els.deadlineBefore.value = "";
+    els.deadlineStatus.value = "";
     els.format.value = "";
     els.sort.value = "updated_desc";
     applyFilters();
