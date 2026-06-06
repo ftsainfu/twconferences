@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import email.utils
 import hashlib
 import html
 import json
@@ -10,7 +9,6 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -207,13 +205,6 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
     return conferences, errors
 
 
-def unwrap_google_news_link(url: str) -> str:
-    parsed = urllib.parse.urlparse(url)
-    if parsed.netloc.endswith("google.com") and parsed.path.startswith("/rss/articles/"):
-        return url
-    return url
-
-
 def normalize_url(base_url: str, href: str) -> str:
     href = html.unescape(href).strip()
     if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
@@ -236,6 +227,18 @@ def canonical_url(url: str) -> str:
             "",
         )
     )
+
+
+def domain_key(url: str) -> str:
+    host = urllib.parse.urlparse(url).netloc.lower()
+    labels = [label for label in host.split(".") if label]
+    if len(labels) >= 3 and labels[-1] == "tw" and labels[-2] in {"edu", "com", "org", "net"}:
+        return ".".join(labels[-3:])
+    return ".".join(labels[-2:]) if len(labels) >= 2 else host
+
+
+def same_official_domain(source_url: str, link: str) -> bool:
+    return domain_key(source_url) == domain_key(link)
 
 
 def candidate_id(prefix: str, url: str) -> str:
@@ -285,51 +288,6 @@ def make_candidate(
     }
 
 
-def parse_rss_date(value: str) -> str:
-    if not value:
-        return today_iso()
-    try:
-        return email.utils.parsedate_to_datetime(value).astimezone(TZ).date().isoformat()
-    except (TypeError, ValueError):
-        return today_iso()
-
-
-def discover_candidates(feeds: list[str], existing_ids: set[str]) -> list[dict]:
-    candidates: list[dict] = []
-    seen_urls: set[str] = set()
-    for feed_url in feeds:
-        try:
-            raw, _ = fetch_url(feed_url, timeout=12)
-            root = ET.fromstring(raw)
-        except (urllib.error.URLError, TimeoutError, ET.ParseError):
-            continue
-
-        for node in root.findall(".//item"):
-            title = html.unescape(node.findtext("title") or "").strip()
-            link = unwrap_google_news_link((node.findtext("link") or "").strip())
-            published = parse_rss_date(node.findtext("pubDate") or "")
-            text = f"{title} {node.findtext('description') or ''}"
-            if not link or link in seen_urls:
-                continue
-            if not any(word in text for word in KEYWORDS) or not any(word in text for word in CONFERENCE_WORDS):
-                continue
-            item_id = candidate_id("candidate", link)
-            if item_id in existing_ids:
-                continue
-            seen_urls.add(link)
-            candidates.append(
-                make_candidate(
-                    candidate_prefix="candidate",
-                    title=title,
-                    link=link,
-                    organizer="待確認",
-                    published=published,
-                    summary="由每日搜尋發現，尚待人工確認主辦單位、日期、投稿與發表形式。",
-                )
-            )
-    return candidates[:12]
-
-
 def discover_from_organizers(
     sources: list[dict],
     existing_ids: set[str],
@@ -356,6 +314,8 @@ def discover_from_organizers(
             link = normalize_url(url, match.group("href"))
             canonical = canonical_url(link)
             if not link or canonical in seen_urls or canonical in existing_urls:
+                continue
+            if not same_official_domain(url, link):
                 continue
             text = f"{label} {link}"
             if any(word in text for word in FOLLOWUP_WORDS):
@@ -385,27 +345,25 @@ def discover_from_organizers(
 
 
 def main() -> int:
-    sources = read_json(SOURCES_FILE, {"conferences": [], "discovery_feeds": [], "organizer_sources": []})
+    sources = read_json(SOURCES_FILE, {"conferences": [], "organizer_sources": []})
     history = read_json(HISTORY_FILE, {"sources": {}})
     conferences, errors = update_known_conferences(sources, history)
     existing_ids = {item["id"] for item in conferences}
     existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
     existing_titles = {title_key(item.get("title", "")) for item in conferences}
-    candidates = discover_candidates(sources.get("discovery_feeds", []), existing_ids)
     organizer_candidates, organizer_errors = discover_from_organizers(
         sources.get("organizer_sources", []),
-        existing_ids | {item["id"] for item in candidates},
-        existing_urls | {canonical_url(item.get("homepage_url", "")) for item in candidates},
-        existing_titles | {title_key(item.get("title", "")) for item in candidates},
+        existing_ids,
+        existing_urls,
+        existing_titles,
     )
     errors.extend(organizer_errors)
     payload = {
         "generated_at": now_tw().strftime("%Y-%m-%d %H:%M:%S %Z"),
         "source_count": len(sources.get("conferences", []))
-        + len(sources.get("discovery_feeds", []))
         + len(sources.get("organizer_sources", [])),
         "errors": errors,
-        "conferences": conferences + candidates + organizer_candidates,
+        "conferences": conferences + organizer_candidates,
     }
     write_json(OUTPUT_FILE, payload)
     write_json(HISTORY_FILE, history)
