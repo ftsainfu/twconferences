@@ -1,11 +1,16 @@
 {
-  "generated_at": "2026-06-06 08:30:03 UTC+08:00",
+  "generated_at": "2026-06-07 06:17:05 UTC+08:00",
   "source_count": 28,
   "errors": [
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+    "mcu-2026-economics-trade-management: <urlopen error timed out>",
+    "fgu-2026-sme-management: <urlopen error timed out>",
+    "ntub-2026-digital-business: <urlopen error timed out>",
+    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:大葉大學當代管理國際學術研討會: <urlopen error timed out>",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
+    "organizer:銘傳大學國際企業學系: <urlopen error timed out>",
+    "organizer:佛光大學管理學系: <urlopen error timed out>",
+    "organizer:德明財經科技大學管理學院: <urlopen error timed out>",
+    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
   ],
   "conferences": [
     {
@@ -34,7 +39,7 @@
       "attention_notes": [
         "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -69,8 +74,8 @@
         "摘要投稿截稿日期為 2026-04-10。",
         "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
       ],
-      "last_checked": "2026-06-06",
-      "last_changed": "2026-06-06",
+      "last_checked": "2026-06-07",
+      "last_changed": "2026-06-07",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -102,7 +107,7 @@
       "attention_notes": [
         "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -139,7 +144,7 @@
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -172,7 +177,7 @@
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -205,8 +210,8 @@
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
-      "last_checked": "2026-06-06",
-      "last_changed": "2026-06-06",
+      "last_checked": "2026-06-07",
+      "last_changed": "2026-06-07",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -239,7 +244,7 @@
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -263,23 +268,23 @@
         "全球企業管理"
       ],
       "presentation_formats": [
-        "online",
-        "oral"
+        "oral",
+        "online"
       ],
       "presentation_languages": [
-        "en",
-        "zh"
+        "zh",
+        "en"
       ],
       "attention_notes": [
         "透過 Google 表單報名並上傳論文摘要。",
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -298,8 +303,7 @@
         "經營管理"
       ],
       "presentation_formats": [
-        "other",
-        "poster"
+        "other"
       ],
       "presentation_languages": [
         "zh"
@@ -307,11 +311,11 @@
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-06",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -321,7 +325,7 @@
       "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "registration_url": "",
-      "event_start": "2026-06-13",
+      "event_start": "",
       "event_end": "",
       "location": "台北",
       "submission_deadline": "2026-05-15",
@@ -331,8 +335,7 @@
         "管理"
       ],
       "presentation_formats": [
-        "other",
-        "poster"
+        "other"
       ],
       "presentation_languages": [
         "zh"
@@ -340,11 +343,11 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -378,7 +381,7 @@
         "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
         "錄取公告及通知日期為 2026-07-20。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -416,7 +419,7 @@
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
         "此為健康照護管理應用場域，包含領導與管理、長照與 ESG 等管理議題。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -453,7 +456,7 @@
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
         "此為農業資訊科技研討會，納入原因是徵稿主題包含農場管理、供應鏈與地理空間決策等管理應用。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -489,42 +492,12 @@
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
       ],
-      "last_checked": "2026-06-06",
+      "last_checked": "2026-06-07",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified"
-    },
-    {
-      "id": "organizer-sites-google-com-8d3e5b41",
-      "title": "2026工商與公共管理學術研討會",
-      "organizer": "德明財經科技大學管理學院",
-      "homepage_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
-      "submission_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-06-06",
-      "last_changed": "2026-06-06",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate"
     }
   ]
 }
