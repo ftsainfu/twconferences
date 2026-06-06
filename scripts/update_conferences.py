@@ -22,6 +22,7 @@ TZ = timezone(timedelta(hours=8))
 KEYWORDS = ("商管", "管理", "行銷", "財務", "財金", "國貿", "企業", "服務創新", "經營")
 CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文")
 FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單")
+OFFICIAL_EXTERNAL_HOSTS = {"sites.google.com"}
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 
 
@@ -238,7 +239,8 @@ def domain_key(url: str) -> str:
 
 
 def same_official_domain(source_url: str, link: str) -> bool:
-    return domain_key(source_url) == domain_key(link)
+    link_host = urllib.parse.urlparse(link).netloc.lower()
+    return domain_key(source_url) == domain_key(link) or link_host in OFFICIAL_EXTERNAL_HOSTS
 
 
 def candidate_id(prefix: str, url: str) -> str:
