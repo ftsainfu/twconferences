@@ -22,6 +22,8 @@ TZ = timezone(timedelta(hours=8))
 KEYWORDS = ("商管", "管理", "行銷", "財務", "財金", "國貿", "企業", "服務創新", "經營")
 CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文")
 FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單")
+NON_CONFERENCE_WORDS = ("專刊", "學刊", "期刊", "期末報告")
+CURRENT_YEAR_MARKERS = ("2026", "115")
 OFFICIAL_EXTERNAL_HOSTS = {"sites.google.com"}
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 
@@ -322,11 +324,15 @@ def discover_from_organizers(
             text = f"{label} {link}"
             if any(word in text for word in FOLLOWUP_WORDS):
                 continue
+            if any(word in text for word in NON_CONFERENCE_WORDS):
+                continue
+            if not any(marker in text for marker in CURRENT_YEAR_MARKERS):
+                continue
             if not label or not any(word in text for word in CONFERENCE_WORDS):
                 continue
             if duplicates_known_title(label, existing_titles):
                 continue
-            if not any(word in text for word in KEYWORDS) and "2026" not in text and "115" not in text:
+            if not any(word in text for word in KEYWORDS):
                 continue
             item_id = candidate_id("organizer", link)
             if item_id in existing_ids:

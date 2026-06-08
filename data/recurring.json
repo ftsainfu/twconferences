@@ -1,0 +1,60 @@
+{
+  "recurring_conferences": [
+    {
+      "name": "臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會／當屆承辦大學",
+      "usual_month": "每年 5-6 月",
+      "focus": "財務金融、投資、公司理財、金融市場",
+      "official_url": "https://www.finance.org.tw/"
+    },
+    {
+      "name": "台灣財務工程學會年會暨國際學術研討會",
+      "organizer": "台灣財務工程學會／當屆承辦大學",
+      "usual_month": "每年 6 月",
+      "focus": "財務工程、金融科技、衍生性金融商品、風險管理",
+      "official_url": "https://www.feat.org.tw/news.php"
+    },
+    {
+      "name": "全國數位商管創能與實務應用研討會",
+      "organizer": "德明財經科技大學管理學院",
+      "usual_month": "每年 6 月",
+      "focus": "數位商管、實務應用、管理創新",
+      "official_url": "https://som.ntub.edu.tw/"
+    },
+    {
+      "name": "行銷科學學術研討會暨年會",
+      "organizer": "台灣行銷科學學會／當屆承辦大學",
+      "usual_month": "每年 11-12 月",
+      "focus": "行銷科學、消費者研究、品牌與通路",
+      "official_url": "https://www.tims.org.tw/"
+    },
+    {
+      "name": "永續發展與企業社會責任（ESG）學術研討會",
+      "organizer": "政治大學商學院信義書院等永續管理相關單位",
+      "usual_month": "約每年 9 月",
+      "focus": "ESG、企業永續、社會責任、永續金融",
+      "official_url": "https://sysi.nccu.edu.tw/"
+    },
+    {
+      "name": "商管決策與實務研討會",
+      "organizer": "南臺科技大學企業管理系",
+      "usual_month": "約每年 4 月",
+      "focus": "商管決策、企業管理、實務應用",
+      "official_url": "https://ba.stust.edu.tw/"
+    },
+    {
+      "name": "TIIBS 商學與管理學術研討會",
+      "organizer": "中華民國多國籍企業研究學會／當屆承辦單位",
+      "usual_month": "約每年 5 月",
+      "focus": "國際企業、商學與管理、跨國企業研究",
+      "official_url": "https://www.tiibs.org.tw/"
+    },
+    {
+      "name": "全國商管論文研討會暨競賽",
+      "organizer": "台灣智慧創新應用學會／龍華科技大學等承辦單位",
+      "usual_month": "約每年 5 月",
+      "focus": "商管、企業管理、論文競賽",
+      "official_url": "https://www.conference.url.tw/main/"
+    }
+  ]
+}

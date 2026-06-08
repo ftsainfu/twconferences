@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260606a" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260608a" />
   </head>
   <body>
     <header class="site-header">
@@ -103,6 +103,30 @@
       <section id="emptyState" class="empty-state" hidden>
         沒有符合篩選條件的研討會。
       </section>
+
+      <section class="recurring-section" aria-labelledby="recurringTitle">
+        <div>
+          <p class="section-kicker">Recurring Tracker</p>
+          <h2 id="recurringTitle">常態性研討會追蹤清單</h2>
+          <p>
+            這些會議通常定期舉辦，系統會每日掃描其主辦單位或官方管道；若發現最新年度徵稿或會議頁，會先列為待確認候選。
+          </p>
+        </div>
+        <div class="recurring-table-wrap">
+          <table class="recurring-table">
+            <thead>
+              <tr>
+                <th>研討會</th>
+                <th>主辦／承辦</th>
+                <th>慣例月份</th>
+                <th>領域</th>
+                <th>官方管道</th>
+              </tr>
+            </thead>
+            <tbody id="recurringList"></tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -111,6 +135,6 @@
       </p>
     </footer>
 
-    <script src="assets/app.js?v=20260605d" type="module"></script>
+    <script src="assets/app.js?v=20260608a" type="module"></script>
   </body>
 </html>

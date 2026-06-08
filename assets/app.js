@@ -1,6 +1,7 @@
 const state = {
   conferences: [],
   filtered: [],
+  recurring: [],
 };
 
 const els = {
@@ -22,6 +23,7 @@ const els = {
   englishPresentation: document.querySelector("#englishPresentationFilter"),
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
+  recurringList: document.querySelector("#recurringList"),
 };
 
 const today = new Date();
@@ -198,6 +200,7 @@ function render() {
   els.upcomingCount.textContent = state.filtered.filter((item) => ["upcoming", "ongoing"].includes(eventStatus(item))).length;
   els.empty.hidden = state.filtered.length > 0;
   els.list.innerHTML = state.filtered.map(renderCard).join("");
+  renderRecurring();
 }
 
 function renderCard(item) {
@@ -242,6 +245,23 @@ function renderCard(item) {
       </div>
     </article>
   `;
+}
+
+function renderRecurring() {
+  if (!els.recurringList) return;
+  els.recurringList.innerHTML = (state.recurring || [])
+    .map(
+      (item) => `
+        <tr>
+          <td><strong>${escapeHtml(item.name)}</strong></td>
+          <td>${escapeHtml(item.organizer)}</td>
+          <td>${escapeHtml(item.usual_month)}</td>
+          <td>${escapeHtml(item.focus)}</td>
+          <td><a href="${escapeAttr(item.official_url)}" target="_blank" rel="noreferrer">官方連結</a></td>
+        </tr>
+      `,
+    )
+    .join("");
 }
 
 function escapeHtml(value = "") {
@@ -290,7 +310,10 @@ async function init() {
   const response = await fetch("data/conferences.json", { cache: "no-store" });
   if (!response.ok) throw new Error("Failed to load conference data");
   const payload = await response.json();
+  const recurringResponse = await fetch("data/recurring.json", { cache: "no-store" });
+  const recurringPayload = recurringResponse.ok ? await recurringResponse.json() : { recurring_conferences: [] };
   state.conferences = payload.conferences || [];
+  state.recurring = recurringPayload.recurring_conferences || [];
   els.lastUpdated.textContent = payload.generated_at || "未產生";
   els.sourceCount.textContent = `${payload.source_count || state.conferences.length} 個來源`;
   hydrateLocationFilter();

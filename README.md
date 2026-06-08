@@ -45,3 +45,7 @@ python3 -m http.server 5173
 ## 部署
 
 此專案不需要建置步驟，可直接用 GitHub Pages、Vercel 或任何靜態網站服務部署。若使用 GitHub Pages，將 Pages 指向 `main` 分支根目錄即可。
+
+## 常態追蹤
+
+`data/recurring.json` 收錄定期舉辦的商管、財金、行銷、永續與決策管理類研討會官方管道。這些項目不一定代表最新年度已開放投稿；它們用於提醒每日更新腳本應追蹤哪些主辦單位與官方頁面。

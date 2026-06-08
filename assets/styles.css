@@ -293,6 +293,61 @@ button:hover {
   color: var(--muted);
 }
 
+.recurring-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.recurring-section h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.recurring-section p {
+  margin: 8px 0 16px;
+  color: var(--muted);
+}
+
+.section-kicker {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.recurring-table-wrap {
+  overflow-x: auto;
+}
+
+.recurring-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+}
+
+.recurring-table th,
+.recurring-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.recurring-table th {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.recurring-table a {
+  color: var(--accent);
+  font-weight: 750;
+}
+
 footer {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto 36px;

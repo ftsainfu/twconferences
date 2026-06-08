@@ -1,16 +1,11 @@
 {
-  "generated_at": "2026-06-08 06:19:02 UTC+08:00",
-  "source_count": 28,
+  "generated_at": "2026-06-08 17:26:38 UTC+08:00",
+  "source_count": 34,
   "errors": [
-    "mcu-2026-economics-trade-management: <urlopen error timed out>",
-    "fgu-2026-sme-management: <urlopen error timed out>",
-    "ntub-2026-digital-business: <urlopen error timed out>",
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:銘傳大學國際企業學系: <urlopen error timed out>",
-    "organizer:佛光大學管理學系: <urlopen error timed out>",
-    "organizer:德明財經科技大學管理學院: <urlopen error timed out>",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+    "organizer:政治大學商學院信義書院: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
   ],
   "conferences": [
     {
@@ -268,12 +263,12 @@
         "全球企業管理"
       ],
       "presentation_formats": [
-        "oral",
-        "online"
+        "online",
+        "oral"
       ],
       "presentation_languages": [
-        "zh",
-        "en"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "透過 Google 表單報名並上傳論文摘要。",
@@ -284,7 +279,7 @@
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -303,7 +298,8 @@
         "經營管理"
       ],
       "presentation_formats": [
-        "other"
+        "other",
+        "poster"
       ],
       "presentation_languages": [
         "zh"
@@ -312,10 +308,10 @@
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
       "last_checked": "2026-06-08",
-      "last_changed": "2026-06-06",
+      "last_changed": "2026-06-08",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -325,7 +321,7 @@
       "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "registration_url": "",
-      "event_start": "",
+      "event_start": "2026-06-13",
       "event_end": "",
       "location": "台北",
       "submission_deadline": "2026-05-15",
@@ -335,7 +331,8 @@
         "管理"
       ],
       "presentation_formats": [
-        "other"
+        "other",
+        "poster"
       ],
       "presentation_languages": [
         "zh"
@@ -347,7 +344,7 @@
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -498,6 +495,96 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified"
+    },
+    {
+      "id": "organizer-sites-google-com-8d3e5b41",
+      "title": "2026工商與公共管理學術研討會",
+      "organizer": "德明財經科技大學管理學院",
+      "homepage_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+      "submission_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "organizer-www-finance-org-tw-12840107",
+      "title": "2026臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/49",
+      "submission_url": "https://www.finance.org.tw/fnnews/49",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate"
+    },
+    {
+      "id": "organizer-ba-stust-edu-tw-4354b629",
+      "title": "【徵稿】—南臺科技大學商管學院企業管理系舉辦 「2026年商管決策與實務研討會」 企管系 專案計畫 1731 2025/12/31",
+      "organizer": "南臺科技大學企業管理系",
+      "homepage_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+      "submission_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate"
     }
   ]
 }
