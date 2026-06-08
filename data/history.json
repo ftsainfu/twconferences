@@ -7,7 +7,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "915e394e4dd38f9d3105bcc5a81e110f92da337c8a80aa934cf30d2e6783f103",
+      "hash": "8d02057e8c6cf82e2c998db1fda874b5dd67f26c64665c075f7409cf0713a053",
       "last_checked": "2026-06-08",
       "last_changed": "2026-06-08",
       "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367"
@@ -25,7 +25,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "0142716cd3c97abd1e770f23847227b9b36209ac84b609642f61a8e117948993",
+      "hash": "e7b833fe3291a59b2b6348cd3031e3d846a94f65603de25811d3b31670e415b2",
       "last_checked": "2026-06-08",
       "last_changed": "2026-06-08",
       "url": "https://www.conference.url.tw/main/"
@@ -83,6 +83,24 @@
       "last_checked": "2026-06-05",
       "last_changed": "2026-06-05",
       "url": "https://ihc.fy.edu.tw/"
+    },
+    "ntub-2026-cbpm": {
+      "hash": "ad57e330117c4d01cd91b9df22146426f01e6f3f8d62291cac5a5aa0077d9723",
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1"
+    },
+    "tfa-2026-annual": {
+      "hash": "a134542ec7fdf7acd87e5e39b5341054eb669d64356351c1b16ef3a275a93820",
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
+    },
+    "stust-2026-business-decision": {
+      "hash": "d6ab6865a8995a47b5c025c0f953bf2fd8afff77024d85017682ccd620cbe257",
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "url": "https://ba.stust.edu.tw/tc/news/63-91967-n"
     }
   }
 }

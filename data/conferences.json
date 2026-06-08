@@ -1,9 +1,10 @@
 {
-  "generated_at": "2026-06-08 17:26:38 UTC+08:00",
-  "source_count": 34,
+  "generated_at": "2026-06-08 17:37:01 UTC+08:00",
+  "source_count": 37,
   "errors": [
     "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
+    "organizer:大葉大學當代管理國際學術研討會: <urlopen error timed out>",
     "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
     "organizer:政治大學商學院信義書院: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
   ],
@@ -15,8 +16,8 @@
       "homepage_url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
       "submission_url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
       "registration_url": "",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-29",
+      "event_end": "2026-05-29",
       "location": "金門",
       "submission_deadline": "2026-05-18",
       "fields": [
@@ -48,8 +49,8 @@
       "homepage_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367",
       "submission_url": "https://icmsi.must.edu.tw/Documents/2026/2026_ICMSI_%E4%B8%AD%E6%96%87%E5%BE%B5%E6%96%87%E5%85%AC%E5%91%8A.pdf",
       "registration_url": "",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-08",
+      "event_end": "2026-05-08",
       "location": "新竹",
       "submission_deadline": "2026-04-10",
       "fields": [
@@ -83,8 +84,8 @@
       "homepage_url": "https://cmr-crrmkt.pccu.edu.tw/",
       "submission_url": "https://cmr-crrmkt.pccu.edu.tw/",
       "registration_url": "",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-22",
+      "event_end": "2026-05-22",
       "location": "台北",
       "submission_deadline": "2026-04-15",
       "fields": [
@@ -116,8 +117,8 @@
       "homepage_url": "https://basummit.dyu.edu.tw/",
       "submission_url": "https://basummit.dyu.edu.tw/",
       "registration_url": "https://basummit.dyu.edu.tw/",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-29",
+      "event_end": "2026-05-30",
       "location": "彰化",
       "submission_deadline": "2026-04-30",
       "fields": [
@@ -154,7 +155,7 @@
       "submission_url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
       "registration_url": "",
       "event_start": "2026-05-16",
-      "event_end": "",
+      "event_end": "2026-05-16",
       "location": "台北",
       "submission_deadline": "2026-01-31",
       "fields": [
@@ -187,7 +188,7 @@
       "submission_url": "https://www.conference.url.tw/main/",
       "registration_url": "https://www.conference.url.tw/main/",
       "event_start": "2026-05-29",
-      "event_end": "",
+      "event_end": "2026-05-29",
       "location": "桃園",
       "submission_deadline": "2026-05-08",
       "fields": [
@@ -219,8 +220,8 @@
       "homepage_url": "https://papertone.net/",
       "submission_url": "https://papertone.net/",
       "registration_url": "https://papertone.net/",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-01-31",
+      "event_end": "2026-01-31",
       "location": "桃園",
       "submission_deadline": "2026-01-10",
       "fields": [
@@ -253,8 +254,8 @@
       "homepage_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
       "submission_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
       "registration_url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-27",
+      "event_end": "2026-05-27",
       "location": "台北",
       "submission_deadline": "2026-05-15",
       "fields": [
@@ -289,8 +290,8 @@
       "homepage_url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
       "submission_url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
       "registration_url": "mailto:management@gm.fgu.edu.tw",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-05-23",
+      "event_end": "2026-05-23",
       "location": "宜蘭",
       "submission_deadline": "2026-03-31",
       "fields": [
@@ -312,6 +313,112 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
+      "review_status": "verified"
+    },
+    {
+      "id": "ntub-2026-cbpm",
+      "title": "2026 工商與公共管理學術研討會",
+      "organizer": "國立臺北商業大學管理學院",
+      "homepage_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+      "submission_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+      "registration_url": "",
+      "event_start": "2026-05-29",
+      "event_end": "2026-05-29",
+      "location": "台北",
+      "submission_deadline": "2026-05-03",
+      "fields": [
+        "工商管理",
+        "公共管理",
+        "商管"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "研討會日期為 2026-05-29 08:30-17:00；會議頁由主辦單位官方公告連出至 Google Sites。",
+        "論文截稿日期為 2026-05-03，結果公告日期為 2026-05-05。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "新增",
+      "change_summary": "首次納入追蹤。",
+      "review_status": "verified"
+    },
+    {
+      "id": "tfa-2026-annual",
+      "title": "2026 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會、天主教輔仁大學管理學院及金融與國際企業學系",
+      "homepage_url": "https://www.finance.org.tw/fnmeeting_year_item/77",
+      "submission_url": "https://cmt3.research.microsoft.com/TFA2026/",
+      "registration_url": "https://www.finance.org.tw/fnmeeting_year_item/77",
+      "event_start": "2026-05-29",
+      "event_end": "2026-05-30",
+      "location": "新北",
+      "submission_deadline": "2026-04-11",
+      "fields": [
+        "財務金融",
+        "永續金融",
+        "金融科技",
+        "公司治理"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "會議時間為 2026-05-29 至 2026-05-30，地點為天主教輔仁大學國璽樓。",
+        "須以全文投稿，且投稿資格須共同作者之一為臺灣財務金融學會 2026 年付費個人或永久會員。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "新增",
+      "change_summary": "首次納入追蹤。",
+      "review_status": "verified"
+    },
+    {
+      "id": "stust-2026-business-decision",
+      "title": "2026 商管決策與實務研討會",
+      "organizer": "南臺科技大學商管學院、企業管理系",
+      "homepage_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+      "submission_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+      "registration_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "台南",
+      "submission_deadline": "2026-03-06",
+      "fields": [
+        "商管決策",
+        "企業管理",
+        "實務應用"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "研討會日期為 2026-04-24，地點為南臺科技大學修齊大樓 E 棟 6 樓。",
+        "全文投稿截止日期為 2026-03-06，審查結果公告日期為 2026-03-20。"
+      ],
+      "last_checked": "2026-06-08",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "新增",
+      "change_summary": "首次納入追蹤。",
       "review_status": "verified"
     },
     {
@@ -495,96 +602,6 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified"
-    },
-    {
-      "id": "organizer-sites-google-com-8d3e5b41",
-      "title": "2026工商與公共管理學術研討會",
-      "organizer": "德明財經科技大學管理學院",
-      "homepage_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
-      "submission_url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-06-08",
-      "last_changed": "2026-06-08",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate"
-    },
-    {
-      "id": "organizer-www-finance-org-tw-12840107",
-      "title": "2026臺灣財務金融學會年會暨國際研討會",
-      "organizer": "臺灣財務金融學會",
-      "homepage_url": "https://www.finance.org.tw/fnnews/49",
-      "submission_url": "https://www.finance.org.tw/fnnews/49",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-06-08",
-      "last_changed": "2026-06-08",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate"
-    },
-    {
-      "id": "organizer-ba-stust-edu-tw-4354b629",
-      "title": "【徵稿】—南臺科技大學商管學院企業管理系舉辦 「2026年商管決策與實務研討會」 企管系 專案計畫 1731 2025/12/31",
-      "organizer": "南臺科技大學企業管理系",
-      "homepage_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
-      "submission_url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-06-08",
-      "last_changed": "2026-06-08",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate"
     }
   ]
 }

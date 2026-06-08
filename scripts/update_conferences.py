@@ -113,7 +113,11 @@ def infer_deadline(text: str, fallback: str) -> str:
 def infer_event_date(text: str, fallback: str) -> str:
     if fallback:
         return fallback
-    window_matches = re.finditer(r"(研討會日期|會議日期|會議時間|舉辦日期).{0,40}", text)
+    window_matches = re.finditer(
+        r"(研討會日期|研討會舉辦日期|研討會舉辦日|研討會舉辦|會議日期|會議時間|舉辦日期|舉辦日|活動日期|Conference Date).{0,50}",
+        text,
+        flags=re.I,
+    )
     candidates: list[str] = []
     for match in window_matches:
         snippet = text[match.start() : min(len(text), match.end() + 40)]
