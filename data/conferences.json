@@ -1,12 +1,11 @@
 {
-  "generated_at": "2026-06-16 07:09:09 UTC+08:00",
+  "generated_at": "2026-06-16 20:56:33 UTC+08:00",
   "source_count": 37,
   "errors": [
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
-    "organizer:政治大學商學院信義書院: <urlopen error [Errno -2] Name or service not known>",
-    "organizer:中華民國多國籍企業研究學會: <urlopen error timed out>"
+    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+    "organizer:政治大學商學院信義書院: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
   ],
   "conferences": [
     {
@@ -428,8 +427,8 @@
       "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
       "registration_url": "",
-      "event_start": "",
-      "event_end": "",
+      "event_start": "2026-06-13",
+      "event_end": "2026-06-13",
       "location": "台北",
       "submission_deadline": "2026-05-15",
       "fields": [

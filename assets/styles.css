@@ -173,6 +173,31 @@ button:hover {
   gap: 14px;
 }
 
+.list-section {
+  margin-top: 18px;
+}
+
+.section-heading {
+  margin: 22px 0 12px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.section-heading p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.section-heading small {
+  display: inline-flex;
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .conference-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
@@ -291,6 +316,16 @@ button:hover {
   border-radius: 8px;
   text-align: center;
   color: var(--muted);
+}
+
+.history-section {
+  margin-top: 28px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.compact-list .conference-card {
+  background: #fbfcfb;
 }
 
 .recurring-section {

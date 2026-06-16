@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260608b" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260616a" />
   </head>
   <body>
     <header class="site-header">
@@ -45,7 +45,6 @@
             <option value="">全部狀態</option>
             <option value="upcoming">即將舉辦</option>
             <option value="ongoing">進行中</option>
-            <option value="past">已結束</option>
             <option value="unknown">未公告日期</option>
           </select>
         </label>
@@ -96,12 +95,32 @@
         <div><strong id="visibleCount">0</strong><span>符合條件</span></div>
         <div><strong id="newCount">0</strong><span>近期更新</span></div>
         <div><strong id="deadlineCount">0</strong><span>投稿未截止</span></div>
-        <div><strong id="upcomingCount">0</strong><span>尚未舉辦</span></div>
+        <div><strong id="upcomingCount">0</strong><span>尚未舉辦總數</span></div>
       </section>
 
-      <section id="conferenceList" class="conference-list" aria-live="polite"></section>
+      <section class="list-section" aria-labelledby="currentTitle">
+        <div class="section-heading">
+          <p class="section-kicker">Current Conferences</p>
+          <h2 id="currentTitle">尚未舉辦研討會清單</h2>
+          <p>主頁面僅顯示舉辦日期在資料更新日之後，或目前仍在進行中的研討會。</p>
+        </div>
+        <section id="conferenceList" class="conference-list" aria-live="polite"></section>
+      </section>
       <section id="emptyState" class="empty-state" hidden>
-        沒有符合篩選條件的研討會。
+        沒有符合篩選條件的尚未舉辦研討會。
+      </section>
+
+      <section class="list-section history-section" aria-labelledby="historyTitle">
+        <div class="section-heading">
+          <p class="section-kicker">Archive</p>
+          <h2 id="historyTitle">歷年研討會清單</h2>
+          <p>舉辦日期已早於資料更新日的研討會會自動移至此處，保留官方連結與投稿資訊供查詢。</p>
+          <small><span id="historyCount">0</span> 筆歷年資料</small>
+        </div>
+        <section id="historyList" class="conference-list compact-list" aria-live="polite"></section>
+        <section id="historyEmpty" class="empty-state" hidden>
+          目前沒有歷年研討會資料。
+        </section>
       </section>
 
       <section class="recurring-section" aria-labelledby="recurringTitle">
@@ -135,6 +154,6 @@
       </p>
     </footer>
 
-    <script src="assets/app.js?v=20260608b" type="module"></script>
+    <script src="assets/app.js?v=20260616a" type="module"></script>
   </body>
 </html>

@@ -1,18 +1,24 @@
 const state = {
   conferences: [],
+  activeConferences: [],
+  pastConferences: [],
   filtered: [],
   recurring: [],
+  referenceDate: new Date(),
 };
 
 const els = {
   list: document.querySelector("#conferenceList"),
+  historyList: document.querySelector("#historyList"),
   empty: document.querySelector("#emptyState"),
+  historyEmpty: document.querySelector("#historyEmpty"),
   lastUpdated: document.querySelector("#lastUpdated"),
   sourceCount: document.querySelector("#sourceCount"),
   visibleCount: document.querySelector("#visibleCount"),
   newCount: document.querySelector("#newCount"),
   deadlineCount: document.querySelector("#deadlineCount"),
   upcomingCount: document.querySelector("#upcomingCount"),
+  historyCount: document.querySelector("#historyCount"),
   keyword: document.querySelector("#keywordFilter"),
   month: document.querySelector("#monthFilter"),
   location: document.querySelector("#locationFilter"),
@@ -33,6 +39,12 @@ function parseDate(value) {
   if (!value) return null;
   const date = new Date(`${value}T00:00:00+08:00`);
   return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function parseGeneratedDate(value) {
+  if (!value) return today;
+  const match = String(value).match(/\d{4}-\d{2}-\d{2}/);
+  return match ? parseDate(match[0]) || today : today;
 }
 
 function formatDate(value) {
@@ -62,8 +74,8 @@ function eventStatus(item) {
   const start = parseDate(item.event_start);
   const end = parseDate(item.event_end) || start;
   if (!start) return "unknown";
-  if (end < today) return "past";
-  if (start <= today && end >= today) return "ongoing";
+  if (end < state.referenceDate) return "past";
+  if (start <= state.referenceDate && end >= state.referenceDate) return "ongoing";
   return "upcoming";
 }
 
@@ -120,7 +132,7 @@ function applyFilters() {
   const format = els.format.value;
   const englishPresentation = els.englishPresentation.value;
 
-  state.filtered = state.conferences.filter((item) => {
+  state.filtered = state.activeConferences.filter((item) => {
     const haystack = [
       item.title,
       item.organizer,
@@ -171,6 +183,14 @@ function sortItems() {
   state.filtered.sort(sorters[sort] || sorters.updated_desc);
 }
 
+function sortPastItems(items) {
+  return [...items].sort((a, b) => {
+    const av = parseDate(a.event_end || a.event_start)?.getTime() || 0;
+    const bv = parseDate(b.event_end || b.event_start)?.getTime() || 0;
+    return bv - av;
+  });
+}
+
 function presentationLabel(item) {
   const labels = {
     oral: "口頭發表",
@@ -197,9 +217,12 @@ function render() {
   els.visibleCount.textContent = state.filtered.length;
   els.newCount.textContent = state.filtered.filter(isRecent).length;
   els.deadlineCount.textContent = state.filtered.filter(isDeadlineOpen).length;
-  els.upcomingCount.textContent = state.filtered.filter((item) => ["upcoming", "ongoing"].includes(eventStatus(item))).length;
+  els.upcomingCount.textContent = state.activeConferences.length;
+  els.historyCount.textContent = state.pastConferences.length;
   els.empty.hidden = state.filtered.length > 0;
+  els.historyEmpty.hidden = state.pastConferences.length > 0;
   els.list.innerHTML = state.filtered.map(renderCard).join("");
+  els.historyList.innerHTML = sortPastItems(state.pastConferences).map(renderCard).join("");
   renderRecurring();
 }
 
@@ -278,7 +301,7 @@ function escapeAttr(value = "") {
 }
 
 function hydrateLocationFilter() {
-  const locations = [...new Set(state.conferences.map((item) => item.location).filter(Boolean))].sort((a, b) =>
+  const locations = [...new Set(state.activeConferences.map((item) => item.location).filter(Boolean))].sort((a, b) =>
     a.localeCompare(b, "zh-Hant"),
   );
   els.location.insertAdjacentHTML(
@@ -313,6 +336,9 @@ async function init() {
   const recurringResponse = await fetch("data/recurring.json", { cache: "no-store" });
   const recurringPayload = recurringResponse.ok ? await recurringResponse.json() : { recurring_conferences: [] };
   state.conferences = payload.conferences || [];
+  state.referenceDate = parseGeneratedDate(payload.generated_at);
+  state.activeConferences = state.conferences.filter((item) => eventStatus(item) !== "past");
+  state.pastConferences = state.conferences.filter((item) => eventStatus(item) === "past");
   state.recurring = recurringPayload.recurring_conferences || [];
   els.lastUpdated.textContent = payload.generated_at || "未產生";
   els.sourceCount.textContent = `${payload.source_count || state.conferences.length} 個來源`;
