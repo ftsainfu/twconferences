@@ -180,7 +180,7 @@ function sortItems() {
     },
   };
 
-  state.filtered.sort(sorters[sort] || sorters.updated_desc);
+  state.filtered.sort(sorters[sort] || sorters.event_asc);
 }
 
 function sortPastItems(items) {
@@ -324,7 +324,7 @@ function bindEvents() {
     els.deadlineStatus.value = "";
     els.format.value = "";
     els.englishPresentation.value = "";
-    els.sort.value = "updated_desc";
+    els.sort.value = "event_asc";
     applyFilters();
   });
 }
