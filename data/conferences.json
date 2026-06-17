@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17 06:58:13 UTC+08:00",
+  "generated_at": "2026-06-18 06:53:37 UTC+08:00",
   "source_count": 37,
   "errors": [
     "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
@@ -35,7 +35,7 @@
       "attention_notes": [
         "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -70,8 +70,8 @@
         "摘要投稿截稿日期為 2026-04-10。",
         "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
       ],
-      "last_checked": "2026-06-17",
-      "last_changed": "2026-06-17",
+      "last_checked": "2026-06-18",
+      "last_changed": "2026-06-18",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -103,7 +103,7 @@
       "attention_notes": [
         "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -140,7 +140,7 @@
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -173,7 +173,7 @@
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -206,8 +206,8 @@
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
-      "last_checked": "2026-06-17",
-      "last_changed": "2026-06-17",
+      "last_checked": "2026-06-18",
+      "last_changed": "2026-06-18",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -240,7 +240,7 @@
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -276,7 +276,7 @@
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -308,8 +308,8 @@
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
-      "last_checked": "2026-06-17",
-      "last_changed": "2026-06-17",
+      "last_checked": "2026-06-18",
+      "last_changed": "2026-06-18",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -342,7 +342,7 @@
         "研討會日期為 2026-05-29 08:30-17:00；會議頁由主辦單位官方公告連出至 Google Sites。",
         "論文截稿日期為 2026-05-03，結果公告日期為 2026-05-05。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-08",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -379,7 +379,7 @@
         "會議時間為 2026-05-29 至 2026-05-30，地點為天主教輔仁大學國璽樓。",
         "須以全文投稿，且投稿資格須共同作者之一為臺灣財務金融學會 2026 年付費個人或永久會員。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-08",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -414,8 +414,8 @@
         "研討會日期為 2026-04-24，地點為南臺科技大學修齊大樓 E 棟 6 樓。",
         "全文投稿截止日期為 2026-03-06，審查結果公告日期為 2026-03-20。"
       ],
-      "last_checked": "2026-06-17",
-      "last_changed": "2026-06-17",
+      "last_checked": "2026-06-18",
+      "last_changed": "2026-06-18",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
@@ -446,7 +446,7 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-13",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -484,7 +484,7 @@
         "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
         "錄取公告及通知日期為 2026-07-20。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -522,7 +522,7 @@
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
         "此為健康照護管理應用場域，包含領導與管理、長照與 ESG 等管理議題。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -559,7 +559,7 @@
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
         "此為農業資訊科技研討會，納入原因是徵稿主題包含農場管理、供應鏈與地理空間決策等管理應用。"
       ],
-      "last_checked": "2026-06-17",
+      "last_checked": "2026-06-18",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
       "change_label": "已檢查",
@@ -595,11 +595,11 @@
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
       ],
-      "last_checked": "2026-06-17",
-      "last_changed": "2026-06-11",
-      "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "last_checked": "2026-06-18",
+      "last_changed": "2026-06-18",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified"
     }
   ]
