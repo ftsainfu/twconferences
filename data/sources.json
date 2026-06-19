@@ -24,7 +24,7 @@
     },
     {
       "name": "明新科技大學民生學院",
-      "url": "https://acade.must.edu.tw/"
+      "url": "https://icmsi.must.edu.tw/"
     },
     {
       "name": "中國文化大學行銷系所",
@@ -64,7 +64,8 @@
     },
     {
       "name": "輔英科技大學國際健康照護研討會",
-      "url": "https://ihc.fy.edu.tw/"
+      "url": "https://ihc.fy.edu.tw/",
+      "allow_invalid_tls": true
     },
     {
       "name": "台灣農業資訊科技發展協會",
@@ -88,7 +89,7 @@
     },
     {
       "name": "政治大學商學院信義書院",
-      "url": "https://sysi.nccu.edu.tw/"
+      "url": "https://syschool.nccu.edu.tw/"
     },
     {
       "name": "南臺科技大學企業管理系",
@@ -350,6 +351,7 @@
       "title": "2026 國際健康照護研討會",
       "organizer": "輔英科技大學",
       "homepage_url": "https://ihc.fy.edu.tw/",
+      "allow_invalid_tls": true,
       "submission_url": "https://ihc.fy.edu.tw/",
       "registration_url": "https://ihc.fy.edu.tw/",
       "event_start": "2026-12-03",
