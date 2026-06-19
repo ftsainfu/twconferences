@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "e3269a451f213bb92ce7cfe1760239e71e666eca94bd8ce9ed0f288ccfeeb292",
+      "hash": "56293581f67cdc24dec90bff3427a535dd15251257333cee0ac85b5994879b61",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "d75c740d7d7400f591bd37a5fb16f5411ed2030593985883bfaf962371b6b5ce",
+      "hash": "1b93e9e4f7e980c0be521bca88aa374a5295396efbb97c3fa211cdd8ab130ed4",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
@@ -83,7 +83,7 @@
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
       "last_changed": "2026-06-20",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
@@ -177,7 +177,7 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "85d703daae2c6cff6d49afe124fe9b3811f377c380f3f68dac2c4f1052c4286f",
+      "hash": "e0b76331a3469dad1e5e0100f554cedd9bfe5b2198c4f4b1381e878438dc4f1c",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",

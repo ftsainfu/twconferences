@@ -1,0 +1,54 @@
+name: Process conference rating
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: conference-ratings
+  cancel-in-progress: false
+
+jobs:
+  aggregate:
+    if: startsWith(github.event.issue.title, '[研討會評分]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: main
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+      - name: Load all conference ratings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue list --state all --limit 1000 --json number,title,body,url,author,createdAt > /tmp/conference-ratings.json
+      - name: Validate and aggregate ratings
+        run: >-
+          python3 scripts/aggregate_ratings.py
+          --issues /tmp/conference-ratings.json
+          --conferences data/conferences.json
+          --output data/ratings.json
+          --issue-number ${{ github.event.issue.number }}
+          --result /tmp/rating-result.json
+      - name: Commit rating summary
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: "Update attendee ratings"
+          file_pattern: data/ratings.json
+      - name: Reply to rating
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          message=$(jq -r '.message' /tmp/rating-result.json)
+          if jq -e '.valid == true' /tmp/rating-result.json >/dev/null; then
+            gh issue comment "${{ github.event.issue.number }}" --body "$message 同一 GitHub 帳號對同一研討會僅採最新一票。"
+            gh issue close "${{ github.event.issue.number }}" --reason completed
+          else
+            gh issue comment "${{ github.event.issue.number }}" --body "評分尚未納入：$message 請編輯內容後重新開啟 Issue。"
+          fi

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260619a" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260619b" />
   </head>
   <body>
     <header class="site-header">
@@ -98,6 +98,7 @@
           <select id="sortSelect">
             <option value="event_asc">舉辦日期由近到遠</option>
             <option value="updated_desc">最近更新優先</option>
+            <option value="rating_desc">參加者推薦度最高</option>
             <option value="deadline_asc">投稿截止由近到遠</option>
             <option value="name_asc">名稱 A-Z</option>
           </select>
@@ -119,6 +120,7 @@
           <p class="section-kicker">Current Conferences</p>
           <h2 id="currentTitle">尚未舉辦研討會清單</h2>
           <p>主頁面僅顯示舉辦日期在資料更新日之後，或目前仍在進行中的研討會。</p>
+          <p class="rating-help">「資料完整度」由官方來源與欄位完整性計算；「參加者推薦」由已報名或已參加者評分，兩者分開顯示。</p>
         </div>
         <section id="conferenceList" class="conference-list" aria-live="polite"></section>
       </section>
@@ -220,6 +222,36 @@
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260619a" type="module"></script>
+    <dialog id="ratingDialog" class="report-dialog rating-dialog">
+      <form id="ratingForm">
+        <div class="dialog-heading">
+          <h2>評分研討會推薦度</h2>
+          <button id="closeRatingDialog" class="icon-button" type="button" aria-label="關閉">×</button>
+        </div>
+        <p id="ratingConferenceTitle"></p>
+        <fieldset class="star-rating">
+          <legend>推薦程度</legend>
+          <div>
+            <label><input type="radio" name="rating" value="1" required /><span>1 星</span></label>
+            <label><input type="radio" name="rating" value="2" /><span>2 星</span></label>
+            <label><input type="radio" name="rating" value="3" /><span>3 星</span></label>
+            <label><input type="radio" name="rating" value="4" /><span>4 星</span></label>
+            <label><input type="radio" name="rating" value="5" /><span>5 星</span></label>
+          </div>
+        </fieldset>
+        <label>參與狀態
+          <select id="ratingParticipation" required>
+            <option value="attended">我已參加</option>
+            <option value="registered">我已完成報名</option>
+          </select>
+        </label>
+        <label>補充心得（選填）<textarea id="ratingComment" rows="3" maxlength="500" placeholder="可簡述議程、交流品質或適合的參加者"></textarea></label>
+        <label class="confirmation-check"><input id="ratingConfirmed" type="checkbox" required />我確認本人已報名或參加這場研討會。</label>
+        <p class="dialog-note">送出後會開啟 GitHub Issue。登入並確認送出才會計票；GitHub 帳號與心得會公開，同一帳號對同一研討會只採最新一票。</p>
+        <button class="primary-button" type="submit">前往送出評分</button>
+      </form>
+    </dialog>
+
+    <script src="assets/app.js?v=20260619b" type="module"></script>
   </body>
 </html>

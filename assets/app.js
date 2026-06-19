@@ -5,6 +5,7 @@ const state = {
   candidates: [],
   filtered: [],
   recurring: [],
+  ratings: {},
   referenceDate: new Date(),
 };
 
@@ -47,6 +48,13 @@ const els = {
   correctionValue: document.querySelector("#correctionValue"),
   evidenceUrl: document.querySelector("#evidenceUrl"),
   closeReportDialog: document.querySelector("#closeReportDialog"),
+  ratingDialog: document.querySelector("#ratingDialog"),
+  ratingForm: document.querySelector("#ratingForm"),
+  ratingConferenceTitle: document.querySelector("#ratingConferenceTitle"),
+  ratingParticipation: document.querySelector("#ratingParticipation"),
+  ratingComment: document.querySelector("#ratingComment"),
+  ratingConfirmed: document.querySelector("#ratingConfirmed"),
+  closeRatingDialog: document.querySelector("#closeRatingDialog"),
 };
 
 const fieldKeywords = {
@@ -60,6 +68,7 @@ const fieldKeywords = {
 };
 
 let reportTarget = null;
+let ratingTarget = null;
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -219,6 +228,12 @@ function sortItems() {
       const bv = parseDate(b.last_checked || b.last_changed)?.getTime() || 0;
       return bv - av;
     },
+    rating_desc: (a, b) => {
+      const aRating = state.ratings[a.id];
+      const bRating = state.ratings[b.id];
+      const averageDifference = (bRating?.average || 0) - (aRating?.average || 0);
+      return averageDifference || (bRating?.count || 0) - (aRating?.count || 0) || byDate("event_start")(a, b);
+    },
   };
 
   state.filtered.sort(sorters[sort] || sorters.event_asc);
@@ -256,6 +271,35 @@ function languageLabel(item) {
 
 function feeLabel(value) {
   return value ? escapeHtml(value) : "未公告";
+}
+
+function starText(value) {
+  const score = Math.max(0, Math.min(5, Math.round(Number(value) || 0)));
+  return `${"★".repeat(score)}${"☆".repeat(5 - score)}`;
+}
+
+function renderRatingSummary(item) {
+  const quality = item.information_quality || { score: 0, max_score: 5, label: "資料不足" };
+  const attendee = state.ratings[item.id];
+  const qualityCriteria = (quality.criteria || []).join("、") || "尚無符合項目";
+  const attendeeValue = item.review_status === "candidate"
+    ? '<span class="rating-value">正式收錄後開放評分</span>'
+    : attendee
+    ? `<span class="stars" aria-label="參加者推薦 ${escapeAttr(attendee.average)} 分">${starText(attendee.average)}</span><span class="rating-value">${escapeHtml(attendee.average)} / 5・${escapeHtml(attendee.count)} 票</span>`
+    : '<span class="rating-value">尚無參加者評分</span>';
+  return `
+    <div class="rating-summary">
+      <div class="rating-metric" title="${escapeAttr(qualityCriteria)}">
+        <span>資料完整度</span>
+        <span class="stars" aria-label="資料完整度 ${escapeAttr(quality.score)} 分">${starText(quality.score)}</span>
+        <span class="rating-value">${escapeHtml(quality.score)} / ${escapeHtml(quality.max_score)}・${escapeHtml(quality.label)}</span>
+      </div>
+      <div class="rating-metric">
+        <span>參加者推薦</span>
+        ${attendeeValue}
+      </div>
+    </div>
+  `;
 }
 
 function render() {
@@ -309,6 +353,7 @@ function renderCard(item) {
           ${item.review_status === "candidate" ? '<span class="status-badge">待確認</span>' : ""}
         </h2>
         <div>${tags}</div>
+        ${renderRatingSummary(item)}
         <div class="meta-grid">
           <div><span>舉辦日期</span><strong>${formatDate(item.event_start)}</strong></div>
           <div><span>地點</span><strong>${escapeHtml(item.location || "未公告")}</strong></div>
@@ -328,6 +373,14 @@ function renderCard(item) {
         ${homepage}
         ${submission}
         ${registration}
+        ${item.review_status === "candidate" ? "" : `
+          <button
+            class="rating-button"
+            type="button"
+            data-rating-id="${escapeAttr(item.id)}"
+            data-rating-title="${escapeAttr(item.title)}"
+          >評分推薦度</button>
+        `}
         <button
           class="report-button"
           type="button"
@@ -437,6 +490,40 @@ function submitReport(event) {
   els.reportDialog.close();
 }
 
+function openRatingDialog(button) {
+  ratingTarget = {
+    id: button.dataset.ratingId,
+    title: button.dataset.ratingTitle,
+  };
+  els.ratingConferenceTitle.textContent = ratingTarget.title;
+  els.ratingForm.reset();
+  els.ratingDialog.showModal();
+}
+
+function submitRating(event) {
+  event.preventDefault();
+  if (!ratingTarget || !els.ratingConfirmed.checked) return;
+  const rating = new FormData(els.ratingForm).get("rating");
+  if (!rating) return;
+  const singleLine = (value) => String(value || "").replace(/[\r\n]+/g, " ").trim();
+  const body = [
+    `conference_id: ${singleLine(ratingTarget.id)}`,
+    `conference_title: ${singleLine(ratingTarget.title)}`,
+    `rating: ${rating}`,
+    `participation: ${els.ratingParticipation.value}`,
+    "confirmed: true",
+    "",
+    "comment:",
+    els.ratingComment.value.trim(),
+  ].join("\n");
+  const params = new URLSearchParams({
+    title: `[研討會評分] ${ratingTarget.id} ${ratingTarget.title}`,
+    body,
+  });
+  window.open(`https://github.com/ftsainfu/twconferences/issues/new?${params}`, "_blank", "noopener,noreferrer");
+  els.ratingDialog.close();
+}
+
 function bindEvents() {
   [els.keyword, els.field, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
@@ -462,17 +549,25 @@ function bindEvents() {
   document.addEventListener("click", (event) => {
     const button = event.target.closest("[data-report-id]");
     if (button) openReportDialog(button);
+    const ratingButton = event.target.closest("[data-rating-id]");
+    if (ratingButton) openRatingDialog(ratingButton);
   });
   els.closeReportDialog.addEventListener("click", () => els.reportDialog.close());
   els.reportForm.addEventListener("submit", submitReport);
+  els.closeRatingDialog.addEventListener("click", () => els.ratingDialog.close());
+  els.ratingForm.addEventListener("submit", submitRating);
 }
 
 async function init() {
-  const response = await fetch("data/conferences.json", { cache: "no-store" });
+  const [response, recurringResponse, ratingsResponse] = await Promise.all([
+    fetch("data/conferences.json", { cache: "no-store" }),
+    fetch("data/recurring.json", { cache: "no-store" }),
+    fetch("data/ratings.json", { cache: "no-store" }),
+  ]);
   if (!response.ok) throw new Error("Failed to load conference data");
   const payload = await response.json();
-  const recurringResponse = await fetch("data/recurring.json", { cache: "no-store" });
   const recurringPayload = recurringResponse.ok ? await recurringResponse.json() : { recurring_conferences: [] };
+  const ratingsPayload = ratingsResponse.ok ? await ratingsResponse.json() : { ratings: {} };
   state.conferences = payload.conferences || [];
   state.referenceDate = parseGeneratedDate(payload.generated_at);
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");
@@ -480,6 +575,7 @@ async function init() {
   state.activeConferences = verified.filter((item) => eventStatus(item) !== "past");
   state.pastConferences = verified.filter((item) => eventStatus(item) === "past");
   state.recurring = recurringPayload.recurring_conferences || [];
+  state.ratings = ratingsPayload.ratings || {};
   els.lastUpdated.textContent = payload.generated_at || "未產生";
   els.sourceCount.textContent = `${payload.source_count || state.conferences.length} 個來源`;
   renderHealth(payload);

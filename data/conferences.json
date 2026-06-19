@@ -1,15 +1,14 @@
 {
-  "generated_at": "2026-06-20 06:15:00 UTC+08:00",
+  "generated_at": "2026-06-20 06:53:02 UTC+08:00",
   "source_count": 41,
   "errors": [],
   "warnings": [
-    "organizer:中華民國多國籍企業研究學會: <urlopen error curl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached>",
-    "reference:SSRN Conferences: <urlopen error curl: (22) The requested URL returned error: 403>"
+    "reference:SSRN Conferences: <urlopen error curl: (56) The requested URL returned error: 403>"
   ],
   "health": {
     "status": "healthy",
     "source_error_count": 0,
-    "discovery_warning_count": 2,
+    "discovery_warning_count": 1,
     "verified_count": 17,
     "candidate_count": 9
   },
@@ -50,7 +49,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "must-2026-icmsi",
@@ -90,7 +100,18 @@
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "cmr-2026-marketing",
@@ -128,7 +149,17 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
     },
     {
       "id": "dyu-2026-basummit",
@@ -170,7 +201,19 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
     },
     {
       "id": "nycu-2026-taiop",
@@ -208,7 +251,17 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
     },
     {
       "id": "urltw-2026-business-paper",
@@ -246,7 +299,19 @@
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
     },
     {
       "id": "papertone-2026-business-law",
@@ -285,7 +350,19 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
     },
     {
       "id": "mcu-2026-economics-trade-management",
@@ -326,7 +403,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "fgu-2026-sme-management",
@@ -360,10 +448,21 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-20",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
-      "review_status": "verified"
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "ntub-2026-cbpm",
@@ -402,7 +501,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "tfa-2026-annual",
@@ -444,7 +554,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "stust-2026-business-decision",
@@ -484,7 +605,18 @@
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "ntub-2026-digital-business",
@@ -521,7 +653,17 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
     },
     {
       "id": "meiho-2026-health-tech-management",
@@ -564,7 +706,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "fy-2026-ihc",
@@ -607,7 +760,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "apfita-2026",
@@ -649,7 +813,18 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
     },
     {
       "id": "iclt-2026",
@@ -692,7 +867,19 @@
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
-      "review_status": "verified"
+      "review_status": "verified",
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
     },
     {
       "id": "reference-sysi-nccu-edu-tw-7a61ac9d",
@@ -731,7 +918,16 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
     },
     {
       "id": "reference-www-tims-org-tw-c13387c5",
@@ -770,7 +966,16 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
     },
     {
       "id": "reference-business-stust-edu-tw-13a51a40",
@@ -808,7 +1013,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-dept-sju-edu-tw-700baccc",
@@ -846,7 +1059,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-ihp-knu-edu-tw-849b6411",
@@ -884,7 +1105,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-ncwia-org-tw-cbc19c47",
@@ -922,7 +1151,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-sfic-fju-edu-tw-27d756e1",
@@ -960,7 +1197,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-www-cimi-org-tw-0465fdde",
@@ -998,7 +1243,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     },
     {
       "id": "reference-www-finance-org-tw-295a0e74",
@@ -1037,7 +1290,15 @@
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
-      "is_stale": false
+      "is_stale": false,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
     }
   ]
 }
