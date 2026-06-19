@@ -1,0 +1,13 @@
+{
+  "issue_number": 5,
+  "issue_url": "https://github.com/ftsainfu/twconferences/issues/5",
+  "reported_at": "2026-06-19T12:41:03.056011+00:00",
+  "conference_id": "iclt-2026",
+  "report_type": "wrong_info",
+  "details": "報名連結是發表的paper，不是研討會報名連結。",
+  "correction_field": "",
+  "correction_value": "",
+  "evidence_url": "",
+  "auto_correction_applied": false,
+  "verification": "未提供可自動修正的欄位與內容。"
+}
