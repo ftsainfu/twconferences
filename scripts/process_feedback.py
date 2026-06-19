@@ -25,10 +25,13 @@ ALLOWED_FIELDS = {
     "event_start",
     "event_end",
     "submission_deadline",
+    "submission_fee",
+    "registration_fee",
     "location",
 }
 URL_FIELDS = {"homepage_url", "submission_url", "registration_url"}
 DATE_FIELDS = {"event_start", "event_end", "submission_deadline"}
+FEE_FIELDS = {"submission_fee", "registration_fee"}
 TRUSTED_SUFFIXES = (".edu.tw", ".org.tw", ".gov.tw", ".com.tw")
 
 
@@ -121,6 +124,17 @@ def validate_correction(record: dict, field: str, value: str, evidence_url: str)
         if value.lower() not in normalize_text(raw).lower():
             return False, "佐證頁面中找不到建議地點。"
         return True, "建議地點可在佐證頁面中找到。"
+    if field in FEE_FIELDS:
+        if len(value) > 240 or not validate_url(evidence_url):
+            return False, "費用修正需要 240 字內內容與主辦單位佐證網址。"
+        try:
+            raw, _ = fetch_url(evidence_url, timeout=12, attempts=2)
+        except (urllib.error.URLError, TimeoutError):
+            return False, "佐證網址目前無法連線。"
+        page_text = re.sub(r"\s+", "", normalize_text(raw)).lower()
+        if re.sub(r"\s+", "", value).lower() not in page_text:
+            return False, "佐證頁面中找不到建議費用文字。"
+        return True, "建議費用可在佐證頁面中找到。"
     return False, "此欄位不能自動修正。"
 
 

@@ -187,6 +187,45 @@ def infer_languages(text: str, fallback: list[str]) -> list[str]:
     return sorted(languages) if languages else ["unknown"]
 
 
+def infer_fee_information(text: str, fallback: str, keywords: tuple[str, ...]) -> str:
+    if fallback:
+        return fallback
+    for keyword in keywords:
+        match = re.search(rf"[^。\n]{{0,16}}{re.escape(keyword)}[^。\n]{{0,220}}", text, flags=re.I)
+        if not match:
+            continue
+        snippet = re.sub(r"\s+", " ", match.group(0)).strip(" ：:，,")
+        keyword_index = snippet.lower().find(keyword.lower())
+        prefix = snippet[:keyword_index]
+        if not re.search(r"(?:每篇|每人|論文|作者|不收|免收|免費|無須|免繳)", prefix):
+            snippet = snippet[keyword_index:]
+        for marker in (
+            "發表類型",
+            "註冊網址",
+            "報名網址",
+            "聯絡人",
+            "聯邦銀行",
+            "戶名:",
+            "帳號:",
+            "上一篇文章",
+            "下一篇文章",
+        ):
+            marker_index = snippet.find(marker)
+            if marker_index > 0:
+                snippet = snippet[:marker_index].rstrip(" ：:，,；;")
+        has_amount = re.search(
+            r"(?:NT\$|TWD|USD|新台幣|臺幣|台幣|美元|日圓|\d[\d,]*(?:元整|元|台幣|臺幣|美元|日圓))",
+            snippet,
+            flags=re.I,
+        )
+        is_free = re.search(r"(?:不收|免收|免費|無須繳交|免繳).{0,8}(?:費|費用)|(?:費|費用).{0,8}(?:免費|免收)", snippet)
+        if snippet and (has_amount or is_free):
+            if len(snippet) > 240:
+                snippet = snippet[:239].rstrip(" ：:，,；;") + "…"
+            return snippet
+    return ""
+
+
 def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], list[str]]:
     conferences: list[dict] = []
     errors: list[str] = []
@@ -217,6 +256,16 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
             item["event_start"] = infer_event_date(text, item.get("event_start", ""))
             item["presentation_formats"] = infer_formats(text, item.get("presentation_formats", []))
             item["presentation_languages"] = infer_languages(text, item.get("presentation_languages", []))
+            item["submission_fee"] = infer_fee_information(
+                text,
+                item.get("submission_fee", ""),
+                ("投稿費", "審稿費", "論文處理費"),
+            )
+            item["registration_fee"] = infer_fee_information(
+                text,
+                item.get("registration_fee", ""),
+                ("註冊費", "報名費", "登記費"),
+            )
             history_sources[source_id] = {
                 "hash": current_hash,
                 "last_attempted_at": today_iso(),
@@ -264,6 +313,8 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
         item["check_status"] = check_status
         item["check_error"] = source_history.get("last_error", "")
         item["presentation_languages"] = item.get("presentation_languages") or ["unknown"]
+        item["submission_fee"] = item.get("submission_fee", "")
+        item["registration_fee"] = item.get("registration_fee", "")
         item["last_changed"] = source_history.get("last_changed", "")
         item["change_status"] = change_status
         item["change_label"] = (
@@ -430,6 +481,8 @@ def make_candidate(
         "event_end": "",
         "location": "待確認",
         "submission_deadline": "",
+        "submission_fee": "",
+        "registration_fee": "",
         "fields": ["待確認"],
         "presentation_formats": ["other"],
         "presentation_languages": ["unknown"],
@@ -577,6 +630,8 @@ def discover_from_references(
                 item["event_end"] = event_date[:10]
             if deadline:
                 item["submission_deadline"] = deadline[:10]
+            item["submission_fee"] = str(record.get("submissionFee") or "")[:240]
+            item["registration_fee"] = str(record.get("registrationFee") or record.get("fee") or "")[:240]
             if location:
                 item["location"] = location[:80]
             if tags:
@@ -648,6 +703,10 @@ def validate_payload(payload: dict, previous_payload: dict | None = None) -> lis
                     date.fromisoformat(str(value))
                 except ValueError:
                     errors.append(f"{prefix}.{key} is not ISO date: {value}")
+        for key in ("submission_fee", "registration_fee"):
+            value = item.get(key, "")
+            if not isinstance(value, str) or len(value) > 240:
+                errors.append(f"{prefix}.{key} must be a string of at most 240 characters")
 
     if previous_payload:
         old_verified = sum(item.get("review_status") == "verified" for item in previous_payload.get("conferences", []))
