@@ -14,6 +14,7 @@ from scripts.update_conferences import (
     merge_candidate_store,
     parse_ics_events,
     discover_from_ics_reference,
+    fetch_url,
     title_key,
     valid_external_reference_url,
     validate_payload,
@@ -46,6 +47,41 @@ class DateTests(unittest.TestCase):
     def test_fee_inference_ignores_policy_without_amount(self):
         text = "審查結果公告後恕不退回報名費用，詳情另行通知。"
         self.assertEqual(infer_fee_information(text, "", ("註冊費", "報名費", "登記費")), "")
+
+
+class FetchTests(unittest.TestCase):
+    @patch("scripts.update_conferences.subprocess.run")
+    def test_fetch_url_uses_curl_and_detects_charset(self, run):
+        run.return_value.returncode = 0
+        run.return_value.stdout = '<meta charset="big5">測試'.encode("big5")
+        run.return_value.stderr = b""
+
+        body, charset = fetch_url("https://example.edu.tw/event")
+
+        self.assertEqual(body, '<meta charset="big5">測試')
+        self.assertEqual(charset.lower(), "big5")
+        self.assertIn("--fail", run.call_args.args[0])
+
+    @patch("scripts.update_conferences.subprocess.run")
+    def test_invalid_tls_exception_is_explicit_and_scoped(self, run):
+        run.return_value.returncode = 0
+        run.return_value.stdout = b"conference"
+        run.return_value.stderr = b""
+
+        fetch_url("https://official.example.edu.tw/event", allow_invalid_tls=True)
+
+        self.assertIn("--insecure", run.call_args.args[0])
+
+    @patch("scripts.update_conferences.subprocess.run", side_effect=FileNotFoundError)
+    @patch("scripts.update_conferences.urllib.request.urlopen")
+    def test_fetch_url_falls_back_to_urllib_when_curl_is_unavailable(self, urlopen, _run):
+        response = urlopen.return_value.__enter__.return_value
+        response.headers.get_content_charset.return_value = "utf-8"
+        response.read.return_value = "成功".encode()
+
+        body, charset = fetch_url("https://example.edu.tw/event", attempts=1)
+
+        self.assertEqual((body, charset), ("成功", "utf-8"))
 
 
 class CandidateTests(unittest.TestCase):

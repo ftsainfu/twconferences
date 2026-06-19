@@ -1,22 +1,14 @@
 {
-  "generated_at": "2026-06-19 22:25:21 UTC+08:00",
+  "generated_at": "2026-06-19 22:44:57 UTC+08:00",
   "source_count": 41,
-  "errors": [
-    "mcu-2026-economics-trade-management: <urlopen error timed out>",
-    "fgu-2026-sme-management: <urlopen error timed out>",
-    "ntub-2026-digital-business: <urlopen error timed out>",
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
-    "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:銘傳大學國際企業學系: <urlopen error timed out>",
-    "organizer:佛光大學管理學系: <urlopen error timed out>",
-    "organizer:德明財經科技大學管理學院: <urlopen error timed out>",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
-    "organizer:政治大學商學院信義書院: <urlopen error [Errno -2] Name or service not known>",
-    "organizer:中華民國多國籍企業研究學會: <urlopen error timed out>"
+  "errors": [],
+  "warnings": [
+    "reference:SSRN Conferences: <urlopen error curl: (56) The requested URL returned error: 403>"
   ],
   "health": {
-    "status": "degraded",
-    "source_error_count": 11,
+    "status": "healthy",
+    "source_error_count": 0,
+    "discovery_warning_count": 1,
     "verified_count": 17,
     "candidate_count": 9
   },
@@ -311,28 +303,28 @@
         "全球企業管理"
       ],
       "presentation_formats": [
-        "oral",
-        "online"
+        "online",
+        "oral"
       ],
       "presentation_languages": [
-        "zh",
-        "en"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "透過 Google 表單報名並上傳論文摘要。",
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
-      "last_checked": "2026-06-19",
-      "last_attempted_at": "2026-06-19",
-      "check_status": "error",
-      "check_error": "<urlopen error timed out>",
       "submission_fee": "",
       "registration_fee": "",
+      "last_checked": "2026-06-19",
+      "last_attempted_at": "2026-06-19",
+      "check_status": "ok",
+      "check_error": "",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -353,7 +345,8 @@
         "經營管理"
       ],
       "presentation_formats": [
-        "other"
+        "other",
+        "poster"
       ],
       "presentation_languages": [
         "zh"
@@ -363,12 +356,12 @@
       ],
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
-      "check_status": "error",
-      "check_error": "<urlopen error timed out>",
+      "check_status": "ok",
+      "check_error": "",
       "last_changed": "2026-06-19",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -517,16 +510,16 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
-      "last_checked": "2026-06-19",
-      "last_attempted_at": "2026-06-19",
-      "check_status": "error",
-      "check_error": "<urlopen error timed out>",
       "submission_fee": "",
       "registration_fee": "",
+      "last_checked": "2026-06-19",
+      "last_attempted_at": "2026-06-19",
+      "check_status": "ok",
+      "check_error": "",
       "last_changed": "2026-06-13",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -591,9 +584,9 @@
         "人才培育"
       ],
       "presentation_formats": [
+        "online",
         "oral",
-        "poster",
-        "online"
+        "poster"
       ],
       "presentation_languages": [
         "en"
@@ -603,16 +596,16 @@
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
         "此為健康照護管理應用場域，包含領導與管理、長照與 ESG 等管理議題。"
       ],
-      "last_checked": "2026-06-05",
-      "last_attempted_at": "2026-06-19",
-      "check_status": "error",
-      "check_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
       "submission_fee": "",
       "registration_fee": "",
-      "last_changed": "2026-06-05",
+      "last_checked": "2026-06-19",
+      "last_attempted_at": "2026-06-19",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-06-19",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified"
     },
     {
@@ -695,9 +688,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-19",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified"
     },
     {

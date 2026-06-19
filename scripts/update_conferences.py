@@ -5,6 +5,7 @@ import hashlib
 import html
 import json
 import re
+import subprocess
 import sys
 import argparse
 import time
@@ -70,7 +71,66 @@ def write_json(path: Path, payload) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def fetch_url(url: str, timeout: int = 18, attempts: int = 3) -> tuple[str, str]:
+def fetch_url_with_curl(
+    url: str,
+    timeout: int,
+    attempts: int,
+    allow_invalid_tls: bool = False,
+) -> tuple[str, str]:
+    command = [
+        "curl",
+        "--location",
+        "--fail",
+        "--silent",
+        "--show-error",
+        "--max-time",
+        str(timeout),
+        "--connect-timeout",
+        str(min(timeout, 10)),
+        "--retry",
+        str(max(0, attempts - 1)),
+        "--retry-delay",
+        "2",
+        "--user-agent",
+        "twconferences-bot/1.1 (+https://github.com/ftsainfu/twconferences)",
+        "--header",
+        "Accept: text/html,application/xhtml+xml,application/json,application/xml;q=0.9,*/*;q=0.8",
+    ]
+    if allow_invalid_tls:
+        command.append("--insecure")
+    command.append(url)
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            check=False,
+            timeout=timeout * max(1, attempts) + 5,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise urllib.error.URLError(f"curl timed out after {exc.timeout} seconds") from exc
+    if result.returncode != 0:
+        message = result.stderr.decode("utf-8", errors="replace").strip()
+        raise urllib.error.URLError(message or f"curl exited with status {result.returncode}")
+    charset_match = re.search(br"charset=[\"']?([a-zA-Z0-9._-]+)", result.stdout[:8192], re.I)
+    charset = charset_match.group(1).decode("ascii") if charset_match else "utf-8"
+    try:
+        return result.stdout.decode(charset, errors="replace"), charset
+    except LookupError:
+        return result.stdout.decode("utf-8", errors="replace"), "utf-8"
+
+
+def fetch_url(
+    url: str,
+    timeout: int = 18,
+    attempts: int = 3,
+    allow_invalid_tls: bool = False,
+) -> tuple[str, str]:
+    try:
+        return fetch_url_with_curl(url, timeout, attempts, allow_invalid_tls)
+    except FileNotFoundError:
+        # curl is present on GitHub-hosted runners. Keep urllib as a portable fallback.
+        pass
+
     request = urllib.request.Request(
         url,
         headers={
@@ -244,7 +304,10 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
         check_status = "ok"
 
         try:
-            raw, _ = fetch_url(item["homepage_url"])
+            raw, _ = fetch_url(
+                item["homepage_url"],
+                allow_invalid_tls=bool(item.get("allow_invalid_tls")),
+            )
             text = normalize_text(raw)
             current_hash = content_hash(text)
             if not previous:
@@ -326,6 +389,7 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
         )
         item["change_summary"] = change_summary
         item["review_status"] = "verified"
+        item.pop("allow_invalid_tls", None)
         conferences.append(item)
 
     return conferences, errors
@@ -594,7 +658,11 @@ def discover_from_organizers(
         if not url:
             continue
         try:
-            raw, _ = fetch_url(url, timeout=12)
+            raw, _ = fetch_url(
+                url,
+                timeout=12,
+                allow_invalid_tls=bool(source.get("allow_invalid_tls")),
+            )
         except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
             errors.append(f"organizer:{name}: {exc}")
             continue
@@ -854,7 +922,7 @@ def main(argv: list[str] | None = None) -> int:
     migrated_candidates = [
         item for item in previous_payload.get("conferences", []) if item.get("review_status") == "candidate"
     ]
-    conferences, errors = update_known_conferences(sources, history)
+    conferences, source_errors = update_known_conferences(sources, history)
     existing_ids = {item["id"] for item in conferences}
     existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
     existing_titles = {title_key(item.get("title", "")) for item in conferences}
@@ -868,14 +936,13 @@ def main(argv: list[str] | None = None) -> int:
         existing_urls,
         existing_titles,
     )
-    errors.extend(organizer_errors)
     reference_candidates, reference_errors = discover_from_references(
         sources.get("reference_sources", []),
         existing_ids | {item["id"] for item in organizer_candidates},
         existing_urls | {canonical_url(item.get("homepage_url", "")) for item in organizer_candidates},
         existing_titles | {title_key(item.get("title", "")) for item in organizer_candidates},
     )
-    errors.extend(reference_errors)
+    discovery_warnings = organizer_errors + reference_errors
     stored_candidates = candidate_payload.get("candidates", []) or migrated_candidates
     candidate_store = merge_candidate_store(organizer_candidates + reference_candidates, stored_candidates)
     visible_candidates = [
@@ -886,10 +953,12 @@ def main(argv: list[str] | None = None) -> int:
         "source_count": len(sources.get("conferences", []))
         + len(organizer_sources)
         + len(sources.get("reference_sources", [])),
-        "errors": errors,
+        "errors": source_errors,
+        "warnings": discovery_warnings,
         "health": {
-            "status": "degraded" if errors else "healthy",
-            "source_error_count": len(errors),
+            "status": "degraded" if source_errors else "healthy",
+            "source_error_count": len(source_errors),
+            "discovery_warning_count": len(discovery_warnings),
             "verified_count": len(conferences),
             "candidate_count": len(visible_candidates),
         },
@@ -904,12 +973,16 @@ def main(argv: list[str] | None = None) -> int:
     write_json(OUTPUT_FILE, payload)
     write_json(HISTORY_FILE, history)
     write_json(CANDIDATES_FILE, {"generated_at": payload["generated_at"], "candidates": candidate_store})
-    if errors:
+    if source_errors:
         print("Completed with source errors:", file=sys.stderr)
-        for error in errors:
+        for error in source_errors:
             print(f"- {error}", file=sys.stderr)
+    if discovery_warnings:
+        print("Completed with discovery warnings:", file=sys.stderr)
+        for warning in discovery_warnings:
+            print(f"- {warning}", file=sys.stderr)
     print(f"Wrote {len(payload['conferences'])} conferences to {OUTPUT_FILE}")
-    return 2 if errors and args.fail_on_errors else 0
+    return 2 if source_errors and args.fail_on_errors else 0
 
 
 if __name__ == "__main__":
