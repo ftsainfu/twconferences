@@ -49,11 +49,15 @@ node --check assets/app.js
 - `event_start`
 - `location`
 - `submission_deadline`
+- `submission_fee`
+- `registration_fee`
 - `fields`
 - `presentation_formats`
 - `attention_notes`
 
 `presentation_formats` 可使用 `oral`、`poster`、`online`、`other`。
+
+`submission_fee` 用於投稿、審稿或論文處理費；`registration_fee` 用於註冊、報名或登記費。請保留官方公告的幣別、金額與適用身分，例如 `一般作者 NT$2,000；學生 NT$1,500`。空字串代表未公告，前端會顯示「未公告」。
 
 ## 待確認候選
 

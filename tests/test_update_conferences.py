@@ -10,6 +10,7 @@ from scripts.update_conferences import (
     current_year_markers,
     duplicates_known_title,
     find_dates,
+    infer_fee_information,
     merge_candidate_store,
     title_key,
     valid_external_reference_url,
@@ -26,6 +27,16 @@ class DateTests(unittest.TestCase):
     def test_find_dates_converts_roc_and_rejects_invalid_date(self):
         self.assertEqual(find_dates("民國115年6月19日、2026/06/20"), ["2026-06-19", "2026-06-20"])
         self.assertEqual(find_dates("2026/13/40"), [])
+
+    def test_fee_inference_keeps_relevant_sentence_only(self):
+        text = "其他說明。論文審查通過後，每篇論文註冊費新台幣 2,000 元；學生優惠另見公告。"
+        fee = infer_fee_information(text, "", ("註冊費", "報名費", "登記費"))
+        self.assertIn("註冊費新台幣 2,000 元", fee)
+        self.assertNotIn("其他說明", fee)
+
+    def test_fee_inference_ignores_policy_without_amount(self):
+        text = "審查結果公告後恕不退回報名費用，詳情另行通知。"
+        self.assertEqual(infer_fee_information(text, "", ("註冊費", "報名費", "登記費")), "")
 
 
 class CandidateTests(unittest.TestCase):
@@ -93,6 +104,17 @@ class FeedbackTests(unittest.TestCase):
         )
         self.assertTrue(valid)
         self.assertIn("佐證頁面", message)
+
+    @patch("scripts.process_feedback.fetch_url", return_value=("註冊費：新台幣 2,000 元", "utf-8"))
+    def test_fee_correction_requires_text_on_evidence_page(self, _fetch):
+        valid, message = validate_correction(
+            {"homepage_url": "https://nfu.edu.tw/event"},
+            "registration_fee",
+            "新台幣 2,000 元",
+            "https://nfu.edu.tw/notice",
+        )
+        self.assertTrue(valid)
+        self.assertIn("建議費用", message)
 
     def test_process_event_writes_isolated_report_and_safe_correction(self):
         with tempfile.TemporaryDirectory() as directory:

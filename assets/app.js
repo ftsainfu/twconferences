@@ -175,6 +175,8 @@ function applyFilters() {
       item.title,
       item.organizer,
       item.location,
+      item.submission_fee,
+      item.registration_fee,
       ...(item.fields || []),
       ...(item.attention_notes || []),
     ]
@@ -252,6 +254,10 @@ function languageLabel(item) {
   return languages.length ? languages.map((language) => labels[language] || language).join("、") : "未明";
 }
 
+function feeLabel(value) {
+  return value ? escapeHtml(value) : "未公告";
+}
+
 function render() {
   els.visibleCount.textContent = state.filtered.length;
   els.newCount.textContent = state.filtered.filter(isRecent).length;
@@ -308,6 +314,8 @@ function renderCard(item) {
           <div><span>地點</span><strong>${escapeHtml(item.location || "未公告")}</strong></div>
           <div><span>舉辦狀態</span><strong>${escapeHtml(eventStatusLabel(item))}</strong></div>
           <div><span>投稿截止</span><strong>${formatDate(item.submission_deadline)}</strong></div>
+          <div class="fee-meta"><span>投稿／審稿費</span><strong>${feeLabel(item.submission_fee)}</strong></div>
+          <div class="fee-meta"><span>註冊／報名費</span><strong>${feeLabel(item.registration_fee)}</strong></div>
           <div><span>主辦單位</span><strong>${escapeHtml(item.organizer || "未公告")}</strong></div>
           <div><span>發表形式</span><strong>${escapeHtml(presentationLabel(item))}</strong></div>
           <div><span>發表語言</span><strong>${escapeHtml(languageLabel(item))}</strong></div>

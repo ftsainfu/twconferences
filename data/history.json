@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "438cd0049f52946f2c031c8ce0089c9922a6419ef2a36d7a529465da677dac0a",
+      "hash": "b50f4ce70db694b85726d43320dffbd06a06aaa20b99aca57c85d7d3c265365b",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "19fac4da4f088529460f68569755697d620c6ee06c073a501cf4323a1cbeaba9",
+      "hash": "3015c827e0e00bb33b08d5b5fbf829bb790ef29e6c8f5aba5a23ff8a54c01d10",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
@@ -151,7 +151,8 @@
       "last_attempted_at": "2026-06-19",
       "last_status": "unchanged",
       "check_status": "error",
-      "last_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
+      "last_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+      "last_successful_at": "2026-06-05"
     },
     "ntub-2026-cbpm": {
       "hash": "ad57e330117c4d01cd91b9df22146426f01e6f3f8d62291cac5a5aa0077d9723",
@@ -176,7 +177,7 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "c3674851c1c31af35f98cfad476fb1042fc5fa0f895813c407819496d4141455",
+      "hash": "92c4d5834f0436cf9d83b65b0635481e71fb43fc71e664c10a3f167da6074ef2",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",

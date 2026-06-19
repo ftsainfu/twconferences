@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19 15:39:22 UTC+08:00",
+  "generated_at": "2026-06-19 16:28:56 UTC+08:00",
   "candidates": [
     {
       "id": "reference-sysi-nccu-edu-tw-7a61ac9d",
@@ -12,6 +12,8 @@
       "event_end": "2026-09-25",
       "location": "台北市 (政治大學商學院)",
       "submission_deadline": "2026-09-20",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "免費",
         "混合(線上+實體)",
@@ -49,6 +51,8 @@
       "event_end": "2026-11-14",
       "location": "台北市 (臺灣大學管理學院二號館)",
       "submission_deadline": "2026-11-05",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "付費",
         "實體活動",
@@ -86,6 +90,8 @@
       "event_end": "2026-10-15",
       "location": "南臺科技大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -122,6 +128,8 @@
       "event_end": "2026-10-15",
       "location": "聖約翰科技大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -158,6 +166,8 @@
       "event_end": "2026-10-15",
       "location": "開南大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -194,6 +204,8 @@
       "event_end": "2026-10-15",
       "location": "雲林科技大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -230,6 +242,8 @@
       "event_end": "2026-10-15",
       "location": "輔仁大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -266,6 +280,8 @@
       "event_end": "2026-10-15",
       "location": "朝陽科技大學",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "商管",
         "學術消息"
@@ -302,6 +318,8 @@
       "event_end": "2026-09-04",
       "location": "會議地點：國立政治大學商學院6樓義育廳",
       "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "財務金融",
         "專題研討會",
