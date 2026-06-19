@@ -1,4 +1,11 @@
 {
+  "reference_sources": [
+    {
+      "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+      "url": "https://twconference-1010569583715.asia-east1.run.app",
+      "api_url": "https://twconference-1010569583715.asia-east1.run.app/api/conferences"
+    }
+  ],
   "organizer_sources": [
     {
       "name": "國立金門大學管理學院",

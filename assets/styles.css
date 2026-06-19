@@ -95,7 +95,7 @@ main {
 
 .toolbar {
   display: grid;
-  grid-template-columns: 1.4fr repeat(8, minmax(108px, 1fr)) auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px;
   align-items: end;
   padding: 16px;
@@ -141,6 +141,25 @@ button {
 
 button:hover {
   background: var(--accent-dark);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(18, 102, 90, 0.35);
+  outline-offset: 2px;
+}
+
+.health-alert {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid #d99b55;
+  border-radius: 8px;
+  background: #fff7e8;
+  color: #7d3d12;
+  font-weight: 700;
 }
 
 .summary-row {
@@ -303,6 +322,30 @@ button:hover {
   color: #fff;
 }
 
+.card-actions .report-button {
+  min-height: 40px;
+  border: 1px solid #aeb9b5;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.unavailable-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #c88f58;
+  border-radius: 6px;
+  background: #fff7e8;
+  color: #7d3d12;
+  font-weight: 700;
+  text-align: center;
+}
+
 .change-note {
   margin: 8px 0 0;
   color: var(--warning);
@@ -322,6 +365,85 @@ button:hover {
   margin-top: 28px;
   padding-top: 10px;
   border-top: 1px solid var(--line);
+}
+
+.candidate-section {
+  margin-top: 28px;
+  padding: 2px 16px 18px;
+  border: 1px solid #bdd0e8;
+  border-radius: 8px;
+  background: #f6f9fe;
+}
+
+.archive-toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) minmax(140px, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.report-dialog {
+  width: min(560px, calc(100% - 24px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.report-dialog::backdrop {
+  background: rgba(11, 24, 20, 0.52);
+}
+
+.report-dialog form {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.report-dialog textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c5cfcb;
+  border-radius: 6px;
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+
+.dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dialog-heading h2,
+.report-dialog p {
+  margin: 0;
+}
+
+.icon-button {
+  width: 42px;
+  flex: 0 0 42px;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+  font-size: 1.6rem;
+}
+
+.icon-button:hover {
+  background: #edf1ef;
+}
+
+.dialog-note {
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 .compact-list .conference-card {
@@ -417,7 +539,8 @@ footer {
 
   .toolbar,
   .summary-row,
-  .meta-grid {
+  .meta-grid,
+  .archive-toolbar {
     grid-template-columns: 1fr;
   }
 

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 研討會資料回報
+    url: https://ftsainfu.github.io/twconferences/
+    about: 請從網站研討會卡片的「回報資料問題」按鈕送出，系統會自動附上資料識別碼。

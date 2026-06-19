@@ -8,18 +8,33 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: update-conference-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.12"
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -t . -v
       - name: Refresh conference JSON
-        run: python3 scripts/update_conferences.py
+        id: refresh
+        continue-on-error: true
+        run: python3 scripts/update_conferences.py --fail-on-errors
       - name: Commit updated data
-        uses: stefanzweifel/git-auto-commit-action@v5
+        if: always() && (steps.refresh.outcome == 'success' || steps.refresh.outcome == 'failure')
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: "Update conference data"
-          file_pattern: data/conferences.json data/history.json
+          file_pattern: data/conferences.json data/history.json data/candidates.json
+      - name: Mark degraded refresh as failed
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "Conference data was written, but one or more sources failed. See the refresh log and data health status."
+          exit 1

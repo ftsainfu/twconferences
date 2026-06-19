@@ -1,0 +1,64 @@
+name: Process conference feedback
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: conference-feedback-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  process:
+    if: startsWith(github.event.issue.title, '[資料回報]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: main
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+      - name: Create review branch
+        run: git switch -c "feedback/issue-${{ github.event.issue.number }}"
+      - name: Validate and record report
+        id: process
+        run: python3 scripts/process_feedback.py --event "$GITHUB_EVENT_PATH" --summary /tmp/feedback-summary.txt
+      - name: Commit report and suggested correction
+        if: steps.process.outputs.handled == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reports data/sources.json data/candidates.json data/conferences.json
+          git commit -m "Review conference report #${{ github.event.issue.number }}"
+          git push --set-upstream origin "feedback/issue-${{ github.event.issue.number }}"
+      - name: Open correction pull request
+        if: steps.process.outputs.handled == 'true'
+        id: pr
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr_url=$(gh pr create --base main --head "feedback/issue-${{ github.event.issue.number }}" --title "Review conference report #${{ github.event.issue.number }}" --body-file /tmp/feedback-summary.txt)
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          printf '\n修正 PR：%s\n' "$pr_url" >> /tmp/feedback-summary.txt
+      - name: Reply to reporter
+        if: always() && steps.process.outputs.handled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/feedback-summary.txt
+      - name: Email report and correction result
+        if: always() && steps.process.outputs.handled == 'true'
+        env:
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          REPORT_EMAIL: ftsainfu@gmail.com
+          REPORT_SUMMARY: /tmp/feedback-summary.txt
+          REPORT_SUBJECT: "twconferences 回報 #${{ github.event.issue.number }} 與修正結果"
+        run: python3 scripts/send_report_email.py

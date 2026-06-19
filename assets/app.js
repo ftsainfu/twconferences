@@ -2,6 +2,7 @@ const state = {
   conferences: [],
   activeConferences: [],
   pastConferences: [],
+  candidates: [],
   filtered: [],
   recurring: [],
   referenceDate: new Date(),
@@ -30,7 +31,35 @@ const els = {
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
   recurringList: document.querySelector("#recurringList"),
+  field: document.querySelector("#fieldFilter"),
+  healthAlert: document.querySelector("#healthAlert"),
+  candidateSection: document.querySelector("#candidateSection"),
+  candidateList: document.querySelector("#candidateList"),
+  candidateCount: document.querySelector("#candidateCount"),
+  historyKeyword: document.querySelector("#historyKeyword"),
+  historyYear: document.querySelector("#historyYear"),
+  reportDialog: document.querySelector("#reportDialog"),
+  reportForm: document.querySelector("#reportForm"),
+  reportConferenceTitle: document.querySelector("#reportConferenceTitle"),
+  reportType: document.querySelector("#reportType"),
+  reportDetails: document.querySelector("#reportDetails"),
+  correctionField: document.querySelector("#correctionField"),
+  correctionValue: document.querySelector("#correctionValue"),
+  evidenceUrl: document.querySelector("#evidenceUrl"),
+  closeReportDialog: document.querySelector("#closeReportDialog"),
 };
+
+const fieldKeywords = {
+  finance: ["財金", "財務", "金融", "投資", "證券", "銀行", "保險", "會計", "經濟", "理財", "風險管理", "fintech", "finance", "financial"],
+  management: ["管理", "商管", "企業", "經營", "決策", "management", "business"],
+  marketing: ["行銷", "品牌", "消費者", "通路", "marketing"],
+  trade: ["國貿", "國際貿易", "國際企業", "跨國", "global business", "international trade"],
+  sustainability: ["永續", "esg", "社會責任", "csr", "淨零", "碳"],
+  technology: ["資訊", "數位", "科技", "人工智慧", "ai", "電子商務", "智慧"],
+  health: ["健康", "醫療", "照護", "health", "hospital"],
+};
+
+let reportTarget = null;
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -122,9 +151,18 @@ function matchesEventStatus(item, status) {
   return !status || eventStatus(item) === status;
 }
 
+function matchesField(item, selectedField) {
+  if (!selectedField) return true;
+  const haystack = [item.title, item.organizer, ...(item.fields || []), ...(item.attention_notes || [])]
+    .join(" ")
+    .toLowerCase();
+  return (fieldKeywords[selectedField] || []).some((keyword) => haystack.includes(keyword));
+}
+
 function applyFilters() {
   const keyword = els.keyword.value.trim().toLowerCase();
   const month = els.month.value;
+  const selectedField = els.field.value;
   const location = els.location.value;
   const selectedEventStatus = els.eventStatus.value;
   const deadlineBefore = parseDate(els.deadlineBefore.value);
@@ -147,6 +185,7 @@ function applyFilters() {
 
     return (
       (!keyword || haystack.includes(keyword)) &&
+      matchesField(item, selectedField) &&
       (!month || eventMonth === month) &&
       (!location || item.location === location) &&
       matchesEventStatus(item, selectedEventStatus) &&
@@ -218,12 +257,25 @@ function render() {
   els.newCount.textContent = state.filtered.filter(isRecent).length;
   els.deadlineCount.textContent = state.filtered.filter(isDeadlineOpen).length;
   els.upcomingCount.textContent = state.activeConferences.length;
-  els.historyCount.textContent = state.pastConferences.length;
+  const filteredHistory = getFilteredHistory();
+  els.historyCount.textContent = filteredHistory.length;
+  els.candidateCount.textContent = state.candidates.length;
+  els.candidateSection.hidden = state.candidates.length === 0;
   els.empty.hidden = state.filtered.length > 0;
-  els.historyEmpty.hidden = state.pastConferences.length > 0;
+  els.historyEmpty.hidden = filteredHistory.length > 0;
   els.list.innerHTML = state.filtered.map(renderCard).join("");
-  els.historyList.innerHTML = sortPastItems(state.pastConferences).map(renderCard).join("");
+  els.candidateList.innerHTML = state.candidates.map(renderCard).join("");
+  els.historyList.innerHTML = sortPastItems(filteredHistory).map(renderCard).join("");
   renderRecurring();
+}
+
+function getFilteredHistory() {
+  const keyword = (els.historyKeyword?.value || "").trim().toLowerCase();
+  const year = els.historyYear?.value || "";
+  return state.pastConferences.filter((item) => {
+    const haystack = [item.title, item.organizer, item.location, ...(item.fields || [])].join(" ").toLowerCase();
+    return (!keyword || haystack.includes(keyword)) && (!year || (item.event_start || "").startsWith(year));
+  });
 }
 
 function renderCard(item) {
@@ -238,6 +290,9 @@ function renderCard(item) {
   const submission = item.submission_url
     ? `<a href="${escapeAttr(item.submission_url)}" target="_blank" rel="noreferrer">投稿連結</a>`
     : "";
+  const homepage = item.link_status === "reported_broken"
+    ? '<span class="unavailable-link">主頁暫時無法連線</span>'
+    : `<a class="primary" href="${escapeAttr(item.homepage_url)}" target="_blank" rel="noreferrer">會議主頁</a>`;
 
   return `
     <article class="conference-card ${recent ? "is-new" : ""}">
@@ -262,9 +317,16 @@ function renderCard(item) {
         ${notes ? `<ul class="notes">${notes}</ul>` : ""}
       </div>
       <div class="card-actions">
-        <a class="primary" href="${escapeAttr(item.homepage_url)}" target="_blank" rel="noreferrer">會議主頁</a>
+        ${homepage}
         ${submission}
         ${registration}
+        <button
+          class="report-button"
+          type="button"
+          data-report-id="${escapeAttr(item.id)}"
+          data-report-title="${escapeAttr(item.title)}"
+          data-report-url="${escapeAttr(item.homepage_url)}"
+        >回報資料問題</button>
       </div>
     </article>
   `;
@@ -310,13 +372,71 @@ function hydrateLocationFilter() {
   );
 }
 
+function hydrateHistoryYearFilter() {
+  const years = [...new Set(state.pastConferences.map((item) => (item.event_start || "").slice(0, 4)).filter(Boolean))]
+    .sort()
+    .reverse();
+  els.historyYear.insertAdjacentHTML(
+    "beforeend",
+    years.map((year) => `<option value="${escapeAttr(year)}">${escapeHtml(year)} 年</option>`).join(""),
+  );
+}
+
+function renderHealth(payload) {
+  const generated = parseGeneratedDate(payload.generated_at);
+  const ageDays = Math.floor((today - generated) / 86400000);
+  const errorCount = payload.health?.source_error_count ?? (payload.errors || []).length;
+  const messages = [];
+  if (errorCount > 0) messages.push(`${errorCount} 個來源檢查失敗，部分資料沿用前次成功結果。`);
+  if (ageDays >= 2) messages.push(`資料已 ${ageDays} 天未成功更新。`);
+  els.healthAlert.hidden = messages.length === 0;
+  els.healthAlert.textContent = messages.join(" ");
+}
+
+function openReportDialog(button) {
+  reportTarget = {
+    id: button.dataset.reportId,
+    title: button.dataset.reportTitle,
+    url: button.dataset.reportUrl,
+  };
+  els.reportConferenceTitle.textContent = reportTarget.title;
+  els.reportForm.reset();
+  els.reportDialog.showModal();
+}
+
+function submitReport(event) {
+  event.preventDefault();
+  if (!reportTarget) return;
+  const singleLine = (value) => String(value || "").replace(/[\r\n]+/g, " ").trim();
+  const body = [
+    `conference_id: ${singleLine(reportTarget.id)}`,
+    `conference_title: ${singleLine(reportTarget.title)}`,
+    `current_url: ${singleLine(reportTarget.url)}`,
+    `report_type: ${els.reportType.value}`,
+    `correction_field: ${els.correctionField.value}`,
+    `correction_value: ${singleLine(els.correctionValue.value)}`,
+    `evidence_url: ${singleLine(els.evidenceUrl.value)}`,
+    "",
+    "details:",
+    els.reportDetails.value.trim(),
+  ].join("\n");
+  const params = new URLSearchParams({
+    title: `[資料回報] ${reportTarget.id} ${reportTarget.title}`,
+    body,
+    labels: "conference-report",
+  });
+  window.open(`https://github.com/ftsainfu/twconferences/issues/new?${params}`, "_blank", "noopener,noreferrer");
+  els.reportDialog.close();
+}
+
 function bindEvents() {
-  [els.keyword, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.sort].forEach((input) => {
+  [els.keyword, els.field, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
     input.addEventListener("change", applyFilters);
   });
   els.reset.addEventListener("click", () => {
     els.keyword.value = "";
+    els.field.value = "";
     els.month.value = "";
     els.location.value = "";
     els.eventStatus.value = "";
@@ -327,6 +447,16 @@ function bindEvents() {
     els.sort.value = "event_asc";
     applyFilters();
   });
+  [els.historyKeyword, els.historyYear].forEach((input) => {
+    input.addEventListener("input", render);
+    input.addEventListener("change", render);
+  });
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-report-id]");
+    if (button) openReportDialog(button);
+  });
+  els.closeReportDialog.addEventListener("click", () => els.reportDialog.close());
+  els.reportForm.addEventListener("submit", submitReport);
 }
 
 async function init() {
@@ -337,12 +467,16 @@ async function init() {
   const recurringPayload = recurringResponse.ok ? await recurringResponse.json() : { recurring_conferences: [] };
   state.conferences = payload.conferences || [];
   state.referenceDate = parseGeneratedDate(payload.generated_at);
-  state.activeConferences = state.conferences.filter((item) => eventStatus(item) !== "past");
-  state.pastConferences = state.conferences.filter((item) => eventStatus(item) === "past");
+  const verified = state.conferences.filter((item) => item.review_status !== "candidate");
+  state.candidates = state.conferences.filter((item) => item.review_status === "candidate");
+  state.activeConferences = verified.filter((item) => eventStatus(item) !== "past");
+  state.pastConferences = verified.filter((item) => eventStatus(item) === "past");
   state.recurring = recurringPayload.recurring_conferences || [];
   els.lastUpdated.textContent = payload.generated_at || "未產生";
   els.sourceCount.textContent = `${payload.source_count || state.conferences.length} 個來源`;
+  renderHealth(payload);
   hydrateLocationFilter();
+  hydrateHistoryYearFilter();
   bindEvents();
   applyFilters();
 }
