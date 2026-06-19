@@ -249,9 +249,13 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
             record[field] = value
             record["last_user_report"] = today_iso()
             record["last_changed"] = today_iso()
-            record["attention_notes"] = list(record.get("attention_notes") or []) + [
-                f"使用者回報後建議修正 {field}：{old_value or '未填'} → {value}；待 PR 審核。"
-            ]
+            note = f"使用者回報後建議修正 {field}：{old_value or '未填'} → {value}；待 PR 審核。"
+            notes = list(record.get("attention_notes") or [])
+            if old_value != value and note not in notes:
+                notes.append(note)
+            record["attention_notes"] = notes
+            if old_value == value:
+                verification = f"{verification} 目前資料已是驗證後的建議值。"
             correction_applied = True
         elif report.get("report_type") == "broken_link" and not value:
             try:
@@ -266,7 +270,7 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
     report_record = {
         "issue_number": issue.get("number"),
         "issue_url": issue.get("html_url", ""),
-        "reported_at": datetime.now(timezone.utc).isoformat(),
+        "reported_at": issue.get("created_at") or datetime.now(timezone.utc).isoformat(),
         "conference_id": conference_id,
         "report_type": report.get("report_type", ""),
         "details": report.get("details", "")[:1000],

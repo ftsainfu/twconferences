@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 
 concurrency:
   group: update-conference-data
@@ -27,12 +29,49 @@ jobs:
         id: refresh
         continue-on-error: true
         run: python3 scripts/update_conferences.py --fail-on-errors
+      - name: Load open conference reports
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue list --state open --limit 25 --json number,title,body,url,createdAt > /tmp/open-conference-reports.json
+      - name: Retry unresolved conference reports
+        id: feedback
+        run: >-
+          python3 scripts/process_pending_feedback.py
+          --issues /tmp/open-conference-reports.json
+          --summary-dir /tmp/feedback-summaries
+          --results /tmp/feedback-results.json
       - name: Commit updated data
         if: always() && (steps.refresh.outcome == 'success' || steps.refresh.outcome == 'failure')
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: "Update conference data"
-          file_pattern: data/conferences.json data/history.json data/candidates.json
+          file_pattern: data/conferences.json data/history.json data/candidates.json data/sources.json data/reports
+      - name: Close reports resolved by the daily update
+        if: steps.feedback.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          jq -c '.results[] | select(.applied == true)' /tmp/feedback-results.json | while IFS= read -r item; do
+            issue_number=$(jq -r '.issue_number' <<< "$item")
+            summary_path=$(jq -r '.summary_path' <<< "$item")
+            gh issue comment "$issue_number" --body-file "$summary_path"
+            gh pr list --state open --head "feedback/issue-$issue_number" --json number --jq '.[].number' | while IFS= read -r pr_number; do
+              test -z "$pr_number" || gh pr close "$pr_number" --comment "每日更新已驗證並套用此修正，這個審查 PR 已不再需要。" --delete-branch
+            done
+            gh issue close "$issue_number" --reason completed
+          done
+      - name: Email daily feedback corrections
+        if: steps.feedback.outcome == 'success'
+        env:
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          REPORT_EMAIL: ftsainfu@gmail.com
+        run: |
+          jq -c '.results[] | select(.applied == true)' /tmp/feedback-results.json | while IFS= read -r item; do
+            issue_number=$(jq -r '.issue_number' <<< "$item")
+            summary_path=$(jq -r '.summary_path' <<< "$item")
+            REPORT_SUMMARY="$summary_path" REPORT_SUBJECT="twconferences 每日更新已修正回報 #$issue_number" python3 scripts/send_report_email.py
+          done
       - name: Mark degraded refresh as failed
         if: steps.refresh.outcome == 'failure'
         run: |
