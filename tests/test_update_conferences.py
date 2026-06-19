@@ -6,6 +6,7 @@ from unittest.mock import patch
 from datetime import date
 
 from scripts.update_conferences import (
+    assess_information_quality,
     canonical_url,
     current_year_markers,
     duplicates_known_title,
@@ -114,6 +115,31 @@ class CandidateTests(unittest.TestCase):
 
 
 class ValidationTests(unittest.TestCase):
+    def test_information_quality_uses_objective_completeness_criteria(self):
+        item = {
+            "review_status": "verified",
+            "homepage_url": "https://conference.example.edu.tw/",
+            "event_start": "2026-08-01",
+            "location": "台北",
+            "submission_url": "https://conference.example.edu.tw/submit",
+            "submission_deadline": "2026-06-01",
+            "fields": ["財金"],
+            "presentation_formats": ["oral"],
+            "presentation_languages": ["zh"],
+            "registration_url": "https://conference.example.edu.tw/register",
+            "registration_fee": "一般 NT$2,000",
+        }
+        quality = assess_information_quality(item)
+        self.assertEqual(quality["score"], 5)
+        self.assertEqual(quality["label"], "資訊很完整")
+
+    def test_candidate_cannot_receive_verified_source_star(self):
+        quality = assess_information_quality({
+            "review_status": "candidate",
+            "homepage_url": "https://example.edu.tw/event",
+        })
+        self.assertEqual(quality["score"], 0)
+
     def test_canonical_url_removes_tracking_variants(self):
         self.assertEqual(
             canonical_url("HTTPS://Example.COM/a/?authuser=1&lang=zh"),

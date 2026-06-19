@@ -205,6 +205,15 @@ a:focus-visible {
   font-size: 1.35rem;
 }
 
+.rating-help {
+  max-width: 780px;
+  padding: 9px 11px;
+  border-left: 3px solid #b58a27;
+  background: #fffaf0;
+  color: #67531f;
+  font-size: 0.88rem;
+}
+
 .section-heading p {
   margin: 6px 0 0;
   color: var(--muted);
@@ -293,6 +302,39 @@ a:focus-visible {
   font-size: 0.78rem;
 }
 
+.rating-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.rating-metric {
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid #e2d4aa;
+  border-radius: 6px;
+  background: #fffaf0;
+}
+
+.rating-metric > span:first-child {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stars {
+  color: #b77a00;
+  font-size: 1.08rem;
+  letter-spacing: 1px;
+}
+
+.rating-value {
+  margin-left: 6px;
+  color: #5b4a20;
+  font-size: 0.82rem;
+}
+
 .notes {
   margin: 12px 0 0;
   padding-left: 18px;
@@ -334,6 +376,20 @@ a:focus-visible {
   color: var(--muted);
   cursor: pointer;
   font-weight: 700;
+}
+
+.card-actions .rating-button {
+  min-height: 40px;
+  border: 1px solid #b58a27;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #6b5010;
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.card-actions .rating-button:hover {
+  background: #f6e8bd;
 }
 
 .unavailable-link {
@@ -418,6 +474,59 @@ a:focus-visible {
   color: var(--text);
   font: inherit;
   resize: vertical;
+}
+
+.star-rating {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #c5cfcb;
+  border-radius: 6px;
+}
+
+.star-rating legend {
+  padding: 0 5px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.star-rating > div {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.star-rating label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 6px;
+  border: 1px solid #e2d4aa;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #6b5010;
+  cursor: pointer;
+}
+
+.star-rating input {
+  width: auto;
+  min-height: auto;
+  margin: 0 5px 0 0;
+}
+
+.confirmation-check {
+  display: flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.confirmation-check input {
+  width: auto;
+  min-height: auto;
+  margin: 0;
 }
 
 .dialog-heading {

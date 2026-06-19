@@ -29,6 +29,16 @@ jobs:
         id: refresh
         continue-on-error: true
         run: python3 scripts/update_conferences.py --fail-on-errors
+      - name: Load conference rating issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue list --state all --limit 1000 --json number,title,body,url,author,createdAt > /tmp/conference-ratings.json
+      - name: Aggregate attendee ratings
+        run: >-
+          python3 scripts/aggregate_ratings.py
+          --issues /tmp/conference-ratings.json
+          --conferences data/conferences.json
+          --output data/ratings.json
       - name: Load open conference reports
         env:
           GH_TOKEN: ${{ github.token }}
@@ -45,7 +55,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: "Update conference data"
-          file_pattern: data/conferences.json data/history.json data/candidates.json data/sources.json data/reports
+          file_pattern: data/conferences.json data/history.json data/candidates.json data/sources.json data/ratings.json data/reports
       - name: Close reports resolved by the daily update
         if: steps.feedback.outcome == 'success'
         env:

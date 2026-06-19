@@ -30,8 +30,9 @@ node --check assets/app.js
 5. 比對外部研討會彙整站、SSRN 研討會索引與 AFA 公開行事曆；只有明確標示在台灣舉辦的商管活動才建立「待確認」候選。
 6. 候選項目需通過正式研討會初步篩選，排除講座、課程、工作坊、招生、期刊專刊、得獎名單等非徵稿研討會內容。
 7. 若來源頁內容和前次不同，將該研討會標示為 `[NEW!]` 與「資訊異動」。
-8. 回寫 `data/conferences.json` 與 `data/history.json`。
+8. 依官方來源、日期地點、投稿方式、發表資訊、報名與費用資訊計算「資料完整度」星等，回寫 `data/conferences.json` 與 `data/history.json`。
 9. 讀取仍開啟的 `[資料回報]` Issue，重新搜尋官方來源；可安全驗證的修正會併入當日更新、回覆並關閉 Issue，仍無法確認者保留至隔日重試。
+10. 讀取 `[研討會評分]` Issue，依 GitHub 帳號去除重複評分後產生 `data/ratings.json`。
 
 來源錯誤會寫入 `health` 與個別研討會的 `check_status`。排程仍會保存通過結構驗證的資料，但工作結果會標示失敗，避免部分抓取失敗被誤認為完整成功。日期搜尋年份會依台北時間自動涵蓋本年及次年。
 
@@ -87,6 +88,15 @@ node --check assets/app.js
 若尚未設定密鑰，Issue、驗證與修正 PR 仍可運作，只會略過寄信。
 
 Repository 的 Actions 設定也需開啟「Allow GitHub Actions to create and approve pull requests」，工作流程才能自動建立修正 PR。
+
+## 星等與參加者推薦
+
+每張正式研討會卡片會分別顯示：
+
+- `資料完整度`：系統依五項客觀資料條件計算，不代表研討會學術聲望。
+- `參加者推薦`：已報名或已參加者提供的 1–5 星推薦度。
+
+「評分推薦度」會開啟預填的 GitHub Issue。使用者必須登入 GitHub 並確認本人已報名或參加；GitHub 帳號與選填心得會公開。`.github/workflows/process-rating.yml` 會驗證格式、重新產生 `data/ratings.json` 並關閉有效評分 Issue。為降低重複灌票，同一 GitHub 帳號對同一研討會只採最新一票；此機制屬身分聲明，無法驗證實際繳費或出席紀錄。
 
 ## 部署
 

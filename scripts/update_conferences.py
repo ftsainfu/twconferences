@@ -854,6 +854,27 @@ def validate_url(value: str) -> bool:
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 
+def assess_information_quality(item: dict) -> dict:
+    formats = [value for value in item.get("presentation_formats", []) if value != "other"]
+    languages = [value for value in item.get("presentation_languages", []) if value != "unknown"]
+    location = str(item.get("location") or "").strip()
+    checks = [
+        ("官方來源已確認", item.get("review_status") == "verified" and validate_url(str(item.get("homepage_url") or ""))),
+        ("日期與地點完整", bool(item.get("event_start")) and bool(location) and "待確認" not in location),
+        ("投稿方式完整", validate_url(str(item.get("submission_url") or "")) and bool(item.get("submission_deadline"))),
+        ("領域與發表資訊完整", bool(item.get("fields")) and bool(formats) and bool(languages)),
+        (
+            "報名與費用資訊完整",
+            validate_url(str(item.get("registration_url") or ""))
+            and bool(item.get("registration_fee") or item.get("submission_fee")),
+        ),
+    ]
+    passed = [label for label, result in checks if result]
+    score = len(passed)
+    labels = {0: "資料不足", 1: "資料有限", 2: "部分完整", 3: "基本完整", 4: "資訊完整", 5: "資訊很完整"}
+    return {"score": score, "max_score": 5, "label": labels[score], "criteria": passed}
+
+
 def validate_payload(payload: dict, previous_payload: dict | None = None) -> list[str]:
     errors: list[str] = []
     items = payload.get("conferences")
@@ -948,6 +969,8 @@ def main(argv: list[str] | None = None) -> int:
     visible_candidates = [
         item for item in candidate_store if item.get("candidate_status") == "pending" and not item.get("is_stale")
     ]
+    for item in conferences + visible_candidates:
+        item["information_quality"] = assess_information_quality(item)
     payload = {
         "generated_at": now_tw().strftime("%Y-%m-%d %H:%M:%S %Z"),
         "source_count": len(sources.get("conferences", []))
