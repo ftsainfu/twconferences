@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "b50f4ce70db694b85726d43320dffbd06a06aaa20b99aca57c85d7d3c265365b",
+      "hash": "165a648c9e29d505a025946c08087ab2ab0fa040ff539c59fcd51402e85f78d0",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "3015c827e0e00bb33b08d5b5fbf829bb790ef29e6c8f5aba5a23ff8a54c01d10",
+      "hash": "e566cc87943594db64e2f76dbe040bcb6f1d2b775117131ad0c8720d7f89862a",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
@@ -73,8 +73,8 @@
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
       "last_status": "unchanged",
-      "check_status": "ok",
-      "last_error": "",
+      "check_status": "error",
+      "last_error": "<urlopen error timed out>",
       "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
     },
     "fgu-2026-sme-management": {
@@ -84,8 +84,8 @@
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
       "last_status": "unchanged",
-      "check_status": "ok",
-      "last_error": "",
+      "check_status": "error",
+      "last_error": "<urlopen error timed out>",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
     },
     "ntub-2026-digital-business": {
@@ -95,8 +95,8 @@
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-13",
       "last_status": "unchanged",
-      "check_status": "ok",
-      "last_error": "",
+      "check_status": "error",
+      "last_error": "<urlopen error timed out>",
       "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw"
     },
     "cmr-2026-marketing": {
@@ -133,15 +133,15 @@
       "url": "https://www.apfita.org/2026/"
     },
     "iclt-2026": {
-      "hash": "872c8884cd2afddacc06805eb65f6d59e7c4919acf089173f6ff54eb2f5890d0",
+      "hash": "e99c4aec7dea8943765087ddf04e5852323774f6bce9718cf11b65fd8e3e78ef",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
-      "last_status": "unchanged",
+      "last_status": "changed",
       "check_status": "ok",
       "last_error": "",
-      "url": "https://iclt.info/paper/2023-024"
+      "url": "https://iclt.info/"
     },
     "fy-2026-ihc": {
       "hash": "",
@@ -151,7 +151,7 @@
       "last_attempted_at": "2026-06-19",
       "last_status": "unchanged",
       "check_status": "error",
-      "last_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+      "last_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
       "last_successful_at": "2026-06-05"
     },
     "ntub-2026-cbpm": {
@@ -177,7 +177,7 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "92c4d5834f0436cf9d83b65b0635481e71fb43fc71e664c10a3f167da6074ef2",
+      "hash": "bb44fb96679af4650494ae8631cac2f2eedb9dc75cb16c08ebc9bdc747f2c205",
       "last_attempted_at": "2026-06-19",
       "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",

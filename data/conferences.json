@@ -1,15 +1,22 @@
 {
-  "generated_at": "2026-06-19 22:11:52 UTC+08:00",
+  "generated_at": "2026-06-19 22:25:21 UTC+08:00",
   "source_count": 41,
   "errors": [
-    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+    "mcu-2026-economics-trade-management: <urlopen error timed out>",
+    "fgu-2026-sme-management: <urlopen error timed out>",
+    "ntub-2026-digital-business: <urlopen error timed out>",
+    "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
-    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
-    "organizer:政治大學商學院信義書院: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+    "organizer:銘傳大學國際企業學系: <urlopen error timed out>",
+    "organizer:佛光大學管理學系: <urlopen error timed out>",
+    "organizer:德明財經科技大學管理學院: <urlopen error timed out>",
+    "organizer:輔英科技大學國際健康照護研討會: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+    "organizer:政治大學商學院信義書院: <urlopen error [Errno -2] Name or service not known>",
+    "organizer:中華民國多國籍企業研究學會: <urlopen error timed out>"
   ],
   "health": {
     "status": "degraded",
-    "source_error_count": 4,
+    "source_error_count": 11,
     "verified_count": 17,
     "candidate_count": 9
   },
@@ -141,6 +148,8 @@
       "event_end": "2026-05-30",
       "location": "彰化",
       "submission_deadline": "2026-04-30",
+      "submission_fee": "",
+      "registration_fee": "早鳥註冊：一般作者 NT$2,400、學生 NT$1,500；一般註冊：NT$3,000；同作者第二篇論文 NT$600。",
       "fields": [
         "財務管理",
         "投資策略",
@@ -160,8 +169,6 @@
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
       ],
-      "submission_fee": "",
-      "registration_fee": "早鳥註冊：一般作者 NT$2,400、學生 NT$1,500；一般註冊：NT$3,000；同作者第二篇論文 NT$600。",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
       "check_status": "ok",
@@ -221,6 +228,8 @@
       "event_end": "2026-05-29",
       "location": "桃園",
       "submission_deadline": "2026-05-08",
+      "submission_fee": "",
+      "registration_fee": "發表論文登記費 NT$500；審查通過者須於主辦單位期限前繳交。",
       "fields": [
         "商管",
         "論文競賽",
@@ -236,8 +245,6 @@
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
-      "submission_fee": "",
-      "registration_fee": "發表論文登記費 NT$500；審查通過者須於主辦單位期限前繳交。",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
       "check_status": "ok",
@@ -259,6 +266,8 @@
       "event_end": "2026-01-31",
       "location": "桃園",
       "submission_deadline": "2026-01-10",
+      "submission_fee": "每篇論文審稿費 NT$2,000。",
+      "registration_fee": "",
       "fields": [
         "商業管理",
         "科技創新",
@@ -275,8 +284,6 @@
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "submission_fee": "每篇論文審稿費 NT$2,000。",
-      "registration_fee": "",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
       "check_status": "ok",
@@ -304,28 +311,28 @@
         "全球企業管理"
       ],
       "presentation_formats": [
-        "online",
-        "oral"
+        "oral",
+        "online"
       ],
       "presentation_languages": [
-        "en",
-        "zh"
+        "zh",
+        "en"
       ],
       "attention_notes": [
         "透過 Google 表單報名並上傳論文摘要。",
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
-      "submission_fee": "",
-      "registration_fee": "",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
-      "check_status": "ok",
-      "check_error": "",
+      "check_status": "error",
+      "check_error": "<urlopen error timed out>",
+      "submission_fee": "",
+      "registration_fee": "",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "change_label": "檢查失敗",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -339,13 +346,14 @@
       "event_end": "2026-05-23",
       "location": "宜蘭",
       "submission_deadline": "2026-03-31",
+      "submission_fee": "",
+      "registration_fee": "本次研討會不收註冊費；僅出席發表者提供參加證明。",
       "fields": [
         "中小企業",
         "經營管理"
       ],
       "presentation_formats": [
-        "other",
-        "poster"
+        "other"
       ],
       "presentation_languages": [
         "zh"
@@ -353,16 +361,14 @@
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
-      "submission_fee": "",
-      "registration_fee": "本次研討會不收註冊費；僅出席發表者提供參加證明。",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
-      "check_status": "ok",
-      "check_error": "",
+      "check_status": "error",
+      "check_error": "<urlopen error timed out>",
       "last_changed": "2026-06-19",
       "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "change_label": "檢查失敗",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -511,16 +517,16 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
-      "submission_fee": "",
-      "registration_fee": "",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
-      "check_status": "ok",
-      "check_error": "",
+      "check_status": "error",
+      "check_error": "<urlopen error timed out>",
+      "submission_fee": "",
+      "registration_fee": "",
       "last_changed": "2026-06-13",
       "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "change_label": "檢查失敗",
+      "change_summary": "本次來源檢查失敗，保留前次資料。",
       "review_status": "verified"
     },
     {
@@ -600,7 +606,7 @@
       "last_checked": "2026-06-05",
       "last_attempted_at": "2026-06-19",
       "check_status": "error",
-      "check_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
+      "check_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
       "submission_fee": "",
       "registration_fee": "",
       "last_changed": "2026-06-05",
@@ -675,6 +681,8 @@
       "presentation_languages": [
         "en"
       ],
+      "submission_fee": "",
+      "registration_fee": "作者 USD 500；一般參與者 USD 450。",
       "attention_notes": [
         "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
         "作者註冊截止日為 2026-09-15；官方頁面目前公告作者 USD 500、一般參與者 USD 450。",
@@ -682,16 +690,14 @@
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。",
         "依使用者回報 #5 修正：原報名網址誤連至 2023 年論文頁。"
       ],
-      "submission_fee": "",
-      "registration_fee": "作者 USD 500；一般參與者 USD 450。",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-19",
-      "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified"
     },
     {
