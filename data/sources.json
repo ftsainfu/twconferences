@@ -4,6 +4,17 @@
       "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
       "url": "https://twconference-1010569583715.asia-east1.run.app",
       "api_url": "https://twconference-1010569583715.asia-east1.run.app/api/conferences"
+    },
+    {
+      "name": "SSRN Conferences",
+      "url": "https://www.ssrn.com/index.cfm/en/conferences/",
+      "format": "html_index"
+    },
+    {
+      "name": "American Finance Association Conference Calendar",
+      "url": "https://afajof.org/conference-calendar/",
+      "api_url": "https://www.trumba.com/calendars/afa-conferences.ics",
+      "format": "ics"
     }
   ],
   "organizer_sources": [
@@ -378,9 +389,9 @@
       "id": "iclt-2026",
       "title": "16th International Conference on Logistics & Transport 2026",
       "organizer": "International Conference on Logistics & Transport",
-      "homepage_url": "https://iclt.info/paper/2023-024",
-      "submission_url": "https://iclt.info/paper/2023-024",
-      "registration_url": "https://iclt.info/paper/2023-024",
+      "homepage_url": "https://iclt.info/",
+      "submission_url": "https://forms.gle/jnzznqtFVk4tiw5V6",
+      "registration_url": "https://iclt.info/registration",
       "event_start": "2026-10-19",
       "event_end": "2026-10-23",
       "location": "高雄",
@@ -388,10 +399,14 @@
       "fields": ["物流管理", "運輸管理", "供應鏈韌性", "全球運籌"],
       "presentation_formats": ["oral", "other"],
       "presentation_languages": ["en"],
+      "submission_fee": "",
+      "registration_fee": "作者 USD 500；一般參與者 USD 450。",
       "attention_notes": [
         "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
+        "作者註冊截止日為 2026-09-15；官方頁面目前公告作者 USD 500、一般參與者 USD 450。",
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
-        "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
+        "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。",
+        "依使用者回報 #5 修正：原報名網址誤連至 2023 年論文頁。"
       ]
     }
   ]

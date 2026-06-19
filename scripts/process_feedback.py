@@ -11,9 +11,9 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 try:
-    from .update_conferences import DATA_DIR, OUTPUT_FILE, domain_key, fetch_url, normalize_text, read_json, today_iso, validate_url, write_json
+    from .update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, read_json, today_iso, validate_url, write_json
 except ImportError:
-    from update_conferences import DATA_DIR, OUTPUT_FILE, domain_key, fetch_url, normalize_text, read_json, today_iso, validate_url, write_json
+    from update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, read_json, today_iso, validate_url, write_json
 
 SOURCES_FILE = DATA_DIR / "sources.json"
 CANDIDATES_FILE = DATA_DIR / "candidates.json"
@@ -33,6 +33,21 @@ URL_FIELDS = {"homepage_url", "submission_url", "registration_url"}
 DATE_FIELDS = {"event_start", "event_end", "submission_deadline"}
 FEE_FIELDS = {"submission_fee", "registration_fee"}
 TRUSTED_SUFFIXES = (".edu.tw", ".org.tw", ".gov.tw", ".com.tw")
+FIELD_HINTS = {
+    "registration_url": ("報名連結", "報名網址", "註冊連結", "註冊網址", "registration", "register"),
+    "submission_url": ("投稿連結", "投稿網址", "繳交論文", "submission", "submit paper"),
+    "homepage_url": ("官網", "首頁", "主頁", "homepage", "official website"),
+}
+LINK_HINTS = {
+    "registration_url": ("registration", "register", "報名", "註冊"),
+    "submission_url": ("submission", "submit", "投稿", "paper submission"),
+    "homepage_url": ("home", "homepage", "首頁", "官網"),
+}
+COMMON_OFFICIAL_PATHS = {
+    "registration_url": ("registration", "register"),
+    "submission_url": ("submission", "submit"),
+    "homepage_url": ("",),
+}
 
 
 def parse_report(body: str) -> dict[str, str]:
@@ -62,6 +77,68 @@ def find_record(conference_id: str, sources: dict, candidates: dict) -> tuple[di
         if item.get("id") == conference_id:
             return item, "candidates"
     return None, ""
+
+
+def infer_correction_field(report: dict[str, str]) -> str:
+    field = report.get("correction_field", "")
+    if field in ALLOWED_FIELDS:
+        return field
+    details = report.get("details", "").lower()
+    matches = [name for name, hints in FIELD_HINTS.items() if any(hint.lower() in details for hint in hints)]
+    return matches[0] if len(matches) == 1 else ""
+
+
+def discover_official_url_correction(record: dict, field: str) -> tuple[str, str]:
+    if field not in LINK_HINTS:
+        return "", "回報內容無法判斷需要修正的網址欄位。"
+
+    homepage = str(record.get("homepage_url") or "")
+    if not validate_url(homepage):
+        return "", "目前資料沒有可供搜尋的官方網站。"
+    parsed_homepage = urllib.parse.urlparse(homepage)
+    root_url = urllib.parse.urlunparse((parsed_homepage.scheme, parsed_homepage.netloc, "/", "", "", ""))
+    current_value = str(record.get(field) or "")
+    candidates: dict[str, int] = {}
+
+    # Check conventional official paths first. This resolves common conference
+    # sites quickly even when navigation links are rendered only by JavaScript.
+    for path in COMMON_OFFICIAL_PATHS[field]:
+        link = urllib.parse.urljoin(root_url, path)
+        if link == current_value:
+            continue
+        try:
+            raw, _ = fetch_url(link, timeout=8, attempts=1)
+        except (urllib.error.URLError, TimeoutError):
+            continue
+        page_text = normalize_text(raw).lower()
+        if any(hint in page_text or hint in link.lower() for hint in LINK_HINTS[field]):
+            return link, "已從同一官方網域找到並驗證對應連結。"
+
+    for seed_url in dict.fromkeys((homepage, root_url)):
+        try:
+            raw, _ = fetch_url(seed_url, timeout=8, attempts=1)
+        except (urllib.error.URLError, TimeoutError):
+            continue
+        for match in LINK_RE.finditer(raw):
+            link = normalize_url(seed_url, match.group("href"))
+            if not link or link == current_value or domain_key(link) != domain_key(homepage):
+                continue
+            label = normalize_text(match.group("label")).lower()
+            search_text = f"{label} {urllib.parse.urlparse(link).path.lower()}"
+            score = sum(3 if hint in label else 1 for hint in LINK_HINTS[field] if hint in search_text)
+            if score:
+                candidates[link] = max(score, candidates.get(link, 0))
+
+    ranked = sorted(candidates.items(), key=lambda item: (-item[1], len(item[0]), item[0]))
+    for link, _score in ranked[:5]:
+        try:
+            raw, _ = fetch_url(link, timeout=8, attempts=1)
+        except (urllib.error.URLError, TimeoutError):
+            continue
+        page_text = normalize_text(raw).lower()
+        if any(hint in page_text or hint in link.lower() for hint in LINK_HINTS[field]):
+            return link, "已從同一官方網域找到並驗證對應連結。"
+    return "", "官方網站中找不到可唯一驗證的對應連結。"
 
 
 def trusted_correction_url(value: str, evidence_url: str, current_url: str) -> bool:
@@ -153,9 +230,20 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
     verification = "找不到對應的研討會 ID，需人工處理。"
 
     if record:
-        field = report.get("correction_field", "")
+        field = infer_correction_field(report)
         value = report.get("correction_value", "")
+        discovery_note = ""
+        if field in URL_FIELDS and not value:
+            value, discovery_note = discover_official_url_correction(record, field)
+            if value:
+                report["correction_field"] = field
+                report["correction_value"] = value
+                report["evidence_url"] = value
         valid, verification = validate_correction(record, field, value, report.get("evidence_url", ""))
+        if discovery_note and not valid:
+            verification = discovery_note
+        elif discovery_note and valid:
+            verification = f"{discovery_note} {verification}"
         if valid:
             old_value = str(record.get(field, ""))
             record[field] = value
