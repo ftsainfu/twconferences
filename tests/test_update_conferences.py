@@ -12,12 +12,21 @@ from scripts.update_conferences import (
     find_dates,
     infer_fee_information,
     merge_candidate_store,
+    parse_ics_events,
+    discover_from_ics_reference,
     title_key,
     valid_external_reference_url,
     validate_payload,
 )
 from scripts import process_feedback
-from scripts.process_feedback import date_variants, parse_report, trusted_correction_url, validate_correction
+from scripts.process_feedback import (
+    date_variants,
+    discover_official_url_correction,
+    infer_correction_field,
+    parse_report,
+    trusted_correction_url,
+    validate_correction,
+)
 
 
 class DateTests(unittest.TestCase):
@@ -51,6 +60,21 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(merged[0]["candidate_status"], "rejected")
         self.assertEqual(merged[0]["first_seen"], "2026-01-01")
         self.assertFalse(merged[0]["is_stale"])
+
+    def test_afa_ics_keeps_future_taiwan_finance_conference(self):
+        raw = """BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:Taiwan Finance Conference 2027\nLOCATION:Taipei, Taiwan\nDTSTART;VALUE=DATE:20270710\nDTEND;VALUE=DATE:20270712\nURL:https://finance.example.org/2027\nDESCRIPTION:Annual conference in financial economics\nEND:VEVENT\nEND:VCALENDAR"""
+        self.assertEqual(parse_ics_events(raw)[0]["summary"], "Taiwan Finance Conference 2027")
+        with patch("scripts.update_conferences.today_iso", return_value="2026-06-19"):
+            candidates = discover_from_ics_reference(
+                {"name": "AFA Conference Calendar", "url": "https://afajof.org/conference-calendar/"},
+                raw,
+                set(),
+                set(),
+                set(),
+            )
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["location"], "Taipei, Taiwan")
+        self.assertEqual(candidates[0]["event_end"], "2027-07-11")
 
 
 class ValidationTests(unittest.TestCase):
@@ -89,6 +113,25 @@ class FeedbackTests(unittest.TestCase):
 
     def test_date_variants_include_roc_date(self):
         self.assertIn("115年6月19日", date_variants("2026-06-19"))
+
+    def test_infer_url_field_from_report_details(self):
+        self.assertEqual(
+            infer_correction_field({"details": "目前報名連結連到過去發表的論文"}),
+            "registration_url",
+        )
+
+    @patch("scripts.process_feedback.fetch_url")
+    def test_discovers_registration_link_on_same_official_domain(self, fetch):
+        fetch.return_value = ("Registration for the conference is open", "utf-8")
+        value, message = discover_official_url_correction(
+            {
+                "homepage_url": "https://iclt.info/paper/2023-024",
+                "registration_url": "https://iclt.info/paper/2023-024",
+            },
+            "registration_url",
+        )
+        self.assertEqual(value, "https://iclt.info/registration")
+        self.assertIn("官方網域", message)
 
     def test_correction_url_must_be_official_or_related(self):
         self.assertTrue(trusted_correction_url("https://finance.nfu.edu.tw/news", "", "https://nfu.edu.tw/old"))

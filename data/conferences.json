@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-06-19 16:28:56 UTC+08:00",
-  "source_count": 38,
+  "source_count": 41,
   "errors": [
     "fy-2026-ihc: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>",
     "organizer:明新科技大學民生學院: HTTP Error 403: Forbidden",
@@ -655,9 +655,9 @@
       "id": "iclt-2026",
       "title": "16th International Conference on Logistics & Transport 2026",
       "organizer": "International Conference on Logistics & Transport",
-      "homepage_url": "https://iclt.info/paper/2023-024",
-      "submission_url": "https://iclt.info/paper/2023-024",
-      "registration_url": "https://iclt.info/paper/2023-024",
+      "homepage_url": "https://iclt.info/",
+      "submission_url": "https://forms.gle/jnzznqtFVk4tiw5V6",
+      "registration_url": "https://iclt.info/registration",
       "event_start": "2026-10-19",
       "event_end": "2026-10-23",
       "location": "高雄",
@@ -677,11 +677,13 @@
       ],
       "attention_notes": [
         "摘要投稿截止日為 2026-06-30；全文投稿截止日為 2026-08-15。",
+        "作者註冊截止日為 2026-09-15；官方頁面目前公告作者 USD 500、一般參與者 USD 450。",
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
-        "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。"
+        "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。",
+        "依使用者回報 #5 修正：原報名網址誤連至 2023 年論文頁。"
       ],
       "submission_fee": "",
-      "registration_fee": "",
+      "registration_fee": "作者 USD 500；一般參與者 USD 450。",
       "last_checked": "2026-06-19",
       "last_attempted_at": "2026-06-19",
       "check_status": "ok",

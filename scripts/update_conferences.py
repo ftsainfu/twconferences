@@ -47,6 +47,8 @@ NON_CONFERENCE_WORDS = (
 OFFICIAL_EXTERNAL_HOSTS = {"sites.google.com"}
 OFFICIAL_REFERENCE_SUFFIXES = (".edu.tw", ".org.tw", ".gov.tw")
 NON_OFFICIAL_REFERENCE_HOSTS = {"forms.gle", "docs.google.com", "forms.office.com"}
+TAIWAN_LOCATION_WORDS = ("taiwan", "taipei", "kaohsiung", "taichung", "tainan", "hsinchu", "台灣", "臺灣", "台北", "臺北", "高雄", "台中", "臺中", "台南", "臺南", "新竹")
+BUSINESS_REFERENCE_WORDS = ("finance", "financial", "accounting", "management", "business", "marketing", "economics", "財務", "財金", "會計", "管理", "商管", "行銷", "經濟")
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 
 
@@ -496,6 +498,86 @@ def make_candidate(
     }
 
 
+def parse_ics_events(raw: str) -> list[dict[str, str]]:
+    unfolded = re.sub(r"\r?\n[ \t]", "", raw)
+    events: list[dict[str, str]] = []
+    for block in re.findall(r"BEGIN:VEVENT\r?\n([\s\S]*?)\r?\nEND:VEVENT", unfolded):
+        event: dict[str, str] = {}
+        for line in block.splitlines():
+            key, separator, value = line.partition(":")
+            if not separator:
+                continue
+            base_key = key.split(";", 1)[0]
+            if base_key in {"SUMMARY", "LOCATION", "URL", "DESCRIPTION", "DTSTART", "DTEND"}:
+                event[base_key.lower()] = html.unescape(value.replace("\\,", ",").replace("\\n", " "))
+            elif 'NAME="Country"' in key:
+                event["country"] = html.unescape(value)
+        if event:
+            events.append(event)
+    return events
+
+
+def ics_date(value: str) -> str:
+    match = re.match(r"(?P<year>20\d{2})(?P<month>\d{2})(?P<day>\d{2})", value)
+    if not match:
+        return ""
+    try:
+        return date(int(match.group("year")), int(match.group("month")), int(match.group("day"))).isoformat()
+    except ValueError:
+        return ""
+
+
+def discover_from_ics_reference(
+    source: dict,
+    raw: str,
+    existing_ids: set[str],
+    existing_urls: set[str],
+    existing_titles: set[str],
+) -> list[dict]:
+    candidates: list[dict] = []
+    name = source.get("name", "外部行事曆")
+    base_url = source.get("url", "")
+    for record in parse_ics_events(raw):
+        title = record.get("summary", "").strip()
+        location_text = f"{record.get('country', '')} {record.get('location', '')} {record.get('description', '')[:400]}".lower()
+        topic_text = f"{title} {record.get('description', '')[:800]}".lower()
+        event_start = ics_date(record.get("dtstart", ""))
+        link = normalize_url(base_url, record.get("url", ""))
+        canonical = canonical_url(link)
+        if not title or not event_start or event_start < today_iso():
+            continue
+        if not any(word in location_text for word in TAIWAN_LOCATION_WORDS):
+            continue
+        if not any(word in topic_text for word in BUSINESS_REFERENCE_WORDS):
+            continue
+        if not is_formal_conference_text(title):
+            continue
+        if not link or canonical in existing_urls or duplicates_known_title(title, existing_titles):
+            continue
+        item_id = candidate_id("reference", link)
+        if item_id in existing_ids:
+            continue
+        item = make_candidate(
+            candidate_prefix="reference",
+            title=title[:120],
+            link=link,
+            organizer=name,
+            published=today_iso(),
+            summary=f"由「{name}」公開行事曆發現的台灣商管候選，須回到主辦單位官方頁確認。",
+        )
+        item["event_start"] = event_start
+        end_date = ics_date(record.get("dtend", ""))
+        if end_date and end_date > event_start:
+            # RFC 5545 all-day DTEND is exclusive.
+            item["event_end"] = (date.fromisoformat(end_date) - timedelta(days=1)).isoformat()
+        else:
+            item["event_end"] = event_start
+        item["location"] = normalize_text(record.get("location", ""))[:80] or "台灣（待確認）"
+        item["fields"] = ["財金", "商管"]
+        candidates.append(item)
+    return candidates
+
+
 def discover_from_organizers(
     sources: list[dict],
     existing_ids: set[str],
@@ -569,8 +651,41 @@ def discover_from_references(
         api_url = source.get("api_url") or base_url
         if not api_url:
             continue
+        source_format = source.get("format", "json")
         try:
             raw, _ = fetch_url(api_url, timeout=12)
+            if source_format == "ics":
+                candidates.extend(
+                    discover_from_ics_reference(source, raw, existing_ids, existing_urls, existing_titles)
+                )
+                continue
+            if source_format == "html_index":
+                # SSRN's public index currently exposes conference names but not
+                # reliable location metadata. Keep it as a monitored reference;
+                # only explicit Taiwan links can become candidates.
+                for match in LINK_RE.finditer(raw):
+                    label = normalize_text(match.group("label"))
+                    link = normalize_url(base_url, match.group("href"))
+                    text = f"{label} {link}".lower()
+                    if not any(word in text for word in TAIWAN_LOCATION_WORDS):
+                        continue
+                    if not any(word in text for word in BUSINESS_REFERENCE_WORDS):
+                        continue
+                    if not is_relevant_conference_text(text) or duplicates_known_title(label, existing_titles):
+                        continue
+                    if not link or canonical_url(link) in existing_urls:
+                        continue
+                    candidates.append(
+                        make_candidate(
+                            candidate_prefix="reference",
+                            title=label[:120],
+                            link=link,
+                            organizer=name,
+                            published=today_iso(),
+                            summary=f"由「{name}」索引發現的台灣商管候選，須回到主辦單位官方頁確認。",
+                        )
+                    )
+                continue
             records = json.loads(raw)
         except (urllib.error.URLError, TimeoutError, UnicodeDecodeError, json.JSONDecodeError) as exc:
             errors.append(f"reference:{name}: {exc}")
