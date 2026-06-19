@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260616b" />
+    <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260619a" />
   </head>
   <body>
     <header class="site-header">
@@ -28,6 +29,19 @@
         <label>
           關鍵字
           <input id="keywordFilter" type="search" placeholder="研討會、主辦單位、領域" />
+        </label>
+        <label>
+          領域
+          <select id="fieldFilter">
+            <option value="">全部領域</option>
+            <option value="finance">財金／金融</option>
+            <option value="management">管理</option>
+            <option value="marketing">行銷</option>
+            <option value="trade">國貿／國際企業</option>
+            <option value="sustainability">永續／ESG</option>
+            <option value="technology">資訊科技</option>
+            <option value="health">健康管理</option>
+          </select>
         </label>
         <label>
           舉辦年月
@@ -91,6 +105,8 @@
         <button id="resetFilters" type="button">清除</button>
       </section>
 
+      <section id="healthAlert" class="health-alert" role="status" hidden></section>
+
       <section class="summary-row" aria-label="統計">
         <div><strong id="visibleCount">0</strong><span>符合條件</span></div>
         <div><strong id="newCount">0</strong><span>近期更新</span></div>
@@ -110,12 +126,26 @@
         沒有符合篩選條件的尚未舉辦研討會。
       </section>
 
+      <section id="candidateSection" class="list-section candidate-section" aria-labelledby="candidateTitle" hidden>
+        <div class="section-heading">
+          <p class="section-kicker">Pending Review</p>
+          <h2 id="candidateTitle">待確認候選研討會</h2>
+          <p>下列資料由自動掃描發現，尚未列入正式統計，使用前請先查閱來源頁。</p>
+          <small><span id="candidateCount">0</span> 筆待確認資料</small>
+        </div>
+        <section id="candidateList" class="conference-list compact-list"></section>
+      </section>
+
       <section class="list-section history-section" aria-labelledby="historyTitle">
         <div class="section-heading">
           <p class="section-kicker">Archive</p>
           <h2 id="historyTitle">歷年研討會清單</h2>
           <p>舉辦日期已早於資料更新日的研討會會自動移至此處，保留官方連結與投稿資訊供查詢。</p>
           <small><span id="historyCount">0</span> 筆歷年資料</small>
+        </div>
+        <div class="archive-toolbar">
+          <label>搜尋歷年資料<input id="historyKeyword" type="search" placeholder="名稱、主辦單位、領域" /></label>
+          <label>年份<select id="historyYear"><option value="">全部年份</option></select></label>
         </div>
         <section id="historyList" class="conference-list compact-list" aria-live="polite"></section>
         <section id="historyEmpty" class="empty-state" hidden>
@@ -154,6 +184,40 @@
       </p>
     </footer>
 
-    <script src="assets/app.js?v=20260616b" type="module"></script>
+    <dialog id="reportDialog" class="report-dialog">
+      <form id="reportForm">
+        <div class="dialog-heading">
+          <h2>回報資料問題</h2>
+          <button id="closeReportDialog" class="icon-button" type="button" aria-label="關閉">×</button>
+        </div>
+        <p id="reportConferenceTitle"></p>
+        <label>問題類型
+          <select id="reportType" required>
+            <option value="broken_link">連結無法開啟</option>
+            <option value="wrong_date">日期有誤</option>
+            <option value="wrong_info">其他資料有誤</option>
+          </select>
+        </label>
+        <label>問題說明<textarea id="reportDetails" rows="4" required placeholder="請簡述哪裡有誤"></textarea></label>
+        <label>建議修正欄位
+          <select id="correctionField">
+            <option value="">尚不確定</option>
+            <option value="homepage_url">會議主頁</option>
+            <option value="submission_url">投稿連結</option>
+            <option value="registration_url">報名連結</option>
+            <option value="event_start">舉辦日期</option>
+            <option value="event_end">結束日期</option>
+            <option value="submission_deadline">投稿截止日</option>
+            <option value="location">地點</option>
+          </select>
+        </label>
+        <label>正確內容<input id="correctionValue" type="text" placeholder="網址、YYYY-MM-DD 或正確文字" /></label>
+        <label>佐證網址<input id="evidenceUrl" type="url" placeholder="主辦單位公告網址" /></label>
+        <p class="dialog-note">送出後會開啟 GitHub 回報頁；登入並確認送出後，系統才會驗證及建立修正。</p>
+        <button class="primary-button" type="submit">前往送出回報</button>
+      </form>
+    </dialog>
+
+    <script src="assets/app.js?v=20260619a" type="module"></script>
   </body>
 </html>

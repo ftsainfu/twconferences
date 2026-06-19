@@ -2,104 +2,188 @@
   "sources": {
     "nqu-2026-management": {
       "hash": "5c468e446f930dbfa150edc0dc07039c9a9867e22cef023720e47475a9018729",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "59479bca386c91e556fb5bb059f21cceee3b3274a3052e3ed6d733c919c32b2f",
+      "hash": "438cd0049f52946f2c031c8ce0089c9922a6419ef2a36d7a529465da677dac0a",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367"
     },
     "dyu-2026-basummit": {
       "hash": "85e5c9297b3f4a1ff3ded2d82040e33a5dd2c747ab26e3540e630420100b4c10",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://basummit.dyu.edu.tw/"
     },
     "nycu-2026-taiop": {
       "hash": "2689c83062b88adb4f1fafddd13bd90de8577724a970cf49a0243d8cf99e0b09",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "49dacbdf50e06c8efd8210afb19d4a4b2329f0d572f70e8324fd42596b81284a",
+      "hash": "19fac4da4f088529460f68569755697d620c6ee06c073a501cf4323a1cbeaba9",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://www.conference.url.tw/main/"
     },
     "papertone-2026-business-law": {
       "hash": "f81818e78293d0b656b5feef47fc1bac0e8752f7eb695885e3088613191032c0",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://papertone.net/"
     },
     "mcu-2026-economics-trade-management": {
       "hash": "cde25aece8824396fd034fe2818af1d38766012b05b2c9e0a677d2f901ce2061",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
     },
     "fgu-2026-sme-management": {
-      "hash": "1b3b5b1e03ac95797ac2f1f6be6ec95e31d9f45396fa3d76185bcee1b4bdef38",
+      "hash": "c8d0c6c66bf8621661a55e6c816821da74898b68e73bb8596afc5fec5fc5dfe9",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
     },
     "ntub-2026-digital-business": {
       "hash": "a2ab5ea320fe0f482584069ff3450d97f9ac6b4d24bede7a784d62b3dd289908",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-13",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw"
     },
     "cmr-2026-marketing": {
       "hash": "7e78793c6966d381f6d76339756692f919e52124d3c9db060aac84784f0da866",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://cmr-crrmkt.pccu.edu.tw/"
     },
     "meiho-2026-health-tech-management": {
       "hash": "f0562c063552f7201ce07d193a86b47c440938fbb55fc129909ad0845cfc91b7",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx"
     },
     "apfita-2026": {
       "hash": "33e11007b2f7119b4acb5f40624901bf0daa61477aca27122dc23e6a4d7f9a8f",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-05",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://www.apfita.org/2026/"
     },
     "iclt-2026": {
       "hash": "872c8884cd2afddacc06805eb65f6d59e7c4919acf089173f6ff54eb2f5890d0",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
-      "last_changed": "2026-06-18",
+      "last_changed": "2026-06-19",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://iclt.info/paper/2023-024"
     },
     "fy-2026-ihc": {
       "hash": "",
       "last_checked": "2026-06-05",
       "last_changed": "2026-06-05",
-      "url": "https://ihc.fy.edu.tw/"
+      "url": "https://ihc.fy.edu.tw/",
+      "last_attempted_at": "2026-06-19",
+      "last_status": "unchanged",
+      "check_status": "error",
+      "last_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)>"
     },
     "ntub-2026-cbpm": {
       "hash": "ad57e330117c4d01cd91b9df22146426f01e6f3f8d62291cac5a5aa0077d9723",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-08",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1"
     },
     "tfa-2026-annual": {
       "hash": "a134542ec7fdf7acd87e5e39b5341054eb669d64356351c1b16ef3a275a93820",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-08",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "516147e5c942c8130eabb711a9a3be2710648a780ef9e7afec4b06d34fc9389a",
+      "hash": "c3674851c1c31af35f98cfad476fb1042fc5fa0f895813c407819496d4141455",
+      "last_attempted_at": "2026-06-19",
+      "last_successful_at": "2026-06-19",
       "last_checked": "2026-06-19",
       "last_changed": "2026-06-19",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://ba.stust.edu.tw/tc/news/63-91967-n"
     }
   }

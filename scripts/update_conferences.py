@@ -6,10 +6,13 @@ import html
 import json
 import re
 import sys
+import argparse
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone, timedelta
+from difflib import SequenceMatcher
+from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,14 +20,33 @@ DATA_DIR = ROOT / "data"
 SOURCES_FILE = DATA_DIR / "sources.json"
 OUTPUT_FILE = DATA_DIR / "conferences.json"
 HISTORY_FILE = DATA_DIR / "history.json"
+RECURRING_FILE = DATA_DIR / "recurring.json"
+CANDIDATES_FILE = DATA_DIR / "candidates.json"
 TZ = timezone(timedelta(hours=8))
 
 KEYWORDS = ("商管", "管理", "行銷", "財務", "財金", "國貿", "企業", "服務創新", "經營")
-CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文")
+CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文", "conference", "symposium")
+FORMAL_CONFERENCE_WORDS = ("研討會", "學術研討", "年會", "conference", "symposium")
 FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單")
-NON_CONFERENCE_WORDS = ("專刊", "學刊", "期刊", "期末報告")
-CURRENT_YEAR_MARKERS = ("2026", "115")
+NON_CONFERENCE_WORDS = (
+    "專刊",
+    "學刊",
+    "期刊",
+    "期末報告",
+    "講座",
+    "課程",
+    "工作坊",
+    "營隊",
+    "招生",
+    "說明會",
+    "培育計畫",
+    "研習",
+    "徵才",
+    "獎學金",
+)
 OFFICIAL_EXTERNAL_HOSTS = {"sites.google.com"}
+OFFICIAL_REFERENCE_SUFFIXES = (".edu.tw", ".org.tw", ".gov.tw")
+NON_OFFICIAL_REFERENCE_HOSTS = {"forms.gle", "docs.google.com", "forms.office.com"}
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 
 
@@ -46,18 +68,33 @@ def write_json(path: Path, payload) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def fetch_url(url: str, timeout: int = 18) -> tuple[str, str]:
+def fetch_url(url: str, timeout: int = 18, attempts: int = 3) -> tuple[str, str]:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "twconferences-bot/1.0 (+https://github.com/)",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "User-Agent": "twconferences-bot/1.1 (+https://github.com/ftsainfu/twconferences)",
+            "Accept": "text/html,application/xhtml+xml,application/json,application/xml;q=0.9,*/*;q=0.8",
         },
     )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        content_type = response.headers.get_content_charset() or "utf-8"
-        body = response.read()
-    return body.decode(content_type, errors="replace"), content_type
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                content_type = response.headers.get_content_charset() or "utf-8"
+                body = response.read()
+            return body.decode(content_type, errors="replace"), content_type
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(1.5 * (attempt + 1))
+    assert last_error is not None
+    raise last_error
+
+
+def current_year_markers(reference: date | None = None) -> tuple[str, ...]:
+    reference = reference or now_tw().date()
+    years = (reference.year, reference.year + 1)
+    return tuple(str(value) for year in years for value in (year, year - 1911))
 
 
 def normalize_text(raw: str) -> str:
@@ -79,7 +116,7 @@ def roc_to_iso(match: re.Match[str]) -> str:
         year += 1911
     month = int(match.group("month"))
     day = int(match.group("day"))
-    return f"{year:04d}-{month:02d}-{day:02d}"
+    return date(year, month, day).isoformat()
 
 
 DATE_PATTERNS = [
@@ -163,6 +200,7 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
         current_hash = ""
         change_status = "unchanged"
         change_summary = ""
+        check_status = "ok"
 
         try:
             raw, _ = fetch_url(item["homepage_url"])
@@ -181,30 +219,58 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
             item["presentation_languages"] = infer_languages(text, item.get("presentation_languages", []))
             history_sources[source_id] = {
                 "hash": current_hash,
+                "last_attempted_at": today_iso(),
+                "last_successful_at": today_iso(),
                 "last_checked": today_iso(),
                 "last_changed": today_iso() if change_status in {"new", "changed"} else previous.get("last_changed", ""),
+                "last_status": change_status,
+                "check_status": "ok",
+                "last_error": "",
                 "url": item["homepage_url"],
             }
         except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
             errors.append(f"{source_id}: {exc}")
+            check_status = "error"
             if not previous:
                 change_status = "new"
                 change_summary = "首次納入追蹤；本次來源自動檢查失敗，保留人工確認資料。"
                 history_sources[source_id] = {
                     "hash": "",
-                    "last_checked": today_iso(),
-                    "last_changed": today_iso(),
+                    "last_attempted_at": today_iso(),
+                    "last_successful_at": "",
+                    "last_checked": "",
+                    "last_changed": "",
+                    "last_status": "new",
+                    "check_status": "error",
+                    "last_error": str(exc),
                     "url": item["homepage_url"],
                 }
             else:
                 change_status = previous.get("last_status", "unchanged")
                 change_summary = "本次來源檢查失敗，保留前次資料。"
+                history_sources[source_id] = {
+                    **previous,
+                    "last_attempted_at": today_iso(),
+                    "last_successful_at": previous.get("last_successful_at") or previous.get("last_checked", ""),
+                    "last_status": change_status,
+                    "check_status": "error",
+                    "last_error": str(exc),
+                    "url": item["homepage_url"],
+                }
 
-        item["last_checked"] = today_iso()
+        source_history = history_sources.get(source_id, previous)
+        item["last_checked"] = source_history.get("last_successful_at") or source_history.get("last_checked", "")
+        item["last_attempted_at"] = source_history.get("last_attempted_at", today_iso())
+        item["check_status"] = check_status
+        item["check_error"] = source_history.get("last_error", "")
         item["presentation_languages"] = item.get("presentation_languages") or ["unknown"]
-        item["last_changed"] = history_sources.get(source_id, previous).get("last_changed", "")
+        item["last_changed"] = source_history.get("last_changed", "")
         item["change_status"] = change_status
-        item["change_label"] = {"new": "新增", "changed": "資訊異動", "unchanged": "已檢查"}.get(change_status, "已檢查")
+        item["change_label"] = (
+            "檢查失敗"
+            if check_status == "error"
+            else {"new": "新增", "changed": "資訊異動", "unchanged": "已檢查"}.get(change_status, "已檢查")
+        )
         item["change_summary"] = change_summary
         item["review_status"] = "verified"
         conferences.append(item)
@@ -249,6 +315,67 @@ def same_official_domain(source_url: str, link: str) -> bool:
     return domain_key(source_url) == domain_key(link) or link_host in OFFICIAL_EXTERNAL_HOSTS
 
 
+def valid_external_reference_url(source_url: str, link: str) -> bool:
+    parsed = urllib.parse.urlparse(link)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return False
+    host = parsed.netloc.lower().split(":", 1)[0]
+    if host in NON_OFFICIAL_REFERENCE_HOSTS:
+        return False
+    if domain_key(source_url) == domain_key(link):
+        return False
+    return host in OFFICIAL_EXTERNAL_HOSTS or host.endswith(OFFICIAL_REFERENCE_SUFFIXES)
+
+
+def is_formal_conference_text(text: str) -> bool:
+    lower_text = text.lower()
+    if any(word in text for word in NON_CONFERENCE_WORDS):
+        return False
+    return any(word in text for word in FORMAL_CONFERENCE_WORDS) or any(
+        word in lower_text for word in FORMAL_CONFERENCE_WORDS
+    )
+
+
+def is_relevant_conference_text(text: str) -> bool:
+    lower_text = text.lower()
+    if not any(marker in text for marker in current_year_markers()):
+        return False
+    if not any(word in text for word in CONFERENCE_WORDS) and not any(word in lower_text for word in CONFERENCE_WORDS):
+        return False
+    if not any(word in text for word in KEYWORDS):
+        return False
+    return is_formal_conference_text(text)
+
+
+def recurring_organizer_sources(recurring_payload: dict) -> list[dict]:
+    sources: list[dict] = []
+    for item in recurring_payload.get("recurring_conferences", []):
+        url = item.get("official_url", "")
+        if not url:
+            continue
+        sources.append(
+            {
+                "name": item.get("name") or item.get("organizer") or "常態性研討會",
+                "url": url,
+                "recurring": True,
+            }
+        )
+    return sources
+
+
+def merge_sources(*groups: list[dict]) -> list[dict]:
+    merged: list[dict] = []
+    seen: set[str] = set()
+    for group in groups:
+        for source in group:
+            key = canonical_url(source.get("url", ""))
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            merged.append(source)
+    return merged
+
+
 def candidate_id(prefix: str, url: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", urllib.parse.urlparse(url).netloc.lower()).strip("-")
     return f"{prefix}-{slug}-{hashlib.sha1(url.encode('utf-8')).hexdigest()[:8]}"
@@ -258,9 +385,29 @@ def title_key(title: str) -> str:
     return re.sub(r"[\W_]+", "", title.lower())
 
 
+def duplicate_title_key(title: str) -> str:
+    key = title_key(title)
+    key = re.sub(r"20\d{2}|1\d{2}", "", key)
+    key = re.sub(r"第[一二三四五六七八九十百千\d]+屆", "", key)
+    return key.replace("論文", "")
+
+
 def duplicates_known_title(title: str, known_titles: set[str]) -> bool:
     key = title_key(title)
-    return bool(key) and any(key in known or known in key for known in known_titles)
+    duplicate_key = duplicate_title_key(title)
+    if not key:
+        return False
+    for known in known_titles:
+        known_duplicate_key = duplicate_title_key(known)
+        if key in known or known in key:
+            return True
+        if duplicate_key and known_duplicate_key:
+            if duplicate_key in known_duplicate_key or known_duplicate_key in duplicate_key:
+                return True
+            if min(len(duplicate_key), len(known_duplicate_key)) >= 8:
+                if SequenceMatcher(None, duplicate_key, known_duplicate_key).ratio() >= 0.86:
+                    return True
+    return False
 
 
 def make_candidate(
@@ -328,15 +475,9 @@ def discover_from_organizers(
             text = f"{label} {link}"
             if any(word in text for word in FOLLOWUP_WORDS):
                 continue
-            if any(word in text for word in NON_CONFERENCE_WORDS):
-                continue
-            if not any(marker in text for marker in CURRENT_YEAR_MARKERS):
-                continue
-            if not label or not any(word in text for word in CONFERENCE_WORDS):
+            if not label or not is_relevant_conference_text(text):
                 continue
             if duplicates_known_title(label, existing_titles):
-                continue
-            if not any(word in text for word in KEYWORDS):
                 continue
             item_id = candidate_id("organizer", link)
             if item_id in existing_ids:
@@ -349,42 +490,252 @@ def discover_from_organizers(
                     link=link,
                     organizer=name,
                     published=today_iso(),
-                    summary="由主辦單位追蹤頁每日掃描發現，尚待人工確認日期、投稿與發表形式。",
+                    summary=(
+                        "由常態性研討會或主辦單位官方頁每日掃描發現，"
+                        "已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+                    ),
                 )
             )
 
     return candidates[:12], errors
 
 
-def main() -> int:
-    sources = read_json(SOURCES_FILE, {"conferences": [], "organizer_sources": []})
+def discover_from_references(
+    sources: list[dict],
+    existing_ids: set[str],
+    existing_urls: set[str],
+    existing_titles: set[str],
+) -> tuple[list[dict], list[str]]:
+    candidates: list[dict] = []
+    errors: list[str] = []
+    seen_urls: set[str] = set()
+
+    for source in sources:
+        name = source.get("name", "外部參考來源")
+        base_url = source.get("url", "")
+        api_url = source.get("api_url") or base_url
+        if not api_url:
+            continue
+        try:
+            raw, _ = fetch_url(api_url, timeout=12)
+            records = json.loads(raw)
+        except (urllib.error.URLError, TimeoutError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            errors.append(f"reference:{name}: {exc}")
+            continue
+        if not isinstance(records, list):
+            errors.append(f"reference:{name}: API response is not a list")
+            continue
+
+        for record in records:
+            if not isinstance(record, dict):
+                continue
+            title = str(record.get("title") or "").strip()
+            if not title:
+                continue
+            text = " ".join(
+                str(value)
+                for value in (
+                    title,
+                    record.get("organizer") or "",
+                    record.get("location") or "",
+                    " ".join(record.get("tags") or []),
+                )
+            )
+            if any(word in text for word in FOLLOWUP_WORDS):
+                continue
+            if not is_relevant_conference_text(text):
+                continue
+            if duplicates_known_title(title, existing_titles):
+                continue
+
+            link = normalize_url(base_url, str(record.get("registrationUrl") or record.get("href") or ""))
+            canonical = canonical_url(link)
+            if not link or canonical in seen_urls or canonical in existing_urls:
+                continue
+            if not valid_external_reference_url(base_url, link):
+                continue
+            item_id = candidate_id("reference", link)
+            if item_id in existing_ids:
+                continue
+
+            seen_urls.add(canonical)
+            published = str(record.get("updatedAt") or record.get("crawledAt") or today_iso())[:10]
+            item = make_candidate(
+                candidate_prefix="reference",
+                title=title[:120],
+                link=link,
+                organizer=str(record.get("organizer") or name),
+                published=published,
+                summary=f"由外部研討會資訊站「{name}」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。",
+            )
+            event_date = str(record.get("date") or "").strip()
+            deadline = str(record.get("registrationDeadline") or "").strip()
+            location = str(record.get("location") or "").strip()
+            tags = [str(tag).strip() for tag in record.get("tags") or [] if str(tag).strip()]
+            if event_date:
+                item["event_start"] = event_date[:10]
+                item["event_end"] = event_date[:10]
+            if deadline:
+                item["submission_deadline"] = deadline[:10]
+            if location:
+                item["location"] = location[:80]
+            if tags:
+                item["fields"] = tags[:6]
+            candidates.append(item)
+
+    return candidates[:12], errors
+
+
+def merge_candidate_store(discovered: list[dict], stored: list[dict]) -> list[dict]:
+    """Keep review decisions and first-seen dates across daily discovery runs."""
+    today = today_iso()
+    by_id = {item.get("id"): dict(item) for item in stored if item.get("id")}
+    discovered_ids: set[str] = set()
+    for candidate in discovered:
+        candidate_id_value = candidate["id"]
+        discovered_ids.add(candidate_id_value)
+        previous = by_id.get(candidate_id_value, {})
+        by_id[candidate_id_value] = {
+            **candidate,
+            "first_seen": previous.get("first_seen") or candidate.get("last_changed") or today,
+            "last_seen": today,
+            "candidate_status": previous.get("candidate_status", "pending"),
+            "review_notes": previous.get("review_notes", ""),
+            "is_stale": False,
+        }
+
+    for candidate_id_value, candidate in by_id.items():
+        if candidate_id_value not in discovered_ids:
+            candidate["is_stale"] = True
+
+    return sorted(by_id.values(), key=lambda item: (item.get("candidate_status", "pending"), item.get("first_seen", ""), item["id"]))
+
+
+def validate_url(value: str) -> bool:
+    parsed = urllib.parse.urlparse(value)
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def validate_payload(payload: dict, previous_payload: dict | None = None) -> list[str]:
+    errors: list[str] = []
+    items = payload.get("conferences")
+    if not isinstance(items, list):
+        return ["conferences must be a list"]
+
+    required = ("id", "title", "homepage_url", "organizer", "review_status")
+    seen_ids: set[str] = set()
+    seen_urls: set[str] = set()
+    for index, item in enumerate(items):
+        prefix = f"conferences[{index}]"
+        for key in required:
+            if not item.get(key):
+                errors.append(f"{prefix}.{key} is required")
+        item_id = item.get("id", "")
+        if item_id in seen_ids:
+            errors.append(f"duplicate id: {item_id}")
+        seen_ids.add(item_id)
+        url = item.get("homepage_url", "")
+        canonical = canonical_url(url)
+        if not validate_url(url):
+            errors.append(f"{prefix}.homepage_url is invalid: {url}")
+        if canonical in seen_urls:
+            errors.append(f"duplicate homepage_url: {url}")
+        seen_urls.add(canonical)
+        for key in ("event_start", "event_end", "submission_deadline", "last_checked", "last_changed"):
+            value = item.get(key)
+            if value:
+                try:
+                    date.fromisoformat(str(value))
+                except ValueError:
+                    errors.append(f"{prefix}.{key} is not ISO date: {value}")
+
+    if previous_payload:
+        old_verified = sum(item.get("review_status") == "verified" for item in previous_payload.get("conferences", []))
+        new_verified = sum(item.get("review_status") == "verified" for item in items)
+        if old_verified >= 5 and new_verified < old_verified * 0.65:
+            errors.append(f"verified conference count dropped unexpectedly: {old_verified} -> {new_verified}")
+    return errors
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Refresh conference data")
+    parser.add_argument("--fail-on-errors", action="store_true", help="write valid output but return non-zero when a source fails")
+    parser.add_argument("--validate-only", action="store_true", help="validate the current generated data without network access")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.validate_only:
+        validation_errors = validate_payload(read_json(OUTPUT_FILE, {}))
+        for error in validation_errors:
+            print(f"- {error}", file=sys.stderr)
+        return 1 if validation_errors else 0
+
+    sources = read_json(SOURCES_FILE, {"conferences": [], "organizer_sources": [], "reference_sources": []})
+    recurring = read_json(RECURRING_FILE, {"recurring_conferences": []})
     history = read_json(HISTORY_FILE, {"sources": {}})
+    previous_payload = read_json(OUTPUT_FILE, {"conferences": []})
+    candidate_payload = read_json(CANDIDATES_FILE, {"candidates": []})
+    migrated_candidates = [
+        item for item in previous_payload.get("conferences", []) if item.get("review_status") == "candidate"
+    ]
     conferences, errors = update_known_conferences(sources, history)
     existing_ids = {item["id"] for item in conferences}
     existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
     existing_titles = {title_key(item.get("title", "")) for item in conferences}
-    organizer_candidates, organizer_errors = discover_from_organizers(
+    organizer_sources = merge_sources(
         sources.get("organizer_sources", []),
+        recurring_organizer_sources(recurring),
+    )
+    organizer_candidates, organizer_errors = discover_from_organizers(
+        organizer_sources,
         existing_ids,
         existing_urls,
         existing_titles,
     )
     errors.extend(organizer_errors)
+    reference_candidates, reference_errors = discover_from_references(
+        sources.get("reference_sources", []),
+        existing_ids | {item["id"] for item in organizer_candidates},
+        existing_urls | {canonical_url(item.get("homepage_url", "")) for item in organizer_candidates},
+        existing_titles | {title_key(item.get("title", "")) for item in organizer_candidates},
+    )
+    errors.extend(reference_errors)
+    stored_candidates = candidate_payload.get("candidates", []) or migrated_candidates
+    candidate_store = merge_candidate_store(organizer_candidates + reference_candidates, stored_candidates)
+    visible_candidates = [
+        item for item in candidate_store if item.get("candidate_status") == "pending" and not item.get("is_stale")
+    ]
     payload = {
         "generated_at": now_tw().strftime("%Y-%m-%d %H:%M:%S %Z"),
         "source_count": len(sources.get("conferences", []))
-        + len(sources.get("organizer_sources", [])),
+        + len(organizer_sources)
+        + len(sources.get("reference_sources", [])),
         "errors": errors,
-        "conferences": conferences + organizer_candidates,
+        "health": {
+            "status": "degraded" if errors else "healthy",
+            "source_error_count": len(errors),
+            "verified_count": len(conferences),
+            "candidate_count": len(visible_candidates),
+        },
+        "conferences": conferences + visible_candidates,
     }
+    validation_errors = validate_payload(payload, previous_payload)
+    if validation_errors:
+        print("Refusing to replace data because validation failed:", file=sys.stderr)
+        for error in validation_errors:
+            print(f"- {error}", file=sys.stderr)
+        return 1
     write_json(OUTPUT_FILE, payload)
     write_json(HISTORY_FILE, history)
+    write_json(CANDIDATES_FILE, {"generated_at": payload["generated_at"], "candidates": candidate_store})
     if errors:
         print("Completed with source errors:", file=sys.stderr)
         for error in errors:
             print(f"- {error}", file=sys.stderr)
     print(f"Wrote {len(payload['conferences'])} conferences to {OUTPUT_FILE}")
-    return 0
+    return 2 if errors and args.fail_on_errors else 0
 
 
 if __name__ == "__main__":
