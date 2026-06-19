@@ -199,6 +199,8 @@ class FeedbackTests(unittest.TestCase):
             self.assertEqual(updated["conferences"][0]["homepage_url"], "https://example.edu.tw/new")
             rendered = json.loads(generated.read_text(encoding="utf-8"))
             self.assertEqual(rendered["conferences"][0]["homepage_url"], "https://example.edu.tw/new")
+            self.assertIn("generated_at", rendered)
+            self.assertEqual(rendered["conferences"][0]["last_changed"], process_feedback.today_iso())
 
 
 if __name__ == "__main__":

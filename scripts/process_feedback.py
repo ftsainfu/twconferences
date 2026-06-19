@@ -11,9 +11,9 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 try:
-    from .update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, read_json, today_iso, validate_url, write_json
+    from .update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, now_tw, read_json, today_iso, validate_url, write_json
 except ImportError:
-    from update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, read_json, today_iso, validate_url, write_json
+    from update_conferences import DATA_DIR, LINK_RE, OUTPUT_FILE, domain_key, fetch_url, normalize_text, normalize_url, now_tw, read_json, today_iso, validate_url, write_json
 
 SOURCES_FILE = DATA_DIR / "sources.json"
 CANDIDATES_FILE = DATA_DIR / "candidates.json"
@@ -248,6 +248,7 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
             old_value = str(record.get(field, ""))
             record[field] = value
             record["last_user_report"] = today_iso()
+            record["last_changed"] = today_iso()
             record["attention_notes"] = list(record.get("attention_notes") or []) + [
                 f"使用者回報後建議修正 {field}：{old_value or '未填'} → {value}；待 PR 審核。"
             ]
@@ -283,10 +284,11 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
         write_json(CANDIDATES_FILE, candidates)
     if correction_applied:
         generated = read_json(OUTPUT_FILE, {"conferences": []})
+        generated["generated_at"] = now_tw().strftime("%Y-%m-%d %H:%M:%S %Z")
         for item in generated.get("conferences", []):
             if item.get("id") != conference_id:
                 continue
-            for key in ALLOWED_FIELDS | {"attention_notes", "last_user_report", "link_status"}:
+            for key in ALLOWED_FIELDS | {"attention_notes", "last_user_report", "last_changed", "link_status"}:
                 if key in record:
                     item[key] = record[key]
             break
