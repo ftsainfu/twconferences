@@ -68,6 +68,13 @@ h1 {
   font-weight: 750;
 }
 
+.section-jump {
+  display: inline-flex;
+  margin: 12px 0 0 10px;
+  color: var(--accent-dark);
+  font-weight: 750;
+}
+
 .status-panel {
   align-self: end;
   display: grid;
@@ -91,6 +98,40 @@ h1 {
 main {
   width: min(1180px, calc(100% - 32px));
   margin: 24px auto 48px;
+}
+
+.page-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #e7ecea;
+}
+
+.page-tabs button {
+  width: auto;
+  flex: 1 1 0;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.page-tabs button:hover {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--accent-dark);
+}
+
+.page-tabs button[aria-selected="true"] {
+  background: var(--surface);
+  border-color: #cbd5d1;
+  color: var(--accent-dark);
+  box-shadow: 0 3px 10px rgba(28, 44, 39, 0.08);
+}
+
+[role="tabpanel"][hidden] {
+  display: none;
 }
 
 .toolbar {
@@ -412,6 +453,37 @@ a:focus-visible {
   font-weight: 700;
 }
 
+.corroboration-note {
+  margin: 8px 0 0;
+  color: #2257a0;
+  font-weight: 700;
+}
+
+.publication-info {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #d8cba6;
+  border-radius: 6px;
+  background: #fffaf0;
+}
+
+.publication-info h3 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+
+.publication-info ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.publication-info li span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
 .empty-state {
   padding: 48px;
   background: var(--surface);
@@ -618,6 +690,240 @@ a:focus-visible {
   font-weight: 750;
 }
 
+.grants-section {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #c8d8d2;
+  border-radius: 8px;
+  background: #f2f7f5;
+}
+
+.grant-notice {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-left: 4px solid #b77718;
+  background: #fff8e8;
+  color: #65470f;
+  font-weight: 650;
+}
+
+.grant-priority {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 14px;
+  padding: 13px 15px;
+  border: 1px solid #8fb8aa;
+  border-radius: 7px;
+  background: #e6f2ed;
+}
+
+.grant-priority span {
+  color: #294c41;
+}
+
+.eligibility-checker {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid #a9c5bb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.eligibility-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.eligibility-heading h3,
+.eligibility-heading p {
+  margin: 0;
+}
+
+.eligibility-heading > p {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.eligibility-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.eligibility-checker > button {
+  width: auto;
+}
+
+.eligibility-result {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #a9c5bb;
+  border-radius: 7px;
+  background: #f0f7f4;
+}
+
+.eligibility-result--conditional {
+  border-color: #d4a34f;
+  background: #fff8e8;
+}
+
+.eligibility-result--ineligible {
+  border-color: #c98272;
+  background: #fff1ed;
+}
+
+.eligibility-result h4,
+.eligibility-result p {
+  margin: 0;
+}
+
+.eligibility-result ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.eligibility-deadlines {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: #fff;
+}
+
+.grant-list {
+  display: grid;
+  gap: 16px;
+}
+
+.grant-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.grant-card--archived {
+  background: #fafafa;
+  border-style: dashed;
+}
+
+.grant-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.grant-heading h3 {
+  margin: 5px 0 0;
+  font-size: 1.15rem;
+}
+
+.grant-status {
+  display: inline-flex;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #dceee7;
+  color: #165849;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.grant-card--archived .grant-status {
+  background: #eee5d5;
+  color: #73541c;
+}
+
+.grant-summary {
+  margin: 12px 0;
+  color: #34443e;
+}
+
+.grant-priority-note {
+  padding: 9px 11px;
+  border-left: 3px solid var(--accent);
+  background: #eef6f2;
+  color: #244b3f;
+  font-weight: 700;
+}
+
+.grant-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.grant-detail {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border: 1px solid #e0e7e4;
+  border-radius: 6px;
+  background: #fbfcfb;
+}
+
+.grant-detail h4 {
+  margin: 0 0 6px;
+}
+
+.grant-detail ul,
+.grant-detail ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.grant-detail li + li {
+  margin-top: 5px;
+}
+
+.grant-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.grant-links a {
+  padding: 7px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 750;
+}
+
+.international-guide {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #b9c9dd;
+  border-radius: 7px;
+  background: #f4f7fb;
+}
+
+.international-guide h4,
+.international-guide p {
+  margin: 0;
+}
+
+.international-guide ul {
+  margin: 9px 0;
+  padding-left: 20px;
+}
+
+.international-guide li + li {
+  margin-top: 5px;
+}
+
+.international-caution {
+  color: #4b5f78;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
 footer {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto 36px;
@@ -657,8 +963,15 @@ footer {
   .toolbar,
   .summary-row,
   .meta-grid,
-  .archive-toolbar {
+  .archive-toolbar,
+  .grant-detail-grid,
+  .eligibility-grid {
     grid-template-columns: 1fr;
+  }
+
+  .eligibility-heading {
+    display: grid;
+    align-items: start;
   }
 
   .conference-card {

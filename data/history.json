@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "56293581f67cdc24dec90bff3427a535dd15251257333cee0ac85b5994879b61",
+      "hash": "38c0ed81c673471a48e023b534f8de4ed3ee78993a9941b7992ce142d0971e2e",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "1b93e9e4f7e980c0be521bca88aa374a5295396efbb97c3fa211cdd8ab130ed4",
+      "hash": "388a4a4618a5bc967687facdac22a3ae5109078e9376dfd69a27c8143db581ba",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
@@ -177,7 +177,7 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "e0b76331a3469dad1e5e0100f554cedd9bfe5b2198c4f4b1381e878438dc4f1c",
+      "hash": "cbc1b4d10f61115fc697847ef484037f365864e2ce036308675eabd080c47508",
       "last_attempted_at": "2026-06-20",
       "last_successful_at": "2026-06-20",
       "last_checked": "2026-06-20",
@@ -186,6 +186,28 @@
       "check_status": "ok",
       "last_error": "",
       "url": "https://ba.stust.edu.tw/tc/news/63-91967-n"
+    },
+    "ntumr-2026-frontiers-accounting-finance": {
+      "hash": "3dd742ce681e2a2703838abcee3db5a52bb4d7c42e046c91da0293e400207ffe",
+      "last_attempted_at": "2026-06-20",
+      "last_successful_at": "2026-06-20",
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-20",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=336"
+    },
+    "taa-2026-accounting-education": {
+      "hash": "cf5957bdefd157192289ac573f0036be2fc824b73bf846be7c7aa94f38ba125e",
+      "last_attempted_at": "2026-06-20",
+      "last_successful_at": "2026-06-20",
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-20",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://taa2026.acc.scu.edu.tw/"
     }
   }
 }

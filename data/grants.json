@@ -1,0 +1,219 @@
+{
+  "last_verified": "2026-06-20",
+  "notice": "目前可確認的現行管道包含國科會「補助國內研究生出席國際學術會議」，以及虎科大 115 年技藝獎金。研討會獲得最佳論文或優秀論文，不代表一定符合技藝競賽獎金；仍須由系所及研發處認定是否屬國際性或全國性競賽前三名。虎科大另有 108、109 年度校內專案資料，但未查得 115 年度續辦公告，請勿直接沿用舊表格、金額或期限。",
+  "programs": [
+    {
+      "id": "nstc-graduate-international-conference",
+      "priority": 1,
+      "status": "active",
+      "status_label": "現行辦法",
+      "provider": "國家科學及技術委員會／虎科大彙送",
+      "title": "補助國內研究生出席國際學術會議",
+      "summary": "研究生先在國科會學術研發服務網完成線上申請，再送虎科大審核與彙送。補助屬部分補助，核定後依國外出差旅費規定及核定額度覈實報支。",
+      "priority_note": "第一順位：先申請國科會。若核定額不足，再向虎科大確認是否有當年度校內專案、計畫經費或其他補助可分攤。",
+      "eligibility": [
+        "虎科大非在職專班之博士班或碩士班在學研究生。",
+        "須出席國際學術會議並發表首次發表之論文。",
+        "每人每年度以補助一次為限；合著論文每篇僅補助一位研究生發表。"
+      ],
+      "funding": [
+        "國科會依審查結果核定總額，沒有適用所有學門的固定金額。",
+        "於核定限額內，依國外出差旅費報支要點所列費用項目覈實報支。",
+        "屬部分補助；不足部分可由學校自籌、國科會其他計畫或其他機關補助分攤，但須完整揭露來源、項目及金額。"
+      ],
+      "deadline": [
+        "先依虎科大研發處公告的校內截止時間送出；校內截止日可能早於國科會期限。",
+        "虎科大最遲須於會議首日所屬月份之前一個月的首日彙送國科會；遇假日順延至下一上班日。",
+        "接受證明若申請時尚未取得，可註明補送，但最遲須於會議首日四週前送達國科會。"
+      ],
+      "documents": [
+        "國科會線上申請書與最新個人基本資料。",
+        "擬發表論文摘要（須為首次發表）。",
+        "論文接受發表證明；尚未取得者須註明補送。",
+        "指導教授推薦函，並註明外語能力。",
+        "其他有助審查資料，例如論文全文、會議重要性或發表方式資料。"
+      ],
+      "steps": [
+        "先向虎科大研發處確認本次校內收件截止日與承辦窗口。",
+        "登入國科會學術研發服務網，註冊或更新研究人員基本資料。",
+        "選擇「補助國內研究生出席國際學術會議」，填寫申請書並上傳文件。",
+        "線上確認送至虎科大；由校方審核資格、文件及經費後彙送國科會。",
+        "國科會原則上於收件次日起一個月內完成審查；以正式核定通知為準。",
+        "獲核定後依校內出國、請假、請購及經費程序辦理，並保留機票、註冊費及其他支用單據。",
+        "會議結束後十五日內，於學術研發服務網上傳出席報告、登錄結報經費，並將支用單據送虎科大審核。"
+      ],
+      "cautions": [
+        "赴中國大陸參加者，會議須由國際學術組織主辦，或由國際學術組織主辦、陸方協辦。",
+        "機票原則上須搭乘本國籍班機；無法搭乘時應事先完成外籍航空公司班機申請核准。",
+        "變更會議或其他核定內容須於會議前經虎科大線上送國科會同意，不可自行更換。",
+        "未按期完成出席報告或經費結報，可能不得於下一年度再次申請。"
+      ],
+      "international_student_guide": {
+        "title": "English guide for international graduate students",
+        "summary": "The published rules do not state a nationality restriction. An international student enrolled in an eligible non-in-service master's or doctoral program at NFU may submit a preliminary application through NFU, subject to institutional verification and NSTC review.",
+        "points": [
+          "The event must be an international academic conference. It may be held abroad, in Taiwan, or online; a domestic-only conference does not meet this program's stated scope.",
+          "You must present a research paper being presented for the first time. Attendance without a paper is not sufficient.",
+          "Apply through the NSTC Academic R&D Service Portal, then submit the application to NFU before NFU's internal deadline.",
+          "Required materials include the abstract, proof of acceptance, and an advisor recommendation letter that comments on foreign-language ability.",
+          "If the acceptance letter is pending, mark it for later submission. NSTC must receive it no later than four weeks before the conference begins.",
+          "Only one NSTC conference grant per student per calendar year is allowed, and only one student may receive the grant for the same co-authored paper.",
+          "Within 15 days after the conference, upload the conference report and expense details and submit supporting receipts to NFU."
+        ],
+        "caution": "This English summary is for reference only. The Chinese rules and the final decisions of NFU and NSTC prevail. Confirm NFU's internal deadline before applying."
+      },
+      "links": [
+        {
+          "label": "國科會現行作業要點",
+          "url": "https://www.nstc.gov.tw/sci/ch/detail/bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb"
+        },
+        {
+          "label": "國科會學術研發服務網",
+          "url": "https://arspb.nstc.gov.tw/NSCWeb/slogin.jsp"
+        },
+        {
+          "label": "虎科大研發處",
+          "url": "https://ord.nfu.edu.tw/"
+        },
+        {
+          "label": "虎科大國科會補助結報公告",
+          "url": "https://www.nfu.edu.tw/zh_tw/ann/art/%E8%B2%B4%E6%A9%9F%E6%A7%8B114%E5%B9%B4%E5%BA%A6%E7%8D%B2%E5%9C%8B%E7%A7%91%E6%9C%83-%E8%A3%9C%E5%8A%A9%E5%9C%8B%E5%85%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E5%87%BA%E5%B8%AD%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E6%9C%83%E8%AD%B0-%E8%A3%9C%E5%8A%A9%E6%A1%88-%E8%AB%8B%E4%BE%9D%E9%99%90%E8%BE%A6%E7%90%86%E7%B6%93%E8%B2%BB%E7%B5%90%E5%A0%B1%E7%9B%B8%E9%97%9C%E4%BA%8B%E5%AE%9C-%E8%AB%8B%E6%9F%A5%E7%85%A7-40803295"
+        }
+      ]
+    },
+    {
+      "id": "nfu-2026-skill-competition-award",
+      "priority": 2,
+      "status": "current",
+      "status_label": "115 年現行公告・第一期已截止",
+      "provider": "國立虎尾科技大學研究發展處實習組",
+      "title": "技藝獎金：研討會競賽獲獎申請",
+      "summary": "虎科大學生若以學校名義參加國際性或全國性競賽並獲前三名，可依當期公告申請技藝獎金。研討會最佳論文、優秀論文或論文競賽獎，必須具備明確競賽性質與名次，並經系所初審及研發處複審，才可能適用。",
+      "priority_note": "這是獲獎後的獎勵，不是出席前的差旅補助。出席前仍先申請國科會；會後若獲獎，再另外確認技藝獎金資格。",
+      "eligibility": [
+        "虎科大在學學生以學校名義參賽，並在國際性或全國性技藝競賽取得前三名。",
+        "競賽不得屬社團、玩樂或聯誼性質；主辦單位、參賽範圍及獎項層級須符合校方認定。",
+        "研討會獎項應有正式獲獎證明、明確名次或等同前三名的獎級；僅有『最佳論文』或『優秀論文』名稱時，應先請系辦與研發處實習組確認能否認列。"
+      ],
+      "funding": [
+        "一般技藝獎金依當期獎勵金額度與合格申請人數分配，最終金額以審查核定為準。",
+        "符合常陽興業獎學金資格者，可依公告在申請表右上角註明『申請常陽』；未通過常陽審核時，會自動改列一般競賽獎金申請。",
+        "113 年 2 月 19 日修正的常陽辦法，國際性競賽第一、二、三名表列為 5 萬、4 萬、3 萬元；辦法同時保留依實際預算、名額及競賽名次調整的權利。"
+      ],
+      "deadline": [
+        "115 年第一期自 2026-03-02 起受理；研發處公告彙整期限為 2026-03-31，目前已截止。",
+        "財金系 115 年第一期學生繳交期限為 2026-03-31 16:00；不同系所可能訂更早的內部截止時間。",
+        "第二期尚未查得 115 年正式公告，不自行沿用過去年度日期；獲獎後應立即詢問系辦並追蹤研發處技藝獎金公告。"
+      ],
+      "documents": [
+        "在 eCare 完成證照競賽填報及技藝獎金申請後列印的技藝獎勵申請表。",
+        "正式獎狀或獲獎證明影本；研討會獲獎者建議一併檢附會議官網、競賽辦法、獎項及名次說明。",
+        "參賽總隊伍數、得獎總隊數、競賽獎金及主辦單位等可供認定競賽層級的資料。",
+        "學生本人郵局帳號存簿封面影本，不得使用父母或其他人的帳戶。"
+      ],
+      "steps": [
+        "先保存獎狀、會議徵稿頁、獎項公告、主辦單位與參賽規模等證明。",
+        "向所屬系辦確認該研討會獎項能否認列為國際性或全國性技藝競賽前三名，並確認當期校內截止日。",
+        "在 eCare 填寫競賽獲獎資料；團體獲獎時，每位成員均須各自填報。",
+        "列印技藝獎勵申請表，連同獲獎證明及本人郵局存簿封面送系辦初審。",
+        "經系所初審、學院核章後，由學院彙送研發處實習組複審；獎金以正式核定結果為準。"
+      ],
+      "cautions": [
+        "研討會的『最佳論文獎』不一定是前三名制，也不一定被認定為技藝競賽；不要只憑獎項名稱判斷資格。",
+        "獲獎證明最好載明學生姓名、獎項、名次、作品或論文名稱及主辦單位；資料不足可能影響認定。",
+        "第一期已截止，本頁不預測第二期日期。請以研發處及所屬系所最新公告為準。",
+        "研發處實習組公告聯絡電話為 05-631-5022。"
+      ],
+      "links": [
+        {
+          "label": "虎科大研發處 115 年第一期公告",
+          "url": "https://tech.nfu.edu.tw/index.php/zh/race/4899-115-ecare"
+        },
+        {
+          "label": "虎科大財金系 115 年第一期公告",
+          "url": "https://nfufinance.nfu.edu.tw/nfufinance/%E7%B3%BB%E6%89%80%E8%B3%87%E8%A8%8A/1438-115%E5%B9%B4%E7%AC%AC%E4%B8%80%E6%9C%9F%E6%8A%80%E8%97%9D%E7%8D%8E%E9%87%91%E7%94%B3%E8%AB%8B%E9%80%9A%E7%9F%A5-%E8%AD%89%E7%85%A7%E7%AB%B6%E8%B3%BD%E8%AB%8B%E8%87%B3ecare%E7%B3%BB%E7%B5%B1%E5%A1%AB%E5%A0%B1"
+        },
+        {
+          "label": "常陽興業獎學金辦法（113-02-19 修正）",
+          "url": "https://tech.nfu.edu.tw/index.php/zh/?id=9381&option=com_attachments&task=download"
+        }
+      ]
+    },
+    {
+      "id": "nfu-2020-conference-paper-award",
+      "priority": 3,
+      "status": "archived",
+      "status_label": "109 年歷史資料",
+      "provider": "國立虎尾科技大學高等教育深耕計畫",
+      "title": "學生投稿國際或全國性學術研討會論文發表獎助金",
+      "summary": "109 年度一次性專案，適用投稿虎科大主辦之國際或全國性研討會並完成註冊的在學一般生。官網未查得 115 年度續辦公告，不可視為現行補助。",
+      "eligibility": [
+        "109 年度規定適用虎科大在學一般生，包含大專生、碩士生及博士生。",
+        "須以完整論文或長摘要投稿虎科大主辦的國際或全國性研討會並完成註冊。"
+      ],
+      "funding": [
+        "109 年度標準為每篇論文或長摘要新臺幣 500 元，每篇限補助一人。"
+      ],
+      "deadline": [
+        "原受理期限為 2020-10-19，已截止。"
+      ],
+      "documents": [
+        "申請表正本。",
+        "論文接受函影本。",
+        "核銷時檢附註冊費收據影本。"
+      ],
+      "steps": [
+        "本項目僅供理解過去校內獎助形式。",
+        "如欲申請類似補助，應先詢問研發處是否有當年度高教深耕或其他校內專案，再使用當年度表格。"
+      ],
+      "cautions": [
+        "過期專案，不代表目前仍可申請。"
+      ],
+      "links": [
+        {
+          "label": "虎科大 109 年原公告",
+          "url": "https://tech.nfu.edu.tw/index.php/zh/paper-3/1378-109"
+        }
+      ]
+    },
+    {
+      "id": "nfu-2019-graduate-travel-grant",
+      "priority": 4,
+      "status": "archived",
+      "status_label": "108 年歷史資料",
+      "provider": "國立虎尾科技大學發展重點高階研發人才培育計畫",
+      "title": "研究生國際會議發表差旅費補助",
+      "summary": "108 年度專案曾補助一般碩、博士研究生出國發表國際會議論文，以口頭發表優先。官網未查得現行續辦公告，舊金額與流程僅供參考。",
+      "eligibility": [
+        "108 年度規定適用具虎科大正式學籍之一般碩、博士研究生。",
+        "出國參加國際會議並發表論文，口頭報告優先；每人每年一次。"
+      ],
+      "funding": [
+        "108 年度標準僅補助經濟艙機票：歐美紐澳上限 40,000 元；亞洲及其他地區上限 15,000 元。"
+      ],
+      "deadline": [
+        "原受理期限為 2019-10-15、核銷期限為 2019-11-15，均已截止。"
+      ],
+      "documents": [
+        "接受函。",
+        "論文摘要。",
+        "會議詳細日程。",
+        "其他相關佐證資料。"
+      ],
+      "steps": [
+        "108 年度流程為填申請表，經指導教授、系所及學院核章後送研發處。",
+        "獲補助者須事前完成出國簽呈與請假；會後兩週內繳交差旅報告、核定簽呈、機票與付款證明、心得報告等辦理核銷。",
+        "目前申請應改以當年度校方公告為準，不可使用 108 年舊計畫編號。"
+      ],
+      "cautions": [
+        "過期專案；舊計畫編號、補助上限及表格均不得直接沿用。"
+      ],
+      "links": [
+        {
+          "label": "虎科大 108 年原公告",
+          "url": "https://tech.nfu.edu.tw/index.php/zh/2017-12-19-19-54-102/2017-12-19-19-54-771/2019-04-01-07-42-10/273-108"
+        }
+      ]
+    }
+  ]
+}

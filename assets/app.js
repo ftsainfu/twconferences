@@ -5,6 +5,7 @@ const state = {
   candidates: [],
   filtered: [],
   recurring: [],
+  grants: [],
   ratings: {},
   referenceDate: new Date(),
 };
@@ -32,6 +33,19 @@ const els = {
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
   recurringList: document.querySelector("#recurringList"),
+  grantList: document.querySelector("#grantList"),
+  grantNotice: document.querySelector("#grantNotice"),
+  grantVerified: document.querySelector("#grantVerified"),
+  eligibilityChecker: document.querySelector("#eligibilityChecker"),
+  eligibilityEnrollment: document.querySelector("#eligibilityEnrollment"),
+  eligibilityInService: document.querySelector("#eligibilityInService"),
+  eligibilityConferenceScope: document.querySelector("#eligibilityConferenceScope"),
+  eligibilityPaper: document.querySelector("#eligibilityPaper"),
+  eligibilityFundedThisYear: document.querySelector("#eligibilityFundedThisYear"),
+  eligibilityCoauthor: document.querySelector("#eligibilityCoauthor"),
+  eligibilityAcceptance: document.querySelector("#eligibilityAcceptance"),
+  eligibilityEventDate: document.querySelector("#eligibilityEventDate"),
+  eligibilityResult: document.querySelector("#eligibilityResult"),
   field: document.querySelector("#fieldFilter"),
   healthAlert: document.querySelector("#healthAlert"),
   candidateSection: document.querySelector("#candidateSection"),
@@ -55,6 +69,10 @@ const els = {
   ratingComment: document.querySelector("#ratingComment"),
   ratingConfirmed: document.querySelector("#ratingConfirmed"),
   closeRatingDialog: document.querySelector("#closeRatingDialog"),
+  pageTabs: document.querySelector(".page-tabs"),
+  tabButtons: [...document.querySelectorAll("[data-tab]")],
+  conferencesPanel: document.querySelector("#conferencesPanel"),
+  grantsPanel: document.querySelector("#grants"),
 };
 
 const fieldKeywords = {
@@ -69,6 +87,26 @@ const fieldKeywords = {
 
 let reportTarget = null;
 let ratingTarget = null;
+
+function setActiveTab(tabName, updateHash = true) {
+  const activeName = tabName === "grants" ? "grants" : "conferences";
+  const panels = {
+    conferences: els.conferencesPanel,
+    grants: els.grantsPanel,
+  };
+  Object.entries(panels).forEach(([name, panel]) => {
+    if (panel) panel.hidden = name !== activeName;
+  });
+  els.tabButtons.forEach((button) => {
+    const selected = button.dataset.tab === activeName;
+    button.setAttribute("aria-selected", String(selected));
+    button.tabIndex = selected ? 0 : -1;
+  });
+  if (updateHash) {
+    const hash = activeName === "grants" ? "#grants" : "#conferences";
+    window.history.replaceState(null, "", hash);
+  }
+}
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -162,7 +200,11 @@ function matchesEventStatus(item, status) {
 
 function matchesField(item, selectedField) {
   if (!selectedField) return true;
-  const haystack = [item.title, item.organizer, ...(item.fields || []), ...(item.attention_notes || [])]
+  const publicationText = (item.publication_opportunities || []).flatMap((publication) => [
+    publication.journal_name,
+    publication.notes,
+  ]);
+  const haystack = [item.title, item.organizer, ...(item.fields || []), ...(item.attention_notes || []), ...publicationText]
     .join(" ")
     .toLowerCase();
   return (fieldKeywords[selectedField] || []).some((keyword) => haystack.includes(keyword));
@@ -180,6 +222,10 @@ function applyFilters() {
   const englishPresentation = els.englishPresentation.value;
 
   state.filtered = state.activeConferences.filter((item) => {
+    const publicationText = (item.publication_opportunities || []).flatMap((publication) => [
+      publication.journal_name,
+      publication.notes,
+    ]);
     const haystack = [
       item.title,
       item.organizer,
@@ -188,6 +234,7 @@ function applyFilters() {
       item.registration_fee,
       ...(item.fields || []),
       ...(item.attention_notes || []),
+      ...publicationText,
     ]
       .join(" ")
       .toLowerCase();
@@ -343,6 +390,21 @@ function renderCard(item) {
   const homepage = item.link_status === "reported_broken"
     ? '<span class="unavailable-link">主頁暫時無法連線</span>'
     : `<a class="primary" href="${escapeAttr(item.homepage_url)}" target="_blank" rel="noreferrer">會議主頁</a>`;
+  const publications = (item.publication_opportunities || [])
+    .map((publication) => {
+      const journalName = publication.journal_url
+        ? `<a href="${escapeAttr(publication.journal_url)}" target="_blank" rel="noreferrer">${escapeHtml(publication.journal_name)}</a>`
+        : `<strong>${escapeHtml(publication.journal_name)}</strong>`;
+      const journalSubmission = publication.submission_url
+        ? ` <a href="${escapeAttr(publication.submission_url)}" target="_blank" rel="noreferrer">期刊投稿</a>`
+        : "";
+      const publicationNotes = publication.notes ? `<span>${escapeHtml(publication.notes)}</span>` : "";
+      return `<li>${journalName}${journalSubmission}${publicationNotes}</li>`;
+    })
+    .join("");
+  const corroboration = item.is_corroborated
+    ? `<p class="corroboration-note">已由 ${Number(item.independent_source_count) || 2} 個獨立來源交叉發現</p>`
+    : "";
 
   return `
     <article class="conference-card ${recent ? "is-new" : ""}">
@@ -367,6 +429,8 @@ function renderCard(item) {
           <div><span>更新狀態</span><strong>${escapeHtml(item.change_label || "已檢查")}</strong></div>
         </div>
         ${item.change_summary ? `<p class="change-note">${escapeHtml(item.change_summary)}</p>` : ""}
+        ${corroboration}
+        ${publications ? `<section class="publication-info"><h3>合作期刊／專刊投稿</h3><ul>${publications}</ul></section>` : ""}
         ${notes ? `<ul class="notes">${notes}</ul>` : ""}
       </div>
       <div class="card-actions">
@@ -408,6 +472,142 @@ function renderRecurring() {
       `,
     )
     .join("");
+}
+
+function renderGrantSection(title, items, ordered = false) {
+  if (!items?.length) return "";
+  const tag = ordered ? "ol" : "ul";
+  return `
+    <section class="grant-detail">
+      <h4>${escapeHtml(title)}</h4>
+      <${tag}>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</${tag}>
+    </section>
+  `;
+}
+
+function renderInternationalStudentGuide(guide) {
+  if (!guide) return "";
+  return `
+    <section class="international-guide" lang="en">
+      <h4>${escapeHtml(guide.title)}</h4>
+      <p>${escapeHtml(guide.summary)}</p>
+      <ul>${(guide.points || []).map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+      <p class="international-caution">${escapeHtml(guide.caution || "")}</p>
+    </section>
+  `;
+}
+
+function renderGrants(payload) {
+  if (!els.grantList) return;
+  const programs = [...(payload.programs || [])].sort((a, b) => (a.priority || 99) - (b.priority || 99));
+  state.grants = programs;
+  els.grantVerified.textContent = payload.last_verified ? `官方資料查核日：${payload.last_verified}` : "查核日期未提供";
+  els.grantNotice.hidden = !payload.notice;
+  els.grantNotice.textContent = payload.notice || "";
+  els.grantList.innerHTML = programs
+    .map((program) => {
+      const links = (program.links || [])
+        .map(
+          (link) =>
+            `<a href="${escapeAttr(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(link.label)}</a>`,
+        )
+        .join("");
+      return `
+        <article class="grant-card grant-card--${escapeAttr(program.status || "unknown")}">
+          <div class="grant-heading">
+            <div>
+              <span class="grant-status">${escapeHtml(program.status_label || "待確認")}</span>
+              <p>${escapeHtml(program.provider || "")}</p>
+              <h3>${escapeHtml(program.title)}</h3>
+            </div>
+          </div>
+          <p class="grant-summary">${escapeHtml(program.summary || "")}</p>
+          ${program.priority_note ? `<p class="grant-priority-note">${escapeHtml(program.priority_note)}</p>` : ""}
+          <div class="grant-detail-grid">
+            ${renderGrantSection("申請資格", program.eligibility)}
+            ${renderGrantSection("補助內容", program.funding)}
+            ${renderGrantSection("期限重點", program.deadline)}
+            ${renderGrantSection("應備文件", program.documents)}
+          </div>
+          ${renderGrantSection("申請與核銷流程", program.steps, true)}
+          ${renderGrantSection("重要提醒", program.cautions)}
+          ${renderInternationalStudentGuide(program.international_student_guide)}
+          ${links ? `<div class="grant-links">${links}</div>` : ""}
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function grantDeadlineDates(eventDate) {
+  const match = String(eventDate || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const eventUtc = Date.UTC(year, month - 1, day);
+  if (Number.isNaN(eventUtc)) return null;
+  const institutionDeadline = new Date(Date.UTC(year, month - 2, 1)).toISOString().slice(0, 10);
+  const acceptanceDeadline = new Date(eventUtc - 28 * 86400000).toISOString().slice(0, 10);
+  return { institutionDeadline, acceptanceDeadline };
+}
+
+function checkGrantEligibility(event) {
+  event.preventDefault();
+  const blockers = [];
+  const followUps = [];
+  if (!['master', 'doctoral'].includes(els.eligibilityEnrollment.value)) {
+    blockers.push("須為在學碩士生或博士生／Must be an enrolled master's or doctoral student.");
+  }
+  if (els.eligibilityInService.value === "yes") {
+    blockers.push("在職專班不屬本補助資格／In-service programs are not eligible.");
+  }
+  if (els.eligibilityConferenceScope.value === "domestic") {
+    blockers.push("須為國際學術會議；僅國內性會議不符／The event must be an international academic conference.");
+  } else if (els.eligibilityConferenceScope.value === "unknown") {
+    followUps.push("請向主辦單位確認會議是否具有國際學術會議性質／Confirm the conference's international academic status.");
+  }
+  if (els.eligibilityPaper.value !== "first_time") {
+    blockers.push("須發表首次發表的研究論文／You must present a paper being presented for the first time.");
+  }
+  if (els.eligibilityFundedThisYear.value === "yes") {
+    blockers.push("每位研究生每年度以補助一次為限／Only one grant per student per calendar year is allowed.");
+  }
+  if (els.eligibilityCoauthor.value === "yes") {
+    blockers.push("同一篇合著論文僅補助一位研究生／Only one student may be funded for the same co-authored paper.");
+  } else if (els.eligibilityCoauthor.value === "unknown") {
+    followUps.push("請確認同篇合著論文是否已有其他研究生申請／Check whether another co-author has applied for the same paper.");
+  }
+  if (els.eligibilityAcceptance.value === "pending") {
+    followUps.push("接受函可註明補送，但須在會議首日四週前送達國科會／Submit the pending acceptance letter at least four weeks before the conference.");
+  } else if (els.eligibilityAcceptance.value === "none") {
+    blockers.push("尚未投稿時無法完成本補助申請／A grant application cannot be completed before the paper is submitted.");
+  }
+
+  const deadlineDates = grantDeadlineDates(els.eligibilityEventDate.value);
+  const resultStatus = blockers.length ? "ineligible" : followUps.length ? "conditional" : "eligible";
+  const headings = {
+    eligible: "初步符合申請條件／Likely eligible",
+    conditional: "可能符合，但仍有項目待確認／Potentially eligible; follow-up required",
+    ineligible: "目前有不符合項目／Eligibility issues found",
+  };
+  const deadlineHtml = deadlineDates
+    ? `<div class="eligibility-deadlines">
+        <strong>期限試算／Estimated deadlines</strong>
+        <span>虎科大對國科會最遲彙送基準：${deadlineDates.institutionDeadline}</span>
+        <span>接受函最遲補件基準：${deadlineDates.acceptanceDeadline}</span>
+        <small>虎科大校內截止日通常會更早，申請前務必向研發處確認。</small>
+      </div>`
+    : "";
+  els.eligibilityResult.className = `eligibility-result eligibility-result--${resultStatus}`;
+  els.eligibilityResult.innerHTML = `
+    <h4>${headings[resultStatus]}</h4>
+    ${blockers.length ? `<ul>${blockers.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
+    ${followUps.length ? `<ul>${followUps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
+    ${deadlineHtml}
+    <p>此結果僅供初篩，正式資格、校內期限與補助額度仍以虎科大及國科會審查為準。</p>
+  `;
+  els.eligibilityResult.hidden = false;
 }
 
 function escapeHtml(value = "") {
@@ -525,6 +725,26 @@ function submitRating(event) {
 }
 
 function bindEvents() {
+  els.tabButtons.forEach((button) => {
+    button.addEventListener("click", () => setActiveTab(button.dataset.tab));
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+      const nextName = button.dataset.tab === "grants" ? "conferences" : "grants";
+      setActiveTab(nextName);
+      els.tabButtons.find((item) => item.dataset.tab === nextName)?.focus();
+    });
+  });
+  document.querySelectorAll("[data-open-tab]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      setActiveTab(link.dataset.openTab);
+      els.pageTabs?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+  window.addEventListener("hashchange", () => {
+    setActiveTab(window.location.hash === "#grants" ? "grants" : "conferences", false);
+  });
   [els.keyword, els.field, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.sort].forEach((input) => {
     input.addEventListener("input", applyFilters);
     input.addEventListener("change", applyFilters);
@@ -556,18 +776,21 @@ function bindEvents() {
   els.reportForm.addEventListener("submit", submitReport);
   els.closeRatingDialog.addEventListener("click", () => els.ratingDialog.close());
   els.ratingForm.addEventListener("submit", submitRating);
+  els.eligibilityChecker?.addEventListener("submit", checkGrantEligibility);
 }
 
 async function init() {
-  const [response, recurringResponse, ratingsResponse] = await Promise.all([
+  const [response, recurringResponse, ratingsResponse, grantsResponse] = await Promise.all([
     fetch("data/conferences.json", { cache: "no-store" }),
     fetch("data/recurring.json", { cache: "no-store" }),
     fetch("data/ratings.json", { cache: "no-store" }),
+    fetch("data/grants.json", { cache: "no-store" }),
   ]);
   if (!response.ok) throw new Error("Failed to load conference data");
   const payload = await response.json();
   const recurringPayload = recurringResponse.ok ? await recurringResponse.json() : { recurring_conferences: [] };
   const ratingsPayload = ratingsResponse.ok ? await ratingsResponse.json() : { ratings: {} };
+  const grantsPayload = grantsResponse.ok ? await grantsResponse.json() : { programs: [], notice: "獎補助資料目前無法讀取。" };
   state.conferences = payload.conferences || [];
   state.referenceDate = parseGeneratedDate(payload.generated_at);
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");
@@ -576,12 +799,18 @@ async function init() {
   state.pastConferences = verified.filter((item) => eventStatus(item) === "past");
   state.recurring = recurringPayload.recurring_conferences || [];
   state.ratings = ratingsPayload.ratings || {};
+  renderGrants(grantsPayload);
   els.lastUpdated.textContent = payload.generated_at || "未產生";
   els.sourceCount.textContent = `${payload.source_count || state.conferences.length} 個來源`;
   renderHealth(payload);
   hydrateLocationFilter();
   hydrateHistoryYearFilter();
   bindEvents();
+  const initialTab = window.location.hash === "#grants" ? "grants" : "conferences";
+  setActiveTab(initialTab, false);
+  if (initialTab === "grants") {
+    window.requestAnimationFrame(() => els.pageTabs?.scrollIntoView({ block: "start" }));
+  }
   applyFilters();
 }
 

@@ -11,12 +11,19 @@ from scripts.update_conferences import (
     current_year_markers,
     duplicates_known_title,
     find_dates,
+    government_organizer_sources,
     infer_fee_information,
+    is_relevant_conference_text,
     merge_candidate_store,
+    merge_discovered_candidates,
     parse_ics_events,
+    discover_from_organizers,
     discover_from_ics_reference,
     fetch_url,
     title_key,
+    scholarly_organizer_sources,
+    university_organizer_sources,
+    valid_official_discovery_link,
     valid_external_reference_url,
     validate_payload,
 )
@@ -86,6 +93,167 @@ class FetchTests(unittest.TestCase):
 
 
 class CandidateTests(unittest.TestCase):
+    @patch("scripts.update_conferences.current_year_markers", return_value=("2026", "115"))
+    def test_english_business_keyword_matching_is_case_insensitive(self, _markers):
+        self.assertTrue(is_relevant_conference_text("2026 International Symposium on Management Innovation"))
+
+    def test_university_sources_receive_safe_scan_defaults(self):
+        sources = university_organizer_sources({"university_sources": [{
+            "name": "Example College of Management",
+            "url": "https://management.example.edu.tw/",
+        }]})
+        self.assertEqual(sources[0]["source_type"], "university_college")
+        self.assertEqual(sources[0]["attempts"], 1)
+
+    def test_university_source_can_nominate_external_conference_site(self):
+        source = {
+            "url": "https://management.example.edu.tw/",
+            "source_type": "university_college",
+        }
+        self.assertTrue(valid_official_discovery_link(source, "https://conference.example.org/2027"))
+        self.assertFalse(valid_official_discovery_link(source, "https://forms.gle/example"))
+        self.assertFalse(valid_official_discovery_link(source, "https://www.facebook.com/example"))
+
+    def test_regular_organizer_cannot_nominate_unrelated_external_site(self):
+        source = {"url": "https://association.example.org/"}
+        self.assertFalse(valid_official_discovery_link(source, "https://conference.example.net/2027"))
+
+    def test_scholarly_sources_receive_safe_scan_defaults(self):
+        sources = scholarly_organizer_sources({"scholarly_sources": [{
+            "name": "Example Management Journal",
+            "url": "https://journal.example.edu.tw/",
+        }]})
+        self.assertEqual(sources[0]["source_type"], "scholarly")
+        self.assertEqual(sources[0]["attempts"], 1)
+
+    def test_government_source_expands_all_configured_pages(self):
+        sources = government_organizer_sources({"government_sources": [{
+            "name": "NSTC",
+            "urls": ["https://www.nstc.gov.tw/list?page=1", "https://www.nstc.gov.tw/list?page=2"],
+        }]})
+        self.assertEqual(len(sources), 2)
+        self.assertEqual(sources[1]["source_type"], "government")
+        self.assertEqual(sources[1]["attempts"], 1)
+
+    def test_government_source_can_nominate_external_official_conference(self):
+        source = {"url": "https://www.nstc.gov.tw/list", "source_type": "government"}
+        self.assertTrue(valid_official_discovery_link(source, "https://conference.example.org/2027"))
+        self.assertFalse(valid_official_discovery_link(source, "https://forms.gle/example"))
+
+    @patch("scripts.update_conferences.fetch_url")
+    @patch("scripts.update_conferences.current_year_markers", return_value=("2027", "116"))
+    def test_scholarly_source_rejects_internal_overseas_conference_without_taiwan_marker(self, _markers, fetch):
+        fetch.return_value = (
+            '<a href="/news/1">2027 Management Conference, Kyoto University, Japan</a>',
+            "utf-8",
+        )
+        candidates, errors = discover_from_organizers(
+            [{
+                "name": "Example Journal",
+                "url": "https://journal.example.edu.tw/",
+                "source_type": "scholarly",
+                "require_taiwan_marker": True,
+                "attempts": 1,
+            }],
+            set(),
+            set(),
+            set(),
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(candidates, [])
+
+    def test_duplicate_candidates_merge_independent_evidence(self):
+        candidates = merge_discovered_candidates([
+            {
+                "id": "official-1",
+                "title": "2027 國際財務管理研討會",
+                "homepage_url": "https://conference.example.edu.tw/2027",
+                "attention_notes": [],
+                "evidence_sources": [{"name": "大學管理學院", "url": "https://management.example.edu.tw/"}],
+            },
+            {
+                "id": "journal-1",
+                "title": "2027國際財務管理研討會",
+                "homepage_url": "https://journal.example.org.tw/news/1",
+                "attention_notes": [],
+                "evidence_sources": [{"name": "管理期刊", "url": "https://journal.example.org.tw/"}],
+            },
+        ])
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["independent_source_count"], 2)
+        self.assertTrue(candidates[0]["is_corroborated"])
+
+    def test_similar_titles_from_different_years_do_not_merge(self):
+        candidates = merge_discovered_candidates([
+            {"id": "a", "title": "2026 財務管理研討會", "homepage_url": "https://example.org/2026"},
+            {"id": "b", "title": "2027 財務管理研討會", "homepage_url": "https://example.org/2027"},
+        ])
+        self.assertEqual(len(candidates), 2)
+
+    def test_call_for_papers_prefix_does_not_create_duplicate_candidate(self):
+        candidates = merge_discovered_candidates([
+            {
+                "id": "a",
+                "title": "Call for Papers: 2026 Three Asian Countries Finance Conference(2026/9/4)",
+                "homepage_url": "https://finance.example.org/meeting/1",
+            },
+            {
+                "id": "b",
+                "title": "2026 Three Asian Countries Finance Conference(2026/9/4)",
+                "homepage_url": "https://finance.example.org/news/1",
+                "event_start": "2026-09-04",
+            },
+        ])
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["title"], "2026 Three Asian Countries Finance Conference(2026/9/4)")
+        self.assertEqual(candidates[0]["event_start"], "2026-09-04")
+
+    @patch("scripts.update_conferences.fetch_url")
+    @patch("scripts.update_conferences.current_year_markers", return_value=("2026", "115"))
+    def test_university_external_candidate_keeps_discovery_source(self, _markers, fetch):
+        fetch.return_value = (
+            '<a href="https://conference.example.org/2026">2026 國際管理學術研討會</a>',
+            "utf-8",
+        )
+        source_url = "https://management.example.edu.tw/"
+        candidates, errors = discover_from_organizers(
+            [{
+                "name": "Example College of Management",
+                "url": source_url,
+                "source_type": "university_college",
+                "attempts": 1,
+            }],
+            set(),
+            set(),
+            set(),
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(candidates[0]["discovered_from_url"], source_url)
+
+    @patch("scripts.update_conferences.fetch_url")
+    @patch("scripts.update_conferences.current_year_markers", return_value=("2026", "115"))
+    def test_government_candidate_strips_list_date_and_infers_single_event_date(self, _markers, fetch):
+        fetch.return_value = (
+            '<a href="/detail/1"><div>2026-06-08</div>'
+            '<h3>管理創新國際研討會（115年7月24日、台北）</h3></a>',
+            "utf-8",
+        )
+        candidates, errors = discover_from_organizers(
+            [{
+                "name": "NSTC",
+                "url": "https://www.nstc.gov.tw/list",
+                "source_type": "government",
+                "attempts": 1,
+            }],
+            set(),
+            set(),
+            set(),
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(candidates[0]["title"], "管理創新國際研討會（115年7月24日、台北）")
+        self.assertEqual(candidates[0]["event_start"], "2026-07-24")
+        self.assertEqual(candidates[0]["last_changed"], "2026-06-08")
+
     def test_title_deduplication_ignores_year_and_ordinal(self):
         known = {title_key("2026 第十六屆財務金融研討會")}
         self.assertTrue(duplicates_known_title("2027 第十七屆財務金融研討會", known))
@@ -159,6 +327,18 @@ class ValidationTests(unittest.TestCase):
         self.assertTrue(any("duplicate id" in error for error in errors))
         self.assertTrue(any("duplicate homepage_url" in error for error in errors))
         self.assertTrue(any("not ISO date" in error for error in errors))
+
+    def test_publication_opportunity_requires_name_and_valid_urls(self):
+        item = {
+            "id": "publication",
+            "title": "Conference",
+            "organizer": "Organizer",
+            "homepage_url": "https://example.com/event",
+            "review_status": "verified",
+            "publication_opportunities": [{"journal_name": "", "journal_url": "not-a-url"}],
+        }
+        errors = validate_payload({"conferences": [item]})
+        self.assertTrue(any("journal_name is required" in error for error in errors))
 
     def test_external_reference_requires_official_domain(self):
         source = "https://aggregator.example/api"

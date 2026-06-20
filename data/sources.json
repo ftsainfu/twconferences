@@ -100,7 +100,138 @@
       "url": "https://www.tiibs.org.tw/"
     }
   ],
+  "university_sources": [
+    {
+      "name": "致理科技大學商務管理學院",
+      "url": "https://bm100.chihlee.edu.tw/"
+    },
+    {
+      "name": "國立臺灣大學管理學院",
+      "url": "https://management.ntu.edu.tw/"
+    },
+    {
+      "name": "國立成功大學管理學院",
+      "url": "https://management.ncku.edu.tw/"
+    },
+    {
+      "name": "國立中山大學管理學院",
+      "url": "https://www.cm.nsysu.edu.tw/"
+    },
+    {
+      "name": "輔仁大學管理學院",
+      "url": "https://www.management.fju.edu.tw/"
+    },
+    {
+      "name": "逢甲大學商學院",
+      "url": "https://business.fcu.edu.tw/"
+    },
+    {
+      "name": "元智大學管理學院",
+      "url": "https://www.cm.yzu.edu.tw/"
+    }
+  ],
+  "scholarly_sources": [
+    {
+      "name": "中華民國管理科學學會",
+      "url": "https://www.management.org.tw/"
+    },
+    {
+      "name": "中華民國資訊管理學會",
+      "url": "https://www.csim.org.tw/"
+    },
+    {
+      "name": "臺大管理論叢",
+      "url": "https://review.management.ntu.edu.tw/",
+      "require_taiwan_marker": true
+    },
+    {
+      "name": "中山管理評論",
+      "url": "https://mgtr.cm.nsysu.edu.tw/",
+      "require_taiwan_marker": true
+    }
+  ],
+  "government_sources": [
+    {
+      "name": "國家科學及技術委員會活動訊息",
+      "urls": [
+        "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?pageNum=2&view_mode=listView&l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?pageNum=3&view_mode=listView&l=ch"
+      ],
+      "require_taiwan_marker": true
+    }
+  ],
   "conferences": [
+    {
+      "id": "taa-2026-accounting-education",
+      "title": "2026 中華會計教育學會年會—智慧、永續、創新",
+      "organizer": "東吳大學會計學系、中華會計教育學會",
+      "homepage_url": "https://taa2026.acc.scu.edu.tw/",
+      "submission_url": "https://taa2026.acc.scu.edu.tw/",
+      "registration_url": "https://taa2026.acc.scu.edu.tw/",
+      "event_start": "2026-11-05",
+      "event_end": "2026-11-06",
+      "location": "台北（台北晶華酒店）",
+      "submission_deadline": "2026-07-31",
+      "submission_fee": "轉投《中華會計學刊》或《會計學報》的研討會接受稿件免投稿費。",
+      "registration_fee": "",
+      "fields": ["會計", "會計教育", "永續", "創新"],
+      "presentation_formats": ["oral", "other"],
+      "presentation_languages": ["zh", "en"],
+      "publication_opportunities": [
+        {
+          "journal_name": "中華會計學刊",
+          "journal_url": "",
+          "submission_url": "",
+          "notes": "研討會接受稿件可選擇直接轉投並免投稿費；最佳論文得獎者須於 2027-01-31 前投稿至指定合作期刊之一。"
+        },
+        {
+          "journal_name": "會計學報",
+          "journal_url": "",
+          "submission_url": "",
+          "notes": "研討會接受稿件可選擇直接轉投並免投稿費；最佳論文得獎者須於 2027-01-31 前投稿至指定合作期刊之一。"
+        }
+      ],
+      "attention_notes": [
+        "國科會活動訊息與會議官網均已核對；線上投稿自 2026-05-01 開始，完稿截止日為 2026-07-31。",
+        "期刊轉投仍須依各刊格式與審查程序辦理，不代表研討會接受即保證刊登。"
+      ]
+    },
+    {
+      "id": "ntumr-2026-frontiers-accounting-finance",
+      "title": "2026 前瞻會計與財務研討會",
+      "organizer": "臺大管理論叢、會計評論、國立宜蘭大學應用經濟與管理學系",
+      "homepage_url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=336",
+      "submission_url": "https://2026ntumr-jar.conf.tw",
+      "registration_url": "https://2026ntumr-jar.conf.tw",
+      "event_start": "2026-06-12",
+      "event_end": "2026-06-13",
+      "location": "宜蘭（國立宜蘭大學）",
+      "submission_deadline": "2026-03-22",
+      "submission_fee": "",
+      "registration_fee": "稿件接受後，每篇論文註冊費新臺幣 3,600 元。",
+      "fields": ["會計", "財務", "財金"],
+      "presentation_formats": ["other"],
+      "presentation_languages": ["zh", "en"],
+      "publication_opportunities": [
+        {
+          "journal_name": "臺大管理論叢",
+          "journal_url": "https://review.management.ntu.edu.tw/",
+          "submission_url": "",
+          "notes": "研討會論文經專刊主編群決議後，可能分派至本刊進行後續投稿及複審；獲獎論文須依通知投稿至指定合作期刊。"
+        },
+        {
+          "journal_name": "會計評論",
+          "journal_url": "https://jar.acct.nccu.edu.tw/",
+          "submission_url": "",
+          "notes": "研討會論文經專刊主編群決議後，可能分派至本刊進行後續投稿及複審；獲獎論文須依通知投稿至指定合作期刊。"
+        }
+      ],
+      "attention_notes": [
+        "投稿不限中英文；大會僅出版雲端版摘要。",
+        "合作期刊安排屬後續投稿與複審，不代表研討會接受即保證期刊刊登。"
+      ]
+    },
     {
       "id": "nqu-2026-management",
       "title": "2026 管理學術研討會",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20 06:53:02 UTC+08:00",
+  "generated_at": "2026-06-20 07:57:01 UTC+08:00",
   "candidates": [
     {
       "id": "reference-sysi-nccu-edu-tw-7a61ac9d",
@@ -14,6 +14,7 @@
       "submission_deadline": "2026-09-20",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "免費",
         "混合(線上+實體)",
@@ -34,6 +35,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-05",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -62,6 +73,7 @@
       "submission_deadline": "2026-11-05",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "付費",
         "實體活動",
@@ -82,6 +94,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-05",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -110,6 +132,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -129,6 +152,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -156,6 +189,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -175,6 +209,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -202,6 +246,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -221,6 +266,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -248,6 +303,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -267,6 +323,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -294,6 +360,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -313,6 +380,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -340,6 +417,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "商管",
         "學術消息"
@@ -359,6 +437,16 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-07",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
@@ -374,6 +462,61 @@
       }
     },
     {
+      "id": "organizer-www-nstc-gov-tw-e882c3b9",
+      "title": "【研討會報名】The 4th International Symposium on Agricultural Net-Zero Carbon Technology and Management Innovation: Circular Bioeconomy System（115年7月24日、集思台大會議中心）",
+      "organizer": "國家科學及技術委員會活動訊息（第 1 頁）",
+      "homepage_url": "https://www.nstc.gov.tw/folksonomy/detail/f7ac0e66-1607-423f-b984-e473829b26bc?l=ch",
+      "submission_url": "https://www.nstc.gov.tw/folksonomy/detail/f7ac0e66-1607-423f-b984-e473829b26bc?l=ch",
+      "registration_url": "",
+      "event_start": "2026-07-24",
+      "event_end": "2026-07-24",
+      "location": "待確認",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由「國家科學及技術委員會活動訊息（第 1 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "discovered_from_url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
+      "evidence_sources": [
+        {
+          "name": "國家科學及技術委員會活動訊息（第 1 頁）",
+          "url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
+          "type": "government"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-06-08",
+      "last_seen": "2026-06-20",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": false,
+      "information_quality": {
+        "score": 0,
+        "max_score": 5,
+        "label": "資料不足",
+        "criteria": []
+      }
+    },
+    {
       "id": "reference-www-finance-org-tw-295a0e74",
       "title": "2026 Three Asian Countries Finance Conference(2026/9/4)",
       "organizer": "臺灣財務金融學會",
@@ -386,6 +529,7 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "",
+      "publication_opportunities": [],
       "fields": [
         "財務金融",
         "專題研討會",
@@ -406,7 +550,191 @@
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
       "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
       "first_seen": "2026-06-18",
+      "last_seen": "2026-06-20",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": true,
+      "information_quality": {
+        "score": 1,
+        "max_score": 5,
+        "label": "資料有限",
+        "criteria": [
+          "日期與地點完整"
+        ]
+      }
+    },
+    {
+      "id": "organizer-review-management-ntu-edu-tw-30100b9b",
+      "title": "2026海峽兩岸經濟管理理論與實務研討會，歡迎各界踴躍投稿第一波至5/30第二波至6/15（會議地點：深圳）",
+      "organizer": "臺大管理論叢",
+      "homepage_url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=340",
+      "submission_url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=340",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由「臺大管理論叢」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-20",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "discovered_from_url": "https://review.management.ntu.edu.tw/",
+      "evidence_sources": [
+        {
+          "name": "臺大管理論叢",
+          "url": "https://review.management.ntu.edu.tw/",
+          "type": "scholarly"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-06-20",
+      "last_seen": "2026-06-20",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": true,
+      "information_quality": {
+        "score": 0,
+        "max_score": 5,
+        "label": "資料不足",
+        "criteria": []
+      }
+    },
+    {
+      "id": "organizer-review-management-ntu-edu-tw-cbb8e182",
+      "title": "2027 Management Theory and Practice Conference | April 5 – 6, 2027 | Kyoto University, Japan．Submission Deadline: April ",
+      "organizer": "臺大管理論叢",
+      "homepage_url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=341",
+      "submission_url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=341",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由「臺大管理論叢」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-20",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "discovered_from_url": "https://review.management.ntu.edu.tw/",
+      "evidence_sources": [
+        {
+          "name": "臺大管理論叢",
+          "url": "https://review.management.ntu.edu.tw/",
+          "type": "scholarly"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-06-20",
+      "last_seen": "2026-06-20",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": true,
+      "information_quality": {
+        "score": 0,
+        "max_score": 5,
+        "label": "資料不足",
+        "criteria": []
+      }
+    },
+    {
+      "id": "organizer-www-finance-org-tw-17e4c6ff",
+      "title": "2026 Three Asian Countries Finance Conference(2026/9/4)",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/51",
+      "submission_url": "https://www.finance.org.tw/fnnews/51",
+      "registration_url": "",
+      "event_start": "2026-09-04",
+      "event_end": "2026-09-04",
+      "location": "會議地點：國立政治大學商學院6樓義育廳",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "財務金融",
+        "專題研討會",
+        "學術消息"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
+        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。"
+      ],
+      "last_checked": "2026-06-20",
+      "last_changed": "2026-06-20",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "臺灣財務金融學會",
+          "url": "https://www.finance.org.tw/",
+          "type": "organizer"
+        },
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 2,
+      "independent_source_count": 2,
+      "is_corroborated": true,
+      "first_seen": "2026-06-20",
       "last_seen": "2026-06-20",
       "candidate_status": "pending",
       "review_notes": "",
