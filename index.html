@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260620c" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260620d" />
   </head>
   <body>
     <header class="site-header">
@@ -31,7 +31,7 @@
           研討會資訊
         </button>
         <button id="grantsTab" type="button" role="tab" aria-selected="false" aria-controls="grants" data-tab="grants" tabindex="-1">
-          獎補助專區
+          獎補助／Funding
         </button>
       </nav>
 
@@ -195,27 +195,31 @@
         <div class="section-heading">
           <p class="section-kicker">Graduate Conference Funding</p>
           <h2 id="grantsTitle">學生研討會獎補助專區</h2>
-          <p>整理國科會研究生出席國際學術會議補助，以及虎科大學生於研討會競賽獲獎後可查詢的技藝獎金，包含資格、期限、文件與申請流程。</p>
+          <p id="grantIntro">整理國科會研究生出席國際學術會議補助，以及虎科大學生於研討會競賽獲獎後可查詢的技藝獎金，包含資格、期限、文件與申請流程。</p>
           <small id="grantVerified">資料讀取中</small>
+        </div>
+        <div class="grant-language-switch" role="group" aria-label="獎補助資訊語言／Funding information language">
+          <button type="button" data-grant-language="zh" aria-pressed="true">中文</button>
+          <button type="button" data-grant-language="en" aria-pressed="false">English</button>
         </div>
         <div id="grantNotice" class="grant-notice" hidden></div>
         <div class="grant-priority" role="note">
-          <strong>建議申請順序</strong>
-          <span>① 國科會研究生出席國際學術會議補助</span>
-          <span>② 核定不足時，再詢問虎科大研發處是否有當年度校內專案或可分攤經費</span>
+          <strong id="grantPriorityTitle">建議申請順序</strong>
+          <span id="grantPriorityPrimary">① 國科會研究生出席國際學術會議補助</span>
+          <span id="grantPrioritySecondary">② 核定不足時，再詢問虎科大研發處是否有當年度校內專案或可分攤經費</span>
         </div>
         <form id="eligibilityChecker" class="eligibility-checker">
           <div class="eligibility-heading">
             <div>
               <p class="section-kicker">Preliminary Eligibility Check</p>
-              <h3>國科會補助資格初篩</h3>
+              <h3 id="eligibilityTitle">國科會補助資格初篩</h3>
             </div>
-            <p>僅供準備申請使用，不取代虎科大及國科會正式審查。</p>
+            <p id="eligibilityHelp">僅供準備申請使用，不取代虎科大及國科會正式審查。</p>
           </div>
           <div class="eligibility-grid">
             <label>目前學籍／Current enrollment
               <select id="eligibilityEnrollment" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="master">碩士班／Master's</option>
                 <option value="doctoral">博士班／Doctoral</option>
                 <option value="other">其他／Other</option>
@@ -223,14 +227,14 @@
             </label>
             <label>是否為在職專班／In-service program
               <select id="eligibilityInService" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="no">否／No</option>
                 <option value="yes">是／Yes</option>
               </select>
             </label>
             <label>會議性質／Conference scope
               <select id="eligibilityConferenceScope" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="international">國際學術會議／International academic conference</option>
                 <option value="domestic">僅國內性會議／Domestic-only conference</option>
                 <option value="unknown">不確定／Not sure</option>
@@ -238,7 +242,7 @@
             </label>
             <label>論文狀態／Paper presentation
               <select id="eligibilityPaper" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="first_time">將發表首次發表論文／First presentation of this paper</option>
                 <option value="repeat">論文曾發表／Previously presented</option>
                 <option value="attendance_only">只參加、不發表／Attendance only</option>
@@ -246,14 +250,14 @@
             </label>
             <label>本年度是否已獲本補助／Already funded this year
               <select id="eligibilityFundedThisYear" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="no">否／No</option>
                 <option value="yes">是／Yes</option>
               </select>
             </label>
             <label>同篇合著論文是否已有受補助者／Co-author already funded
               <select id="eligibilityCoauthor" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="no">否／No</option>
                 <option value="yes">是／Yes</option>
                 <option value="unknown">不確定／Not sure</option>
@@ -261,7 +265,7 @@
             </label>
             <label>接受函狀態／Acceptance letter
               <select id="eligibilityAcceptance" required>
-                <option value="">請選擇</option>
+                <option value="">請選擇／Select</option>
                 <option value="accepted">已取得／Available</option>
                 <option value="pending">審查中，將補件／Pending</option>
                 <option value="none">尚未投稿／Not submitted</option>
@@ -271,7 +275,7 @@
               <input id="eligibilityEventDate" type="date" />
             </label>
           </div>
-          <button type="submit">開始初篩／Check eligibility</button>
+          <button id="eligibilitySubmit" type="submit">開始初篩／Check eligibility</button>
           <div id="eligibilityResult" class="eligibility-result" aria-live="polite" hidden></div>
         </form>
         <div id="grantList" class="grant-list" aria-live="polite"></div>
@@ -350,6 +354,6 @@
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260620c" type="module"></script>
+    <script src="assets/app.js?v=20260620d" type="module"></script>
   </body>
 </html>

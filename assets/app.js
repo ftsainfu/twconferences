@@ -6,6 +6,8 @@ const state = {
   filtered: [],
   recurring: [],
   grants: [],
+  grantPayload: null,
+  grantLanguage: "zh",
   ratings: {},
   referenceDate: new Date(),
 };
@@ -36,6 +38,12 @@ const els = {
   grantList: document.querySelector("#grantList"),
   grantNotice: document.querySelector("#grantNotice"),
   grantVerified: document.querySelector("#grantVerified"),
+  grantLanguageButtons: [...document.querySelectorAll("[data-grant-language]")],
+  grantTitle: document.querySelector("#grantsTitle"),
+  grantIntro: document.querySelector("#grantIntro"),
+  grantPriorityTitle: document.querySelector("#grantPriorityTitle"),
+  grantPriorityPrimary: document.querySelector("#grantPriorityPrimary"),
+  grantPrioritySecondary: document.querySelector("#grantPrioritySecondary"),
   eligibilityChecker: document.querySelector("#eligibilityChecker"),
   eligibilityEnrollment: document.querySelector("#eligibilityEnrollment"),
   eligibilityInService: document.querySelector("#eligibilityInService"),
@@ -46,6 +54,9 @@ const els = {
   eligibilityAcceptance: document.querySelector("#eligibilityAcceptance"),
   eligibilityEventDate: document.querySelector("#eligibilityEventDate"),
   eligibilityResult: document.querySelector("#eligibilityResult"),
+  eligibilityTitle: document.querySelector("#eligibilityTitle"),
+  eligibilityHelp: document.querySelector("#eligibilityHelp"),
+  eligibilitySubmit: document.querySelector("#eligibilitySubmit"),
   field: document.querySelector("#fieldFilter"),
   healthAlert: document.querySelector("#healthAlert"),
   candidateSection: document.querySelector("#candidateSection"),
@@ -485,53 +496,83 @@ function renderGrantSection(title, items, ordered = false) {
   `;
 }
 
-function renderInternationalStudentGuide(guide) {
-  if (!guide) return "";
-  return `
-    <section class="international-guide" lang="en">
-      <h4>${escapeHtml(guide.title)}</h4>
-      <p>${escapeHtml(guide.summary)}</p>
-      <ul>${(guide.points || []).map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
-      <p class="international-caution">${escapeHtml(guide.caution || "")}</p>
-    </section>
-  `;
-}
-
-function renderGrants(payload) {
+function renderGrants(payload = state.grantPayload) {
   if (!els.grantList) return;
+  if (!payload) return;
+  state.grantPayload = payload;
+  const isEnglish = state.grantLanguage === "en";
+  const labels = isEnglish
+    ? {
+        eligibility: "Eligibility",
+        funding: "Funding and awards",
+        deadline: "Key deadlines",
+        documents: "Required documents",
+        steps: "Application and reimbursement process",
+        cautions: "Important notes",
+      }
+    : {
+        eligibility: "申請資格",
+        funding: "補助內容",
+        deadline: "期限重點",
+        documents: "應備文件",
+        steps: "申請與核銷流程",
+        cautions: "重要提醒",
+      };
   const programs = [...(payload.programs || [])].sort((a, b) => (a.priority || 99) - (b.priority || 99));
   state.grants = programs;
-  els.grantVerified.textContent = payload.last_verified ? `官方資料查核日：${payload.last_verified}` : "查核日期未提供";
-  els.grantNotice.hidden = !payload.notice;
-  els.grantNotice.textContent = payload.notice || "";
+  els.grantLanguageButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.grantLanguage === state.grantLanguage));
+  });
+  els.grantTitle.textContent = isEnglish ? "Conference Funding and Student Awards" : "學生研討會獎補助專區";
+  els.grantIntro.textContent = isEnglish
+    ? "Funding for graduate students presenting at international conferences, plus NFU awards for students who win eligible conference competitions."
+    : "整理國科會研究生出席國際學術會議補助，以及虎科大學生於研討會競賽獲獎後可查詢的技藝獎金，包含資格、期限、文件與申請流程。";
+  els.grantVerified.textContent = payload.last_verified
+    ? isEnglish ? `Official information checked: ${payload.last_verified}` : `官方資料查核日：${payload.last_verified}`
+    : isEnglish ? "Verification date unavailable" : "查核日期未提供";
+  const notice = isEnglish ? payload.notice_en : payload.notice;
+  els.grantNotice.hidden = !notice;
+  els.grantNotice.textContent = notice || "";
+  els.grantPriorityTitle.textContent = isEnglish ? "Recommended order" : "建議申請順序";
+  els.grantPriorityPrimary.textContent = isEnglish
+    ? "1. Apply first for the NSTC International Conference Grant for Graduate Students."
+    : "① 國科會研究生出席國際學術會議補助";
+  els.grantPrioritySecondary.textContent = isEnglish
+    ? "2. If the approved amount is insufficient, ask NFU about current internal programs or cost sharing."
+    : "② 核定不足時，再詢問虎科大研發處是否有當年度校內專案或可分攤經費";
+  els.eligibilityTitle.textContent = isEnglish ? "NSTC Grant Preliminary Eligibility Check" : "國科會補助資格初篩";
+  els.eligibilityHelp.textContent = isEnglish
+    ? "For preparation only. This does not replace formal review by NFU and NSTC."
+    : "僅供準備申請使用，不取代虎科大及國科會正式審查。";
+  els.eligibilitySubmit.textContent = isEnglish ? "Check eligibility" : "開始初篩／Check eligibility";
   els.grantList.innerHTML = programs
     .map((program) => {
+      const view = isEnglish && program.english ? { ...program, ...program.english } : program;
       const links = (program.links || [])
         .map(
           (link) =>
-            `<a href="${escapeAttr(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(link.label)}</a>`,
+            `<a href="${escapeAttr(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(isEnglish ? link.label_en || link.label : link.label)}</a>`,
         )
         .join("");
       return `
-        <article class="grant-card grant-card--${escapeAttr(program.status || "unknown")}">
+        <article class="grant-card grant-card--${escapeAttr(program.status || "unknown")}" lang="${isEnglish ? "en" : "zh-Hant"}">
           <div class="grant-heading">
             <div>
-              <span class="grant-status">${escapeHtml(program.status_label || "待確認")}</span>
-              <p>${escapeHtml(program.provider || "")}</p>
-              <h3>${escapeHtml(program.title)}</h3>
+              <span class="grant-status">${escapeHtml(view.status_label || (isEnglish ? "Pending verification" : "待確認"))}</span>
+              <p>${escapeHtml(view.provider || "")}</p>
+              <h3>${escapeHtml(view.title)}</h3>
             </div>
           </div>
-          <p class="grant-summary">${escapeHtml(program.summary || "")}</p>
-          ${program.priority_note ? `<p class="grant-priority-note">${escapeHtml(program.priority_note)}</p>` : ""}
+          <p class="grant-summary">${escapeHtml(view.summary || "")}</p>
+          ${view.priority_note ? `<p class="grant-priority-note">${escapeHtml(view.priority_note)}</p>` : ""}
           <div class="grant-detail-grid">
-            ${renderGrantSection("申請資格", program.eligibility)}
-            ${renderGrantSection("補助內容", program.funding)}
-            ${renderGrantSection("期限重點", program.deadline)}
-            ${renderGrantSection("應備文件", program.documents)}
+            ${renderGrantSection(labels.eligibility, view.eligibility)}
+            ${renderGrantSection(labels.funding, view.funding)}
+            ${renderGrantSection(labels.deadline, view.deadline)}
+            ${renderGrantSection(labels.documents, view.documents)}
           </div>
-          ${renderGrantSection("申請與核銷流程", program.steps, true)}
-          ${renderGrantSection("重要提醒", program.cautions)}
-          ${renderInternationalStudentGuide(program.international_student_guide)}
+          ${renderGrantSection(labels.steps, view.steps, true)}
+          ${renderGrantSection(labels.cautions, view.cautions)}
           ${links ? `<div class="grant-links">${links}</div>` : ""}
         </article>
       `;
@@ -554,49 +595,49 @@ function grantDeadlineDates(eventDate) {
 
 function checkGrantEligibility(event) {
   event.preventDefault();
+  const isEnglish = state.grantLanguage === "en";
+  const message = (zh, en) => isEnglish ? en : `${zh}／${en}`;
   const blockers = [];
   const followUps = [];
   if (!['master', 'doctoral'].includes(els.eligibilityEnrollment.value)) {
-    blockers.push("須為在學碩士生或博士生／Must be an enrolled master's or doctoral student.");
+    blockers.push(message("須為在學碩士生或博士生", "Must be an enrolled master's or doctoral student."));
   }
   if (els.eligibilityInService.value === "yes") {
-    blockers.push("在職專班不屬本補助資格／In-service programs are not eligible.");
+    blockers.push(message("在職專班不屬本補助資格", "In-service programs are not eligible."));
   }
   if (els.eligibilityConferenceScope.value === "domestic") {
-    blockers.push("須為國際學術會議；僅國內性會議不符／The event must be an international academic conference.");
+    blockers.push(message("須為國際學術會議；僅國內性會議不符", "The event must be an international academic conference."));
   } else if (els.eligibilityConferenceScope.value === "unknown") {
-    followUps.push("請向主辦單位確認會議是否具有國際學術會議性質／Confirm the conference's international academic status.");
+    followUps.push(message("請向主辦單位確認會議是否具有國際學術會議性質", "Confirm the conference's international academic status."));
   }
   if (els.eligibilityPaper.value !== "first_time") {
-    blockers.push("須發表首次發表的研究論文／You must present a paper being presented for the first time.");
+    blockers.push(message("須發表首次發表的研究論文", "You must present a paper being presented for the first time."));
   }
   if (els.eligibilityFundedThisYear.value === "yes") {
-    blockers.push("每位研究生每年度以補助一次為限／Only one grant per student per calendar year is allowed.");
+    blockers.push(message("每位研究生每年度以補助一次為限", "Only one grant per student per calendar year is allowed."));
   }
   if (els.eligibilityCoauthor.value === "yes") {
-    blockers.push("同一篇合著論文僅補助一位研究生／Only one student may be funded for the same co-authored paper.");
+    blockers.push(message("同一篇合著論文僅補助一位研究生", "Only one student may be funded for the same co-authored paper."));
   } else if (els.eligibilityCoauthor.value === "unknown") {
-    followUps.push("請確認同篇合著論文是否已有其他研究生申請／Check whether another co-author has applied for the same paper.");
+    followUps.push(message("請確認同篇合著論文是否已有其他研究生申請", "Check whether another co-author has applied for the same paper."));
   }
   if (els.eligibilityAcceptance.value === "pending") {
-    followUps.push("接受函可註明補送，但須在會議首日四週前送達國科會／Submit the pending acceptance letter at least four weeks before the conference.");
+    followUps.push(message("接受函可註明補送，但須在會議首日四週前送達國科會", "Submit the pending acceptance letter at least four weeks before the conference."));
   } else if (els.eligibilityAcceptance.value === "none") {
-    blockers.push("尚未投稿時無法完成本補助申請／A grant application cannot be completed before the paper is submitted.");
+    blockers.push(message("尚未投稿時無法完成本補助申請", "A grant application cannot be completed before the paper is submitted."));
   }
 
   const deadlineDates = grantDeadlineDates(els.eligibilityEventDate.value);
   const resultStatus = blockers.length ? "ineligible" : followUps.length ? "conditional" : "eligible";
-  const headings = {
-    eligible: "初步符合申請條件／Likely eligible",
-    conditional: "可能符合，但仍有項目待確認／Potentially eligible; follow-up required",
-    ineligible: "目前有不符合項目／Eligibility issues found",
-  };
+  const headings = isEnglish
+    ? { eligible: "Likely eligible", conditional: "Potentially eligible; follow-up required", ineligible: "Eligibility issues found" }
+    : { eligible: "初步符合申請條件／Likely eligible", conditional: "可能符合，但仍有項目待確認／Potentially eligible; follow-up required", ineligible: "目前有不符合項目／Eligibility issues found" };
   const deadlineHtml = deadlineDates
     ? `<div class="eligibility-deadlines">
-        <strong>期限試算／Estimated deadlines</strong>
-        <span>虎科大對國科會最遲彙送基準：${deadlineDates.institutionDeadline}</span>
-        <span>接受函最遲補件基準：${deadlineDates.acceptanceDeadline}</span>
-        <small>虎科大校內截止日通常會更早，申請前務必向研發處確認。</small>
+        <strong>${isEnglish ? "Estimated deadlines" : "期限試算／Estimated deadlines"}</strong>
+        <span>${isEnglish ? "Latest NFU-to-NSTC forwarding baseline: " : "虎科大對國科會最遲彙送基準："}${deadlineDates.institutionDeadline}</span>
+        <span>${isEnglish ? "Acceptance-letter supplement baseline: " : "接受函最遲補件基準："}${deadlineDates.acceptanceDeadline}</span>
+        <small>${isEnglish ? "NFU's internal deadline is usually earlier. Confirm it with the R&D Office before applying." : "虎科大校內截止日通常會更早，申請前務必向研發處確認。"}</small>
       </div>`
     : "";
   els.eligibilityResult.className = `eligibility-result eligibility-result--${resultStatus}`;
@@ -605,7 +646,7 @@ function checkGrantEligibility(event) {
     ${blockers.length ? `<ul>${blockers.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
     ${followUps.length ? `<ul>${followUps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
     ${deadlineHtml}
-    <p>此結果僅供初篩，正式資格、校內期限與補助額度仍以虎科大及國科會審查為準。</p>
+    <p>${isEnglish ? "This is a preliminary check only. Formal eligibility, internal deadlines, and funding amounts remain subject to NFU and NSTC review." : "此結果僅供初篩，正式資格、校內期限與補助額度仍以虎科大及國科會審查為準。"}</p>
   `;
   els.eligibilityResult.hidden = false;
 }
@@ -725,6 +766,12 @@ function submitRating(event) {
 }
 
 function bindEvents() {
+  els.grantLanguageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      state.grantLanguage = button.dataset.grantLanguage === "en" ? "en" : "zh";
+      renderGrants();
+    });
+  });
   els.tabButtons.forEach((button) => {
     button.addEventListener("click", () => setActiveTab(button.dataset.tab));
     button.addEventListener("keydown", (event) => {

@@ -120,6 +120,10 @@ Repository 的 Actions 設定也需開啟「Allow GitHub Actions to create and a
 
 首頁以「研討會資訊」及「獎補助專區」兩個頁面層級 Tab 分流內容。`#grants` 可直接開啟獎補助 Tab，並須保留鍵盤方向鍵切換與正確的 `tablist`、`tab`、`tabpanel` ARIA 關係。
 
+獎補助專區另提供「中文／English」切換。每一筆現行與歷史方案都必須在 `english` 物件中提供完整的資格、金額、期限、文件、流程及提醒，不可只翻譯標題或摘要；外部連結則以 `label_en` 說明目標頁可能仍為中文。
+
+現行方案必須提供明確的直接申請入口：國科會連至學術研發服務網，虎科大技藝獎金連至 eCare；連結文字使用「線上申請／Apply online」與一般辦法、公告連結區分。
+
 ## 部署
 
 此專案不需要建置步驟，可直接用 GitHub Pages、Vercel 或任何靜態網站服務部署。若使用 GitHub Pages，將 Pages 指向 `main` 分支根目錄即可。工作流程使用完整 commit SHA 鎖定第三方 Action，並設有測試、執行逾時與同時執行保護。

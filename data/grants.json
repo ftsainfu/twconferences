@@ -1,6 +1,7 @@
 {
   "last_verified": "2026-06-20",
   "notice": "目前可確認的現行管道包含國科會「補助國內研究生出席國際學術會議」，以及虎科大 115 年技藝獎金。研討會獲得最佳論文或優秀論文，不代表一定符合技藝競賽獎金；仍須由系所及研發處認定是否屬國際性或全國性競賽前三名。虎科大另有 108、109 年度校內專案資料，但未查得 115 年度續辦公告，請勿直接沿用舊表格、金額或期限。",
+  "notice_en": "Currently confirmed options include the NSTC International Conference Grant for Graduate Students and NFU's 2026 Student Skills Award. A Best Paper or Outstanding Paper award is not automatically eligible for the skills award; the department and NFU R&D Office must verify that it qualifies as a top-three international or national competition award. NFU's 2019 and 2020 internal programs are historical only. Do not reuse their old forms, amounts, or deadlines.",
   "programs": [
     {
       "id": "nstc-graduate-international-conference",
@@ -62,21 +63,69 @@
         ],
         "caution": "This English summary is for reference only. The Chinese rules and the final decisions of NFU and NSTC prevail. Confirm NFU's internal deadline before applying."
       },
+      "english": {
+        "status_label": "Current program",
+        "provider": "National Science and Technology Council (NSTC) / submitted through NFU",
+        "title": "International Conference Grant for Graduate Students",
+        "summary": "Complete the online application in the NSTC Academic R&D Service Portal, then submit it through NFU for institutional review and forwarding. This is partial funding. Approved expenses are reimbursed within the approved ceiling under applicable overseas travel rules.",
+        "priority_note": "First priority: apply to NSTC before the conference. If the approved amount is insufficient, ask NFU whether a current internal program, research project, or other funding source may share the remaining cost.",
+        "eligibility": [
+          "An enrolled master's or doctoral student at NFU who is not in an in-service program. The published rules do not state a nationality restriction.",
+          "You must attend an international academic conference and present a research paper being presented for the first time.",
+          "Only one grant per student per calendar year is allowed. For the same co-authored paper, only one graduate student may receive this grant."
+        ],
+        "funding": [
+          "NSTC determines the approved total after review; there is no single fixed amount for every academic field.",
+          "Eligible expenses are reimbursed at actual cost within the approved ceiling and according to the applicable overseas travel rules.",
+          "This is partial funding. NFU funds, other NSTC project funds, or other agency support may share the remaining cost, but every source, item, and amount must be fully disclosed."
+        ],
+        "deadline": [
+          "Submit by NFU's internal deadline, which may be earlier than the NSTC deadline. Confirm the current date with the NFU R&D Office.",
+          "NFU must forward the application to NSTC no later than the first day of the month before the month in which the conference begins; if that day is a holiday, the next business day applies.",
+          "If the acceptance letter is not yet available, mark it for later submission. NSTC must receive it no later than four weeks before the conference begins."
+        ],
+        "documents": [
+          "NSTC online application form and updated personal profile.",
+          "Abstract of the paper, which must be presented for the first time.",
+          "Proof of acceptance; if pending, clearly state that it will be supplemented later.",
+          "Advisor recommendation letter commenting on your foreign-language ability.",
+          "Optional supporting materials such as the full paper, conference significance, and presentation format."
+        ],
+        "steps": [
+          "Ask the NFU R&D Office for the current internal deadline and responsible contact.",
+          "Sign in to the NSTC Academic R&D Service Portal and create or update your researcher profile.",
+          "Select the International Conference Grant for Graduate Students, complete the form, and upload all documents.",
+          "Submit the online application to NFU. NFU reviews eligibility, documents, and the proposed budget before forwarding it to NSTC.",
+          "NSTC generally aims to complete review within one month after receipt. Rely on the formal decision notice.",
+          "After approval, complete NFU's travel, leave, procurement, and accounting procedures, and keep airline, registration, and other receipts.",
+          "Within 15 days after the conference, upload the attendance report and expense details to the portal and submit supporting receipts to NFU."
+        ],
+        "cautions": [
+          "The conference may be held abroad, in Taiwan, or online, but it must be an international academic conference. A domestic-only conference does not meet the stated scope.",
+          "For conferences in Mainland China, the event must be organized by an international academic organization, or organized internationally with a Mainland China co-organizer.",
+          "Changes to the conference or approved application must be submitted by NFU and approved by NSTC before the event.",
+          "The Chinese rules and the final decisions of NFU and NSTC prevail."
+        ]
+      },
       "links": [
         {
           "label": "國科會現行作業要點",
+          "label_en": "Current NSTC rules (Chinese)",
           "url": "https://www.nstc.gov.tw/sci/ch/detail/bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb"
         },
         {
-          "label": "國科會學術研發服務網",
+          "label": "線上申請：國科會學術研發服務網",
+          "label_en": "Apply online: NSTC Academic R&D Service Portal",
           "url": "https://arspb.nstc.gov.tw/NSCWeb/slogin.jsp"
         },
         {
           "label": "虎科大研發處",
+          "label_en": "NFU R&D Office",
           "url": "https://ord.nfu.edu.tw/"
         },
         {
           "label": "虎科大國科會補助結報公告",
+          "label_en": "NFU reimbursement notice for NSTC grantees (Chinese)",
           "url": "https://www.nfu.edu.tw/zh_tw/ann/art/%E8%B2%B4%E6%A9%9F%E6%A7%8B114%E5%B9%B4%E5%BA%A6%E7%8D%B2%E5%9C%8B%E7%A7%91%E6%9C%83-%E8%A3%9C%E5%8A%A9%E5%9C%8B%E5%85%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E5%87%BA%E5%B8%AD%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E6%9C%83%E8%AD%B0-%E8%A3%9C%E5%8A%A9%E6%A1%88-%E8%AB%8B%E4%BE%9D%E9%99%90%E8%BE%A6%E7%90%86%E7%B6%93%E8%B2%BB%E7%B5%90%E5%A0%B1%E7%9B%B8%E9%97%9C%E4%BA%8B%E5%AE%9C-%E8%AB%8B%E6%9F%A5%E7%85%A7-40803295"
         }
       ]
@@ -124,17 +173,66 @@
         "第一期已截止，本頁不預測第二期日期。請以研發處及所屬系所最新公告為準。",
         "研發處實習組公告聯絡電話為 05-631-5022。"
       ],
+      "english": {
+        "status_label": "2026 current notice / first-round intake closed",
+        "provider": "NFU R&D Office, Internship Division",
+        "title": "Student Skills Award for Conference Competition Winners",
+        "summary": "An NFU student who represents the university and wins a top-three place in an eligible international or national competition may apply. A conference Best Paper, Outstanding Paper, or paper-competition award must have a clearly documented competitive nature and ranking and is subject to department screening and NFU R&D Office review.",
+        "priority_note": "This is a post-award incentive, not pre-conference travel funding. Apply for NSTC funding before the conference; if you later win an eligible award, separately check your NFU Student Skills Award eligibility.",
+        "eligibility": [
+          "You must be an enrolled NFU student who represented NFU and placed first, second, or third in an eligible international or national skills competition.",
+          "Social-club, recreational, or networking competitions are excluded. The organizer, participant scope, and award level must satisfy NFU's review criteria.",
+          "A conference award should have formal proof and a clear rank or an award level equivalent to the top three. If the certificate only says Best Paper or Outstanding Paper, ask your department and the R&D Office whether it can be recognized before applying."
+        ],
+        "funding": [
+          "The general award amount depends on the available budget and number of eligible applicants. The final amount is determined through formal review.",
+          "If eligible for the Chang Yang Industrial scholarship, write 'Apply for Chang Yang' on the upper-right corner of the printed form. An unsuccessful Chang Yang application is automatically considered under the general competition award.",
+          "Under the rules revised on February 19, 2024, the listed amounts for first, second, and third place in international competitions are NT$50,000, NT$40,000, and NT$30,000. Actual amounts and recipient numbers may be adjusted according to the available budget and review result."
+        ],
+        "deadline": [
+          "The first 2026 intake opened on March 2, 2026. The R&D Office consolidation deadline was March 31, 2026, so this round is closed.",
+          "For Finance Department students, the first-round department deadline was March 31, 2026 at 4:00 p.m. Other departments may set earlier internal deadlines.",
+          "No official second-round 2026 notice has been found. Do not reuse a previous year's dates; contact your department immediately after receiving an award and monitor the NFU R&D Office notice."
+        ],
+        "documents": [
+          "The Student Skills Award application printed after completing the competition record and award application in eCare.",
+          "A copy of the official award certificate. Conference winners should also attach the conference website, competition rules, award announcement, and ranking explanation.",
+          "Evidence of the total number of participating teams, number of awarded teams, competition prize, organizer, and other information needed to determine the competition level.",
+          "A copy of the student's own Chunghwa Post passbook cover. A parent, relative, or other person's account cannot be used."
+        ],
+        "steps": [
+          "Save the certificate, call-for-papers page, award announcement, organizer details, and participation-scale evidence.",
+          "Ask your department whether the conference award can be recognized as a top-three international or national skills competition award and confirm the department deadline.",
+          "Enter the competition award in eCare. For a team award, every student member must submit an individual eCare record.",
+          "Print the application and submit it with award evidence and your own Chunghwa Post passbook copy to your department for initial screening.",
+          "After department screening and college endorsement, the college forwards the application to the NFU R&D Office for final review. The award amount follows the formal decision."
+        ],
+        "cautions": [
+          "A Best Paper award is not automatically a top-three award or an eligible skills competition. Do not decide eligibility from the award title alone.",
+          "The certificate should preferably state the student's name, award, rank, work or paper title, and organizer. Missing evidence may prevent recognition.",
+          "The first intake is closed. This page does not predict the second-round date; follow the latest R&D Office and department notices.",
+          "The contact number published by the NFU R&D Office Internship Division is 05-631-5022."
+        ]
+      },
       "links": [
         {
+          "label": "線上申請：虎科大 eCare",
+          "label_en": "Apply online: NFU eCare",
+          "url": "https://ecare.nfu.edu.tw/"
+        },
+        {
           "label": "虎科大研發處 115 年第一期公告",
+          "label_en": "NFU R&D Office 2026 first-round notice (Chinese)",
           "url": "https://tech.nfu.edu.tw/index.php/zh/race/4899-115-ecare"
         },
         {
           "label": "虎科大財金系 115 年第一期公告",
+          "label_en": "NFU Finance Department first-round notice (Chinese)",
           "url": "https://nfufinance.nfu.edu.tw/nfufinance/%E7%B3%BB%E6%89%80%E8%B3%87%E8%A8%8A/1438-115%E5%B9%B4%E7%AC%AC%E4%B8%80%E6%9C%9F%E6%8A%80%E8%97%9D%E7%8D%8E%E9%87%91%E7%94%B3%E8%AB%8B%E9%80%9A%E7%9F%A5-%E8%AD%89%E7%85%A7%E7%AB%B6%E8%B3%BD%E8%AB%8B%E8%87%B3ecare%E7%B3%BB%E7%B5%B1%E5%A1%AB%E5%A0%B1"
         },
         {
           "label": "常陽興業獎學金辦法（113-02-19 修正）",
+          "label_en": "Chang Yang Industrial scholarship rules (revised 2024-02-19, Chinese)",
           "url": "https://tech.nfu.edu.tw/index.php/zh/?id=9381&option=com_attachments&task=download"
         }
       ]
@@ -169,9 +267,38 @@
       "cautions": [
         "過期專案，不代表目前仍可申請。"
       ],
+      "english": {
+        "status_label": "Historical 2020 program",
+        "provider": "NFU Higher Education Sprout Project",
+        "title": "Conference Paper Presentation Award",
+        "summary": "This was a one-time 2020 program for enrolled NFU students who submitted a full paper or extended abstract to an international or national conference organized by NFU and completed registration. No current 2026 continuation notice has been found.",
+        "eligibility": [
+          "The 2020 rules covered enrolled NFU undergraduate, master's, and doctoral students.",
+          "Applicants had to submit a full paper or extended abstract to an international or national conference organized by NFU and complete registration."
+        ],
+        "funding": [
+          "The historical amount was NT$500 per paper or extended abstract, limited to one recipient per paper."
+        ],
+        "deadline": [
+          "The original deadline was October 19, 2020 and has passed."
+        ],
+        "documents": [
+          "Original application form.",
+          "Copy of the paper acceptance letter.",
+          "Copy of the registration-fee receipt for reimbursement."
+        ],
+        "steps": [
+          "This entry is retained only to explain a historical NFU award format.",
+          "Ask the R&D Office whether a current internal program exists and use only the current year's forms."
+        ],
+        "cautions": [
+          "Expired historical program; it is not currently open for application."
+        ]
+      },
       "links": [
         {
           "label": "虎科大 109 年原公告",
+          "label_en": "Original NFU 2020 notice (Chinese)",
           "url": "https://tech.nfu.edu.tw/index.php/zh/paper-3/1378-109"
         }
       ]
@@ -208,9 +335,40 @@
       "cautions": [
         "過期專案；舊計畫編號、補助上限及表格均不得直接沿用。"
       ],
+      "english": {
+        "status_label": "Historical 2019 program",
+        "provider": "NFU Advanced R&D Talent Development Project",
+        "title": "Graduate Student International Conference Travel Grant",
+        "summary": "This 2019 program supported regular master's and doctoral students traveling abroad to present at international conferences, with priority for oral presentations. No current continuation notice has been found.",
+        "eligibility": [
+          "The 2019 rules applied to regular master's and doctoral students formally enrolled at NFU.",
+          "Students had to travel abroad to present a conference paper; oral presentations received priority, and each student was limited to one grant per year."
+        ],
+        "funding": [
+          "The historical program covered economy airfare only: up to NT$40,000 for Europe, the Americas, Australia, and New Zealand, and up to NT$15,000 for Asia and other regions."
+        ],
+        "deadline": [
+          "The application deadline was October 15, 2019 and the reimbursement deadline was November 15, 2019. Both have passed."
+        ],
+        "documents": [
+          "Acceptance letter.",
+          "Paper abstract.",
+          "Detailed conference program.",
+          "Other supporting evidence."
+        ],
+        "steps": [
+          "The historical process required advisor, department, and college approval before submission to the R&D Office.",
+          "Awardees completed pre-travel approval and leave procedures and submitted the travel report, approval record, ticket and payment evidence, and reflection report within two weeks after the conference.",
+          "For any current application, use only the current NFU notice and forms."
+        ],
+        "cautions": [
+          "Expired historical program. Do not reuse its project number, funding ceilings, or forms."
+        ]
+      },
       "links": [
         {
           "label": "虎科大 108 年原公告",
+          "label_en": "Original NFU 2019 notice (Chinese)",
           "url": "https://tech.nfu.edu.tw/index.php/zh/2017-12-19-19-54-102/2017-12-19-19-54-771/2019-04-01-07-42-10/273-108"
         }
       ]

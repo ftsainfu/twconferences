@@ -801,6 +801,32 @@ a:focus-visible {
   gap: 16px;
 }
 
+.grant-language-switch {
+  display: inline-flex;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #e7ecea;
+}
+
+.grant-language-switch button {
+  width: auto;
+  min-height: 36px;
+  padding: 0 16px;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.grant-language-switch button[aria-pressed="true"] {
+  background: var(--surface);
+  border-color: #cbd5d1;
+  color: var(--accent-dark);
+  box-shadow: 0 2px 7px rgba(28, 44, 39, 0.08);
+}
+
 .grant-card {
   padding: 18px;
   border: 1px solid var(--line);

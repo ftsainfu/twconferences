@@ -62,6 +62,48 @@ class GrantDataTests(unittest.TestCase):
         self.assertIn("function setActiveTab", script)
         self.assertIn('window.location.hash === "#grants"', script)
 
+    def test_every_program_has_complete_english_application_information(self):
+        required = {
+            "status_label",
+            "provider",
+            "title",
+            "summary",
+            "eligibility",
+            "funding",
+            "deadline",
+            "documents",
+            "steps",
+            "cautions",
+        }
+        self.assertTrue(self.payload["notice_en"])
+        for program in self.payload["programs"]:
+            english = program["english"]
+            self.assertTrue(required.issubset(english))
+            for field in required - {"status_label", "provider", "title", "summary"}:
+                self.assertTrue(english[field], f"{program['id']} has empty English {field}")
+            self.assertTrue(all(link.get("label_en") for link in program["links"]))
+
+    def test_grant_language_switch_is_wired(self):
+        root = Path(__file__).resolve().parents[1]
+        html = (root / "index.html").read_text(encoding="utf-8")
+        script = (root / "assets" / "app.js").read_text(encoding="utf-8")
+        self.assertIn('data-grant-language="en"', html)
+        self.assertIn('aria-pressed="false">English', html)
+        self.assertIn('state.grantLanguage === "en"', script)
+        self.assertIn("program.english", script)
+
+    def test_current_programs_expose_direct_application_portals(self):
+        programs = {program["id"]: program for program in self.payload["programs"]}
+        nstc_urls = {link["url"] for link in programs["nstc-graduate-international-conference"]["links"]}
+        skill_urls = {link["url"] for link in programs["nfu-2026-skill-competition-award"]["links"]}
+        self.assertIn("https://arspb.nstc.gov.tw/NSCWeb/slogin.jsp", nstc_urls)
+        self.assertIn("https://ecare.nfu.edu.tw/", skill_urls)
+        for program_id in ("nstc-graduate-international-conference", "nfu-2026-skill-competition-award"):
+            application_links = [
+                link for link in programs[program_id]["links"] if link["label_en"].startswith("Apply online:")
+            ]
+            self.assertEqual(len(application_links), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
