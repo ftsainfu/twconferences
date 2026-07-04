@@ -1,0 +1,13 @@
+{
+  "issue_number": 12,
+  "issue_url": "https://github.com/ftsainfu/twconferences/issues/12",
+  "reported_at": "2026-07-04T06:25:21Z",
+  "conference_id": "reference-sysi-nccu-edu-tw-7a61ac9d",
+  "report_type": "broken_link",
+  "details": "會議主頁和投稿連結都無法開啟",
+  "correction_field": "",
+  "correction_value": "",
+  "evidence_url": "",
+  "auto_correction_applied": true,
+  "verification": "原連結經三次檢查仍無法連線，已建議標示失效。"
+}

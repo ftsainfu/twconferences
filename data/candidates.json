@@ -58,7 +58,9 @@
           "日期與地點完整",
           "投稿方式完整"
         ]
-      }
+      },
+      "link_status": "reported_broken",
+      "last_user_report": "2026-07-04"
     },
     {
       "id": "reference-www-tims-org-tw-c13387c5",

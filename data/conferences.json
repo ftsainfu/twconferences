@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04 06:17:16 UTC+08:00",
+  "generated_at": "2026-07-04 14:25:33 UTC+08:00",
   "source_count": 57,
   "errors": [],
   "warnings": [
@@ -1072,7 +1072,9 @@
           "日期與地點完整",
           "投稿方式完整"
         ]
-      }
+      },
+      "link_status": "reported_broken",
+      "last_user_report": "2026-07-04"
     },
     {
       "id": "reference-www-tims-org-tw-c13387c5",
