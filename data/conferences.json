@@ -1,16 +1,19 @@
 {
-  "generated_at": "2026-07-15 20:20:00 CST",
-  "source_count": 57,
+  "generated_at": "2026-07-16 06:14:27 UTC+08:00",
+  "source_count": 58,
   "errors": [],
   "warnings": [
-    "reference:SSRN Conferences: <urlopen error curl: (56) The requested URL returned error: 403>"
+    "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10001 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached>",
+    "organizer:中華民國多國籍企業研究學會: <urlopen error curl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached>",
+    "reference:SSRN Conferences: <urlopen error curl: (22) The requested URL returned error: 403>"
   ],
   "health": {
     "status": "healthy",
     "source_error_count": 0,
-    "discovery_warning_count": 1,
+    "link_error_count": 0,
+    "discovery_warning_count": 3,
     "verified_count": 20,
-    "candidate_count": 9
+    "candidate_count": 11
   },
   "conferences": [
     {
@@ -58,8 +61,9 @@
         "國科會活動訊息與會議官網均已核對；線上投稿自 2026-05-01 開始，完稿截止日為 2026-07-31。",
         "期刊轉投仍須依各刊格式與審查程序辦理，不代表研討會接受即保證刊登。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-20",
@@ -67,6 +71,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://taa2026.acc.scu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://taa2026.acc.scu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://taa2026.acc.scu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -124,8 +151,9 @@
         "投稿不限中英文；大會僅出版雲端版摘要。",
         "合作期刊安排屬後續投稿與複審，不代表研討會接受即保證期刊刊登。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-20",
@@ -133,6 +161,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=336",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://2026ntumr-jar.conf.tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://2026ntumr-jar.conf.tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -172,10 +223,11 @@
       "attention_notes": [
         "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -183,6 +235,22 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -223,17 +291,35 @@
         "摘要投稿截稿日期為 2026-04-10。",
         "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-20",
+      "last_changed": "2026-07-16",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=52&id=30367",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://icmsi.must.edu.tw/Documents/2026/2026_ICMSI_%E4%B8%AD%E6%96%87%E5%BE%B5%E6%96%87%E5%85%AC%E5%91%8A.pdf",
+          "status": "warning",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "",
+          "consecutive_failures": 1
+        }
+      },
+      "link_health_summary": "投稿連結檢查異常；已連續失敗才會標示為失效。",
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -272,10 +358,11 @@
       "attention_notes": [
         "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -283,6 +370,22 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://cmr-crrmkt.pccu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://cmr-crrmkt.pccu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 3,
         "max_score": 5,
@@ -326,8 +429,9 @@
         "投稿截止日期為 2026-04-30。",
         "提供中、英、日語發表場次，以及海報發表場次。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -335,6 +439,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://basummit.dyu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://basummit.dyu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://basummit.dyu.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -374,10 +501,11 @@
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -385,6 +513,22 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 3,
         "max_score": 5,
@@ -424,15 +568,39 @@
       "attention_notes": [
         "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "2026-05-15",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-20",
+      "last_changed": "2026-07-16",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.conference.url.tw/main/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.conference.url.tw/main/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.conference.url.tw/main/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -475,8 +643,9 @@
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -484,6 +653,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://papertone.net/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://papertone.net/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://papertone.net/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -526,10 +718,11 @@
         "可選線上或現場報告，以及中文或英文場次。",
         "全文繳交截止日為 2026-05-21。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-05",
@@ -537,6 +730,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -576,15 +792,32 @@
       "attention_notes": [
         "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-20",
-      "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "last_changed": "2026-07-16",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -608,6 +841,7 @@
       "event_end": "2026-05-29",
       "location": "台北",
       "submission_deadline": "2026-05-03",
+      "acceptance_notification_date": "2026-05-05",
       "fields": [
         "工商管理",
         "公共管理",
@@ -626,8 +860,8 @@
       ],
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-08",
@@ -635,6 +869,22 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://sites.google.com/ntub.edu.tw/cbpm-2025/%E9%A6%96%E9%A0%81?authuser=1",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -645,8 +895,7 @@
           "投稿方式完整",
           "領域與發表資訊完整"
         ]
-      },
-      "acceptance_notification_date": "2026-05-05"
+      }
     },
     {
       "id": "tfa-2026-annual",
@@ -678,10 +927,11 @@
         "會議時間為 2026-05-29 至 2026-05-30，地點為天主教輔仁大學國璽樓。",
         "須以全文投稿，且投稿資格須共同作者之一為臺灣財務金融學會 2026 年付費個人或永久會員。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-08",
@@ -689,6 +939,29 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.finance.org.tw/fnmeeting_year_item/77",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://cmt3.research.microsoft.com/TFA2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.finance.org.tw/fnmeeting_year_item/77",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -712,6 +985,7 @@
       "event_end": "2026-04-24",
       "location": "台南",
       "submission_deadline": "2026-03-06",
+      "acceptance_notification_date": "2026-03-20",
       "fields": [
         "商管決策",
         "企業管理",
@@ -731,15 +1005,38 @@
       ],
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-20",
+      "last_changed": "2026-07-16",
       "change_status": "changed",
       "change_label": "資訊異動",
       "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://ba.stust.edu.tw/tc/news/63-91967-n",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -750,8 +1047,7 @@
           "投稿方式完整",
           "領域與發表資訊完整"
         ]
-      },
-      "acceptance_notification_date": "2026-03-20"
+      }
     },
     {
       "id": "stust-2026-knowledge-global-management",
@@ -765,6 +1061,8 @@
       "location": "台南",
       "submission_deadline": "2026-08-21",
       "acceptance_notification_date": "2026-09-11",
+      "submission_fee": "",
+      "registration_fee": "",
       "fields": [
         "知識經濟",
         "全球化管理",
@@ -774,28 +1072,51 @@
         "資訊管理"
       ],
       "presentation_formats": [
-        "oral"
+        "online",
+        "oral",
+        "poster"
       ],
       "presentation_languages": [
         "en"
       ],
-      "submission_fee": "",
-      "registration_fee": "",
       "publication_opportunities": [],
       "attention_notes": [
         "官方海報列示全文截稿日為 2026-08-21，審查公告日為 2026-09-11，研討會日期為 2026-10-20 至 2026-10-21。",
         "海報說明各研討會主題之論文全文以英文書寫、英文發表，且錄取者須出席發表。",
         "全文投稿方式為寄送 E-mail 至 stust_cob2@stust.edu.tw；右側 QR code／Google Form 為 Online Registration 表單，表單包含作者與論文題名欄位。"
       ],
-      "last_checked": "2026-07-15",
-      "last_attempted_at": "2026-07-15",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-07-15",
+      "last_changed": "2026-07-16",
       "change_status": "new",
       "change_label": "新增",
-      "change_summary": "依南臺科技大學商管學院官方頁與 2026 研討會海報補入正式收錄資料。",
+      "change_summary": "首次納入追蹤。",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://business.stust.edu.tw/tc/node/conference",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://business.stust.edu.tw/tc/node/conference",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://docs.google.com/forms/d/1a1leUXF6TmnUeB2dAm-cjTfMmf1NnQsKkCHjHVp9lUs/preview",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -833,10 +1154,11 @@
       "attention_notes": [
         "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-13",
@@ -844,6 +1166,22 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 3,
         "max_score": 5,
@@ -866,6 +1204,7 @@
       "event_end": "2026-08-28",
       "location": "屏東",
       "submission_deadline": "2026-06-30",
+      "acceptance_notification_date": "2026-07-20",
       "fields": [
         "健康科技管理",
         "經營管理",
@@ -888,15 +1227,38 @@
       ],
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-05",
+      "last_changed": "2026-07-04",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymFile.aspx?CN_Code=115015&CN_DateE=&CN_DateS=&CN_PlaceType=&CN_Theme=&PgIndex=0",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -907,8 +1269,7 @@
           "投稿方式完整",
           "領域與發表資訊完整"
         ]
-      },
-      "acceptance_notification_date": "2026-07-20"
+      }
     },
     {
       "id": "fy-2026-ihc",
@@ -921,6 +1282,7 @@
       "event_end": "2026-12-04",
       "location": "高雄",
       "submission_deadline": "2026-07-31",
+      "acceptance_notification_date": "2026-08-31",
       "fields": [
         "健康照護管理",
         "長照個案管理",
@@ -943,8 +1305,8 @@
       ],
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-06-19",
@@ -952,6 +1314,30 @@
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ihc.fy.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://ihc.fy.edu.tw/",
+          "status": "warning",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "",
+          "consecutive_failures": 1
+        },
+        "registration_url": {
+          "url": "https://ihc.fy.edu.tw/",
+          "status": "warning",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "",
+          "consecutive_failures": 1
+        }
+      },
+      "link_health_summary": "投稿連結、報名連結檢查異常；已連續失敗才會標示為失效。",
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -962,8 +1348,7 @@
           "投稿方式完整",
           "領域與發表資訊完整"
         ]
-      },
-      "acceptance_notification_date": "2026-08-31"
+      }
     },
     {
       "id": "apfita-2026",
@@ -995,17 +1380,41 @@
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
         "此為農業資訊科技研討會，納入原因是徵稿主題包含農場管理、供應鏈與地理空間決策等管理應用。"
       ],
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-05",
+      "last_changed": "2026-06-26",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.apfita.org/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.apfita.org/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.apfita.org/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
       "information_quality": {
         "score": 4,
         "max_score": 5,
@@ -1051,15 +1460,40 @@
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。",
         "依使用者回報 #5 修正：原報名網址誤連至 2023 年論文頁。"
       ],
-      "last_checked": "2026-06-20",
-      "last_attempted_at": "2026-06-20",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-07-16",
+      "last_attempted_at": "2026-07-16",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-06-19",
+      "last_changed": "2026-07-15",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://iclt.info/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://forms.gle/jnzznqtFVk4tiw5V6",
+          "status": "warning",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "",
+          "consecutive_failures": 1
+        },
+        "registration_url": {
+          "url": "https://iclt.info/registration",
+          "status": "ok",
+          "last_attempted_at": "2026-07-16",
+          "last_successful_at": "2026-07-16",
+          "consecutive_failures": 0
+        }
+      },
+      "link_health_summary": "投稿連結檢查異常；已連續失敗才會標示為失效。",
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -1101,7 +1535,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-05",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1118,7 +1552,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-05",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1160,7 +1594,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-05",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1177,7 +1611,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-05",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1218,7 +1652,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1235,7 +1669,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1275,7 +1709,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1292,7 +1726,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1332,7 +1766,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1349,7 +1783,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1389,7 +1823,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1406,7 +1840,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1446,7 +1880,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
+      "last_checked": "2026-07-16",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1463,7 +1897,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1502,8 +1936,8 @@
       "attention_notes": [
         "由「國家科學及技術委員會活動訊息（第 1 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-06-20",
-      "last_changed": "2026-06-08",
+      "last_checked": "2026-07-16",
+      "last_changed": "2026-06-29",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -1520,7 +1954,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-08",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1560,8 +1994,8 @@
         "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
         "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。"
       ],
-      "last_checked": "2026-06-20",
-      "last_changed": "2026-06-20",
+      "last_checked": "2026-07-16",
+      "last_changed": "2026-07-16",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -1582,7 +2016,7 @@
       "independent_source_count": 2,
       "is_corroborated": true,
       "first_seen": "2026-06-20",
-      "last_seen": "2026-06-20",
+      "last_seen": "2026-07-16",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1593,6 +2027,116 @@
         "criteria": [
           "日期與地點完整"
         ]
+      }
+    },
+    {
+      "id": "organizer-www-nstc-gov-tw-063e6307",
+      "title": "第六屆社會科學與智能管理國際研討會(SSIM2026)徵稿啟事",
+      "organizer": "國家科學及技術委員會活動訊息（第 1 頁）",
+      "homepage_url": "https://www.nstc.gov.tw/folksonomy/detail/cf8eaee4-a18d-4ea7-a43e-c4a732880e13?l=ch",
+      "submission_url": "https://www.nstc.gov.tw/folksonomy/detail/cf8eaee4-a18d-4ea7-a43e-c4a732880e13?l=ch",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由「國家科學及技術委員會活動訊息（第 1 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-07-16",
+      "last_changed": "2026-07-08",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "discovered_from_url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
+      "evidence_sources": [
+        {
+          "name": "國家科學及技術委員會活動訊息（第 1 頁）",
+          "url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
+          "type": "government"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-07-08",
+      "last_seen": "2026-07-16",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": false,
+      "information_quality": {
+        "score": 0,
+        "max_score": 5,
+        "label": "資料不足",
+        "criteria": []
+      }
+    },
+    {
+      "id": "organizer-www-fcu-edu-tw-f509f39f",
+      "title": "逢甲大學經濟學系第四屆國際研討會 國內外學者共探永續經濟與綠色金融 逢甲大學經濟學系第四屆國際研討會 國內外學者共探永續經濟與綠色金融",
+      "organizer": "逢甲大學商學院",
+      "homepage_url": "https://www.fcu.edu.tw/news/2026062601/",
+      "submission_url": "https://www.fcu.edu.tw/news/2026062601/",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "待確認",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "待確認"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由「逢甲大學商學院」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-07-16",
+      "last_changed": "2026-07-16",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "discovered_from_url": "https://business.fcu.edu.tw/",
+      "evidence_sources": [
+        {
+          "name": "逢甲大學商學院",
+          "url": "https://business.fcu.edu.tw/",
+          "type": "university_college"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-07-16",
+      "last_seen": "2026-07-16",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": false,
+      "information_quality": {
+        "score": 0,
+        "max_score": 5,
+        "label": "資料不足",
+        "criteria": []
       }
     }
   ]
