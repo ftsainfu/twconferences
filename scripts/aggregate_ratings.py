@@ -67,7 +67,47 @@ def validate_rating(issue: dict, conference_ids: set[str]) -> tuple[dict | None,
     }, "評分格式有效，已納入彙整。"
 
 
-def aggregate_ratings(issues: list[dict], conferences: list[dict]) -> tuple[dict, dict[int, dict]]:
+def validate_external_rating(record: dict, conference_ids: set[str], row_number: int = 0) -> tuple[dict | None, str]:
+    conference_id = str(record.get("conference_id") or "").strip()
+    voter_id = str(record.get("voter_id") or record.get("nickname") or "").strip()
+    try:
+        rating = int(record.get("rating") or 0)
+    except (TypeError, ValueError):
+        rating = 0
+    participation = str(record.get("participation") or "").strip()
+    confirmed = str(record.get("confirmed") or "").strip().lower()
+    if conference_id not in conference_ids:
+        return None, "找不到可評分的正式研討會。"
+    if not voter_id:
+        return None, "缺少匿名評分識別碼，無法降低重複評分。"
+    if rating not in range(1, 6):
+        return None, "評分必須是 1 到 5 星。"
+    if participation not in PARTICIPATION_VALUES:
+        return None, "請確認是已報名或已參加。"
+    if confirmed not in {"true", "1", "yes"}:
+        return None, "必須確認本人已報名或參加。"
+    return {
+        "conference_id": conference_id,
+        "author": f"external:{voter_id.lower()}",
+        "rating": rating,
+        "participation": participation,
+        "created_at": str(record.get("created_at") or record.get("submitted_at") or ""),
+        "issue_number": -row_number,
+    }, "外部評分格式有效，已納入彙整。"
+
+
+def normalize_external_payload(payload: object) -> list[dict]:
+    if isinstance(payload, list):
+        return [item for item in payload if isinstance(item, dict)]
+    if isinstance(payload, dict):
+        for key in ("ratings", "records", "data"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [item for item in value if isinstance(item, dict)]
+    return []
+
+
+def aggregate_ratings(issues: list[dict], conferences: list[dict], external_ratings: list[dict] | None = None) -> tuple[dict, dict[int, dict]]:
     conference_ids = {
         str(item.get("id"))
         for item in conferences
@@ -79,6 +119,16 @@ def aggregate_ratings(issues: list[dict], conferences: list[dict]) -> tuple[dict
         vote, message = validate_rating(issue, conference_ids)
         issue_number = int(issue.get("number") or 0)
         issue_results[issue_number] = {"valid": vote is not None, "message": message}
+        if not vote:
+            continue
+        key = (vote["conference_id"], vote["author"])
+        previous = latest_votes.get(key)
+        current_order = (vote["created_at"], vote["issue_number"])
+        previous_order = (previous["created_at"], previous["issue_number"]) if previous else ("", -1)
+        if current_order >= previous_order:
+            latest_votes[key] = vote
+    for row_number, record in enumerate(external_ratings or [], start=1):
+        vote, _message = validate_external_rating(record, conference_ids, row_number)
         if not vote:
             continue
         key = (vote["conference_id"], vote["author"])
@@ -119,13 +169,17 @@ def main() -> int:
     parser.add_argument("--issues", required=True, type=Path)
     parser.add_argument("--conferences", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--external-ratings", type=Path)
     parser.add_argument("--result", type=Path)
     parser.add_argument("--issue-number", type=int)
     args = parser.parse_args()
 
     issues = json.loads(args.issues.read_text(encoding="utf-8"))
+    external_ratings = []
+    if args.external_ratings and args.external_ratings.exists():
+        external_ratings = normalize_external_payload(json.loads(args.external_ratings.read_text(encoding="utf-8")))
     conference_payload = json.loads(args.conferences.read_text(encoding="utf-8"))
-    payload, issue_results = aggregate_ratings(issues, conference_payload.get("conferences", []))
+    payload, issue_results = aggregate_ratings(issues, conference_payload.get("conferences", []), external_ratings)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.result and args.issue_number is not None:
         result = issue_results.get(args.issue_number, {"valid": False, "message": "找不到本次評分。"})

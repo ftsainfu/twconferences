@@ -33,10 +33,21 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh issue list --state all --limit 1000 --json number,title,body,url,author,createdAt > /tmp/conference-ratings.json
+      - name: Load external rating submissions
+        env:
+          RATING_API_URL: ${{ secrets.RATING_API_URL }}
+          RATING_READ_TOKEN: ${{ secrets.RATING_READ_TOKEN }}
+        run: |
+          if test -n "$RATING_API_URL" && test -n "$RATING_READ_TOKEN"; then
+            curl --fail --silent --show-error --get "$RATING_API_URL" --data-urlencode "token=$RATING_READ_TOKEN" > /tmp/external-ratings.json
+          else
+            echo "[]" > /tmp/external-ratings.json
+          fi
       - name: Aggregate attendee ratings
         run: >-
           python3 scripts/aggregate_ratings.py
           --issues /tmp/conference-ratings.json
+          --external-ratings /tmp/external-ratings.json
           --conferences data/conferences.json
           --output data/ratings.json
       - name: Load open conference reports

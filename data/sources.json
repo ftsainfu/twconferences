@@ -395,6 +395,7 @@
       "event_end": "2026-05-29",
       "location": "台北",
       "submission_deadline": "2026-05-03",
+      "acceptance_notification_date": "2026-05-05",
       "fields": ["工商管理", "公共管理", "商管"],
       "presentation_formats": ["oral", "other"],
       "presentation_languages": ["zh"],
@@ -433,12 +434,37 @@
       "event_end": "2026-04-24",
       "location": "台南",
       "submission_deadline": "2026-03-06",
+      "acceptance_notification_date": "2026-03-20",
       "fields": ["商管決策", "企業管理", "實務應用"],
       "presentation_formats": ["oral", "other"],
       "presentation_languages": ["zh"],
       "attention_notes": [
         "研討會日期為 2026-04-24，地點為南臺科技大學修齊大樓 E 棟 6 樓。",
         "全文投稿截止日期為 2026-03-06，審查結果公告日期為 2026-03-20。"
+      ]
+    },
+    {
+      "id": "stust-2026-knowledge-global-management",
+      "title": "2026 第二十二屆知識經濟與全球化管理國際研討會",
+      "organizer": "南臺科技大學商管學院",
+      "homepage_url": "https://business.stust.edu.tw/tc/node/conference",
+      "submission_url": "https://business.stust.edu.tw/tc/node/conference",
+      "registration_url": "https://docs.google.com/forms/d/1a1leUXF6TmnUeB2dAm-cjTfMmf1NnQsKkCHjHVp9lUs/preview",
+      "event_start": "2026-10-20",
+      "event_end": "2026-10-21",
+      "location": "台南",
+      "submission_deadline": "2026-08-21",
+      "acceptance_notification_date": "2026-09-11",
+      "submission_fee": "",
+      "registration_fee": "",
+      "fields": ["知識經濟", "全球化管理", "供應鏈管理", "國際行銷", "財務會計", "資訊管理"],
+      "presentation_formats": ["oral"],
+      "presentation_languages": ["en"],
+      "publication_opportunities": [],
+      "attention_notes": [
+        "官方海報列示全文截稿日為 2026-08-21，審查公告日為 2026-09-11，研討會日期為 2026-10-20 至 2026-10-21。",
+        "海報說明各研討會主題之論文全文以英文書寫、英文發表，且錄取者須出席發表。",
+        "全文投稿方式為寄送 E-mail 至 stust_cob2@stust.edu.tw；右側 QR code／Google Form 為 Online Registration 表單，表單包含作者與論文題名欄位。"
       ]
     },
     {
@@ -468,6 +494,7 @@
       "event_end": "2026-08-28",
       "location": "屏東",
       "submission_deadline": "2026-06-30",
+      "acceptance_notification_date": "2026-07-20",
       "fields": ["健康科技管理", "經營管理", "創意行銷", "人力資源管理", "財務與金融"],
       "presentation_formats": ["oral", "poster", "other"],
       "presentation_languages": ["zh"],
@@ -489,6 +516,7 @@
       "event_end": "2026-12-04",
       "location": "高雄",
       "submission_deadline": "2026-07-31",
+      "acceptance_notification_date": "2026-08-31",
       "fields": ["健康照護管理", "長照個案管理", "ESG", "智慧照護", "人才培育"],
       "presentation_formats": ["oral", "poster", "online"],
       "presentation_languages": ["en"],

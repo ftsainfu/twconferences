@@ -1,0 +1,5 @@
+{
+  "rating_api_url": "",
+  "rating_api_mode": "cors",
+  "rating_fallback": "github"
+}

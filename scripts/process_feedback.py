@@ -25,18 +25,22 @@ ALLOWED_FIELDS = {
     "event_start",
     "event_end",
     "submission_deadline",
+    "submission_deadline_previous",
+    "submission_deadline_status",
+    "acceptance_notification_date",
     "submission_fee",
     "registration_fee",
     "location",
 }
 URL_FIELDS = {"homepage_url", "submission_url", "registration_url"}
-DATE_FIELDS = {"event_start", "event_end", "submission_deadline"}
+DATE_FIELDS = {"event_start", "event_end", "submission_deadline", "submission_deadline_previous", "acceptance_notification_date"}
 FEE_FIELDS = {"submission_fee", "registration_fee"}
 TRUSTED_SUFFIXES = (".edu.tw", ".org.tw", ".gov.tw", ".com.tw")
 FIELD_HINTS = {
     "registration_url": ("報名連結", "報名網址", "註冊連結", "註冊網址", "registration", "register"),
     "submission_url": ("投稿連結", "投稿網址", "繳交論文", "submission", "submit paper"),
     "homepage_url": ("官網", "首頁", "主頁", "homepage", "official website"),
+    "acceptance_notification_date": ("審查結果", "錄取通知", "審查公告", "錄取公告", "acceptance", "notification"),
 }
 LINK_HINTS = {
     "registration_url": ("registration", "register", "報名", "註冊"),

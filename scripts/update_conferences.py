@@ -67,6 +67,8 @@ TAIWAN_LOCATION_WORDS = (
 )
 BUSINESS_REFERENCE_WORDS = ("finance", "financial", "accounting", "management", "business", "marketing", "economics", "財務", "財金", "會計", "管理", "商管", "行銷", "經濟")
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
+LINK_HEALTH_FIELDS = ("homepage_url", "submission_url", "registration_url")
+LINK_FAILURE_THRESHOLD = 2
 
 
 def now_tw() -> datetime:
@@ -169,6 +171,95 @@ def fetch_url(
     raise last_error
 
 
+def link_health_label(field: str) -> str:
+    return {
+        "homepage_url": "會議主頁",
+        "submission_url": "投稿連結",
+        "registration_url": "報名連結",
+    }.get(field, field)
+
+
+def link_health_key(conference_id: str, field: str, url: str) -> str:
+    return f"{conference_id}:{field}:{canonical_url(url)}"
+
+
+def build_link_health_record(
+    previous: dict,
+    *,
+    url: str,
+    ok: bool,
+    error: str = "",
+) -> dict:
+    today = today_iso()
+    previous_failures = int(previous.get("consecutive_failures") or 0)
+    failures = 0 if ok else previous_failures + 1
+    return {
+        "url": url,
+        "status": "ok" if ok else ("broken" if failures >= LINK_FAILURE_THRESHOLD else "warning"),
+        "last_attempted_at": today,
+        "last_successful_at": today if ok else previous.get("last_successful_at", ""),
+        "consecutive_failures": failures,
+        "last_error": "" if ok else error,
+    }
+
+
+def check_conference_links(conferences: list[dict], history: dict) -> list[str]:
+    """Check verified conference links and only mark broken after repeated failures."""
+    history_links = history.setdefault("links", {})
+    errors: list[str] = []
+    checked_urls: dict[str, tuple[bool, str]] = {}
+
+    for item in conferences:
+        conference_id = item.get("id", "")
+        if item.get("review_status") != "verified" or not conference_id:
+            continue
+        link_health: dict[str, dict] = {}
+        failed_labels: list[str] = []
+
+        for field in LINK_HEALTH_FIELDS:
+            url = str(item.get(field) or "").strip()
+            if not validate_url(url):
+                continue
+            health_key = link_health_key(conference_id, field, url)
+            previous = history_links.get(health_key, {})
+            canonical = canonical_url(url)
+
+            if field == "homepage_url" and item.get("check_status") == "ok":
+                ok, error = True, ""
+            elif field == "homepage_url" and item.get("check_status") == "error":
+                ok, error = False, str(item.get("check_error") or "homepage source check failed")
+            elif canonical in checked_urls:
+                ok, error = checked_urls[canonical]
+            else:
+                try:
+                    fetch_url(url, timeout=5, attempts=1)
+                    ok, error = True, ""
+                except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
+                    ok, error = False, str(exc)
+                checked_urls[canonical] = (ok, error)
+
+            record = build_link_health_record(previous, url=url, ok=ok, error=error)
+            history_links[health_key] = record
+            link_health[field] = {
+                "url": url,
+                "status": record["status"],
+                "last_attempted_at": record["last_attempted_at"],
+                "last_successful_at": record["last_successful_at"],
+                "consecutive_failures": record["consecutive_failures"],
+            }
+            if record["status"] in {"warning", "broken"}:
+                failed_labels.append(link_health_label(field))
+            if record["status"] == "broken":
+                errors.append(f"{conference_id}.{field}: {error}")
+
+        if link_health:
+            item["link_health"] = link_health
+        if failed_labels:
+            item["link_health_summary"] = "、".join(failed_labels) + "檢查異常；已連續失敗才會標示為失效。"
+
+    return errors
+
+
 def current_year_markers(reference: date | None = None) -> tuple[str, ...]:
     reference = reference or now_tw().date()
     years = (reference.year, reference.year + 1)
@@ -201,6 +292,25 @@ DATE_PATTERNS = [
     re.compile(r"(?P<year>20\d{2})[年/-]\s*(?P<month>\d{1,2})[月/-]\s*(?P<day>\d{1,2})"),
     re.compile(r"(?P<year>1\d{2})[年/-]\s*(?P<month>\d{1,2})[月/-]\s*(?P<day>\d{1,2})"),
 ]
+ENGLISH_MONTHS = {
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12,
+}
+ENGLISH_DATE_PATTERN = re.compile(
+    r"(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+    r"(?P<day>\d{1,2}),\s*(?P<year>20\d{2})",
+    re.I,
+)
 
 
 def find_dates(text: str) -> list[str]:
@@ -211,6 +321,17 @@ def find_dates(text: str) -> list[str]:
                 dates.append(roc_to_iso(match))
             except ValueError:
                 continue
+    for match in ENGLISH_DATE_PATTERN.finditer(text):
+        try:
+            dates.append(
+                date(
+                    int(match.group("year")),
+                    ENGLISH_MONTHS[match.group("month").lower()],
+                    int(match.group("day")),
+                ).isoformat()
+            )
+        except ValueError:
+            continue
     return sorted(set(dates))
 
 
@@ -230,6 +351,21 @@ def infer_event_date(text: str, fallback: str) -> str:
         return fallback
     window_matches = re.finditer(
         r"(研討會日期|研討會舉辦日期|研討會舉辦日|研討會舉辦|會議日期|會議時間|舉辦日期|舉辦日|活動日期|Conference Date).{0,50}",
+        text,
+        flags=re.I,
+    )
+    candidates: list[str] = []
+    for match in window_matches:
+        snippet = text[match.start() : min(len(text), match.end() + 40)]
+        candidates.extend(find_dates(snippet))
+    return sorted(set(candidates))[0] if candidates else fallback
+
+
+def infer_acceptance_notification_date(text: str, fallback: str) -> str:
+    if fallback:
+        return fallback
+    window_matches = re.finditer(
+        r"(審查結果|審查公告|結果公告|錄取公告|錄取通知|接受通知|接受函|acceptance|notification).{0,50}",
         text,
         flags=re.I,
     )
@@ -335,6 +471,10 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
 
             item["submission_deadline"] = infer_deadline(text, item.get("submission_deadline", ""))
             item["event_start"] = infer_event_date(text, item.get("event_start", ""))
+            item["acceptance_notification_date"] = infer_acceptance_notification_date(
+                text,
+                item.get("acceptance_notification_date", ""),
+            )
             item["presentation_formats"] = infer_formats(text, item.get("presentation_formats", []))
             item["presentation_languages"] = infer_languages(text, item.get("presentation_languages", []))
             item["submission_fee"] = infer_fee_information(
@@ -1098,7 +1238,15 @@ def validate_payload(payload: dict, previous_payload: dict | None = None) -> lis
         if canonical in seen_urls:
             errors.append(f"duplicate homepage_url: {url}")
         seen_urls.add(canonical)
-        for key in ("event_start", "event_end", "submission_deadline", "last_checked", "last_changed"):
+        for key in (
+            "event_start",
+            "event_end",
+            "submission_deadline",
+            "submission_deadline_previous",
+            "acceptance_notification_date",
+            "last_checked",
+            "last_changed",
+        ):
             value = item.get(key)
             if value:
                 try:
@@ -1167,6 +1315,7 @@ def main(argv: list[str] | None = None) -> int:
         item for item in previous_payload.get("conferences", []) if item.get("review_status") == "candidate"
     ]
     conferences, source_errors = update_known_conferences(sources, history)
+    link_errors = check_conference_links(conferences, history)
     existing_ids = {item["id"] for item in conferences}
     existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
     existing_titles = {title_key(item.get("title", "")) for item in conferences}
@@ -1196,6 +1345,9 @@ def main(argv: list[str] | None = None) -> int:
     visible_candidates = [
         item for item in candidate_store if item.get("candidate_status") == "pending" and not item.get("is_stale")
     ]
+    for item in conferences:
+        if (item.get("link_health") or {}).get("homepage_url", {}).get("status") == "broken":
+            item["link_status"] = "reported_broken"
     for item in conferences + visible_candidates:
         item["information_quality"] = assess_information_quality(item)
     payload = {
@@ -1203,11 +1355,12 @@ def main(argv: list[str] | None = None) -> int:
         "source_count": len(sources.get("conferences", []))
         + len(organizer_sources)
         + len(sources.get("reference_sources", [])),
-        "errors": source_errors,
+        "errors": source_errors + link_errors,
         "warnings": discovery_warnings,
         "health": {
-            "status": "degraded" if source_errors else "healthy",
+            "status": "degraded" if source_errors or link_errors else "healthy",
             "source_error_count": len(source_errors),
+            "link_error_count": len(link_errors),
             "discovery_warning_count": len(discovery_warnings),
             "verified_count": len(conferences),
             "candidate_count": len(visible_candidates),
@@ -1227,12 +1380,16 @@ def main(argv: list[str] | None = None) -> int:
         print("Completed with source errors:", file=sys.stderr)
         for error in source_errors:
             print(f"- {error}", file=sys.stderr)
+    if link_errors:
+        print("Completed with broken links:", file=sys.stderr)
+        for error in link_errors:
+            print(f"- {error}", file=sys.stderr)
     if discovery_warnings:
         print("Completed with discovery warnings:", file=sys.stderr)
         for warning in discovery_warnings:
             print(f"- {warning}", file=sys.stderr)
     print(f"Wrote {len(payload['conferences'])} conferences to {OUTPUT_FILE}")
-    return 2 if source_errors and args.fail_on_errors else 0
+    return 2 if (source_errors or link_errors) and args.fail_on_errors else 0
 
 
 if __name__ == "__main__":

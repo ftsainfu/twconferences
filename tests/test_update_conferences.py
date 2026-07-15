@@ -8,10 +8,12 @@ from datetime import date
 from scripts.update_conferences import (
     assess_information_quality,
     canonical_url,
+    check_conference_links,
     current_year_markers,
     duplicates_known_title,
     find_dates,
     government_organizer_sources,
+    infer_acceptance_notification_date,
     infer_fee_information,
     is_relevant_conference_text,
     merge_candidate_store,
@@ -43,7 +45,10 @@ class DateTests(unittest.TestCase):
         self.assertEqual(current_year_markers(date(2027, 1, 1)), ("2027", "116", "2028", "117"))
 
     def test_find_dates_converts_roc_and_rejects_invalid_date(self):
-        self.assertEqual(find_dates("民國115年6月19日、2026/06/20"), ["2026-06-19", "2026-06-20"])
+        self.assertEqual(
+            find_dates("民國115年6月19日、2026/06/20、September 11, 2026"),
+            ["2026-06-19", "2026-06-20", "2026-09-11"],
+        )
         self.assertEqual(find_dates("2026/13/40"), [])
 
     def test_fee_inference_keeps_relevant_sentence_only(self):
@@ -55,6 +60,22 @@ class DateTests(unittest.TestCase):
     def test_fee_inference_ignores_policy_without_amount(self):
         text = "審查結果公告後恕不退回報名費用，詳情另行通知。"
         self.assertEqual(infer_fee_information(text, "", ("註冊費", "報名費", "登記費")), "")
+
+    def test_acceptance_notification_date_inference_uses_result_windows(self):
+        self.assertEqual(
+            infer_acceptance_notification_date("投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。", ""),
+            "2026-08-31",
+        )
+        self.assertEqual(
+            infer_acceptance_notification_date("Notice of Paper Acceptance: September 11, 2026", ""),
+            "2026-09-11",
+        )
+
+    def test_acceptance_notification_date_inference_preserves_manual_value(self):
+        self.assertEqual(
+            infer_acceptance_notification_date("審查結果公告日期為 2026-09-11。", "2026-09-10"),
+            "2026-09-10",
+        )
 
 
 class FetchTests(unittest.TestCase):
@@ -90,6 +111,84 @@ class FetchTests(unittest.TestCase):
         body, charset = fetch_url("https://example.edu.tw/event", attempts=1)
 
         self.assertEqual((body, charset), ("成功", "utf-8"))
+
+
+class LinkHealthTests(unittest.TestCase):
+    @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
+    @patch("scripts.update_conferences.fetch_url", side_effect=TimeoutError("timeout"))
+    def test_link_health_marks_warning_before_consecutive_failure_threshold(self, _fetch, _today):
+        conferences = [{
+            "id": "conf-1",
+            "review_status": "verified",
+            "homepage_url": "https://example.edu.tw/event",
+            "submission_url": "https://example.edu.tw/submit",
+            "registration_url": "",
+            "check_status": "ok",
+        }]
+        history = {"links": {}}
+
+        errors = check_conference_links(conferences, history)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(conferences[0]["link_health"]["submission_url"]["status"], "warning")
+        self.assertEqual(conferences[0]["link_health"]["submission_url"]["consecutive_failures"], 1)
+
+    @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
+    @patch("scripts.update_conferences.fetch_url", side_effect=TimeoutError("timeout"))
+    def test_link_health_marks_broken_after_repeated_failures(self, _fetch, _today):
+        history = {"links": {
+            "conf-1:submission_url:https://example.edu.tw/submit": {
+                "url": "https://example.edu.tw/submit",
+                "status": "warning",
+                "last_attempted_at": "2026-07-03",
+                "last_successful_at": "",
+                "consecutive_failures": 1,
+                "last_error": "timeout",
+            },
+        }}
+        conferences = [{
+            "id": "conf-1",
+            "review_status": "verified",
+            "homepage_url": "https://example.edu.tw/event",
+            "submission_url": "https://example.edu.tw/submit",
+            "registration_url": "",
+            "check_status": "ok",
+        }]
+
+        errors = check_conference_links(conferences, history)
+
+        self.assertEqual(conferences[0]["link_health"]["submission_url"]["status"], "broken")
+        self.assertEqual(conferences[0]["link_health"]["submission_url"]["consecutive_failures"], 2)
+        self.assertEqual(errors, ["conf-1.submission_url: timeout"])
+        self.assertIn("投稿連結", conferences[0]["link_health_summary"])
+
+    @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
+    @patch("scripts.update_conferences.fetch_url", return_value=("ok", "utf-8"))
+    def test_link_health_success_resets_failure_count(self, _fetch, _today):
+        history = {"links": {
+            "conf-1:registration_url:https://example.edu.tw/register": {
+                "url": "https://example.edu.tw/register",
+                "status": "broken",
+                "last_attempted_at": "2026-07-03",
+                "last_successful_at": "",
+                "consecutive_failures": 3,
+                "last_error": "timeout",
+            },
+        }}
+        conferences = [{
+            "id": "conf-1",
+            "review_status": "verified",
+            "homepage_url": "https://example.edu.tw/event",
+            "submission_url": "",
+            "registration_url": "https://example.edu.tw/register",
+            "check_status": "ok",
+        }]
+
+        errors = check_conference_links(conferences, history)
+
+        self.assertEqual(errors, [])
+        self.assertEqual(conferences[0]["link_health"]["registration_url"]["status"], "ok")
+        self.assertEqual(conferences[0]["link_health"]["registration_url"]["consecutive_failures"], 0)
 
 
 class CandidateTests(unittest.TestCase):
@@ -322,11 +421,15 @@ class ValidationTests(unittest.TestCase):
             "homepage_url": "https://example.com/event",
             "review_status": "verified",
             "event_start": "2026-19-40",
+            "submission_deadline_previous": "2026/08/21",
+            "acceptance_notification_date": "2026/09/11",
         }
         errors = validate_payload({"conferences": [item, dict(item)]})
         self.assertTrue(any("duplicate id" in error for error in errors))
         self.assertTrue(any("duplicate homepage_url" in error for error in errors))
-        self.assertTrue(any("not ISO date" in error for error in errors))
+        self.assertTrue(any("event_start is not ISO date" in error for error in errors))
+        self.assertTrue(any("submission_deadline_previous is not ISO date" in error for error in errors))
+        self.assertTrue(any("acceptance_notification_date is not ISO date" in error for error in errors))
 
     def test_publication_opportunity_requires_name_and_valid_urls(self):
         item = {

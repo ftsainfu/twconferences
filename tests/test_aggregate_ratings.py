@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.aggregate_ratings import aggregate_ratings, parse_rating_body
+from scripts.aggregate_ratings import aggregate_ratings, normalize_external_payload, parse_rating_body
 
 
 class RatingAggregationTests(unittest.TestCase):
@@ -56,6 +56,53 @@ class RatingAggregationTests(unittest.TestCase):
         payload, results = aggregate_ratings([issue], self.conferences)
         self.assertEqual(payload["ratings"], {})
         self.assertFalse(results[3]["valid"])
+
+    def test_aggregates_external_rating_api_votes(self):
+        payload, _ = aggregate_ratings(
+            [],
+            self.conferences,
+            [
+                {
+                    "conference_id": "conf-1",
+                    "rating": 4,
+                    "participation": "attended",
+                    "confirmed": True,
+                    "voter_id": "browser-1",
+                    "submitted_at": "2026-06-19T00:00:00Z",
+                }
+            ],
+        )
+        self.assertEqual(payload["ratings"]["conf-1"]["average"], 4)
+        self.assertEqual(payload["rating_count"], 1)
+
+    def test_latest_vote_from_same_external_voter_wins(self):
+        payload, _ = aggregate_ratings(
+            [],
+            self.conferences,
+            [
+                {
+                    "conference_id": "conf-1",
+                    "rating": 2,
+                    "participation": "attended",
+                    "confirmed": True,
+                    "voter_id": "browser-1",
+                    "submitted_at": "2026-06-18T00:00:00Z",
+                },
+                {
+                    "conference_id": "conf-1",
+                    "rating": 5,
+                    "participation": "attended",
+                    "confirmed": True,
+                    "voter_id": "browser-1",
+                    "submitted_at": "2026-06-19T00:00:00Z",
+                },
+            ],
+        )
+        self.assertEqual(payload["ratings"]["conf-1"]["average"], 5)
+        self.assertEqual(payload["rating_count"], 1)
+
+    def test_normalizes_external_payload_wrappers(self):
+        self.assertEqual(normalize_external_payload({"ratings": [{"conference_id": "conf-1"}]}), [{"conference_id": "conf-1"}])
 
 
 if __name__ == "__main__":

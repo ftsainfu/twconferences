@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260620d" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260715b" />
   </head>
   <body>
     <header class="site-header">
@@ -104,6 +104,10 @@
             <option value="not_accepted">未標示接受英文</option>
           </select>
         </label>
+        <label class="inline-check">
+          <input id="trackedOnlyFilter" type="checkbox" />
+          只看追蹤
+        </label>
         <label>
           排序
           <select id="sortSelect">
@@ -124,6 +128,40 @@
         <div><strong id="newCount">0</strong><span>近期更新</span></div>
         <div><strong id="deadlineCount">0</strong><span>投稿未截止</span></div>
         <div><strong id="upcomingCount">0</strong><span>尚未舉辦總數</span></div>
+      </section>
+
+      <section class="calendar-dashboard" aria-labelledby="calendarDashboardTitle">
+        <div class="dashboard-heading">
+          <div>
+            <p class="section-kicker">Annual Planning Dashboard</p>
+            <h2 id="calendarDashboardTitle">年度研討會月份分布</h2>
+            <p>比較正式收錄研討會的投稿截止月份與活動舉辦月份；待確認候選資料不列入統計。</p>
+          </div>
+          <div class="dashboard-controls">
+            <label>統計範圍
+              <select id="dashboardScope" aria-label="儀表板統計範圍">
+                <option value="filtered">依目前篩選結果</option>
+                <option value="all">全部正式收錄</option>
+              </select>
+            </label>
+            <label>統計年度
+              <select id="dashboardYear" aria-label="儀表板統計年度"></select>
+            </label>
+          </div>
+        </div>
+        <div class="dashboard-highlights" aria-live="polite">
+          <div><span>投稿截止高峰</span><strong id="deadlinePeak">計算中</strong></div>
+          <div><span>活動舉辦高峰</span><strong id="eventPeak">計算中</strong></div>
+          <div><span>圖表樣本／準備建議</span><strong id="planningAdvice">計算中</strong></div>
+        </div>
+        <div class="dashboard-legend" aria-label="圖例">
+          <span><i class="legend-swatch legend-swatch--deadline"></i>投稿截止日</span>
+          <span><i class="legend-swatch legend-swatch--event"></i>活動舉辦日</span>
+        </div>
+        <div class="monthly-chart-wrap">
+          <div id="monthlyChart" class="monthly-chart" role="img" aria-label="每月投稿截止及活動舉辦研討會數量"></div>
+        </div>
+        <p class="dashboard-note">投稿截止月份代表稿件必須送出的月份，不是開始準備的月份；建議依高峰月份提前安排摘要、全文與指導教授審閱時間。</p>
       </section>
 
       <section class="list-section" aria-labelledby="currentTitle">
@@ -312,6 +350,9 @@
             <option value="event_start">舉辦日期</option>
             <option value="event_end">結束日期</option>
             <option value="submission_deadline">投稿截止日</option>
+            <option value="submission_deadline_previous">原投稿截止日</option>
+            <option value="submission_deadline_status">投稿截止狀態</option>
+            <option value="acceptance_notification_date">審查結果日期</option>
             <option value="submission_fee">投稿／審稿費</option>
             <option value="registration_fee">註冊／報名費</option>
             <option value="location">地點</option>
@@ -347,13 +388,15 @@
             <option value="registered">我已完成報名</option>
           </select>
         </label>
+        <label>暱稱（選填）<input id="ratingNickname" type="text" maxlength="80" placeholder="可留空；僅用於後台辨識重複評分" /></label>
         <label>補充心得（選填）<textarea id="ratingComment" rows="3" maxlength="500" placeholder="可簡述議程、交流品質或適合的參加者"></textarea></label>
         <label class="confirmation-check"><input id="ratingConfirmed" type="checkbox" required />我確認本人已報名或參加這場研討會。</label>
-        <p class="dialog-note">送出後會開啟 GitHub Issue。登入並確認送出才會計票；GitHub 帳號與心得會公開，同一帳號對同一研討會只採最新一票。</p>
-        <button class="primary-button" type="submit">前往送出評分</button>
+        <p class="dialog-note">若網站已設定評分 API，會直接送出且不需登入；未設定或暫時失敗時，會開啟 GitHub Issue 作為備援。同一瀏覽器對同一研討會只採最新一票。</p>
+        <p id="ratingStatus" class="dialog-status" hidden></p>
+        <button class="primary-button" type="submit">送出評分</button>
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260620d" type="module"></script>
+    <script src="assets/app.js?v=20260715b" type="module"></script>
   </body>
 </html>

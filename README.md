@@ -25,17 +25,18 @@ node --check assets/app.js
 
 1. 讀取 `data/sources.json` 的已知研討會來源。
 2. 抓取會議主頁並計算內容雜湊。
-3. 將 `data/recurring.json` 的常態性研討會官方管道併入主辦單位來源，透過主辦單位或會議官方網站搜尋年度更新。
-4. 掃描主辦單位、會議官方網站、`university_sources` 中的大學商管學院、`scholarly_sources` 中的期刊／學會，以及 `government_sources` 中的政府活動公告，發現疑似新研討會時建立「待確認」候選。
-5. 比對外部研討會彙整站、SSRN 研討會索引與 AFA 公開行事曆；只有明確標示在台灣舉辦的商管活動才建立「待確認」候選。
-6. 候選項目需通過正式研討會初步篩選，排除講座、課程、工作坊、招生、單純期刊／專刊徵稿、得獎名單等非研討會內容。
-7. 同一研討會若由多個來源發現，會依網址、標題與年度合併，保留各佐證來源及不同網域的交叉核對數，不重複顯示。
-8. 若來源頁內容和前次不同，將該研討會標示為 `[NEW!]` 與「資訊異動」。
-9. 依官方來源、日期地點、投稿方式、發表資訊、報名與費用資訊計算「資料完整度」星等，回寫 `data/conferences.json` 與 `data/history.json`。
-10. 讀取仍開啟的 `[資料回報]` Issue，重新搜尋官方來源；可安全驗證的修正會併入當日更新、回覆並關閉 Issue，仍無法確認者保留至隔日重試。
-11. 讀取 `[研討會評分]` Issue，依 GitHub 帳號去除重複評分後產生 `data/ratings.json`。
+3. 檢查正式收錄研討會的 `homepage_url`、`submission_url`、`registration_url`；結果寫入 `data/history.json` 的連結健康紀錄，連續 2 次失敗才標示為可能失效。
+4. 將 `data/recurring.json` 的常態性研討會官方管道併入主辦單位來源，透過主辦單位或會議官方網站搜尋年度更新。
+5. 掃描主辦單位、會議官方網站、`university_sources` 中的大學商管學院、`scholarly_sources` 中的期刊／學會，以及 `government_sources` 中的政府活動公告，發現疑似新研討會時建立「待確認」候選。
+6. 比對外部研討會彙整站、SSRN 研討會索引與 AFA 公開行事曆；只有明確標示在台灣舉辦的商管活動才建立「待確認」候選。
+7. 候選項目需通過正式研討會初步篩選，排除講座、課程、工作坊、招生、單純期刊／專刊徵稿、得獎名單等非研討會內容。
+8. 同一研討會若由多個來源發現，會依網址、標題與年度合併，保留各佐證來源及不同網域的交叉核對數，不重複顯示。
+9. 若來源頁內容和前次不同，將該研討會標示為 `[NEW!]` 與「資訊異動」。
+10. 依官方來源、日期地點、投稿方式、發表資訊、報名與費用資訊計算「資料完整度」星等，回寫 `data/conferences.json` 與 `data/history.json`。
+11. 讀取仍開啟的 `[資料回報]` Issue，重新搜尋官方來源；可安全驗證的修正會併入當日更新、回覆並關閉 Issue，仍無法確認者保留至隔日重試。
+12. 讀取 `[研討會評分]` Issue，並在已設定外部評分 API 時同步讀取免登入評分資料，去除重複評分後產生 `data/ratings.json`。
 
-來源錯誤會寫入 `health` 與個別研討會的 `check_status`。排程仍會保存通過結構驗證的資料，但工作結果會標示失敗，避免部分抓取失敗被誤認為完整成功。日期搜尋年份會依台北時間自動涵蓋本年及次年。
+來源錯誤會寫入 `health` 與個別研討會的 `check_status`；連結連續失敗會寫入 `link_health` 並在頁面提示。排程仍會保存通過結構驗證的資料，但工作結果會標示失敗，避免部分抓取或連結失效被誤認為完整成功。日期搜尋年份會依台北時間自動涵蓋本年及次年。`[NEW!]` 目前代表 `last_changed` 或 `created_at` 在 14 天內。
 
 資料來源刻意不使用新聞、媒體報導或一般搜尋結果；所有正式資料應以主辦單位官網、會議官網或主辦單位官方追蹤頁為準。若主辦單位官網直接連到 Google Sites 等外部會議頁，會先列為「待確認」候選。外部彙整站只用來輔助每日比對與提醒，新增項目仍會以「待確認」狀態呈現，確認後才應補進正式研討會來源。
 
@@ -58,6 +59,9 @@ node --check assets/app.js
 - `event_start`
 - `location`
 - `submission_deadline`
+- `submission_deadline_previous`
+- `submission_deadline_status`
+- `acceptance_notification_date`
 - `submission_fee`
 - `registration_fee`
 - `publication_opportunities`
@@ -106,7 +110,28 @@ Repository 的 Actions 設定也需開啟「Allow GitHub Actions to create and a
 - `資料完整度`：系統依五項客觀資料條件計算，不代表研討會學術聲望。
 - `參加者推薦`：已報名或已參加者提供的 1–5 星推薦度。
 
-「評分推薦度」會開啟預填的 GitHub Issue。使用者必須登入 GitHub 並確認本人已報名或參加；GitHub 帳號與選填心得會公開。`.github/workflows/process-rating.yml` 會驗證格式、重新產生 `data/ratings.json` 並關閉有效評分 Issue。為降低重複灌票，同一 GitHub 帳號對同一研討會只採最新一票；此機制屬身分聲明，無法驗證實際繳費或出席紀錄。
+「評分推薦度」優先使用免登入評分 API；未設定或暫時失敗時，會開啟預填的 GitHub Issue 作為備援。使用者仍須確認本人已報名或參加；此機制屬身分聲明，無法驗證實際繳費或出席紀錄。
+
+免登入評分的設定分成兩段：
+
+1. 前端送出：將 Google Apps Script 或其他評分 API 網址填入 `data/site_config.json` 的 `rating_api_url`。若 API 需要瀏覽器 `no-cors` 模式，將 `rating_api_mode` 改為 `no-cors`；否則維持 `cors`。
+2. 每日彙整：在 GitHub repository 的 `Settings → Secrets and variables → Actions` 設定 `RATING_API_URL` 與 `RATING_READ_TOKEN`，每日更新就會抓取外部評分並和 GitHub Issue 評分一起產生 `data/ratings.json`。
+
+可直接使用 `scripts/rating_webapp.gs` 作為 Google Apps Script Web App 範本：
+
+1. 建立 Google Sheet。
+2. 開啟 Apps Script，貼上 `scripts/rating_webapp.gs`。
+3. 在 Apps Script 的 Script Properties 設定 `READ_TOKEN`，值使用一組自行產生的長隨機字串。
+4. 部署為 Web App，執行身分選「我」，存取權依需求選「Anyone」或組織內可存取。
+5. 將部署後的 `/exec` 網址填入 `data/site_config.json` 的 `rating_api_url`，也填入 GitHub Secret `RATING_API_URL`；`READ_TOKEN` 同步填入 GitHub Secret `RATING_READ_TOKEN`。
+
+外部評分以瀏覽器產生並保存在 localStorage 的 `voter_id` 去除重複；同一瀏覽器對同一研討會只採最新一票。GitHub Issue 備援則以 GitHub 帳號去除重複；`.github/workflows/process-rating.yml` 會驗證格式、重新產生 `data/ratings.json` 並關閉有效評分 Issue。
+
+## 年度月份儀表板
+
+「研討會資訊」Tab 以年度切換顯示 1–12 月的投稿截止日與活動舉辦日數量。統計只納入正式收錄項目，候選資料不計入；同一研討會分別依 `submission_deadline` 與 `event_start` 各計入對應月份一次。預設年度使用 `generated_at` 所在年度，並標示兩組資料的高峰月份，提醒使用者在投稿截止高峰前 2–3 個月準備。
+
+儀表板預設使用 `state.filtered`，因此關鍵字、領域、年月、地點、舉辦狀態、投稿期限、投稿狀態、發表形式與英文發表篩選變動時會同步重算。使用者亦可將統計範圍切換為「全部正式收錄」，忽略目前篩選條件查看全體基準。
 
 ## 學生研討會獎補助
 
