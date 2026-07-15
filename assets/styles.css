@@ -839,7 +839,8 @@ a:focus-visible {
   border-radius: 6px;
 }
 
-.star-rating legend {
+.star-rating legend,
+.dimension-rating legend {
   padding: 0 5px;
   color: var(--muted);
   font-size: 0.84rem;
@@ -869,6 +870,45 @@ a:focus-visible {
   width: auto;
   min-height: auto;
   margin: 0 5px 0 0;
+}
+
+.dimension-rating {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #c5cfcb;
+  border-radius: 6px;
+}
+
+.dimension-rating label {
+  grid-template-columns: minmax(150px, 1fr) minmax(160px, 1fr);
+  align-items: center;
+}
+
+.rating-detail {
+  width: 100%;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.rating-detail summary {
+  cursor: pointer;
+}
+
+.rating-dimensions {
+  display: grid;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.rating-sample-note {
+  color: #8a5a00;
+}
+
+.rating-flag-note {
+  color: #8b2f1f;
 }
 
 .confirmation-check {

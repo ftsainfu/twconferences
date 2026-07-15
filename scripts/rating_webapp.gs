@@ -4,6 +4,11 @@ const HEADERS = [
   "conference_id",
   "conference_title",
   "rating",
+  "agenda_quality",
+  "review_transparency",
+  "organizer_communication",
+  "networking_value",
+  "cost_value",
   "participation",
   "confirmed",
   "nickname",
@@ -33,8 +38,14 @@ function getSheet() {
 function validatePayload(payload) {
   const rating = Number(payload.rating);
   const participation = String(payload.participation || "");
+  const dimensions = payload.dimensions || payload;
   if (!payload.conference_id) throw new Error("conference_id is required");
   if (!Number.isInteger(rating) || rating < 1 || rating > 5) throw new Error("rating must be 1-5");
+  ["agenda_quality", "review_transparency", "organizer_communication", "networking_value", "cost_value"].forEach((field) => {
+    const value = Number(dimensions[field]);
+    if (!Number.isInteger(value) || value < 1 || value > 5) throw new Error(`${field} must be 1-5`);
+  });
+  if (String(payload.comment || "").trim().length < 20) throw new Error("comment must be at least 20 characters");
   if (!["registered", "attended"].includes(participation)) throw new Error("participation is invalid");
   if (String(payload.confirmed).toLowerCase() !== "true") throw new Error("confirmed must be true");
   if (!payload.voter_id) throw new Error("voter_id is required");
@@ -44,12 +55,18 @@ function doPost(e) {
   try {
     const payload = JSON.parse(e.postData.contents || "{}");
     validatePayload(payload);
+    const dimensions = payload.dimensions || payload;
     const sheet = getSheet();
     sheet.appendRow([
       new Date().toISOString(),
       String(payload.conference_id || "").slice(0, 120),
       String(payload.conference_title || "").slice(0, 300),
       Number(payload.rating),
+      Number(dimensions.agenda_quality),
+      Number(dimensions.review_transparency),
+      Number(dimensions.organizer_communication),
+      Number(dimensions.networking_value),
+      Number(dimensions.cost_value),
       String(payload.participation || ""),
       true,
       String(payload.nickname || "").slice(0, 80),

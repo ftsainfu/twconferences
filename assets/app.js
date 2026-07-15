@@ -107,6 +107,14 @@ const fieldKeywords = {
   health: ["健康", "醫療", "照護", "health", "hospital"],
 };
 
+const ratingDimensions = [
+  ["agenda_quality", "議程／主題"],
+  ["review_transparency", "審查透明"],
+  ["organizer_communication", "行政溝通"],
+  ["networking_value", "交流價值"],
+  ["cost_value", "費用時間"],
+];
+
 let reportTarget = null;
 let ratingTarget = null;
 
@@ -580,10 +588,21 @@ function renderRatingSummary(item) {
   const quality = item.information_quality || { score: 0, max_score: 5, label: "資料不足" };
   const attendee = state.ratings[item.id];
   const qualityCriteria = (quality.criteria || []).join("、") || "尚無符合項目";
+  const dimensionAverages = attendee?.dimension_averages || {};
+  const dimensionRows = ratingDimensions
+    .filter(([key]) => dimensionAverages[key])
+    .map(([key, label]) => `<span>${escapeHtml(label)}：${escapeHtml(dimensionAverages[key])} / 5</span>`)
+    .join("");
+  const sampleNote = attendee?.count && attendee.count < 3
+    ? '<span class="rating-sample-note">樣本較少</span>'
+    : "";
+  const flaggedNote = attendee?.flagged_count
+    ? `<span class="rating-flag-note">${escapeHtml(attendee.flagged_count)} 票已標記可疑未計入</span>`
+    : "";
   const attendeeValue = item.review_status === "candidate"
     ? '<span class="rating-value">正式收錄後開放評分</span>'
     : attendee
-    ? `<span class="stars" aria-label="參加者推薦 ${escapeAttr(attendee.average)} 分">${starText(attendee.average)}</span><span class="rating-value">${escapeHtml(attendee.average)} / 5・${escapeHtml(attendee.count)} 票</span>`
+    ? `<span class="stars" aria-label="參加者推薦 ${escapeAttr(attendee.average)} 分">${starText(attendee.average)}</span><span class="rating-value">${escapeHtml(attendee.average)} / 5・${escapeHtml(attendee.count)} 票 ${sampleNote} ${flaggedNote}</span>${dimensionRows ? `<details class="rating-detail"><summary>查看五面向平均</summary><div class="rating-dimensions">${dimensionRows}</div></details>` : ""}`
     : '<span class="rating-value">尚無參加者評分</span>';
   return `
     <div class="rating-summary">
@@ -1031,6 +1050,7 @@ function buildRatingIssueUrl(payload) {
     `conference_id: ${singleLine(payload.conference_id)}`,
     `conference_title: ${singleLine(payload.conference_title)}`,
     `rating: ${payload.rating}`,
+    ...ratingDimensions.map(([key]) => `${key}: ${payload.dimensions?.[key] || ""}`),
     `participation: ${payload.participation}`,
     "confirmed: true",
     "",
@@ -1047,17 +1067,29 @@ function buildRatingIssueUrl(payload) {
 async function submitRating(event) {
   event.preventDefault();
   if (!ratingTarget || !els.ratingConfirmed.checked) return;
-  const rating = new FormData(els.ratingForm).get("rating");
+  const formData = new FormData(els.ratingForm);
+  const rating = formData.get("rating");
   if (!rating) return;
+  const dimensions = Object.fromEntries(ratingDimensions.map(([key]) => [key, Number(formData.get(key) || 0)]));
+  const comment = els.ratingComment.value.trim();
+  if (comment.length < 20 || Object.values(dimensions).some((value) => !Number.isInteger(value) || value < 1 || value > 5)) {
+    if (els.ratingStatus) {
+      els.ratingStatus.hidden = false;
+      els.ratingStatus.dataset.status = "error";
+      els.ratingStatus.textContent = "請完成五個面向評分，並填寫至少 20 字的評分原因。";
+    }
+    return;
+  }
   const submitButton = els.ratingForm.querySelector('button[type="submit"]');
   const payload = {
     conference_id: ratingTarget.id,
     conference_title: ratingTarget.title,
     rating: Number(rating),
+    dimensions,
     participation: els.ratingParticipation.value,
     confirmed: true,
     nickname: els.ratingNickname?.value.trim() || "",
-    comment: els.ratingComment.value.trim(),
+    comment,
     voter_id: loadVoterId(),
     source: "twconferences-site",
     submitted_at: new Date().toISOString(),

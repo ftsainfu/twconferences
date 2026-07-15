@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260715b" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260715c" />
   </head>
   <body>
     <header class="site-header">
@@ -373,7 +373,7 @@
         </div>
         <p id="ratingConferenceTitle"></p>
         <fieldset class="star-rating">
-          <legend>推薦程度</legend>
+          <legend>整體推薦程度</legend>
           <div>
             <label><input type="radio" name="rating" value="1" required /><span>1 星</span></label>
             <label><input type="radio" name="rating" value="2" /><span>2 星</span></label>
@@ -382,6 +382,59 @@
             <label><input type="radio" name="rating" value="5" /><span>5 星</span></label>
           </div>
         </fieldset>
+        <fieldset class="dimension-rating">
+          <legend>五個面向評分</legend>
+          <label>議程／主題品質
+            <select name="agenda_quality" required>
+              <option value="">請選擇</option>
+              <option value="5">5 星：非常好</option>
+              <option value="4">4 星：好</option>
+              <option value="3">3 星：普通</option>
+              <option value="2">2 星：待改善</option>
+              <option value="1">1 星：不推薦</option>
+            </select>
+          </label>
+          <label>投稿與審查透明度
+            <select name="review_transparency" required>
+              <option value="">請選擇</option>
+              <option value="5">5 星：非常好</option>
+              <option value="4">4 星：好</option>
+              <option value="3">3 星：普通</option>
+              <option value="2">2 星：待改善</option>
+              <option value="1">1 星：不推薦</option>
+            </select>
+          </label>
+          <label>主辦單位溝通與行政效率
+            <select name="organizer_communication" required>
+              <option value="">請選擇</option>
+              <option value="5">5 星：非常好</option>
+              <option value="4">4 星：好</option>
+              <option value="3">3 星：普通</option>
+              <option value="2">2 星：待改善</option>
+              <option value="1">1 星：不推薦</option>
+            </select>
+          </label>
+          <label>交流與人脈價值
+            <select name="networking_value" required>
+              <option value="">請選擇</option>
+              <option value="5">5 星：非常好</option>
+              <option value="4">4 星：好</option>
+              <option value="3">3 星：普通</option>
+              <option value="2">2 星：待改善</option>
+              <option value="1">1 星：不推薦</option>
+            </select>
+          </label>
+          <label>費用／時間投入是否值得
+            <select name="cost_value" required>
+              <option value="">請選擇</option>
+              <option value="5">5 星：非常好</option>
+              <option value="4">4 星：好</option>
+              <option value="3">3 星：普通</option>
+              <option value="2">2 星：待改善</option>
+              <option value="1">1 星：不推薦</option>
+            </select>
+          </label>
+        </fieldset>
         <label>參與狀態
           <select id="ratingParticipation" required>
             <option value="attended">我已參加</option>
@@ -389,7 +442,7 @@
           </select>
         </label>
         <label>暱稱（選填）<input id="ratingNickname" type="text" maxlength="80" placeholder="可留空；僅用於後台辨識重複評分" /></label>
-        <label>補充心得（選填）<textarea id="ratingComment" rows="3" maxlength="500" placeholder="可簡述議程、交流品質或適合的參加者"></textarea></label>
+        <label>評分原因<textarea id="ratingComment" rows="4" minlength="20" maxlength="500" required placeholder="請至少 20 字，簡述議程、審查、行政、交流或費用是否值得"></textarea></label>
         <label class="confirmation-check"><input id="ratingConfirmed" type="checkbox" required />我確認本人已報名或參加這場研討會。</label>
         <p class="dialog-note">若網站已設定評分 API，會直接送出且不需登入；未設定或暫時失敗時，會開啟 GitHub Issue 作為備援。同一瀏覽器對同一研討會只採最新一票。</p>
         <p id="ratingStatus" class="dialog-status" hidden></p>
@@ -397,6 +450,6 @@
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260715b" type="module"></script>
+    <script src="assets/app.js?v=20260715c" type="module"></script>
   </body>
 </html>

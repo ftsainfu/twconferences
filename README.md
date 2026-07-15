@@ -108,9 +108,15 @@ Repository 的 Actions 設定也需開啟「Allow GitHub Actions to create and a
 每張正式研討會卡片會分別顯示：
 
 - `資料完整度`：系統依五項客觀資料條件計算，不代表研討會學術聲望。
-- `參加者推薦`：已報名或已參加者提供的 1–5 星推薦度。
+- `參加者推薦`：已報名或已參加者提供的 1–5 星推薦度，並可展開查看五個面向平均。
 
-「評分推薦度」優先使用免登入評分 API；未設定或暫時失敗時，會開啟預填的 GitHub Issue 作為備援。使用者仍須確認本人已報名或參加；此機制屬身分聲明，無法驗證實際繳費或出席紀錄。
+「評分推薦度」優先使用免登入評分 API；未設定或暫時失敗時，會開啟預填的 GitHub Issue 作為備援。使用者仍須確認本人已報名或參加；此機制屬身分聲明，無法驗證實際繳費或出席紀錄。新評分必須提供整體推薦、五個面向評分及至少 20 字原因：
+
+- 議程／主題品質
+- 投稿與審查透明度
+- 主辦單位溝通與行政效率
+- 交流與人脈價值
+- 費用／時間投入是否值得
 
 免登入評分的設定分成兩段：
 
@@ -126,6 +132,8 @@ Repository 的 Actions 設定也需開啟「Allow GitHub Actions to create and a
 5. 將部署後的 `/exec` 網址填入 `data/site_config.json` 的 `rating_api_url`，也填入 GitHub Secret `RATING_API_URL`；`READ_TOKEN` 同步填入 GitHub Secret `RATING_READ_TOKEN`。
 
 外部評分以瀏覽器產生並保存在 localStorage 的 `voter_id` 去除重複；同一瀏覽器對同一研討會只採最新一票。GitHub Issue 備援則以 GitHub 帳號去除重複；`.github/workflows/process-rating.yml` 會驗證格式、重新產生 `data/ratings.json` 並關閉有效評分 Issue。
+
+為降低灌票影響，彙整時會標記可疑票並排除在平均外，但保留 `flagged_count` 供前端提示。現行規則包含同一評分者短期大量評分、不同評分使用完全相同原因、以及缺乏具體說明的極端評分。低於 3 票的研討會會顯示「樣本較少」，避免單一高分造成誤導。
 
 ## 年度月份儀表板
 
