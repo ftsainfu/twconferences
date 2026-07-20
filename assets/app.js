@@ -31,6 +31,7 @@ const els = {
   deadlinePeak: document.querySelector("#deadlinePeak"),
   eventPeak: document.querySelector("#eventPeak"),
   planningAdvice: document.querySelector("#planningAdvice"),
+  dashboardCompleteness: document.querySelector("#dashboardCompleteness"),
   historyCount: document.querySelector("#historyCount"),
   keyword: document.querySelector("#keywordFilter"),
   month: document.querySelector("#monthFilter"),
@@ -560,6 +561,27 @@ function peakMonthLabel(months, key) {
   return `${peakMonths.join("、")}（${peak} 場）`;
 }
 
+function dashboardCompletenessLabel(items, year) {
+  const yearItems = items.filter(
+    (item) => String(item.event_start || "").startsWith(year) || String(item.submission_deadline || "").startsWith(year),
+  );
+  const eventMonths = new Set(
+    yearItems
+      .map((item) => String(item.event_start || "").match(/^(\d{4})-(\d{2})-/))
+      .filter(Boolean)
+      .map((match) => match[2]),
+  );
+  const deadlineMonths = new Set(
+    yearItems
+      .map((item) => String(item.submission_deadline || "").match(/^(\d{4})-(\d{2})-/))
+      .filter(Boolean)
+      .map((match) => match[2]),
+  );
+  const sparse = yearItems.length < 40 || eventMonths.size < 8 || deadlineMonths.size < 8;
+  const status = sparse ? "年度資料仍在回填中" : "年度樣本較完整";
+  return `${status}：${year} 年目前納入 ${yearItems.length} 場正式收錄；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
+}
+
 function renderMonthlyDashboard() {
   if (!els.monthlyChart || !els.dashboardYear) return;
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");
@@ -575,6 +597,9 @@ function renderMonthlyDashboard() {
   const deadlinePeak = Math.max(...months.map((item) => item.deadline));
   const peakLead = deadlinePeak ? "高峰前 2–3 個月開始準備" : "目前資料不足，請持續追蹤";
   els.planningAdvice.textContent = `${contributingItems.length} 場；${peakLead}`;
+  if (els.dashboardCompleteness) {
+    els.dashboardCompleteness.textContent = dashboardCompletenessLabel(sourceItems, year);
+  }
   els.monthlyChart.setAttribute(
     "aria-label",
     `${year} 年各月研討會數量：${months.map((item) => `${item.month} 月投稿截止 ${item.deadline} 場、活動舉辦 ${item.event} 場`).join("；")}`,

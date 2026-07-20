@@ -14,7 +14,10 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('id="dashboardYear"', html)
         self.assertIn('id="dashboardScope"', html)
         self.assertIn('id="monthlyChart"', html)
+        self.assertIn('id="dashboardCompleteness"', html)
         self.assertIn("function monthlyConferenceCounts", script)
+        self.assertIn("function dashboardCompletenessLabel", script)
+        self.assertIn("年度資料仍在回填中", script)
         self.assertIn("submission_deadline", script)
         self.assertIn("event_start", script)
         self.assertIn("function acceptanceCalendarLink", script)
@@ -45,6 +48,19 @@ class DashboardTests(unittest.TestCase):
             if item.get("id") == "stust-2026-knowledge-global-management"
         )
         self.assertEqual(stust["acceptance_notification_date"], "2026-09-11")
+
+    def test_2026_backfill_leads_are_tracked_outside_formal_statistics(self):
+        leads_payload = json.loads((self.root / "data" / "backfill_2026_leads.json").read_text(encoding="utf-8"))
+        lead_ids = {item["id"] for item in leads_payload["leads"]}
+        formal_ids = {
+            item["id"]
+            for item in self.payload["conferences"]
+            if item.get("review_status") != "candidate"
+        }
+        self.assertTrue(leads_payload["leads"])
+        self.assertTrue(all(item["review_status"].startswith("needs_") for item in leads_payload["leads"]))
+        self.assertFalse(lead_ids & formal_ids)
+        self.assertTrue(all(item.get("official_url") or item.get("discovery_url") for item in leads_payload["leads"]))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-07-21",
+  "purpose": "2026 年度商管研討會歷史回填待核對清單。此檔不直接進入前台正式統計；完成官方核對後，再將資料補入 data/sources.json 的 conferences。",
+  "review_policy": [
+    "優先以會議官網、主辦系所、主辦學會或正式徵稿頁為準。",
+    "校外轉知頁可作為發現來源，但不應單獨作為正式收錄依據。",
+    "回填項目應保留已截止與已舉辦會議，作為年度月份分布的歷史樣本。",
+    "正式收錄前需檢查是否已存在於 data/sources.json 或 data/candidates.json，避免重複。"
+  ],
+  "leads": [
+    {
+      "id": "backfill-2026-knu-business-operations-management",
+      "title": "2026 企業經營管理學術研討會",
+      "organizer": "開南大學企業與創業管理學系",
+      "official_url": "https://ba.knu.edu.tw/p/405-1024-11255%2Cc2073.php?Lang=zh-tw",
+      "event_start": "2026-05-27",
+      "event_end": "2026-05-27",
+      "submission_deadline": "2026-04-27",
+      "acceptance_notification_date": "2026-05-11",
+      "location": "桃園",
+      "fields": ["企業管理", "創業管理", "科技管理"],
+      "review_status": "needs_formal_entry",
+      "notes": "官方頁揭露全文截稿、審查結果通知、註冊費與研討會日期；需建立正式 data/sources.json conference entry 並確認投稿表單連結。"
+    },
+    {
+      "id": "backfill-2026-ntub-international-business-management",
+      "title": "2026 第二十五屆北商大學術論壇暨國際企業經營管理研討會",
+      "organizer": "國立臺北商業大學國際商務系暨碩士班",
+      "official_url": "https://ib.ntub.edu.tw/p/406-1039-116270%2Cr1353.php?Lang=zh-tw",
+      "event_start": "2026-05-15",
+      "event_end": "2026-05-15",
+      "submission_deadline": "2026-05-03",
+      "acceptance_notification_date": "2026-05-08",
+      "location": "台北",
+      "fields": ["國際企業", "財務金融", "物流與供應鏈", "行銷", "資訊管理"],
+      "review_status": "needs_formal_entry",
+      "notes": "官方頁有報名 BeClass 連結；原頁審查結果年份顯示 113 年，正式收錄前需依上下文判定是否為 115 年或向來源核對。"
+    },
+    {
+      "id": "backfill-2026-ntut-international-business-management",
+      "title": "2026 經營管理國際研討會",
+      "organizer": "國立臺北科技大學經營管理系",
+      "official_url": "https://bm.ntut.edu.tw/p/406-1080-152129%2Cr972.php?Lang=zh-tw",
+      "submission_url": "https://forms.gle/98oSLUqGsU9sSz1b8",
+      "event_start": "2026-06-05",
+      "event_end": "2026-06-05",
+      "submission_deadline": "2026-05-15",
+      "acceptance_notification_date": "2026-05-25",
+      "location": "台北",
+      "fields": ["國際企業", "行銷", "財務管理", "組織管理", "服務管理", "資訊管理", "ESG"],
+      "review_status": "needs_formal_entry",
+      "notes": "官方頁提供中英文資訊與 Google Form 投稿連結；適合納入正式歷史回填。"
+    },
+    {
+      "id": "backfill-2026-cyut-finance-theory-practice",
+      "title": "2026 第二十九屆財金理論與實務研討會",
+      "organizer": "朝陽科技大學財務金融系",
+      "discovery_url": "https://fd100.chihlee.edu.tw/p/406-1033-128025%2Cr1.php",
+      "submission_url": "https://forms.gle/Epu5fwefWTxdEACi8",
+      "event_start": "2026-06-04",
+      "event_end": "2026-06-04",
+      "submission_deadline": "2026-05-14",
+      "acceptance_notification_date": "2026-05-25",
+      "location": "台中",
+      "fields": ["財務金融", "風險管理", "公司治理", "金融科技"],
+      "review_status": "needs_official_host_confirmation",
+      "notes": "目前線索為致理科技大學轉知頁與朝陽財金相關附件；正式收錄前需優先確認朝陽財金系原始公告頁。"
+    },
+    {
+      "id": "backfill-2026-just-business-practice",
+      "title": "2026 年商管學術與實務研討會",
+      "organizer": "景文科技大學商管學院",
+      "discovery_url": "https://bm.nutn.edu.tw/newsview_976.html",
+      "official_url": "https://irnas.just.edu.tw/conference/2026/",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "submission_deadline": "2026-02-10",
+      "location": "新北",
+      "fields": ["行銷", "財務金融", "企業經營", "國際經貿", "資訊管理", "觀光休閒"],
+      "review_status": "needs_official_host_confirmation",
+      "notes": "國立臺南大學轉知頁提供日期與投稿網站；正式收錄前需確認景文官方投稿網站仍可讀取並補齊審查結果與費用。"
+    },
+    {
+      "id": "backfill-2026-tiibs-business-management",
+      "title": "2026 年 TIIBS 第十五屆商學與管理學術研討會",
+      "organizer": "中華民國多國籍企業研究學會、中國文化大學國際企業管理學系暨碩博士班等",
+      "official_url": "https://crrmba.pccu.edu.tw/p/406-1188-141377%2Cr2538.php?Lang=zh-tw",
+      "event_start": "2026-05-08",
+      "event_end": "2026-05-08",
+      "submission_deadline": "2026-03-11",
+      "full_paper_deadline": "2026-04-15",
+      "acceptance_notification_date": "2026-03-18",
+      "location": "台北",
+      "fields": ["國際企業", "人力資源", "行銷", "會計", "財務金融", "資訊管理", "社會企業"],
+      "publication_opportunities": ["多國籍企業管理評論", "行銷科學學報"],
+      "review_status": "needs_formal_entry",
+      "notes": "官方頁揭露摘要截稿、審查結果、全文截稿、註冊費與期刊推薦資訊；需正式建檔並檢查是否和既有 TIIBS 來源重複。"
+    }
+  ]
+}

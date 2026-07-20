@@ -304,6 +304,16 @@ a:focus-visible {
   font-size: 0.84rem;
 }
 
+.dashboard-completeness {
+  margin: -4px 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #e1d7b9;
+  border-radius: 7px;
+  background: #fffaf0;
+  color: #6b5010;
+  font-size: 0.88rem;
+}
+
 .dashboard-legend span {
   display: inline-flex;
   gap: 6px;
