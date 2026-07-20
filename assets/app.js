@@ -561,7 +561,7 @@ function peakMonthLabel(months, key) {
   return `${peakMonths.join("、")}（${peak} 場）`;
 }
 
-function dashboardCompletenessLabel(items, year) {
+function dashboardCompletenessLabel(items, year, scope = "all") {
   const yearItems = items.filter(
     (item) => String(item.event_start || "").startsWith(year) || String(item.submission_deadline || "").startsWith(year),
   );
@@ -579,13 +579,15 @@ function dashboardCompletenessLabel(items, year) {
   );
   const sparse = yearItems.length < 40 || eventMonths.size < 8 || deadlineMonths.size < 8;
   const status = sparse ? "年度資料仍在回填中" : "年度樣本較完整";
-  return `${status}：${year} 年目前納入 ${yearItems.length} 場正式收錄；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
+  const scopeLabel = scope === "filtered" ? "目前篩選樣本" : "全部正式收錄樣本";
+  return `${status}：${year} 年${scopeLabel}目前納入 ${yearItems.length} 場；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
 }
 
 function renderMonthlyDashboard() {
   if (!els.monthlyChart || !els.dashboardYear) return;
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");
-  const sourceItems = els.dashboardScope?.value === "all" ? verified : state.filtered;
+  const usesFilteredScope = els.dashboardScope?.value === "filtered";
+  const sourceItems = usesFilteredScope ? state.filtered : verified;
   const year = els.dashboardYear.value || String(state.referenceDate.getFullYear());
   const months = monthlyConferenceCounts(sourceItems, year);
   const contributingItems = sourceItems.filter(
@@ -598,7 +600,7 @@ function renderMonthlyDashboard() {
   const peakLead = deadlinePeak ? "高峰前 2–3 個月開始準備" : "目前資料不足，請持續追蹤";
   els.planningAdvice.textContent = `${contributingItems.length} 場；${peakLead}`;
   if (els.dashboardCompleteness) {
-    els.dashboardCompleteness.textContent = dashboardCompletenessLabel(sourceItems, year);
+    els.dashboardCompleteness.textContent = dashboardCompletenessLabel(sourceItems, year, usesFilteredScope ? "filtered" : "all");
   }
   els.monthlyChart.setAttribute(
     "aria-label",
