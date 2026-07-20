@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260715c" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260715d" />
   </head>
   <body>
     <header class="site-header">
@@ -336,31 +336,39 @@
         <label>問題類型
           <select id="reportType" required>
             <option value="broken_link">連結無法開啟</option>
+            <option value="wrong_submission_url">投稿連結錯誤</option>
+            <option value="wrong_registration_url">報名連結錯誤</option>
             <option value="wrong_date">日期有誤</option>
+            <option value="wrong_fee">費用資訊有誤</option>
             <option value="wrong_info">其他資料有誤</option>
           </select>
         </label>
-        <label>問題說明<textarea id="reportDetails" rows="4" required placeholder="請簡述哪裡有誤"></textarea></label>
-        <label>建議修正欄位
-          <select id="correctionField">
-            <option value="">尚不確定</option>
-            <option value="homepage_url">會議主頁</option>
-            <option value="submission_url">投稿連結</option>
-            <option value="registration_url">報名連結</option>
-            <option value="event_start">舉辦日期</option>
-            <option value="event_end">結束日期</option>
-            <option value="submission_deadline">投稿截止日</option>
-            <option value="submission_deadline_previous">原投稿截止日</option>
-            <option value="submission_deadline_status">投稿截止狀態</option>
-            <option value="acceptance_notification_date">審查結果日期</option>
-            <option value="submission_fee">投稿／審稿費</option>
-            <option value="registration_fee">註冊／報名費</option>
-            <option value="location">地點</option>
-          </select>
-        </label>
-        <label>正確內容<input id="correctionValue" type="text" placeholder="網址、YYYY-MM-DD 或正確文字" /></label>
-        <label>佐證網址<input id="evidenceUrl" type="url" placeholder="主辦單位公告網址" /></label>
-        <p class="dialog-note">送出後會開啟 GitHub 回報頁；登入並確認送出後，系統才會驗證及建立修正。</p>
+        <label>補充說明（選填）<textarea id="reportDetails" rows="3" placeholder="可留空；若知道正確資料，請簡短補充"></textarea></label>
+        <details class="advanced-report-fields">
+          <summary>我知道正確資料，提供進階修正資訊</summary>
+          <label>建議修正欄位
+            <select id="correctionField">
+              <option value="">尚不確定</option>
+              <option value="homepage_url">會議主頁</option>
+              <option value="submission_url">投稿連結</option>
+              <option value="registration_url">報名連結</option>
+              <option value="event_start">舉辦日期</option>
+              <option value="event_end">結束日期</option>
+              <option value="submission_deadline">投稿截止日</option>
+              <option value="submission_deadline_previous">原投稿截止日</option>
+              <option value="submission_deadline_status">投稿截止狀態</option>
+              <option value="acceptance_notification_date">審查結果日期</option>
+              <option value="submission_fee">投稿／審稿費</option>
+              <option value="registration_fee">註冊／報名費</option>
+              <option value="location">地點</option>
+            </select>
+          </label>
+          <label>正確內容<input id="correctionValue" type="text" placeholder="網址、YYYY-MM-DD 或正確文字" /></label>
+          <label>佐證網址<input id="evidenceUrl" type="url" placeholder="主辦單位公告網址" /></label>
+        </details>
+        <p class="dialog-note">只選問題類型也可以送出；系統會帶入目前頁面資料並在每日更新時嘗試自動驗證。</p>
+        <label class="bot-trap" aria-hidden="true">請勿填寫此欄位<input id="reportWebsite" type="text" tabindex="-1" autocomplete="off" /></label>
+        <p id="reportStatus" class="dialog-status" hidden></p>
         <button class="primary-button" type="submit">前往送出回報</button>
       </form>
     </dialog>
@@ -450,6 +458,6 @@
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260715c" type="module"></script>
+    <script src="assets/app.js?v=20260715d" type="module"></script>
   </body>
 </html>

@@ -27,8 +27,9 @@ jobs:
         run: python3 -m unittest discover -s tests -t . -v
       - name: Refresh conference JSON
         id: refresh
-        continue-on-error: true
-        run: python3 scripts/update_conferences.py --fail-on-errors
+        run: python3 scripts/update_conferences.py
+      - name: Validate refreshed conference JSON
+        run: python3 scripts/update_conferences.py --validate-only
       - name: Load conference rating issues
         env:
           GH_TOKEN: ${{ github.token }}
@@ -54,15 +55,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh issue list --state open --limit 25 --json number,title,body,url,createdAt > /tmp/open-conference-reports.json
+      - name: Load external conference reports
+        env:
+          REPORT_API_URL: ${{ secrets.REPORT_API_URL }}
+          REPORT_READ_TOKEN: ${{ secrets.REPORT_READ_TOKEN }}
+        run: |
+          if test -n "$REPORT_API_URL" && test -n "$REPORT_READ_TOKEN"; then
+            curl --fail --silent --show-error --get "$REPORT_API_URL" --data-urlencode "token=$REPORT_READ_TOKEN" > /tmp/external-conference-reports.json
+          else
+            echo "[]" > /tmp/external-conference-reports.json
+          fi
       - name: Retry unresolved conference reports
         id: feedback
         run: >-
           python3 scripts/process_pending_feedback.py
           --issues /tmp/open-conference-reports.json
+          --external-reports /tmp/external-conference-reports.json
           --summary-dir /tmp/feedback-summaries
           --results /tmp/feedback-results.json
       - name: Commit updated data
-        if: always() && (steps.refresh.outcome == 'success' || steps.refresh.outcome == 'failure')
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: "Update conference data"
@@ -72,7 +83,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          jq -c '.results[] | select(.applied == true)' /tmp/feedback-results.json | while IFS= read -r item; do
+          jq -c '.results[] | select(.applied == true and .source == "github")' /tmp/feedback-results.json | while IFS= read -r item; do
             issue_number=$(jq -r '.issue_number' <<< "$item")
             summary_path=$(jq -r '.summary_path' <<< "$item")
             gh issue comment "$issue_number" --body-file "$summary_path"
@@ -89,12 +100,7 @@ jobs:
           REPORT_EMAIL: ftsainfu@gmail.com
         run: |
           jq -c '.results[] | select(.applied == true)' /tmp/feedback-results.json | while IFS= read -r item; do
-            issue_number=$(jq -r '.issue_number' <<< "$item")
+            report_label=$(jq -r '.report_label // .issue_number // "external"' <<< "$item")
             summary_path=$(jq -r '.summary_path' <<< "$item")
-            REPORT_SUMMARY="$summary_path" REPORT_SUBJECT="twconferences 每日更新已修正回報 #$issue_number" python3 scripts/send_report_email.py
+            REPORT_SUMMARY="$summary_path" REPORT_SUBJECT="twconferences 每日更新已修正回報 $report_label" python3 scripts/send_report_email.py
           done
-      - name: Mark degraded refresh as failed
-        if: steps.refresh.outcome == 'failure'
-        run: |
-          echo "Conference data was written, but one or more sources failed. See the refresh log and data health status."
-          exit 1

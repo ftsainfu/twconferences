@@ -9,7 +9,7 @@ const state = {
   grantPayload: null,
   grantLanguage: "zh",
   ratings: {},
-  siteConfig: { rating_api_url: "", rating_api_mode: "cors", rating_fallback: "github" },
+  siteConfig: { report_api_url: "", report_api_mode: "cors", report_fallback: "github", rating_api_url: "", rating_api_mode: "cors", rating_fallback: "github" },
   trackedIds: new Set(),
   referenceDate: new Date(),
 };
@@ -81,6 +81,8 @@ const els = {
   correctionField: document.querySelector("#correctionField"),
   correctionValue: document.querySelector("#correctionValue"),
   evidenceUrl: document.querySelector("#evidenceUrl"),
+  reportWebsite: document.querySelector("#reportWebsite"),
+  reportStatus: document.querySelector("#reportStatus"),
   closeReportDialog: document.querySelector("#closeReportDialog"),
   ratingDialog: document.querySelector("#ratingDialog"),
   ratingForm: document.querySelector("#ratingForm"),
@@ -117,6 +119,7 @@ const ratingDimensions = [
 
 let reportTarget = null;
 let ratingTarget = null;
+let reportOpenedAt = 0;
 
 function setActiveTab(tabName, updateHash = true) {
   const activeName = tabName === "grants" ? "grants" : "conferences";
@@ -309,6 +312,21 @@ function loadVoterId() {
   }
 }
 
+function loadReporterId() {
+  const storageKey = "twconferences.reporterId";
+  try {
+    const existing = localStorage.getItem(storageKey);
+    if (existing) return existing;
+    const generated = window.crypto?.randomUUID
+      ? window.crypto.randomUUID()
+      : `reporter-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    localStorage.setItem(storageKey, generated);
+    return generated;
+  } catch {
+    return `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
 function isTracked(item) {
   return state.trackedIds.has(item.id);
 }
@@ -352,6 +370,37 @@ function eventStatusLabel(item) {
     unknown: "未公告日期",
   };
   return labels[eventStatus(item)];
+}
+
+function locationCityLabel(value = "") {
+  const text = String(value || "").trim();
+  if (!text) return "";
+  const cityMatchers = [
+    ["台北", /台北|臺北|taipei/i],
+    ["新北", /新北|new taipei/i],
+    ["基隆", /基隆|keelung/i],
+    ["桃園", /桃園|taoyuan/i],
+    ["新竹", /新竹|hsinchu/i],
+    ["苗栗", /苗栗|miaoli/i],
+    ["台中", /台中|臺中|taichung/i],
+    ["彰化", /彰化|changhua/i],
+    ["南投", /南投|nantou/i],
+    ["雲林", /雲林|yunlin/i],
+    ["嘉義", /嘉義|chiayi/i],
+    ["台南", /台南|臺南|tainan/i],
+    ["高雄", /高雄|kaohsiung/i],
+    ["屏東", /屏東|pingtung/i],
+    ["宜蘭", /宜蘭|yilan/i],
+    ["花蓮", /花蓮|hualien/i],
+    ["台東", /台東|臺東|taitung/i],
+    ["澎湖", /澎湖|penghu/i],
+    ["金門", /金門|kinmen/i],
+    ["連江", /連江|馬祖|lienchiang|matsu/i],
+  ];
+  const match = cityMatchers.find(([, pattern]) => pattern.test(text));
+  if (match) return match[0];
+  if (/online|virtual|線上|online/i.test(text)) return "線上";
+  return text.replace(/[（(].*?[）)]/g, "").replace(/校區|大學|科技大學|學院/g, "").trim() || text;
 }
 
 function matchesFormat(item, format) {
@@ -435,7 +484,7 @@ function applyFilters() {
       (!keyword || haystack.includes(keyword)) &&
       matchesField(item, selectedField) &&
       (!month || eventMonth === month) &&
-      (!location || item.location === location) &&
+      (!location || locationCityLabel(item.location) === location) &&
       matchesEventStatus(item, selectedEventStatus) &&
       (!deadlineBefore || (deadline && deadline <= deadlineBefore)) &&
       matchesDeadlineStatus(item, deadlineStatus) &&
@@ -743,6 +792,13 @@ function renderCard(item) {
           data-report-id="${escapeAttr(item.id)}"
           data-report-title="${escapeAttr(item.title)}"
           data-report-url="${escapeAttr(item.homepage_url)}"
+          data-report-submission-url="${escapeAttr(item.submission_url)}"
+          data-report-registration-url="${escapeAttr(item.registration_url)}"
+          data-report-event-start="${escapeAttr(item.event_start)}"
+          data-report-submission-deadline="${escapeAttr(item.submission_deadline)}"
+          data-report-acceptance-date="${escapeAttr(item.acceptance_notification_date)}"
+          data-report-submission-fee="${escapeAttr(item.submission_fee)}"
+          data-report-registration-fee="${escapeAttr(item.registration_fee)}"
         >回報資料問題</button>
       </div>
     </article>
@@ -946,7 +1002,7 @@ function escapeAttr(value = "") {
 }
 
 function hydrateLocationFilter() {
-  const locations = [...new Set(state.activeConferences.map((item) => item.location).filter(Boolean))].sort((a, b) =>
+  const locations = [...new Set(state.activeConferences.map((item) => locationCityLabel(item.location)).filter(Boolean))].sort((a, b) =>
     a.localeCompare(b, "zh-Hant"),
   );
   els.location.insertAdjacentHTML(
@@ -998,35 +1054,134 @@ function openReportDialog(button) {
     id: button.dataset.reportId,
     title: button.dataset.reportTitle,
     url: button.dataset.reportUrl,
+    submissionUrl: button.dataset.reportSubmissionUrl,
+    registrationUrl: button.dataset.reportRegistrationUrl,
+    eventStart: button.dataset.reportEventStart,
+    submissionDeadline: button.dataset.reportSubmissionDeadline,
+    acceptanceDate: button.dataset.reportAcceptanceDate,
+    submissionFee: button.dataset.reportSubmissionFee,
+    registrationFee: button.dataset.reportRegistrationFee,
   };
   els.reportConferenceTitle.textContent = reportTarget.title;
   els.reportForm.reset();
+  reportOpenedAt = Date.now();
+  if (els.reportStatus) {
+    els.reportStatus.hidden = true;
+    els.reportStatus.textContent = "";
+    els.reportStatus.removeAttribute("data-status");
+  }
   els.reportDialog.showModal();
 }
 
-function submitReport(event) {
-  event.preventDefault();
-  if (!reportTarget) return;
+function buildReportPayload() {
   const singleLine = (value) => String(value || "").replace(/[\r\n]+/g, " ").trim();
+  return {
+    conference_id: singleLine(reportTarget.id),
+    conference_title: singleLine(reportTarget.title),
+    current_url: singleLine(reportTarget.url),
+    current_submission_url: singleLine(reportTarget.submissionUrl),
+    current_registration_url: singleLine(reportTarget.registrationUrl),
+    current_event_start: singleLine(reportTarget.eventStart),
+    current_submission_deadline: singleLine(reportTarget.submissionDeadline),
+    current_acceptance_notification_date: singleLine(reportTarget.acceptanceDate),
+    current_submission_fee: singleLine(reportTarget.submissionFee),
+    current_registration_fee: singleLine(reportTarget.registrationFee),
+    report_type: els.reportType.value,
+    correction_field: els.correctionField.value,
+    correction_value: singleLine(els.correctionValue.value),
+    evidence_url: singleLine(els.evidenceUrl.value),
+    details: els.reportDetails.value.trim() || `使用者快速回報：${els.reportType.options[els.reportType.selectedIndex]?.text || els.reportType.value}`,
+    reporter_id: loadReporterId(),
+    opened_after_ms: Math.max(0, Date.now() - reportOpenedAt),
+    honeypot: els.reportWebsite?.value || "",
+    source: "twconferences-site",
+    submitted_at: new Date().toISOString(),
+  };
+}
+
+function buildReportIssueUrl(payload) {
   const body = [
-    `conference_id: ${singleLine(reportTarget.id)}`,
-    `conference_title: ${singleLine(reportTarget.title)}`,
-    `current_url: ${singleLine(reportTarget.url)}`,
-    `report_type: ${els.reportType.value}`,
-    `correction_field: ${els.correctionField.value}`,
-    `correction_value: ${singleLine(els.correctionValue.value)}`,
-    `evidence_url: ${singleLine(els.evidenceUrl.value)}`,
+    `conference_id: ${payload.conference_id}`,
+    `conference_title: ${payload.conference_title}`,
+    `current_url: ${payload.current_url}`,
+    `current_submission_url: ${payload.current_submission_url}`,
+    `current_registration_url: ${payload.current_registration_url}`,
+    `current_event_start: ${payload.current_event_start}`,
+    `current_submission_deadline: ${payload.current_submission_deadline}`,
+    `current_acceptance_notification_date: ${payload.current_acceptance_notification_date}`,
+    `current_submission_fee: ${payload.current_submission_fee}`,
+    `current_registration_fee: ${payload.current_registration_fee}`,
+    `report_type: ${payload.report_type}`,
+    `correction_field: ${payload.correction_field}`,
+    `correction_value: ${payload.correction_value}`,
+    `evidence_url: ${payload.evidence_url}`,
+    `reporter_id: ${payload.reporter_id}`,
+    `opened_after_ms: ${payload.opened_after_ms}`,
     "",
     "details:",
-    els.reportDetails.value.trim(),
+    payload.details,
   ].join("\n");
   const params = new URLSearchParams({
-    title: `[資料回報] ${reportTarget.id} ${reportTarget.title}`,
+    title: `[資料回報] ${payload.conference_id} ${payload.conference_title}`,
     body,
     labels: "conference-report",
   });
-  window.open(`https://github.com/ftsainfu/twconferences/issues/new?${params}`, "_blank", "noopener,noreferrer");
-  els.reportDialog.close();
+  return `https://github.com/ftsainfu/twconferences/issues/new?${params}`;
+}
+
+async function submitReport(event) {
+  event.preventDefault();
+  if (!reportTarget) return;
+  const payload = buildReportPayload();
+  if (payload.honeypot) {
+    els.reportDialog.close();
+    return;
+  }
+  const apiUrl = String(state.siteConfig.report_api_url || "").trim();
+  const fallback = state.siteConfig.report_fallback !== "none";
+  const submitButton = els.reportForm.querySelector('button[type="submit"]');
+  if (submitButton) submitButton.disabled = true;
+  if (els.reportStatus) {
+    els.reportStatus.hidden = false;
+    els.reportStatus.removeAttribute("data-status");
+    els.reportStatus.textContent = apiUrl ? "回報送出中…" : "此網站尚未設定免登入回報 API，將開啟 GitHub 備援表單。";
+  }
+  try {
+    if (apiUrl) {
+      const apiMode = state.siteConfig.report_api_mode === "no-cors" ? "no-cors" : "cors";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        mode: apiMode,
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      });
+      if (apiMode !== "no-cors" && !response.ok) throw new Error(`Report API returned ${response.status}`);
+      if (els.reportStatus) els.reportStatus.textContent = "回報已送出，系統會在每日更新時檢查。";
+      window.setTimeout(() => els.reportDialog.close(), 700);
+      return;
+    }
+    if (!fallback) throw new Error("Report API is not configured");
+    window.open(buildReportIssueUrl(payload), "_blank", "noopener,noreferrer");
+    els.reportDialog.close();
+  } catch (error) {
+    if (!fallback) {
+      if (els.reportStatus) {
+        els.reportStatus.hidden = false;
+        els.reportStatus.dataset.status = "error";
+        els.reportStatus.textContent = "回報暫時無法送出，請稍後再試。";
+      }
+      return;
+    }
+    if (els.reportStatus) {
+      els.reportStatus.dataset.status = "error";
+      els.reportStatus.textContent = "免登入回報暫時失敗，已改用 GitHub 備援表單。";
+    }
+    window.open(buildReportIssueUrl(payload), "_blank", "noopener,noreferrer");
+    els.reportDialog.close();
+    console.warn(error);
+  } finally {
+    if (submitButton) submitButton.disabled = false;
+  }
 }
 
 function openRatingDialog(button) {

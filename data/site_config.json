@@ -1,4 +1,7 @@
 {
+  "report_api_url": "",
+  "report_api_mode": "cors",
+  "report_fallback": "github",
   "rating_api_url": "",
   "rating_api_mode": "cors",
   "rating_fallback": "github"

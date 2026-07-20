@@ -36,7 +36,7 @@ node --check assets/app.js
 11. 讀取仍開啟的 `[資料回報]` Issue，重新搜尋官方來源；可安全驗證的修正會併入當日更新、回覆並關閉 Issue，仍無法確認者保留至隔日重試。
 12. 讀取 `[研討會評分]` Issue，並在已設定外部評分 API 時同步讀取免登入評分資料，去除重複評分後產生 `data/ratings.json`。
 
-來源錯誤會寫入 `health` 與個別研討會的 `check_status`；連結連續失敗會寫入 `link_health` 並在頁面提示。排程仍會保存通過結構驗證的資料，但工作結果會標示失敗，避免部分抓取或連結失效被誤認為完整成功。日期搜尋年份會依台北時間自動涵蓋本年及次年。`[NEW!]` 目前代表 `last_changed` 或 `created_at` 在 14 天內。
+來源錯誤會寫入 `health` 與個別研討會的 `check_status`；連結連續失敗會寫入 `link_health` 並在頁面提示。外部來源 timeout、403、401 或 SSL 問題只會讓資料狀態顯示為 degraded，不會讓每日 GitHub Action 整體失敗；只有測試失敗、程式 crash、資料結構驗證失敗或提交流程失敗才會讓工作失敗。日期搜尋年份會依台北時間自動涵蓋本年及次年。`[NEW!]` 目前代表 `last_changed` 或 `created_at` 在 14 天內。
 
 資料來源刻意不使用新聞、媒體報導或一般搜尋結果；所有正式資料應以主辦單位官網、會議官網或主辦單位官方追蹤頁為準。若主辦單位官網直接連到 Google Sites 等外部會議頁，會先列為「待確認」候選。外部彙整站只用來輔助每日比對與提醒，新增項目仍會以「待確認」狀態呈現，確認後才應補進正式研討會來源。
 
@@ -44,7 +44,7 @@ node --check assets/app.js
 
 `scholarly_sources` 收錄期刊與學會官方網站，使用相同的短逾時與正式研討會篩選。期刊網站可能轉載海外活動，因此可針對來源設定 `require_taiwan_marker: true`，只有標題或網址明確出現台灣地名時才建立候選。
 
-`government_sources` 收錄國科會等政府官方活動列表，支援以 `urls` 指定完整分頁。政府公告只作為發現與交叉佐證；醫學、理工、語文、課程、補助辦法等不符合本站商管範圍的內容會排除，正式收錄仍須回到主辦單位或會議官網核對。
+`government_sources` 收錄國科會等政府官方活動列表，支援以 `urls` 指定完整分頁。國科會活動訊息屬重要每日發現來源，因主辦研討會常會申請或公告國科會經費，排程會固定掃描已設定頁面；政府公告只作為發現與交叉佐證，醫學、理工、語文、課程、補助辦法等不符合本站商管範圍的內容會排除，正式收錄仍須回到主辦單位或會議官網核對。
 
 ## 新增或修正研討會
 
@@ -86,13 +86,15 @@ node --check assets/app.js
 
 ## 使用者回報與自動修正
 
-每張研討會卡片都有「回報資料問題」按鈕。使用者填寫後會開啟預先帶入研討會 ID 的 GitHub Issue；`.github/workflows/process-feedback.yml` 會：
+每張研討會卡片都有「回報資料問題」按鈕。預設簡化模式只需要選擇問題類型，補充說明可留空；若使用者知道正確資料，可展開進階欄位提供修正欄位、正確內容與佐證網址。送出時前端會自動帶入研討會 ID、標題、主頁、投稿／報名連結、日期與費用等目前頁面上下文。有設定 `report_api_url` 時會免登入送到回報 API；未設定或暫時失敗時，會開啟預先填好的 GitHub Issue 備援。`.github/workflows/process-feedback.yml` 與每日更新會：
 
 1. 將原始回報保存成 `data/reports/issue-<編號>.json`，避免多筆回報互相覆蓋。
 2. 驗證建議網址是否可連線且符合官方網域規則，或確認日期／地點確實出現在主辦單位佐證頁。若回報只指出報名或投稿連結錯誤，系統會先從同一官方網域搜尋明確對應的連結，再套用相同驗證規則。
-3. 對可安全驗證的修正建立 PR；無法驗證的內容只記錄並等待人工處理。
-4. 回覆原 Issue，附上驗證結果與修正 PR。
-5. 將回報、驗證結果與 PR 寄到 `ftsainfu@gmail.com`。
+3. 對可安全驗證的修正建立 PR 或在每日更新中套用；無法驗證的內容只記錄並等待人工處理。
+4. 回覆原 GitHub Issue，附上驗證結果與修正 PR；免登入回報不會嘗試關閉 GitHub Issue。
+5. 將已套用的回報與驗證結果寄到 `ftsainfu@gmail.com`。
+
+免登入回報可使用 `scripts/report_webapp.gs` 作為 Google Apps Script Web App 範本。部署後將 `/exec` 網址填入 `data/site_config.json` 的 `report_api_url`，並在 GitHub Secrets 設定 `REPORT_API_URL` 與 `REPORT_READ_TOKEN`。前端會帶入 honeypot、表單停留時間與 `reporter_id`；被標記為可疑的免登入回報只記錄，不會觸發自動修正。
 
 寄信前，請在 GitHub repository 的 `Settings → Secrets and variables → Actions` 設定：
 

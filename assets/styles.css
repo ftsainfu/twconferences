@@ -955,6 +955,33 @@ a:focus-visible {
   font-size: 0.86rem;
 }
 
+.advanced-report-fields {
+  display: grid;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fbfcfb;
+}
+
+.advanced-report-fields summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.advanced-report-fields[open] summary {
+  margin-bottom: 10px;
+}
+
+.bot-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .dialog-status {
   padding: 10px 12px;
   border: 1px solid #bdd0e8;

@@ -42,6 +42,11 @@ FIELD_HINTS = {
     "homepage_url": ("官網", "首頁", "主頁", "homepage", "official website"),
     "acceptance_notification_date": ("審查結果", "錄取通知", "審查公告", "錄取公告", "acceptance", "notification"),
 }
+REPORT_TYPE_FIELD_MAP = {
+    "wrong_registration_url": "registration_url",
+    "wrong_submission_url": "submission_url",
+    "wrong_fee": "registration_fee",
+}
 LINK_HINTS = {
     "registration_url": ("registration", "register", "報名", "註冊"),
     "submission_url": ("submission", "submit", "投稿", "paper submission"),
@@ -87,6 +92,9 @@ def infer_correction_field(report: dict[str, str]) -> str:
     field = report.get("correction_field", "")
     if field in ALLOWED_FIELDS:
         return field
+    report_type = report.get("report_type", "")
+    if report_type in REPORT_TYPE_FIELD_MAP:
+        return REPORT_TYPE_FIELD_MAP[report_type]
     details = report.get("details", "").lower()
     matches = [name for name, hints in FIELD_HINTS.items() if any(hint.lower() in details for hint in hints)]
     return matches[0] if len(matches) == 1 else ""
@@ -227,13 +235,17 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
 
     report = parse_report(str(issue.get("body") or ""))
     conference_id = report.get("conference_id", "")
+    report_key = issue.get("number") or issue.get("external_id") or f"external-{conference_id or 'unknown'}"
     sources = read_json(SOURCES_FILE, {"conferences": []})
     candidates = read_json(CANDIDATES_FILE, {"candidates": []})
     record, record_file = find_record(conference_id, sources, candidates)
     correction_applied = False
     verification = "找不到對應的研討會 ID，需人工處理。"
 
-    if record:
+    suspicious = report.get("anti_spam_suspicious", "").lower() in {"true", "1", "yes"}
+    if suspicious:
+        verification = "免登入回報被標記為可疑，只記錄，不自動修正。"
+    elif record:
         field = infer_correction_field(report)
         value = report.get("correction_value", "")
         discovery_note = ""
@@ -273,6 +285,7 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
 
     report_record = {
         "issue_number": issue.get("number"),
+        "external_id": issue.get("external_id", ""),
         "issue_url": issue.get("html_url", ""),
         "reported_at": issue.get("created_at") or datetime.now(timezone.utc).isoformat(),
         "conference_id": conference_id,
@@ -281,11 +294,13 @@ def process_event(event: dict) -> tuple[bool, bool, str]:
         "correction_field": report.get("correction_field", ""),
         "correction_value": report.get("correction_value", "")[:500],
         "evidence_url": report.get("evidence_url", "")[:500],
+        "anti_spam_suspicious": suspicious,
+        "anti_spam_reason": report.get("anti_spam_reason", "")[:300],
         "auto_correction_applied": correction_applied,
         "verification": verification,
     }
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    write_json(REPORTS_DIR / f"issue-{issue.get('number')}.json", report_record)
+    write_json(REPORTS_DIR / f"issue-{report_key}.json", report_record)
     if correction_applied and record_file == "sources":
         write_json(SOURCES_FILE, sources)
     elif correction_applied and record_file == "candidates":

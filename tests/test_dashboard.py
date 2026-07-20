@@ -27,6 +27,9 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('id="trackedOnlyFilter"', html)
         self.assertIn('els.dashboardScope?.value === "all" ? verified : state.filtered', script)
         self.assertIn('els.dashboardScope?.addEventListener("change", renderMonthlyDashboard)', script)
+        self.assertIn("function locationCityLabel", script)
+        self.assertIn("locationCityLabel(item.location) === location", script)
+        self.assertIn("state.activeConferences.map((item) => locationCityLabel(item.location))", script)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]

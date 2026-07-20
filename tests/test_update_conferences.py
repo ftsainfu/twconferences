@@ -228,11 +228,14 @@ class CandidateTests(unittest.TestCase):
     def test_government_source_expands_all_configured_pages(self):
         sources = government_organizer_sources({"government_sources": [{
             "name": "NSTC",
+            "important": True,
             "urls": ["https://www.nstc.gov.tw/list?page=1", "https://www.nstc.gov.tw/list?page=2"],
         }]})
         self.assertEqual(len(sources), 2)
         self.assertEqual(sources[1]["source_type"], "government")
         self.assertEqual(sources[1]["attempts"], 1)
+        self.assertTrue(sources[0]["important"])
+        self.assertNotIn("require_taiwan_marker", sources[0])
 
     def test_government_source_can_nominate_external_official_conference(self):
         source = {"url": "https://www.nstc.gov.tw/list", "source_type": "government"}
@@ -464,6 +467,49 @@ class FeedbackTests(unittest.TestCase):
             infer_correction_field({"details": "目前報名連結連到過去發表的論文"}),
             "registration_url",
         )
+
+    def test_infer_field_from_simplified_report_type(self):
+        self.assertEqual(infer_correction_field({"report_type": "wrong_submission_url", "details": ""}), "submission_url")
+        self.assertEqual(infer_correction_field({"report_type": "wrong_registration_url", "details": ""}), "registration_url")
+
+    def test_suspicious_external_report_does_not_auto_apply(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sources = root / "sources.json"
+            candidates = root / "candidates.json"
+            generated = root / "conferences.json"
+            reports = root / "reports"
+            sources.write_text(json.dumps({"conferences": [{
+                "id": "conf-1",
+                "title": "Conference",
+                "homepage_url": "https://example.edu.tw/old",
+                "attention_notes": [],
+            }]}), encoding="utf-8")
+            candidates.write_text('{"candidates": []}', encoding="utf-8")
+            generated.write_text(json.dumps({"conferences": [{
+                "id": "conf-1",
+                "homepage_url": "https://example.edu.tw/old",
+                "review_status": "verified",
+            }]}), encoding="utf-8")
+            event = {"issue": {
+                "external_id": "external-1",
+                "title": "[資料回報] conf-1",
+                "body": "conference_id: conf-1\nreport_type: wrong_submission_url\ncorrection_field: homepage_url\ncorrection_value: https://example.edu.tw/new\nanti_spam_suspicious: true\nanti_spam_reason: too_fast\ndetails:\n快速回報",
+            }}
+            with (
+                patch.object(process_feedback, "SOURCES_FILE", sources),
+                patch.object(process_feedback, "CANDIDATES_FILE", candidates),
+                patch.object(process_feedback, "OUTPUT_FILE", generated),
+                patch.object(process_feedback, "REPORTS_DIR", reports),
+                patch.object(process_feedback, "validate_correction", return_value=(True, "verified")),
+            ):
+                handled, applied, summary = process_feedback.process_event(event)
+            self.assertTrue(handled)
+            self.assertFalse(applied)
+            self.assertIn("可疑", summary)
+            self.assertTrue((reports / "issue-external-1.json").exists())
+            updated = json.loads(sources.read_text(encoding="utf-8"))
+            self.assertEqual(updated["conferences"][0]["homepage_url"], "https://example.edu.tw/old")
 
     @patch("scripts.process_feedback.fetch_url")
     def test_discovers_registration_link_on_same_official_domain(self, fetch):

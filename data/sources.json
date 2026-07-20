@@ -153,12 +153,12 @@
   "government_sources": [
     {
       "name": "國家科學及技術委員會活動訊息",
+      "important": true,
       "urls": [
         "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
         "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?pageNum=2&view_mode=listView&l=ch",
         "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?pageNum=3&view_mode=listView&l=ch"
-      ],
-      "require_taiwan_marker": true
+      ]
     }
   ],
   "conferences": [
