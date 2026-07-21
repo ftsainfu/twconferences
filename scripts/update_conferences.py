@@ -23,6 +23,8 @@ OUTPUT_FILE = DATA_DIR / "conferences.json"
 HISTORY_FILE = DATA_DIR / "history.json"
 RECURRING_FILE = DATA_DIR / "recurring.json"
 CANDIDATES_FILE = DATA_DIR / "candidates.json"
+HISTORICAL_BACKFILL_FILE = DATA_DIR / "backfill_history_leads.json"
+HISTORICAL_STATS_FILE = DATA_DIR / "historical_stats.json"
 TZ = timezone(timedelta(hours=8))
 
 KEYWORDS = (
@@ -31,7 +33,7 @@ KEYWORDS = (
 )
 CONFERENCE_WORDS = ("研討會", "學術研討", "徵稿", "論文", "conference", "symposium")
 FORMAL_CONFERENCE_WORDS = ("研討會", "學術研討", "年會", "conference", "symposium")
-FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單")
+FOLLOWUP_WORDS = ("議程", "審查", "結果", "論文集", "優秀論文", "得獎", "獲獎", "錄取名單", "公告名單", "改期", "注意事項")
 NON_CONFERENCE_WORDS = (
     "期末報告",
     "講座",
@@ -69,6 +71,7 @@ BUSINESS_REFERENCE_WORDS = ("finance", "financial", "accounting", "management", 
 LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>[\s\S]*?)</a>", re.I)
 LINK_HEALTH_FIELDS = ("homepage_url", "submission_url", "registration_url")
 LINK_FAILURE_THRESHOLD = 2
+HISTORICAL_BACKFILL_LOOKBACK_YEARS = 3
 
 
 def now_tw() -> datetime:
@@ -77,6 +80,12 @@ def now_tw() -> datetime:
 
 def today_iso() -> str:
     return now_tw().date().isoformat()
+
+
+def historical_backfill_years(reference: date | None = None) -> tuple[str, ...]:
+    """Return the completed years that should be scanned for historical backfill."""
+    current_year = (reference or now_tw().date()).year
+    return tuple(str(year) for year in range(current_year - HISTORICAL_BACKFILL_LOOKBACK_YEARS, current_year))
 
 
 def read_json(path: Path, default):
@@ -629,8 +638,14 @@ def is_formal_conference_text(text: str) -> bool:
 
 
 def is_relevant_conference_text(text: str) -> bool:
-    lower_text = text.lower()
     if not any(marker in text for marker in current_year_markers()):
+        return False
+    return is_relevant_conference_text_for_years(text, current_year_markers())
+
+
+def is_relevant_conference_text_for_years(text: str, year_markers: tuple[str, ...]) -> bool:
+    lower_text = text.lower()
+    if not any(marker in text for marker in year_markers):
         return False
     if not any(word in text for word in CONFERENCE_WORDS) and not any(word in lower_text for word in CONFERENCE_WORDS):
         return False
@@ -771,6 +786,12 @@ def duplicates_known_title(title: str, known_titles: set[str]) -> bool:
                 if SequenceMatcher(None, duplicate_key, known_duplicate_key).ratio() >= 0.86:
                     return True
     return False
+
+
+def duplicates_known_historical_title(title: str, known_titles: set[str]) -> bool:
+    """Historical backfill must allow the same recurring conference across different years."""
+    key = title_key(title)
+    return bool(key and key in known_titles)
 
 
 def make_candidate(
@@ -1116,7 +1137,7 @@ def discover_from_references(
             )
             if any(word in text for word in FOLLOWUP_WORDS):
                 continue
-            if not is_relevant_conference_text(text):
+            if not is_relevant_conference_text_for_years(text, target_years):
                 continue
             if duplicates_known_title(title, existing_titles):
                 continue
@@ -1160,6 +1181,148 @@ def discover_from_references(
             candidates.append(item)
 
     return candidates[:12], errors
+
+
+def historical_lead_id(url: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", urllib.parse.urlparse(url).netloc.lower()).strip("-")
+    return f"history-{slug}-{hashlib.sha1(url.encode('utf-8')).hexdigest()[:8]}"
+
+
+def make_historical_backfill_lead(
+    *,
+    title: str,
+    link: str,
+    source: dict,
+    published: str,
+    summary: str,
+    years: tuple[str, ...],
+) -> dict:
+    dates = find_dates(f"{title} {summary}")
+    matching_years = sorted({value[:4] for value in dates if value[:4] in years})
+    return {
+        "id": historical_lead_id(link),
+        "title": title,
+        "homepage_url": link,
+        "discovered_from_name": source.get("name", "歷史回填來源"),
+        "discovered_from_url": source.get("url", ""),
+        "source_type": source.get("source_type", "historical_backfill"),
+        "candidate_years": matching_years or sorted({year for year in years if year in f"{title} {link} {summary}"}),
+        "candidate_dates": dates,
+        "fields": ["待確認"],
+        "review_status": "needs_review",
+        "candidate_status": "pending",
+        "first_seen": today_iso(),
+        "last_seen": today_iso(),
+        "last_changed": published,
+        "attention_notes": [
+            "歷史回填線索：需核對官方或主辦單位頁面、活動日期、投稿截止日、地點與投稿／報名方式後，才能移入正式資料。",
+            summary,
+        ],
+        "evidence_sources": [{
+            "name": source.get("name", "歷史回填來源"),
+            "url": source.get("url", ""),
+            "type": source.get("source_type", "historical_backfill"),
+        }],
+    }
+
+
+def discover_historical_backfill_leads(
+    sources: list[dict],
+    existing_urls: set[str],
+    existing_titles: set[str],
+    years: tuple[str, ...] | None = None,
+) -> tuple[list[dict], list[str]]:
+    """Discover older conference leads for review without adding them to public statistics."""
+    target_years = years or historical_backfill_years()
+    year_markers = set(target_years)
+    leads: list[dict] = []
+    errors: list[str] = []
+    seen_urls: set[str] = set()
+
+    for source in sources:
+        name = source.get("name", "歷史回填來源")
+        url = source.get("url", "")
+        if not url:
+            continue
+        try:
+            raw, _ = fetch_url(
+                url,
+                timeout=int(source.get("timeout", 10)),
+                attempts=int(source.get("attempts", 1)),
+                allow_invalid_tls=bool(source.get("allow_invalid_tls")),
+            )
+        except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
+            errors.append(f"historical_backfill:{name}: {exc}")
+            continue
+
+        for match in LINK_RE.finditer(raw):
+            raw_label = normalize_text(match.group("label"))
+            published_match = re.match(r"^(20\d{2}-\d{2}-\d{2})\s+", raw_label)
+            published = published_match.group(1) if published_match else today_iso()
+            label = re.sub(r"^20\d{2}-\d{2}-\d{2}\s+", "", raw_label).strip()
+            link = normalize_url(url, match.group("href"))
+            canonical = canonical_url(link)
+            text = f"{label} {link}"
+            if not link or canonical in seen_urls or canonical in existing_urls:
+                continue
+            if not valid_official_discovery_link(source, link):
+                continue
+            if not any(year in text for year in year_markers):
+                continue
+            if any(word in text for word in FOLLOWUP_WORDS):
+                continue
+            if source.get("require_taiwan_marker") and not any(
+                word in text.lower() for word in TAIWAN_LOCATION_WORDS
+            ):
+                continue
+            if not is_relevant_conference_text_for_years(text, target_years):
+                continue
+            if duplicates_known_historical_title(label, existing_titles):
+                continue
+            seen_urls.add(canonical)
+            leads.append(
+                make_historical_backfill_lead(
+                    title=label[:180],
+                    link=link,
+                    source=source,
+                    published=published,
+                    summary=f"由「{name}」歷史來源掃描發現，尚未納入正式歷年資料。",
+                    years=target_years,
+                )
+            )
+
+    return leads, errors
+
+
+def merge_historical_backfill_store(discovered: list[dict], stored: list[dict]) -> list[dict]:
+    """Keep historical review decisions while refreshing discovery evidence."""
+    today = today_iso()
+    by_id = {item.get("id"): dict(item) for item in stored if item.get("id")}
+    discovered_ids: set[str] = set()
+    for lead in discovered:
+        lead_id = lead["id"]
+        discovered_ids.add(lead_id)
+        previous = by_id.get(lead_id, {})
+        by_id[lead_id] = {
+            **lead,
+            "first_seen": previous.get("first_seen") or lead.get("first_seen") or today,
+            "last_seen": today,
+            "candidate_status": previous.get("candidate_status", lead.get("candidate_status", "pending")),
+            "review_notes": previous.get("review_notes", ""),
+            "is_stale": False,
+        }
+    for lead_id, lead in by_id.items():
+        if lead_id not in discovered_ids:
+            lead["is_stale"] = True
+    return sorted(
+        by_id.values(),
+        key=lambda item: (
+            item.get("candidate_status", "pending"),
+            ",".join(item.get("candidate_years", [])),
+            item.get("first_seen", ""),
+            item["id"],
+        ),
+    )
 
 
 def merge_candidate_store(discovered: list[dict], stored: list[dict]) -> list[dict]:
@@ -1281,6 +1444,41 @@ def validate_payload(payload: dict, previous_payload: dict | None = None) -> lis
     return errors
 
 
+def validate_historical_stats(payload: dict, conference_payload: dict) -> list[str]:
+    errors: list[str] = []
+    entries = payload.get("entries", [])
+    if not isinstance(entries, list):
+        return ["entries must be a list"]
+    formal_ids = {
+        item.get("id")
+        for item in conference_payload.get("conferences", [])
+        if item.get("id") and item.get("review_status") != "candidate"
+    }
+    seen_ids: set[str] = set()
+    for index, item in enumerate(entries):
+        prefix = f"entries[{index}]"
+        item_id = item.get("id", "")
+        if not item_id:
+            errors.append(f"{prefix}.id is required")
+        if item_id in seen_ids:
+            errors.append(f"duplicate historical stats id: {item_id}")
+        seen_ids.add(item_id)
+        if item_id in formal_ids:
+            errors.append(f"{prefix}.id duplicates formal conference id: {item_id}")
+        if not item.get("title"):
+            errors.append(f"{prefix}.title is required")
+        if not item.get("event_start") and not item.get("submission_deadline"):
+            errors.append(f"{prefix} requires event_start or submission_deadline")
+        for key in ("event_start", "event_end", "submission_deadline"):
+            value = item.get(key)
+            if value:
+                try:
+                    date.fromisoformat(str(value))
+                except ValueError:
+                    errors.append(f"{prefix}.{key} is not ISO date: {value}")
+    return errors
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Refresh conference data")
     parser.add_argument("--fail-on-errors", action="store_true", help="write valid output but return non-zero when a source fails")
@@ -1291,7 +1489,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     if args.validate_only:
-        validation_errors = validate_payload(read_json(OUTPUT_FILE, {}))
+        conference_payload = read_json(OUTPUT_FILE, {})
+        validation_errors = validate_payload(conference_payload)
+        validation_errors += validate_historical_stats(read_json(HISTORICAL_STATS_FILE, {"entries": []}), conference_payload)
         for error in validation_errors:
             print(f"- {error}", file=sys.stderr)
         return 1 if validation_errors else 0
@@ -1305,12 +1505,14 @@ def main(argv: list[str] | None = None) -> int:
             "scholarly_sources": [],
             "government_sources": [],
             "reference_sources": [],
+            "historical_backfill_sources": [],
         },
     )
     recurring = read_json(RECURRING_FILE, {"recurring_conferences": []})
     history = read_json(HISTORY_FILE, {"sources": {}})
     previous_payload = read_json(OUTPUT_FILE, {"conferences": []})
     candidate_payload = read_json(CANDIDATES_FILE, {"candidates": []})
+    historical_backfill_payload = read_json(HISTORICAL_BACKFILL_FILE, {"leads": []})
     migrated_candidates = [
         item for item in previous_payload.get("conferences", []) if item.get("review_status") == "candidate"
     ]
@@ -1338,7 +1540,16 @@ def main(argv: list[str] | None = None) -> int:
         existing_urls,
         existing_titles,
     )
-    discovery_warnings = organizer_errors + reference_errors
+    historical_backfill_leads, historical_backfill_errors = discover_historical_backfill_leads(
+        sources.get("historical_backfill_sources", []),
+        existing_urls,
+        existing_titles,
+    )
+    historical_backfill_store = merge_historical_backfill_store(
+        merge_discovered_candidates(historical_backfill_leads),
+        historical_backfill_payload.get("leads", []),
+    )
+    discovery_warnings = organizer_errors + reference_errors + historical_backfill_errors
     stored_candidates = candidate_payload.get("candidates", []) or migrated_candidates
     discovered_candidates = merge_discovered_candidates(organizer_candidates + reference_candidates)
     candidate_store = merge_candidate_store(discovered_candidates, stored_candidates)
@@ -1354,7 +1565,8 @@ def main(argv: list[str] | None = None) -> int:
         "generated_at": now_tw().strftime("%Y-%m-%d %H:%M:%S %Z"),
         "source_count": len(sources.get("conferences", []))
         + len(organizer_sources)
-        + len(sources.get("reference_sources", [])),
+        + len(sources.get("reference_sources", []))
+        + len(sources.get("historical_backfill_sources", [])),
         "errors": source_errors + link_errors,
         "warnings": discovery_warnings,
         "health": {
@@ -1376,6 +1588,24 @@ def main(argv: list[str] | None = None) -> int:
     write_json(OUTPUT_FILE, payload)
     write_json(HISTORY_FILE, history)
     write_json(CANDIDATES_FILE, {"generated_at": payload["generated_at"], "candidates": candidate_store})
+    write_json(
+        HISTORICAL_BACKFILL_FILE,
+        {
+            "generated_at": payload["generated_at"],
+            "purpose": (
+                "2023–2025 歷史商管研討會回填線索。此檔只供審查，不直接進入前台正式統計；"
+                "核對官方來源、日期、投稿截止、地點與投稿／報名方式後，才移入 data/sources.json。"
+            ),
+            "target_years": list(historical_backfill_years()),
+            "review_policy": [
+                "優先以會議官網、主辦系所、主辦學會或正式徵稿頁為準。",
+                "校外轉知頁可作為發現來源，但不應單獨作為正式收錄依據。",
+                "已截止與已舉辦會議仍可正式收錄，用於年度月份分布與歷史比較。",
+                "正式收錄前需檢查 data/sources.json、data/conferences.json 與 data/candidates.json，避免重複。",
+            ],
+            "leads": historical_backfill_store,
+        },
+    )
     if source_errors:
         print("Completed with source errors:", file=sys.stderr)
         for error in source_errors:

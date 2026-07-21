@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "a8dc2e716692eaa63a8be2b5da888d1febf23b864daba4db0550f827f506db75",
+      "hash": "df0fddf6e0ae535a220e1186567a578a6812ac33b0be10d8d25a141d72c94ef7",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "2026-07-21",
       "last_checked": "2026-07-21",
@@ -36,16 +36,16 @@
     "nycu-2026-taiop": {
       "hash": "2689c83062b88adb4f1fafddd13bd90de8577724a970cf49a0243d8cf99e0b09",
       "last_attempted_at": "2026-07-21",
-      "last_successful_at": "2026-07-20",
-      "last_checked": "2026-07-20",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
       "last_changed": "2026-06-05",
       "last_status": "unchanged",
-      "check_status": "error",
-      "last_error": "<urlopen error curl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10000 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10003 ms: Timeout was reached>",
+      "check_status": "ok",
+      "last_error": "",
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "aeeebdcf34e32f1f64c89582388c8ec250bf0f60a6778b112bac3a4ad712c8f3",
+      "hash": "a07333a8bf9a3ef1a672bca40b134f0d652ebefb85b73b984b8e1ee9b6ecdf1c",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "2026-07-21",
       "last_checked": "2026-07-21",
@@ -78,12 +78,12 @@
       "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
     },
     "fgu-2026-sme-management": {
-      "hash": "047c0ed6f45c0ca11da92f795633f49e6e11c69cae6a959725815f634c32827f",
+      "hash": "5671d389569a7bc0c1a9c3748620637c572b9e53305c45885f2759eec2a1da2b",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "2026-07-21",
       "last_checked": "2026-07-21",
       "last_changed": "2026-07-21",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
@@ -177,12 +177,12 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "833f9c9f42afd4f62d11b59f5a2c178e155e8d696c90519fbb54605ef876dd21",
+      "hash": "837fadfb1a9858042ad14e58db66cfa6f260ec747af616e595d07d6be4c0f958",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "2026-07-21",
       "last_checked": "2026-07-21",
       "last_changed": "2026-07-21",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://ba.stust.edu.tw/tc/news/63-91967-n"
@@ -219,6 +219,149 @@
       "check_status": "ok",
       "last_error": "",
       "url": "https://business.stust.edu.tw/tc/node/conference"
+    },
+    "tfa-2025-annual": {
+      "hash": "1dbac25e38fc117f5eb340f8b2b81c5dde1349f7ef1b1241bcd31f796b0d204b",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.finance.org.tw/fnnews/39"
+    },
+    "tfa-2024-annual": {
+      "hash": "5cea0449a4c579481d47234762c69fdb73d3248c5b4b9399df30c1995625d067",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.finance.org.tw/fnmeeting_year_item/73"
+    },
+    "tfa-2023-annual": {
+      "hash": "200e3a7a2f766ef1a75d4340c34477780999d2a772f07adc2a26195a526a907e",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.finance.org.tw/fnnews/21"
+    },
+    "must-2025-icmsi": {
+      "hash": "2def0932b28137f500400a58c74c818bd43be1429702312e15101811d51e148c",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392"
+    },
+    "must-2023-icmsi": {
+      "hash": "5b24a8ac2bf8870e645fc89dddb8530083745363394fb264537f58fdb02285f7",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw"
+    },
+    "just-2025-business-practice": {
+      "hash": "5d5b9de6d9b95f3e0c950afe742a5bb39cb25f6e6e886c10603310b7bf3cba35",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://irnas.just.edu.tw/conference/2025/"
+    },
+    "just-2023-business-practice": {
+      "hash": "74e6096f5a5899d08b6b3555639a9fe343e722f54d1ddee424f7831bddc3ef26",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1"
+    },
+    "uch-2024-management-practice": {
+      "hash": "17a95d47b2bc070caa93e8186245570832edec2e03745ac210f143815d4da619",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024"
+    },
+    "uch-2023-management-practice": {
+      "hash": "3ad45767c1129b1f244849ef5e78e952190c002c7b5e841d7ba332df713b66ea",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077"
+    },
+    "cabmt-2024-annual": {
+      "hash": "e13cdb734e7eb2ec5d0001cfea2b60b3d944f3a7a21edd80748f0e40f65bdea4",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://umf.yuntech.edu.tw/newsview_1517.html"
+    },
+    "cabmt-2023-annual": {
+      "hash": "02ea3647096537cf1518f648d10cf313fd898314310ca81c405fdedeaa09b5f8",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw"
+    },
+    "cyut-2025-finance-theory-practice": {
+      "hash": "7ed47899001b9793786042cb1f8f9406a6c64052f5ce8fa5d4cafff1b3d1b25f",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw"
+    },
+    "tiibs-2023-business-management": {
+      "hash": "3fb75dcbbdf7427643477f0a2f897fc2ddc4b22964cfff1fc6cc3e472d4a751f",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "last_checked": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw"
     }
   },
   "links": {
@@ -299,8 +442,8 @@
       "status": "broken",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "",
-      "consecutive_failures": 6,
-      "last_error": "<urlopen error curl: (28) Connection timed out after 5001 milliseconds>"
+      "consecutive_failures": 9,
+      "last_error": "<urlopen error curl: (28) Connection timed out after 5005 milliseconds>"
     },
     "cmr-2026-marketing:homepage_url:https://cmr-crrmkt.pccu.edu.tw": {
       "url": "https://cmr-crrmkt.pccu.edu.tw/",
@@ -344,19 +487,19 @@
     },
     "nycu-2026-taiop:homepage_url:https://ibm.nycu.edu.tw/2026-taiop-年會暨國際學術研討會｜公開徵稿": {
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
-      "status": "warning",
+      "status": "ok",
       "last_attempted_at": "2026-07-21",
-      "last_successful_at": "2026-07-20",
-      "consecutive_failures": 1,
-      "last_error": "<urlopen error curl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10000 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10003 ms: Timeout was reached>"
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
     },
     "nycu-2026-taiop:submission_url:https://ibm.nycu.edu.tw/2026-taiop-年會暨國際學術研討會｜公開徵稿": {
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
-      "status": "warning",
+      "status": "ok",
       "last_attempted_at": "2026-07-21",
-      "last_successful_at": "2026-07-20",
-      "consecutive_failures": 1,
-      "last_error": "<urlopen error curl: (28) Connection timed out after 5001 milliseconds>"
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
     },
     "urltw-2026-business-paper:homepage_url:https://www.conference.url.tw/main": {
       "url": "https://www.conference.url.tw/main/",
@@ -587,7 +730,7 @@
       "status": "broken",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "",
-      "consecutive_failures": 6,
+      "consecutive_failures": 9,
       "last_error": "<urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
     },
     "fy-2026-ihc:registration_url:https://ihc.fy.edu.tw": {
@@ -595,7 +738,7 @@
       "status": "broken",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "",
-      "consecutive_failures": 6,
+      "consecutive_failures": 9,
       "last_error": "<urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
     },
     "apfita-2026:homepage_url:https://www.apfita.org/2026": {
@@ -635,11 +778,395 @@
       "status": "broken",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "",
-      "consecutive_failures": 6,
-      "last_error": "<urlopen error curl: (22) The requested URL returned error: 401>"
+      "consecutive_failures": 9,
+      "last_error": "<urlopen error curl: (56) The requested URL returned error: 401>"
     },
     "iclt-2026:registration_url:https://iclt.info/registration": {
       "url": "https://iclt.info/registration",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2025-annual:homepage_url:https://www.finance.org.tw/fnnews/39": {
+      "url": "https://www.finance.org.tw/fnnews/39",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2025-annual:submission_url:https://forms.gle/cgC4o15jpjwHt6em8": {
+      "url": "https://forms.gle/cgC4o15jpjwHt6em8",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2025-annual:registration_url:https://forms.gle/pthg1Suuq9wQPS2t7": {
+      "url": "https://forms.gle/pthg1Suuq9wQPS2t7",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2024-annual:homepage_url:https://www.finance.org.tw/fnmeeting_year_item/73": {
+      "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2024-annual:submission_url:https://www.finance.org.tw/fnmeeting_year_item/73": {
+      "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2024-annual:registration_url:https://www.finance.org.tw/fnmeeting_year_item/73": {
+      "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2023-annual:homepage_url:https://www.finance.org.tw/fnnews/21": {
+      "url": "https://www.finance.org.tw/fnnews/21",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2023-annual:submission_url:https://www.finance.org.tw/fnnews/21": {
+      "url": "https://www.finance.org.tw/fnnews/21",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tfa-2023-annual:registration_url:https://www.finance.org.tw/fnnews/21": {
+      "url": "https://www.finance.org.tw/fnnews/21",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2025-icmsi:homepage_url:https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392": {
+      "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2025-icmsi:submission_url:https://icmsi.must.edu.tw": {
+      "url": "https://icmsi.must.edu.tw/",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (28) Connection timed out after 5006 milliseconds>"
+    },
+    "must-2025-icmsi:registration_url:https://icmsi.must.edu.tw": {
+      "url": "https://icmsi.must.edu.tw/",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (28) Connection timed out after 5006 milliseconds>"
+    },
+    "must-2023-icmsi:homepage_url:https://dm.chu.edu.tw/p/404-1012-30155.php": {
+      "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2023-icmsi:submission_url:https://icmsi.must.edu.tw": {
+      "url": "https://icmsi.must.edu.tw/",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (28) Connection timed out after 5006 milliseconds>"
+    },
+    "must-2023-icmsi:registration_url:https://icmsi.must.edu.tw": {
+      "url": "https://icmsi.must.edu.tw/",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (28) Connection timed out after 5006 milliseconds>"
+    },
+    "just-2025-business-practice:homepage_url:https://irnas.just.edu.tw/conference/2025": {
+      "url": "https://irnas.just.edu.tw/conference/2025/",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2025-business-practice:submission_url:https://irnas.just.edu.tw/conference/2025": {
+      "url": "https://irnas.just.edu.tw/conference/2025/",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2025-business-practice:registration_url:https://irnas.just.edu.tw/conference/2025": {
+      "url": "https://irnas.just.edu.tw/conference/2025/",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2023-business-practice:homepage_url:https://irnas.just.edu.tw/conference/public/confer2023/V_MR1": {
+      "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2023-business-practice:submission_url:https://irnas.just.edu.tw/conference/2023": {
+      "url": "https://irnas.just.edu.tw/conference/2023/",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2023-business-practice:registration_url:https://irnas.just.edu.tw/conference/2023": {
+      "url": "https://irnas.just.edu.tw/conference/2023/",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2024-management-practice:homepage_url:https://www.fd.uch.edu.tw/zh_tw/nmpas2024": {
+      "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2024-management-practice:submission_url:https://www.fd.uch.edu.tw/zh_tw/nmpas2024": {
+      "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2024-management-practice:registration_url:https://www.fd.uch.edu.tw/zh_tw/nmpas2024": {
+      "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2023-management-practice:homepage_url:https://www.im.uch.edu.tw/zh_tw/News/2023全國管理實務暨學術研討會-12429077": {
+      "url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2023-management-practice:registration_url:https://forms.gle/japLUYC91XC65e7r6": {
+      "url": "https://forms.gle/japLUYC91XC65e7r6",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2024-annual:homepage_url:https://www.cabmt.org.tw/front/news1.php?data=51": {
+      "url": "https://www.cabmt.org.tw/front/news1.php?data=51",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (22) The requested URL returned error: 403>"
+    },
+    "cabmt-2024-annual:submission_url:https://www.cabmt.org.tw/front/news1.php?data=51": {
+      "url": "https://www.cabmt.org.tw/front/news1.php?data=51",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (60) SSL certificate problem: self-signed certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
+    },
+    "cabmt-2024-annual:registration_url:https://www.cabmt.org.tw/front/news1.php?data=51": {
+      "url": "https://www.cabmt.org.tw/front/news1.php?data=51",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (60) SSL certificate problem: self-signed certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
+    },
+    "cabmt-2023-annual:homepage_url:https://cabmt.org.tw/front/news1.php?data=49": {
+      "url": "https://cabmt.org.tw/front/news1.php?data=49",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (22) The requested URL returned error: 403>"
+    },
+    "cabmt-2023-annual:submission_url:https://cabmt.org.tw/front/news1.php?data=49": {
+      "url": "https://cabmt.org.tw/front/news1.php?data=49",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (60) SSL certificate problem: self-signed certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
+    },
+    "cabmt-2023-annual:registration_url:https://cabmt.org.tw/front/news1.php?data=49": {
+      "url": "https://cabmt.org.tw/front/news1.php?data=49",
+      "status": "broken",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "",
+      "consecutive_failures": 2,
+      "last_error": "<urlopen error curl: (60) SSL certificate problem: self-signed certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
+    },
+    "cyut-2025-finance-theory-practice:homepage_url:https://finance.cyut.edu.tw/p/404-1025-34618.php": {
+      "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cyut-2025-finance-theory-practice:submission_url:https://finance.cyut.edu.tw/p/404-1025-34618.php": {
+      "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cyut-2025-finance-theory-practice:registration_url:https://finance.cyut.edu.tw/p/404-1025-34618.php": {
+      "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tiibs-2023-business-management:homepage_url:https://crrmba.pccu.edu.tw/p/406-1188-110527,r823.php": {
+      "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tiibs-2023-business-management:submission_url:https://forms.gle/K66gtjxMYEt8o86M8": {
+      "url": "https://forms.gle/K66gtjxMYEt8o86M8",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tiibs-2023-business-management:registration_url:https://crrmba.pccu.edu.tw/p/406-1188-110527,r823.php": {
+      "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2025-icmsi:submission_url:https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392": {
+      "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2025-icmsi:registration_url:https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392": {
+      "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2023-icmsi:submission_url:https://dm.chu.edu.tw/p/404-1012-30155.php": {
+      "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "must-2023-icmsi:registration_url:https://dm.chu.edu.tw/p/404-1012-30155.php": {
+      "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2024-annual:homepage_url:https://umf.yuntech.edu.tw/newsview_1517.html": {
+      "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2024-annual:submission_url:https://umf.yuntech.edu.tw/newsview_1517.html": {
+      "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2024-annual:registration_url:https://umf.yuntech.edu.tw/newsview_1517.html": {
+      "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2023-annual:homepage_url:https://fn.lhu.edu.tw/p/404-1008-17164.php": {
+      "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2023-annual:submission_url:https://fn.lhu.edu.tw/p/404-1008-17164.php": {
+      "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-07-21",
+      "last_successful_at": "2026-07-21",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cabmt-2023-annual:registration_url:https://fn.lhu.edu.tw/p/404-1008-17164.php": {
+      "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
       "status": "ok",
       "last_attempted_at": "2026-07-21",
       "last_successful_at": "2026-07-21",

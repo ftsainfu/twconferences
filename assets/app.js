@@ -6,6 +6,7 @@ const state = {
   filtered: [],
   recurring: [],
   grants: [],
+  historicalStats: [],
   grantPayload: null,
   grantLanguage: "zh",
   ratings: {},
@@ -561,10 +562,17 @@ function peakMonthLabel(months, key) {
   return `${peakMonths.join("、")}（${peak} 場）`;
 }
 
+function dashboardBaseItems() {
+  const verified = state.conferences.filter((item) => item.review_status !== "candidate");
+  return [...verified, ...state.historicalStats];
+}
+
 function dashboardCompletenessLabel(items, year, scope = "all") {
   const yearItems = items.filter(
     (item) => String(item.event_start || "").startsWith(year) || String(item.submission_deadline || "").startsWith(year),
   );
+  const statsOnlyCount = yearItems.filter((item) => item.stats_only).length;
+  const formalCount = yearItems.length - statsOnlyCount;
   const eventMonths = new Set(
     yearItems
       .map((item) => String(item.event_start || "").match(/^(\d{4})-(\d{2})-/))
@@ -579,15 +587,17 @@ function dashboardCompletenessLabel(items, year, scope = "all") {
   );
   const sparse = yearItems.length < 40 || eventMonths.size < 8 || deadlineMonths.size < 8;
   const status = sparse ? "年度資料仍在回填中" : "年度樣本較完整";
-  const scopeLabel = scope === "filtered" ? "目前篩選樣本" : "全部正式收錄樣本";
-  return `${status}：${year} 年${scopeLabel}目前納入 ${yearItems.length} 場；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
+  if (scope === "filtered") {
+    return `${status}：${year} 年目前篩選樣本納入 ${yearItems.length} 場；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
+  }
+  const statsLabel = statsOnlyCount ? `，另含 ${statsOnlyCount} 筆只供統計的日期補點` : "";
+  return `${status}：${year} 年正式資料 ${formalCount} 場${statsLabel}；投稿截止涵蓋 ${deadlineMonths.size} 個月份，活動日期涵蓋 ${eventMonths.size} 個月份。`;
 }
 
 function renderMonthlyDashboard() {
   if (!els.monthlyChart || !els.dashboardYear) return;
-  const verified = state.conferences.filter((item) => item.review_status !== "candidate");
   const usesFilteredScope = els.dashboardScope?.value === "filtered";
-  const sourceItems = usesFilteredScope ? state.filtered : verified;
+  const sourceItems = usesFilteredScope ? state.filtered : dashboardBaseItems();
   const year = els.dashboardYear.value || String(state.referenceDate.getFullYear());
   const months = monthlyConferenceCounts(sourceItems, year);
   const contributingItems = sourceItems.filter(
@@ -1050,9 +1060,8 @@ function hydrateHistoryYearFilter() {
 
 function hydrateDashboardYearFilter() {
   if (!els.dashboardYear) return;
-  const verified = state.conferences.filter((item) => item.review_status !== "candidate");
   const years = [...new Set(
-    verified.flatMap((item) => [item.event_start, item.submission_deadline])
+    dashboardBaseItems().flatMap((item) => [item.event_start, item.submission_deadline])
       .filter(Boolean)
       .map((value) => String(value).slice(0, 4))
       .filter((value) => /^\d{4}$/.test(value)),
@@ -1392,12 +1401,13 @@ function bindEvents() {
 }
 
 async function init() {
-  const [response, recurringResponse, ratingsResponse, grantsResponse, siteConfigResponse] = await Promise.all([
+  const [response, recurringResponse, ratingsResponse, grantsResponse, siteConfigResponse, historicalStatsResponse] = await Promise.all([
     fetch("data/conferences.json", { cache: "no-store" }),
     fetch("data/recurring.json", { cache: "no-store" }),
     fetch("data/ratings.json", { cache: "no-store" }),
     fetch("data/grants.json", { cache: "no-store" }),
     fetch("data/site_config.json", { cache: "no-store" }),
+    fetch("data/historical_stats.json", { cache: "no-store" }).catch(() => ({ ok: false })),
   ]);
   if (!response.ok) throw new Error("Failed to load conference data");
   const payload = await response.json();
@@ -1405,7 +1415,9 @@ async function init() {
   const ratingsPayload = ratingsResponse.ok ? await ratingsResponse.json() : { ratings: {} };
   const grantsPayload = grantsResponse.ok ? await grantsResponse.json() : { programs: [], notice: "獎補助資料目前無法讀取。" };
   const siteConfigPayload = siteConfigResponse.ok ? await siteConfigResponse.json() : {};
+  const historicalStatsPayload = historicalStatsResponse.ok ? await historicalStatsResponse.json() : { entries: [] };
   state.conferences = payload.conferences || [];
+  state.historicalStats = (historicalStatsPayload.entries || []).map((item) => ({ ...item, stats_only: true }));
   state.trackedIds = loadTrackedIds();
   state.referenceDate = parseGeneratedDate(payload.generated_at);
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");

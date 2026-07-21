@@ -20,13 +20,17 @@ from scripts.update_conferences import (
     merge_discovered_candidates,
     parse_ics_events,
     discover_from_organizers,
+    discover_historical_backfill_leads,
     discover_from_ics_reference,
     fetch_url,
+    historical_backfill_years,
+    merge_historical_backfill_store,
     title_key,
     scholarly_organizer_sources,
     university_organizer_sources,
     valid_official_discovery_link,
     valid_external_reference_url,
+    validate_historical_stats,
     validate_payload,
 )
 from scripts import process_feedback
@@ -192,6 +196,53 @@ class LinkHealthTests(unittest.TestCase):
 
 
 class CandidateTests(unittest.TestCase):
+    def test_historical_backfill_years_use_completed_previous_years(self):
+        self.assertEqual(historical_backfill_years(date(2026, 7, 21)), ("2023", "2024", "2025"))
+
+    @patch("scripts.update_conferences.fetch_url")
+    def test_historical_backfill_discovers_prior_year_without_public_candidate(self, fetch):
+        fetch.return_value = (
+            '<a href="/news/2025">2025 財務金融學術研討會徵稿</a>'
+            '<a href="/news/2026">2026 財務金融學術研討會徵稿</a>',
+            "utf-8",
+        )
+        leads, errors = discover_historical_backfill_leads(
+            [{
+                "name": "Example College",
+                "url": "https://management.example.edu.tw/news",
+                "source_type": "university_college",
+                "attempts": 1,
+            }],
+            set(),
+            set(),
+            years=("2023", "2024", "2025"),
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(len(leads), 1)
+        self.assertEqual(leads[0]["review_status"], "needs_review")
+        self.assertEqual(leads[0]["candidate_status"], "pending")
+        self.assertEqual(leads[0]["candidate_years"], ["2025"])
+
+    def test_historical_backfill_merge_preserves_review_state(self):
+        stored = [{
+            "id": "history-example-1",
+            "candidate_status": "rejected",
+            "first_seen": "2026-01-01",
+            "review_notes": "Not business related",
+        }]
+        discovered = [{
+            "id": "history-example-1",
+            "title": "2025 管理研討會",
+            "homepage_url": "https://example.edu.tw/2025",
+            "candidate_status": "pending",
+            "first_seen": "2026-07-21",
+        }]
+        merged = merge_historical_backfill_store(discovered, stored)
+        self.assertEqual(merged[0]["candidate_status"], "rejected")
+        self.assertEqual(merged[0]["first_seen"], "2026-01-01")
+        self.assertEqual(merged[0]["review_notes"], "Not business related")
+        self.assertFalse(merged[0]["is_stale"])
+
     @patch("scripts.update_conferences.current_year_markers", return_value=("2026", "115"))
     def test_english_business_keyword_matching_is_case_insensitive(self, _markers):
         self.assertTrue(is_relevant_conference_text("2026 International Symposium on Management Innovation"))
@@ -445,6 +496,20 @@ class ValidationTests(unittest.TestCase):
         }
         errors = validate_payload({"conferences": [item]})
         self.assertTrue(any("journal_name is required" in error for error in errors))
+
+    def test_historical_stats_requires_dates_and_no_formal_duplicate_id(self):
+        conference_payload = {"conferences": [{"id": "formal-1", "review_status": "verified"}]}
+        errors = validate_historical_stats(
+            {
+                "entries": [
+                    {"id": "formal-1", "title": "Duplicate", "event_start": "2025-05-01"},
+                    {"id": "stat-2", "title": "Missing dates"},
+                ]
+            },
+            conference_payload,
+        )
+        self.assertTrue(any("duplicates formal conference id" in error for error in errors))
+        self.assertTrue(any("requires event_start or submission_deadline" in error for error in errors))
 
     def test_external_reference_requires_official_domain(self):
         source = "https://aggregator.example/api"

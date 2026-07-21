@@ -17,6 +17,64 @@
       "format": "ics"
     }
   ],
+  "historical_backfill_sources": [
+    {
+      "name": "臺灣財務金融學會年會歷史頁",
+      "url": "https://www.finance.org.tw/fnmeeting_year",
+      "source_type": "scholarly",
+      "attempts": 1
+    },
+    {
+      "name": "中華民國多國籍企業研究學會活動資訊",
+      "url": "https://www.tiibs.org.tw/msglist.asp?tp=3",
+      "source_type": "scholarly",
+      "attempts": 1
+    },
+    {
+      "name": "國立臺灣大學管理學院學術研究公告",
+      "url": "https://management.ntu.edu.tw/Research/board/index/tab/88",
+      "source_type": "university_college",
+      "attempts": 1,
+      "require_taiwan_marker": true
+    },
+    {
+      "name": "國立臺灣海洋大學商船系活動公告",
+      "url": "https://obm.ntou.edu.tw/p/403-1006-800-1.php?Lang=zh-tw",
+      "source_type": "university_college",
+      "attempts": 1
+    },
+    {
+      "name": "雲林科技大學財務金融系公告",
+      "url": "https://umf.yuntech.edu.tw/news.html",
+      "source_type": "university_college",
+      "attempts": 1
+    },
+    {
+      "name": "健行科技大學財務金融系研討會頁",
+      "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "source_type": "university_college",
+      "attempts": 1
+    },
+    {
+      "name": "大葉大學當代管理研討會",
+      "url": "https://basummit.dyu.edu.tw/",
+      "source_type": "university_college",
+      "attempts": 1
+    },
+    {
+      "name": "景文科技大學商管研討會系統",
+      "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1",
+      "source_type": "university_college",
+      "attempts": 1
+    },
+    {
+      "name": "國立高雄餐旅大學研發處研討會期刊徵稿",
+      "url": "https://rd.nkuht.edu.tw/p/403-1009-329-1.php?Lang=zh-tw",
+      "source_type": "university_college",
+      "attempts": 1,
+      "allow_invalid_tls": true
+    }
+  ],
   "organizer_sources": [
     {
       "name": "國立金門大學管理學院",
@@ -163,6 +221,440 @@
   ],
   "conferences": [
     {
+      "id": "tfa-2025-annual",
+      "title": "2025 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會、國立臺灣師範大學管理學院",
+      "homepage_url": "https://www.finance.org.tw/fnnews/39",
+      "submission_url": "https://forms.gle/cgC4o15jpjwHt6em8",
+      "registration_url": "https://forms.gle/pthg1Suuq9wQPS2t7",
+      "event_start": "2025-06-06",
+      "event_end": "2025-06-07",
+      "location": "台北（國立臺灣師範大學管理學院）",
+      "submission_deadline": "2025-04-15",
+      "acceptance_notification_date": "2025-04-20",
+      "registration_fee": "入選發表論文至少一位作者必須註冊並出席；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "金融科技",
+        "公司治理",
+        "永續金融",
+        "財務會計"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "論文獎文章經修改後須刊登於財務金融學刊；一般投稿仍依期刊審查程序。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：投稿截止日依 2025 TFA 官方公告延長至 2025-04-15。"
+      ]
+    },
+    {
+      "id": "tfa-2024-annual",
+      "title": "2024 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會、國立高雄科技大學財務管理系",
+      "homepage_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "submission_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "registration_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "event_start": "2024-06-07",
+      "event_end": "2024-06-08",
+      "location": "高雄（國立高雄科技大學）",
+      "submission_deadline": "2024-03-31",
+      "acceptance_notification_date": "2024-04-15",
+      "registration_fee": "網路註冊截止日期為 2024-05-01；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "金融科技",
+        "公司治理",
+        "投資",
+        "永續金融"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "財務金融學刊研究論文獎文章經修改後須刊登於財務金融學刊。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方年會頁列投稿截止、入選通知與註冊截止日。"
+      ]
+    },
+    {
+      "id": "tfa-2023-annual",
+      "title": "2023 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/21",
+      "submission_url": "https://www.finance.org.tw/fnnews/21",
+      "registration_url": "https://www.finance.org.tw/fnnews/21",
+      "event_start": "2023-06-09",
+      "event_end": "2023-06-10",
+      "location": "台灣",
+      "submission_deadline": "2023-03-31",
+      "acceptance_notification_date": "2023-04-15",
+      "registration_fee": "網路註冊截止日期為 2023-05-01；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "公司治理",
+        "投資",
+        "金融市場"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "財務金融學刊研究論文獎文章經修改後須刊登於財務金融學刊。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：地點仍需補齊校名，日期與截止日先依官方公告建立年度分布。"
+      ]
+    },
+    {
+      "id": "must-2025-icmsi",
+      "title": "2025 管理與服務創新國際學術研討會",
+      "organizer": "明新科技大學管理學院、民生學院",
+      "homepage_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "submission_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "registration_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "event_start": "2025-05-09",
+      "event_end": "2025-05-09",
+      "location": "新竹（明新科技大學）",
+      "submission_deadline": "2025-04-06",
+      "acceptance_notification_date": "2025-04-14",
+      "registration_fee": "報名日期為 2025-04-11 至 2025-04-27；費用依大會公告。",
+      "fields": [
+        "行銷管理",
+        "資訊管理",
+        "財務管理",
+        "人力資源管理",
+        "服務創新"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "歷史資料回填：明新官方公告列全文截稿、審查通知、報名期間與舉辦日期。"
+      ]
+    },
+    {
+      "id": "must-2023-icmsi",
+      "title": "2023 管理與服務創新國際學術研討會",
+      "organizer": "明新科技大學管理學院",
+      "homepage_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "submission_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "registration_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "event_start": "2023-05-05",
+      "event_end": "2023-05-05",
+      "location": "新竹（明新科技大學管理學院大樓）",
+      "submission_deadline": "2023-03-31",
+      "acceptance_notification_date": "2023-04-07",
+      "registration_fee": "報名期間為 2023-04-17 至 2023-04-28；費用依大會公告。",
+      "fields": [
+        "行銷管理",
+        "資訊管理",
+        "財務管理",
+        "人力資源管理",
+        "服務創新"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "歷史資料回填：目前使用中華大學系所轉知頁作為日期來源，後續應補明新原始公告。"
+      ]
+    },
+    {
+      "id": "just-2025-business-practice",
+      "title": "2025 年商管學術與實務研討會",
+      "organizer": "景文科技大學商管學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/2025/",
+      "submission_url": "https://irnas.just.edu.tw/conference/2025/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2025/",
+      "event_start": "2025-04-25",
+      "event_end": "2025-04-25",
+      "location": "新北（景文科技大學）",
+      "submission_deadline": "2025-02-25",
+      "registration_fee": "投稿相關規定依景文科技大學 2025 年投稿網站；費用需後續補齊。",
+      "fields": [
+        "行銷",
+        "財務金融",
+        "企業經營",
+        "國際經貿",
+        "資訊管理",
+        "觀光休閒"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：徵稿期延長至 2025-02-25；需補審查結果通知與費用。"
+      ]
+    },
+    {
+      "id": "just-2023-business-practice",
+      "title": "2023 年商管學術與實務研討會",
+      "organizer": "景文科技大學商管學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1",
+      "submission_url": "https://irnas.just.edu.tw/conference/2023/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2023/",
+      "event_start": "2023-04-28",
+      "event_end": "2023-04-28",
+      "location": "新北（景文科技大學行政大樓禮堂）",
+      "submission_deadline": "2023-03-01",
+      "acceptance_notification_date": "2023-03-14",
+      "registration_fee": "註冊繳費與論文定稿收件期間為 2023-03-16 至 2023-03-30；費用依大會公告。",
+      "fields": [
+        "行銷",
+        "財務金融",
+        "企業經營",
+        "國際經貿",
+        "資訊管理",
+        "觀光休閒"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方投稿系統頁列延長截稿、審查通知與活動日期。"
+      ]
+    },
+    {
+      "id": "uch-2024-management-practice",
+      "title": "2024 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院、民生與設計學院等",
+      "homepage_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "submission_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "registration_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "event_start": "2024-04-25",
+      "event_end": "2024-04-25",
+      "location": "桃園（健行科技大學）",
+      "submission_deadline": "2024-03-25",
+      "acceptance_notification_date": "2024-04-01",
+      "registration_fee": "論文定稿與報名截止為 2024-04-15；費用依大會公告。",
+      "fields": [
+        "資訊管理",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "組織管理",
+        "教育經營"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：健行財金系官方頁列論文截稿、審查通知、報名截止與會議日期。"
+      ]
+    },
+    {
+      "id": "uch-2023-management-practice",
+      "title": "2023 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院等",
+      "homepage_url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077",
+      "submission_url": "mailto:2023imcon@uch.edu.tw",
+      "registration_url": "https://forms.gle/japLUYC91XC65e7r6",
+      "event_start": "2023-04-27",
+      "event_end": "2023-04-27",
+      "location": "桃園（健行科技大學）",
+      "submission_deadline": "2023-03-15",
+      "acceptance_notification_date": "2023-03-31",
+      "registration_fee": "免報名費；投稿者寄送稿件後需線上報名。",
+      "fields": [
+        "策略管理",
+        "資訊管理",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "組織管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：投稿方式為 email，資料完整度會因 submission_url 非 http 連結而較低。"
+      ]
+    },
+    {
+      "id": "cabmt-2024-annual",
+      "title": "2024 第十九屆中華商管科技學會年會暨學術研討會",
+      "organizer": "中華商管科技學會、國立雲林科技大學管理學院",
+      "homepage_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "submission_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "registration_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "event_start": "2024-11-30",
+      "event_end": "2024-11-30",
+      "location": "雲林（國立雲林科技大學）",
+      "submission_deadline": "2024-11-12",
+      "registration_fee": "註冊與收錄費依中華商管科技學會公告。",
+      "fields": [
+        "商管科技",
+        "ESG",
+        "人工智慧治理",
+        "會計",
+        "財務金融",
+        "行銷",
+        "人力資源"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方徵稿頁提供議題與時程，若有延期資訊以官方公告為準。"
+      ]
+    },
+    {
+      "id": "cabmt-2023-annual",
+      "title": "2023 第十八屆中華商管科技學會年會暨學術研討會",
+      "organizer": "中華商管科技學會、龍華科技大學管理學院",
+      "homepage_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "submission_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "registration_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "event_start": "2023-11-18",
+      "event_end": "2023-11-18",
+      "location": "桃園（龍華科技大學）",
+      "submission_deadline": "2023-11-12",
+      "registration_fee": "註冊與收錄費依中華商管科技學會公告。",
+      "fields": [
+        "商管科技",
+        "ESG",
+        "會計",
+        "資訊管理",
+        "財務金融",
+        "行銷",
+        "人力資源"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方頁列論文收錄截止名單確認延期至 2023-11-12。"
+      ]
+    },
+    {
+      "id": "cyut-2025-finance-theory-practice",
+      "title": "2025 第二十八屆財金理論與實務研討會",
+      "organizer": "朝陽科技大學財務金融系",
+      "homepage_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "submission_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "registration_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "event_start": "2025-05-29",
+      "event_end": "2025-05-29",
+      "location": "台中（朝陽科技大學）",
+      "submission_deadline": "2025-05-08",
+      "registration_fee": "投稿與報名方式依朝陽科技大學財務金融系公告；費用需後續補齊。",
+      "fields": [
+        "財務金融",
+        "風險管理",
+        "投資",
+        "公司治理",
+        "金融科技"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：朝陽財金系官方頁列會議日期與投稿截止。"
+      ]
+    },
+    {
+      "id": "tiibs-2023-business-management",
+      "title": "2023 年 TIIBS 第十二屆商學與管理學術研討會",
+      "organizer": "中華民國多國籍企業研究學會、中國文化大學國際企業管理學系暨碩博士班等",
+      "homepage_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "submission_url": "https://forms.gle/K66gtjxMYEt8o86M8",
+      "registration_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "event_start": "2023-05-12",
+      "event_end": "2023-05-12",
+      "location": "台北（中國文化大學）",
+      "submission_deadline": "2023-03-17",
+      "acceptance_notification_date": "2023-03-17",
+      "registration_fee": "通過摘要審查者註冊費新台幣 1,000 元；其他作者參加大會活動新台幣 300 元。",
+      "fields": [
+        "國際企業",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "社會企業"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "多國籍企業管理評論",
+          "journal_url": "https://www.tiibs.org.tw/",
+          "submission_url": "",
+          "notes": "TIIBS 會議常提供期刊論文發表管道，仍須依期刊審查程序。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：PCCU 官方頁列投稿方式、註冊費與全文繳交日期。"
+      ]
+    },
+    {
       "id": "taa-2026-accounting-education",
       "title": "2026 中華會計教育學會年會—智慧、永續、創新",
       "organizer": "東吳大學會計學系、中華會計教育學會",
@@ -175,9 +667,20 @@
       "submission_deadline": "2026-07-31",
       "submission_fee": "轉投《中華會計學刊》或《會計學報》的研討會接受稿件免投稿費。",
       "registration_fee": "",
-      "fields": ["會計", "會計教育", "永續", "創新"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["zh", "en"],
+      "fields": [
+        "會計",
+        "會計教育",
+        "永續",
+        "創新"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
       "publication_opportunities": [
         {
           "journal_name": "中華會計學刊",
@@ -210,9 +713,18 @@
       "submission_deadline": "2026-03-22",
       "submission_fee": "",
       "registration_fee": "稿件接受後，每篇論文註冊費新臺幣 3,600 元。",
-      "fields": ["會計", "財務", "財金"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh", "en"],
+      "fields": [
+        "會計",
+        "財務",
+        "財金"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
       "publication_opportunities": [
         {
           "journal_name": "臺大管理論叢",
@@ -243,10 +755,19 @@
       "event_end": "2026-05-29",
       "location": "金門",
       "submission_deadline": "2026-05-18",
-      "fields": ["管理", "商管"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh"],
-      "attention_notes": ["論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"]
+      "fields": [
+        "管理",
+        "商管"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "論文投稿截止日為 2026-05-18；實際格式與議程請以主辦單位公告為準。"
+      ]
     },
     {
       "id": "must-2026-icmsi",
@@ -259,10 +780,23 @@
       "event_end": "2026-05-08",
       "location": "新竹",
       "submission_deadline": "2026-04-10",
-      "fields": ["管理", "服務創新", "民生產業"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["zh", "en"],
-      "attention_notes": ["摘要投稿截稿日期為 2026-04-10。", "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"]
+      "fields": [
+        "管理",
+        "服務創新",
+        "民生產業"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "摘要投稿截稿日期為 2026-04-10。",
+        "全文投稿，中英文不拘，須含中英文論文標題及摘要等資料。"
+      ]
     },
     {
       "id": "cmr-2026-marketing",
@@ -275,10 +809,21 @@
       "event_end": "2026-05-22",
       "location": "台北",
       "submission_deadline": "",
-      "fields": ["行銷管理", "品牌", "消費者研究"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh", "en"],
-      "attention_notes": ["以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"]
+      "fields": [
+        "行銷管理",
+        "品牌",
+        "消費者研究"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "以約 1000 字長篇摘要稿審查為主；中文稿件須附英文論文名稱。"
+      ]
     },
     {
       "id": "dyu-2026-basummit",
@@ -293,10 +838,25 @@
       "submission_deadline": "2026-04-30",
       "submission_fee": "",
       "registration_fee": "早鳥註冊：一般作者 NT$2,400、學生 NT$1,500；一般註冊：NT$3,000；同作者第二篇論文 NT$600。",
-      "fields": ["財務管理", "投資策略", "公司治理", "當代管理"],
-      "presentation_formats": ["oral", "poster"],
-      "presentation_languages": ["zh", "en", "ja"],
-      "attention_notes": ["投稿截止日期為 2026-04-30。", "提供中、英、日語發表場次，以及海報發表場次。"]
+      "fields": [
+        "財務管理",
+        "投資策略",
+        "公司治理",
+        "當代管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en",
+        "ja"
+      ],
+      "attention_notes": [
+        "投稿截止日期為 2026-04-30。",
+        "提供中、英、日語發表場次，以及海報發表場次。"
+      ]
     },
     {
       "id": "nycu-2026-taiop",
@@ -309,10 +869,21 @@
       "event_end": "2026-05-16",
       "location": "台北",
       "submission_deadline": "",
-      "fields": ["工商心理學", "人力資源管理", "組織行為"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh", "en"],
-      "attention_notes": ["接受中英文投稿；每人參與稿件以三篇為限。"]
+      "fields": [
+        "工商心理學",
+        "人力資源管理",
+        "組織行為"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "接受中英文投稿；每人參與稿件以三篇為限。"
+      ]
     },
     {
       "id": "urltw-2026-business-paper",
@@ -327,10 +898,20 @@
       "submission_deadline": "",
       "submission_fee": "",
       "registration_fee": "發表論文登記費 NT$500；審查通過者須於主辦單位期限前繳交。",
-      "fields": ["商管", "論文競賽", "企業管理"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh"],
-      "attention_notes": ["審查通過者須依主辦單位期限繳交登記費與上傳收據。"]
+      "fields": [
+        "商管",
+        "論文競賽",
+        "企業管理"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "審查通過者須依主辦單位期限繳交登記費與上傳收據。"
+      ]
     },
     {
       "id": "papertone-2026-business-law",
@@ -345,10 +926,21 @@
       "submission_deadline": "2026-01-10",
       "submission_fee": "每篇論文審稿費 NT$2,000。",
       "registration_fee": "",
-      "fields": ["商業管理", "科技創新", "法律制度"],
-      "presentation_formats": ["oral"],
-      "presentation_languages": ["zh", "en"],
-      "attention_notes": ["須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"]
+      "fields": [
+        "商業管理",
+        "科技創新",
+        "法律制度"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
+      ]
     },
     {
       "id": "mcu-2026-economics-trade-management",
@@ -361,10 +953,24 @@
       "event_end": "2026-05-27",
       "location": "台北",
       "submission_deadline": "2026-05-15",
-      "fields": ["經濟", "國際貿易", "全球企業管理"],
-      "presentation_formats": ["oral", "online"],
-      "presentation_languages": ["zh", "en"],
-      "attention_notes": ["透過 Google 表單報名並上傳論文摘要。", "可選線上或現場報告，以及中文或英文場次。", "全文繳交截止日為 2026-05-21。"]
+      "fields": [
+        "經濟",
+        "國際貿易",
+        "全球企業管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "online"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "透過 Google 表單報名並上傳論文摘要。",
+        "可選線上或現場報告，以及中文或英文場次。",
+        "全文繳交截止日為 2026-05-21。"
+      ]
     },
     {
       "id": "fgu-2026-sme-management",
@@ -379,10 +985,19 @@
       "submission_deadline": "2026-03-31",
       "submission_fee": "",
       "registration_fee": "本次研討會不收註冊費；僅出席發表者提供參加證明。",
-      "fields": ["中小企業", "經營管理"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh"],
-      "attention_notes": ["摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"]
+      "fields": [
+        "中小企業",
+        "經營管理"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "摘要投稿截止日為 2026-03-31；報名投稿請寄至主辦單位指定信箱。"
+      ]
     },
     {
       "id": "ntub-2026-cbpm",
@@ -396,9 +1011,18 @@
       "location": "台北",
       "submission_deadline": "2026-05-03",
       "acceptance_notification_date": "2026-05-05",
-      "fields": ["工商管理", "公共管理", "商管"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["zh"],
+      "fields": [
+        "工商管理",
+        "公共管理",
+        "商管"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
       "attention_notes": [
         "研討會日期為 2026-05-29 08:30-17:00；會議頁由主辦單位官方公告連出至 Google Sites。",
         "論文截稿日期為 2026-05-03，結果公告日期為 2026-05-05。"
@@ -415,9 +1039,20 @@
       "event_end": "2026-05-30",
       "location": "新北",
       "submission_deadline": "2026-04-11",
-      "fields": ["財務金融", "永續金融", "金融科技", "公司治理"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["zh", "en"],
+      "fields": [
+        "財務金融",
+        "永續金融",
+        "金融科技",
+        "公司治理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
       "attention_notes": [
         "會議時間為 2026-05-29 至 2026-05-30，地點為天主教輔仁大學國璽樓。",
         "須以全文投稿，且投稿資格須共同作者之一為臺灣財務金融學會 2026 年付費個人或永久會員。"
@@ -435,9 +1070,18 @@
       "location": "台南",
       "submission_deadline": "2026-03-06",
       "acceptance_notification_date": "2026-03-20",
-      "fields": ["商管決策", "企業管理", "實務應用"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["zh"],
+      "fields": [
+        "商管決策",
+        "企業管理",
+        "實務應用"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
       "attention_notes": [
         "研討會日期為 2026-04-24，地點為南臺科技大學修齊大樓 E 棟 6 樓。",
         "全文投稿截止日期為 2026-03-06，審查結果公告日期為 2026-03-20。"
@@ -457,9 +1101,20 @@
       "acceptance_notification_date": "2026-09-11",
       "submission_fee": "",
       "registration_fee": "",
-      "fields": ["知識經濟", "全球化管理", "供應鏈管理", "國際行銷", "財務會計", "資訊管理"],
-      "presentation_formats": ["oral"],
-      "presentation_languages": ["en"],
+      "fields": [
+        "知識經濟",
+        "全球化管理",
+        "供應鏈管理",
+        "國際行銷",
+        "財務會計",
+        "資訊管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
       "publication_opportunities": [],
       "attention_notes": [
         "官方海報列示全文截稿日為 2026-08-21，審查公告日為 2026-09-11，研討會日期為 2026-10-20 至 2026-10-21。",
@@ -478,10 +1133,20 @@
       "event_end": "2026-06-13",
       "location": "台北",
       "submission_deadline": "2026-05-15",
-      "fields": ["數位商管", "實務應用", "管理"],
-      "presentation_formats": ["other"],
-      "presentation_languages": ["zh"],
-      "attention_notes": ["論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"]
+      "fields": [
+        "數位商管",
+        "實務應用",
+        "管理"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
+      ]
     },
     {
       "id": "meiho-2026-health-tech-management",
@@ -495,9 +1160,21 @@
       "location": "屏東",
       "submission_deadline": "2026-06-30",
       "acceptance_notification_date": "2026-07-20",
-      "fields": ["健康科技管理", "經營管理", "創意行銷", "人力資源管理", "財務與金融"],
-      "presentation_formats": ["oral", "poster", "other"],
-      "presentation_languages": ["zh"],
+      "fields": [
+        "健康科技管理",
+        "經營管理",
+        "創意行銷",
+        "人力資源管理",
+        "財務與金融"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster",
+        "other"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
       "attention_notes": [
         "摘要投稿與報名期間為 2026-06-01 至 2026-06-30。",
         "徵稿領域含健康保健、智慧科技與經營管理；經營管理子題包含創意行銷、人力資源管理、財務與金融、一般管理。",
@@ -517,9 +1194,21 @@
       "location": "高雄",
       "submission_deadline": "2026-07-31",
       "acceptance_notification_date": "2026-08-31",
-      "fields": ["健康照護管理", "長照個案管理", "ESG", "智慧照護", "人才培育"],
-      "presentation_formats": ["oral", "poster", "online"],
-      "presentation_languages": ["en"],
+      "fields": [
+        "健康照護管理",
+        "長照個案管理",
+        "ESG",
+        "智慧照護",
+        "人才培育"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster",
+        "online"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
       "attention_notes": [
         "投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。",
         "研討會以英文投稿；發表形式分為口頭發表及海報發表，皆為正式發表。",
@@ -537,9 +1226,20 @@
       "event_end": "2026-11-06",
       "location": "台北",
       "submission_deadline": "2026-07-31",
-      "fields": ["數位農業", "農場管理", "供應鏈透明度", "地理空間決策", "AI應用"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["en"],
+      "fields": [
+        "數位農業",
+        "農場管理",
+        "供應鏈透明度",
+        "地理空間決策",
+        "AI應用"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
       "attention_notes": [
         "最終投稿截止日為 2026-07-31；早鳥報名截止日為 2026-08-10。",
         "投稿須為英文摘要，並依官方網站格式建檔；本次會議採匿名審查。",
@@ -557,9 +1257,19 @@
       "event_end": "2026-10-23",
       "location": "高雄",
       "submission_deadline": "2026-06-30",
-      "fields": ["物流管理", "運輸管理", "供應鏈韌性", "全球運籌"],
-      "presentation_formats": ["oral", "other"],
-      "presentation_languages": ["en"],
+      "fields": [
+        "物流管理",
+        "運輸管理",
+        "供應鏈韌性",
+        "全球運籌"
+      ],
+      "presentation_formats": [
+        "oral",
+        "other"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
       "submission_fee": "",
       "registration_fee": "作者 USD 500；一般參與者 USD 450。",
       "attention_notes": [

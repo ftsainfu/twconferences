@@ -1,12 +1,11 @@
 {
-  "generated_at": "2026-07-21 06:16:07 UTC+08:00",
-  "source_count": 58,
+  "generated_at": "2026-07-21 18:43:40 UTC+08:00",
+  "source_count": 71,
   "errors": [
-    "nycu-2026-taiop: <urlopen error curl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10000 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10003 ms: Timeout was reached>",
-    "must-2026-icmsi.submission_url: <urlopen error curl: (28) Connection timed out after 5001 milliseconds>",
+    "must-2026-icmsi.submission_url: <urlopen error curl: (28) Connection timed out after 5005 milliseconds>",
     "fy-2026-ihc.submission_url: <urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>",
     "fy-2026-ihc.registration_url: <urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>",
-    "iclt-2026.submission_url: <urlopen error curl: (22) The requested URL returned error: 401>"
+    "iclt-2026.submission_url: <urlopen error curl: (56) The requested URL returned error: 401>"
   ],
   "warnings": [
     "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10000 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached>",
@@ -18,13 +17,1036 @@
   ],
   "health": {
     "status": "degraded",
-    "source_error_count": 1,
+    "source_error_count": 0,
     "link_error_count": 4,
     "discovery_warning_count": 6,
-    "verified_count": 20,
+    "verified_count": 33,
     "candidate_count": 11
   },
   "conferences": [
+    {
+      "id": "tfa-2025-annual",
+      "title": "2025 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會、國立臺灣師範大學管理學院",
+      "homepage_url": "https://www.finance.org.tw/fnnews/39",
+      "submission_url": "https://forms.gle/cgC4o15jpjwHt6em8",
+      "registration_url": "https://forms.gle/pthg1Suuq9wQPS2t7",
+      "event_start": "2025-06-06",
+      "event_end": "2025-06-07",
+      "location": "台北（國立臺灣師範大學管理學院）",
+      "submission_deadline": "2025-04-15",
+      "acceptance_notification_date": "2025-04-20",
+      "registration_fee": "入選發表論文至少一位作者必須註冊並出席；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "金融科技",
+        "公司治理",
+        "永續金融",
+        "財務會計"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "論文獎文章經修改後須刊登於財務金融學刊；一般投稿仍依期刊審查程序。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：投稿截止日依 2025 TFA 官方公告延長至 2025-04-15。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.finance.org.tw/fnnews/39",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://forms.gle/cgC4o15jpjwHt6em8",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://forms.gle/pthg1Suuq9wQPS2t7",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "tfa-2024-annual",
+      "title": "2024 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會、國立高雄科技大學財務管理系",
+      "homepage_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "submission_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "registration_url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+      "event_start": "2024-06-07",
+      "event_end": "2024-06-08",
+      "location": "高雄（國立高雄科技大學）",
+      "submission_deadline": "2024-03-31",
+      "acceptance_notification_date": "2024-04-15",
+      "registration_fee": "網路註冊截止日期為 2024-05-01；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "金融科技",
+        "公司治理",
+        "投資",
+        "永續金融"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "財務金融學刊研究論文獎文章經修改後須刊登於財務金融學刊。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方年會頁列投稿截止、入選通知與註冊截止日。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.finance.org.tw/fnmeeting_year_item/73",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "tfa-2023-annual",
+      "title": "2023 臺灣財務金融學會年會暨國際研討會",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/21",
+      "submission_url": "https://www.finance.org.tw/fnnews/21",
+      "registration_url": "https://www.finance.org.tw/fnnews/21",
+      "event_start": "2023-06-09",
+      "event_end": "2023-06-10",
+      "location": "台灣",
+      "submission_deadline": "2023-03-31",
+      "acceptance_notification_date": "2023-04-15",
+      "registration_fee": "網路註冊截止日期為 2023-05-01；費用依大會公告。",
+      "fields": [
+        "財務金融",
+        "公司治理",
+        "投資",
+        "金融市場"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "財務金融學刊",
+          "journal_url": "https://www.finance.org.tw/",
+          "submission_url": "",
+          "notes": "財務金融學刊研究論文獎文章經修改後須刊登於財務金融學刊。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：地點仍需補齊校名，日期與截止日先依官方公告建立年度分布。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.finance.org.tw/fnnews/21",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.finance.org.tw/fnnews/21",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.finance.org.tw/fnnews/21",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "must-2025-icmsi",
+      "title": "2025 管理與服務創新國際學術研討會",
+      "organizer": "明新科技大學管理學院、民生學院",
+      "homepage_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "submission_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "registration_url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+      "event_start": "2025-05-09",
+      "event_end": "2025-05-09",
+      "location": "新竹（明新科技大學）",
+      "submission_deadline": "2025-04-06",
+      "acceptance_notification_date": "2025-04-14",
+      "registration_fee": "報名日期為 2025-04-11 至 2025-04-27；費用依大會公告。",
+      "fields": [
+        "行銷管理",
+        "資訊管理",
+        "財務管理",
+        "人力資源管理",
+        "服務創新"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：明新官方公告列全文截稿、審查通知、報名期間與舉辦日期。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "must-2023-icmsi",
+      "title": "2023 管理與服務創新國際學術研討會",
+      "organizer": "明新科技大學管理學院",
+      "homepage_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "submission_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "registration_url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+      "event_start": "2023-05-05",
+      "event_end": "2023-05-05",
+      "location": "新竹（明新科技大學管理學院大樓）",
+      "submission_deadline": "2023-03-31",
+      "acceptance_notification_date": "2023-04-07",
+      "registration_fee": "報名期間為 2023-04-17 至 2023-04-28；費用依大會公告。",
+      "fields": [
+        "行銷管理",
+        "資訊管理",
+        "財務管理",
+        "人力資源管理",
+        "服務創新"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：目前使用中華大學系所轉知頁作為日期來源，後續應補明新原始公告。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://dm.chu.edu.tw/p/404-1012-30155.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "just-2025-business-practice",
+      "title": "2025 年商管學術與實務研討會",
+      "organizer": "景文科技大學商管學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/2025/",
+      "submission_url": "https://irnas.just.edu.tw/conference/2025/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2025/",
+      "event_start": "2025-04-25",
+      "event_end": "2025-04-25",
+      "location": "新北（景文科技大學）",
+      "submission_deadline": "2025-02-25",
+      "registration_fee": "投稿相關規定依景文科技大學 2025 年投稿網站；費用需後續補齊。",
+      "fields": [
+        "行銷",
+        "財務金融",
+        "企業經營",
+        "國際經貿",
+        "資訊管理",
+        "觀光休閒"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：徵稿期延長至 2025-02-25；需補審查結果通知與費用。"
+      ],
+      "acceptance_notification_date": "",
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://irnas.just.edu.tw/conference/2025/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://irnas.just.edu.tw/conference/2025/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://irnas.just.edu.tw/conference/2025/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "just-2023-business-practice",
+      "title": "2023 年商管學術與實務研討會",
+      "organizer": "景文科技大學商管學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1",
+      "submission_url": "https://irnas.just.edu.tw/conference/2023/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2023/",
+      "event_start": "2023-04-28",
+      "event_end": "2023-04-28",
+      "location": "新北（景文科技大學行政大樓禮堂）",
+      "submission_deadline": "2023-03-01",
+      "acceptance_notification_date": "2023-03-14",
+      "registration_fee": "註冊繳費與論文定稿收件期間為 2023-03-16 至 2023-03-30；費用依大會公告。",
+      "fields": [
+        "行銷",
+        "財務金融",
+        "企業經營",
+        "國際經貿",
+        "資訊管理",
+        "觀光休閒"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方投稿系統頁列延長截稿、審查通知與活動日期。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://irnas.just.edu.tw/conference/2023/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://irnas.just.edu.tw/conference/2023/",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "uch-2024-management-practice",
+      "title": "2024 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院、民生與設計學院等",
+      "homepage_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "submission_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "registration_url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+      "event_start": "2024-04-25",
+      "event_end": "2024-04-25",
+      "location": "桃園（健行科技大學）",
+      "submission_deadline": "2024-03-25",
+      "acceptance_notification_date": "2024-04-01",
+      "registration_fee": "論文定稿與報名截止為 2024-04-15；費用依大會公告。",
+      "fields": [
+        "資訊管理",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "組織管理",
+        "教育經營"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：健行財金系官方頁列論文截稿、審查通知、報名截止與會議日期。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "uch-2023-management-practice",
+      "title": "2023 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院等",
+      "homepage_url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077",
+      "submission_url": "mailto:2023imcon@uch.edu.tw",
+      "registration_url": "https://forms.gle/japLUYC91XC65e7r6",
+      "event_start": "2023-04-27",
+      "event_end": "2023-04-27",
+      "location": "桃園（健行科技大學）",
+      "submission_deadline": "2023-03-15",
+      "acceptance_notification_date": "2023-03-31",
+      "registration_fee": "免報名費；投稿者寄送稿件後需線上報名。",
+      "fields": [
+        "策略管理",
+        "資訊管理",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "組織管理"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：投稿方式為 email，資料完整度會因 submission_url 非 http 連結而較低。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://forms.gle/japLUYC91XC65e7r6",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "cabmt-2024-annual",
+      "title": "2024 第十九屆中華商管科技學會年會暨學術研討會",
+      "organizer": "中華商管科技學會、國立雲林科技大學管理學院",
+      "homepage_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "submission_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "registration_url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+      "event_start": "2024-11-30",
+      "event_end": "2024-11-30",
+      "location": "雲林（國立雲林科技大學）",
+      "submission_deadline": "2024-11-12",
+      "registration_fee": "註冊與收錄費依中華商管科技學會公告。",
+      "fields": [
+        "商管科技",
+        "ESG",
+        "人工智慧治理",
+        "會計",
+        "財務金融",
+        "行銷",
+        "人力資源"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方徵稿頁提供議題與時程，若有延期資訊以官方公告為準。"
+      ],
+      "acceptance_notification_date": "2024-11-02",
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://umf.yuntech.edu.tw/newsview_1517.html",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "cabmt-2023-annual",
+      "title": "2023 第十八屆中華商管科技學會年會暨學術研討會",
+      "organizer": "中華商管科技學會、龍華科技大學管理學院",
+      "homepage_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "submission_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "registration_url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+      "event_start": "2023-11-18",
+      "event_end": "2023-11-18",
+      "location": "桃園（龍華科技大學）",
+      "submission_deadline": "2023-11-12",
+      "registration_fee": "註冊與收錄費依中華商管科技學會公告。",
+      "fields": [
+        "商管科技",
+        "ESG",
+        "會計",
+        "資訊管理",
+        "財務金融",
+        "行銷",
+        "人力資源"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：官方頁列論文收錄截止名單確認延期至 2023-11-12。"
+      ],
+      "acceptance_notification_date": "",
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://fn.lhu.edu.tw/p/404-1008-17164.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "cyut-2025-finance-theory-practice",
+      "title": "2025 第二十八屆財金理論與實務研討會",
+      "organizer": "朝陽科技大學財務金融系",
+      "homepage_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "submission_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "registration_url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+      "event_start": "2025-05-29",
+      "event_end": "2025-05-29",
+      "location": "台中（朝陽科技大學）",
+      "submission_deadline": "2025-05-08",
+      "registration_fee": "投稿與報名方式依朝陽科技大學財務金融系公告；費用需後續補齊。",
+      "fields": [
+        "財務金融",
+        "風險管理",
+        "投資",
+        "公司治理",
+        "金融科技"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "歷史資料回填：朝陽財金系官方頁列會議日期與投稿截止。"
+      ],
+      "acceptance_notification_date": "",
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "tiibs-2023-business-management",
+      "title": "2023 年 TIIBS 第十二屆商學與管理學術研討會",
+      "organizer": "中華民國多國籍企業研究學會、中國文化大學國際企業管理學系暨碩博士班等",
+      "homepage_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "submission_url": "https://forms.gle/K66gtjxMYEt8o86M8",
+      "registration_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "event_start": "2023-05-12",
+      "event_end": "2023-05-12",
+      "location": "台北（中國文化大學）",
+      "submission_deadline": "2023-03-17",
+      "acceptance_notification_date": "2023-03-17",
+      "registration_fee": "通過摘要審查者註冊費新台幣 1,000 元；其他作者參加大會活動新台幣 300 元。",
+      "fields": [
+        "國際企業",
+        "行銷",
+        "財務金融",
+        "人力資源",
+        "社會企業"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "多國籍企業管理評論",
+          "journal_url": "https://www.tiibs.org.tw/",
+          "submission_url": "",
+          "notes": "TIIBS 會議常提供期刊論文發表管道，仍須依期刊審查程序。"
+        }
+      ],
+      "attention_notes": [
+        "歷史資料回填：PCCU 官方頁列投稿方式、註冊費與全文繳交日期。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-07-21",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://forms.gle/K66gtjxMYEt8o86M8",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-07-21",
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
     {
       "id": "taa-2026-accounting-education",
       "title": "2026 中華會計教育學會年會—智慧、永續、創新",
@@ -325,7 +1347,7 @@
           "status": "broken",
           "last_attempted_at": "2026-07-21",
           "last_successful_at": "",
-          "consecutive_failures": 6
+          "consecutive_failures": 9
         }
       },
       "link_health_summary": "投稿連結檢查異常；已連續失敗才會標示為失效。",
@@ -494,7 +1516,7 @@
       "event_start": "2026-05-16",
       "event_end": "2026-05-16",
       "location": "台北",
-      "submission_deadline": "",
+      "submission_deadline": "2026-01-31",
       "fields": [
         "工商心理學",
         "人力資源管理",
@@ -504,47 +1526,48 @@
         "other"
       ],
       "presentation_languages": [
-        "zh",
-        "en"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "接受中英文投稿；每人參與稿件以三篇為限。"
       ],
-      "last_checked": "2026-07-20",
-      "last_attempted_at": "2026-07-21",
-      "check_status": "error",
-      "check_error": "<urlopen error curl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10000 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to ibm.nycu.edu.tw port 443 after 10003 ms: Timeout was reached>",
+      "acceptance_notification_date": "",
       "submission_fee": "",
       "registration_fee": "",
+      "last_checked": "2026-07-21",
+      "last_attempted_at": "2026-07-21",
+      "check_status": "ok",
+      "check_error": "",
       "last_changed": "2026-06-05",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
           "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
-          "status": "warning",
+          "status": "ok",
           "last_attempted_at": "2026-07-21",
-          "last_successful_at": "2026-07-20",
-          "consecutive_failures": 1
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
         },
         "submission_url": {
           "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/",
-          "status": "warning",
+          "status": "ok",
           "last_attempted_at": "2026-07-21",
-          "last_successful_at": "2026-07-20",
-          "consecutive_failures": 1
+          "last_successful_at": "2026-07-21",
+          "consecutive_failures": 0
         }
       },
-      "link_health_summary": "會議主頁、投稿連結檢查異常；已連續失敗才會標示為失效。",
       "information_quality": {
-        "score": 2,
+        "score": 3,
         "max_score": 5,
-        "label": "部分完整",
+        "label": "基本完整",
         "criteria": [
           "官方來源已確認",
-          "日期與地點完整"
+          "日期與地點完整",
+          "投稿方式完整"
         ]
       }
     },
@@ -806,9 +1829,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-07-21",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -1018,9 +2041,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-07-21",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -1335,14 +2358,14 @@
           "status": "broken",
           "last_attempted_at": "2026-07-21",
           "last_successful_at": "",
-          "consecutive_failures": 6
+          "consecutive_failures": 9
         },
         "registration_url": {
           "url": "https://ihc.fy.edu.tw/",
           "status": "broken",
           "last_attempted_at": "2026-07-21",
           "last_successful_at": "",
-          "consecutive_failures": 6
+          "consecutive_failures": 9
         }
       },
       "link_health_summary": "投稿連結、報名連結檢查異常；已連續失敗才會標示為失效。",
@@ -1491,7 +2514,7 @@
           "status": "broken",
           "last_attempted_at": "2026-07-21",
           "last_successful_at": "",
-          "consecutive_failures": 6
+          "consecutive_failures": 9
         },
         "registration_url": {
           "url": "https://iclt.info/registration",

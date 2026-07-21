@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-07-21 18:56:12 UTC+08:00",
+  "purpose": "2023–2025 歷史商管研討會回填線索。此檔只供審查，不直接進入前台正式統計；核對官方來源、日期、投稿截止、地點與投稿／報名方式後，才移入 data/sources.json。",
+  "target_years": [
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "review_policy": [
+    "優先以會議官網、主辦系所、主辦學會或正式徵稿頁為準。",
+    "校外轉知頁可作為發現來源，但不應單獨作為正式收錄依據。",
+    "已截止與已舉辦會議仍可正式收錄，用於年度月份分布與歷史比較。",
+    "正式收錄前需檢查 data/sources.json、data/conferences.json 與 data/candidates.json，避免重複。"
+  ],
+  "errors": [],
+  "leads": [
+    {
+      "id": "history-www-tiibs-org-tw-5dfb43d7",
+      "title": "2024年TIIBS第十三屆商學與管理學術研討會徵稿說明",
+      "homepage_url": "https://www.tiibs.org.tw/msglist_show.asp?tp=3&id=297",
+      "discovered_from_name": "中華民國多國籍企業研究學會活動資訊",
+      "discovered_from_url": "https://www.tiibs.org.tw/msglist.asp?tp=3",
+      "source_type": "scholarly",
+      "candidate_years": [
+        "2024"
+      ],
+      "candidate_dates": [],
+      "fields": [
+        "待確認"
+      ],
+      "review_status": "needs_review",
+      "candidate_status": "pending",
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "attention_notes": [
+        "歷史回填線索：需核對官方或主辦單位頁面、活動日期、投稿截止日、地點與投稿／報名方式後，才能移入正式資料。",
+        "由「中華民國多國籍企業研究學會活動資訊」歷史來源掃描發現，尚未納入正式歷年資料。"
+      ],
+      "evidence_sources": [
+        {
+          "name": "中華民國多國籍企業研究學會活動資訊",
+          "url": "https://www.tiibs.org.tw/msglist.asp?tp=3",
+          "type": "scholarly"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "review_notes": "",
+      "is_stale": false
+    },
+    {
+      "id": "history-www-tiibs-org-tw-1a444fca",
+      "title": "2025年TIIBS第十四屆商學與管理學術研討會徵稿說明",
+      "homepage_url": "https://www.tiibs.org.tw/msglist_show.asp?tp=3&id=310",
+      "discovered_from_name": "中華民國多國籍企業研究學會活動資訊",
+      "discovered_from_url": "https://www.tiibs.org.tw/msglist.asp?tp=3",
+      "source_type": "scholarly",
+      "candidate_years": [
+        "2025"
+      ],
+      "candidate_dates": [],
+      "fields": [
+        "待確認"
+      ],
+      "review_status": "needs_review",
+      "candidate_status": "pending",
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "last_changed": "2026-07-21",
+      "attention_notes": [
+        "歷史回填線索：需核對官方或主辦單位頁面、活動日期、投稿截止日、地點與投稿／報名方式後，才能移入正式資料。",
+        "由「中華民國多國籍企業研究學會活動資訊」歷史來源掃描發現，尚未納入正式歷年資料。"
+      ],
+      "evidence_sources": [
+        {
+          "name": "中華民國多國籍企業研究學會活動資訊",
+          "url": "https://www.tiibs.org.tw/msglist.asp?tp=3",
+          "type": "scholarly"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "review_notes": "",
+      "is_stale": false
+    }
+  ]
+}
