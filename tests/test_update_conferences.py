@@ -22,6 +22,7 @@ from scripts.update_conferences import (
     discover_from_organizers,
     discover_historical_backfill_leads,
     discover_from_ics_reference,
+    discover_from_references,
     fetch_url,
     historical_backfill_years,
     merge_historical_backfill_store,
@@ -193,6 +194,43 @@ class LinkHealthTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(conferences[0]["link_health"]["registration_url"]["status"], "ok")
         self.assertEqual(conferences[0]["link_health"]["registration_url"]["consecutive_failures"], 0)
+
+    @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
+    @patch("scripts.update_conferences.fetch_url")
+    def test_link_health_uses_invalid_tls_exception_for_all_conference_links(self, fetch, _today):
+        fetch.return_value = ("ok", "utf-8")
+        conferences = [{
+            "id": "conf-1",
+            "review_status": "verified",
+            "homepage_url": "https://example.edu.tw/event",
+            "submission_url": "https://example.edu.tw/submit",
+            "registration_url": "https://example.edu.tw/register",
+            "check_status": "ok",
+            "allow_invalid_tls": True,
+        }]
+
+        errors = check_conference_links(conferences, {"links": {}})
+
+        self.assertEqual(errors, [])
+        self.assertEqual(fetch.call_args_list[0].kwargs["allow_invalid_tls"], True)
+        self.assertEqual(fetch.call_args_list[1].kwargs["allow_invalid_tls"], True)
+
+    @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
+    @patch("scripts.update_conferences.fetch_url", side_effect=TimeoutError("accounts.google.com login required"))
+    def test_google_form_login_redirect_is_not_marked_broken(self, _fetch, _today):
+        conferences = [{
+            "id": "conf-1",
+            "review_status": "verified",
+            "homepage_url": "https://example.edu.tw/event",
+            "submission_url": "https://forms.gle/example",
+            "registration_url": "",
+            "check_status": "ok",
+        }]
+
+        errors = check_conference_links(conferences, {"links": {}})
+
+        self.assertEqual(errors, [])
+        self.assertEqual(conferences[0]["link_health"]["submission_url"]["status"], "ok")
 
 
 class CandidateTests(unittest.TestCase):
@@ -433,6 +471,28 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0]["location"], "Taipei, Taiwan")
         self.assertEqual(candidates[0]["event_end"], "2027-07-11")
+
+    @patch("scripts.update_conferences.fetch_url")
+    @patch("scripts.update_conferences.current_year_markers", return_value=("2027", "116"))
+    def test_json_reference_discovery_uses_current_year_markers(self, _markers, fetch):
+        fetch.return_value = (json.dumps([{
+            "title": "2027 Taiwan Finance Conference",
+            "organizer": "Finance Association",
+            "location": "Taipei, Taiwan",
+            "tags": ["finance"],
+            "href": "https://finance.example.edu.tw/2027",
+            "date": "2027-07-10",
+            "registrationDeadline": "2027-05-31",
+        }]), "utf-8")
+        candidates, errors = discover_from_references(
+            [{"name": "Reference API", "url": "https://reference.example.org/api"}],
+            set(),
+            set(),
+            set(),
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["submission_deadline"], "2027-05-31")
 
 
 class ValidationTests(unittest.TestCase):

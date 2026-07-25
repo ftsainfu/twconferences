@@ -212,6 +212,15 @@ def build_link_health_record(
     }
 
 
+def google_forms_requires_login(error: str, url: str) -> bool:
+    host = urllib.parse.urlparse(url).netloc.lower().split(":", 1)[0]
+    return host in {"forms.gle", "docs.google.com"} and (
+        "accounts.google.com" in error
+        or "401" in error
+        or "403" in error
+    )
+
+
 def check_conference_links(conferences: list[dict], history: dict) -> list[str]:
     """Check verified conference links and only mark broken after repeated failures."""
     history_links = history.setdefault("links", {})
@@ -241,10 +250,12 @@ def check_conference_links(conferences: list[dict], history: dict) -> list[str]:
                 ok, error = checked_urls[canonical]
             else:
                 try:
-                    fetch_url(url, timeout=5, attempts=1)
+                    fetch_url(url, timeout=5, attempts=1, allow_invalid_tls=bool(item.get("allow_invalid_tls")))
                     ok, error = True, ""
                 except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
                     ok, error = False, str(exc)
+                    if google_forms_requires_login(error, url):
+                        ok, error = True, ""
                 checked_urls[canonical] = (ok, error)
 
             record = build_link_health_record(previous, url=url, ok=ok, error=error)
@@ -554,7 +565,6 @@ def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], 
         )
         item["change_summary"] = change_summary
         item["review_status"] = "verified"
-        item.pop("allow_invalid_tls", None)
         conferences.append(item)
 
     return conferences, errors
@@ -1137,7 +1147,7 @@ def discover_from_references(
             )
             if any(word in text for word in FOLLOWUP_WORDS):
                 continue
-            if not is_relevant_conference_text_for_years(text, target_years):
+            if not is_relevant_conference_text(text):
                 continue
             if duplicates_known_title(title, existing_titles):
                 continue
