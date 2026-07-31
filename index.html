@@ -116,8 +116,48 @@
             <option value="rating_desc">參加者推薦度最高</option>
             <option value="deadline_asc">投稿截止由近到遠</option>
             <option value="name_asc">名稱 A-Z</option>
+            <option value="custom">自訂排序</option>
           </select>
+          <small class="sort-help">預設依舉辦日排序；最近更新依實際資訊異動日排序，不因每日檢查而提前。</small>
         </label>
+        <fieldset id="customSortPanel" class="custom-sort-panel" hidden>
+          <legend>自訂排序</legend>
+          <label>
+            第一排序
+            <select id="customSortPrimary">
+              <option value="event_asc">舉辦日期近到遠</option>
+              <option value="deadline_asc">投稿截止近到遠</option>
+              <option value="updated_desc">資訊異動新到舊</option>
+              <option value="rating_desc">推薦度高到低</option>
+              <option value="quality_desc">資料完整度高到低</option>
+              <option value="name_asc">名稱 A-Z</option>
+            </select>
+          </label>
+          <label>
+            第二排序
+            <select id="customSortSecondary">
+              <option value="">不指定</option>
+              <option value="event_asc">舉辦日期近到遠</option>
+              <option value="deadline_asc">投稿截止近到遠</option>
+              <option value="updated_desc">資訊異動新到舊</option>
+              <option value="rating_desc">推薦度高到低</option>
+              <option value="quality_desc">資料完整度高到低</option>
+              <option value="name_asc">名稱 A-Z</option>
+            </select>
+          </label>
+          <label>
+            第三排序
+            <select id="customSortTertiary">
+              <option value="">不指定</option>
+              <option value="event_asc">舉辦日期近到遠</option>
+              <option value="deadline_asc">投稿截止近到遠</option>
+              <option value="updated_desc">資訊異動新到舊</option>
+              <option value="rating_desc">推薦度高到低</option>
+              <option value="quality_desc">資料完整度高到低</option>
+              <option value="name_asc">名稱 A-Z</option>
+            </select>
+          </label>
+        </fieldset>
         <button id="resetFilters" type="button">清除</button>
       </section>
 
@@ -125,7 +165,7 @@
 
       <section class="summary-row" aria-label="統計">
         <div><strong id="visibleCount">0</strong><span>符合條件</span></div>
-        <div><strong id="newCount">0</strong><span>近期更新</span></div>
+        <div><strong id="newCount">0</strong><span>新收錄</span></div>
         <div><strong id="deadlineCount">0</strong><span>投稿未截止</span></div>
         <div><strong id="upcomingCount">0</strong><span>尚未舉辦總數</span></div>
       </section>
@@ -181,8 +221,8 @@
       <section id="candidateSection" class="list-section candidate-section" aria-labelledby="candidateTitle" hidden>
         <div class="section-heading">
           <p class="section-kicker">Pending Review</p>
-          <h2 id="candidateTitle">待確認候選研討會</h2>
-          <p>下列資料由自動掃描發現，尚未列入正式統計，使用前請先查閱來源頁。</p>
+          <h2 id="candidateTitle">新發現／待確認候選研討會</h2>
+          <p>下列資料由每日自動掃描新發現，尚未列入正式統計；使用前請先查閱來源頁。</p>
           <small><span id="candidateCount">0</span> 筆待確認資料</small>
         </div>
         <section id="candidateList" class="conference-list compact-list"></section>

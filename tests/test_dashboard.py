@@ -38,6 +38,19 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("function locationCityLabel", script)
         self.assertIn("locationCityLabel(item.location) === location", script)
         self.assertIn("state.activeConferences.map((item) => locationCityLabel(item.location))", script)
+        self.assertIn("function isNewlyAdded", script)
+        self.assertIn("function isNewCandidate", script)
+        self.assertIn("function hasRecentInformationChange", script)
+        self.assertIn("新發現", script)
+        self.assertIn("資訊異動", script)
+        self.assertIn("state.filtered.filter(isNewlyAdded).length", script)
+        self.assertIn("a.last_changed || a.created_at || a.last_checked", script)
+        self.assertIn("不因每日檢查而提前", html)
+        self.assertIn('<option value="custom">自訂排序</option>', html)
+        self.assertIn('id="customSortPanel"', html)
+        self.assertIn("function updateCustomSortVisibility", script)
+        self.assertIn("quality_desc", script)
+        self.assertIn("els.customSortPrimary", script)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]

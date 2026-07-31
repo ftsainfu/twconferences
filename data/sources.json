@@ -659,12 +659,14 @@
       "title": "2026 中華會計教育學會年會—智慧、永續、創新",
       "organizer": "東吳大學會計學系、中華會計教育學會",
       "homepage_url": "https://taa2026.acc.scu.edu.tw/",
-      "submission_url": "https://taa2026.acc.scu.edu.tw/",
-      "registration_url": "https://taa2026.acc.scu.edu.tw/",
+      "submission_url": "https://taa2026.acc.scu.edu.tw/論文投稿",
+      "registration_url": "",
       "event_start": "2026-11-05",
       "event_end": "2026-11-06",
       "location": "台北（台北晶華酒店）",
-      "submission_deadline": "2026-07-31",
+      "submission_deadline": "2026-08-10",
+      "submission_deadline_previous": "2026-07-31",
+      "acceptance_notification_date": "2026-09-15",
       "submission_fee": "轉投《中華會計學刊》或《會計學報》的研討會接受稿件免投稿費。",
       "registration_fee": "",
       "fields": [
@@ -696,7 +698,8 @@
         }
       ],
       "attention_notes": [
-        "國科會活動訊息與會議官網均已核對；線上投稿自 2026-05-01 開始，完稿截止日為 2026-07-31。",
+        "國科會活動訊息與會議官網均已核對；線上投稿自 2026-05-01 開始，完稿截止日由 2026-07-31 延長至 2026-08-10。",
+        "審查結果通知日期為 2026-09-15；研討會註冊截止日期為 2026-10-15，但目前未看到獨立報名頁。",
         "期刊轉投仍須依各刊格式與審查程序辦理，不代表研討會接受即保證刊登。"
       ]
     },
@@ -1091,8 +1094,8 @@
       "id": "stust-2026-knowledge-global-management",
       "title": "2026 第二十二屆知識經濟與全球化管理國際研討會",
       "organizer": "南臺科技大學商管學院",
-      "homepage_url": "https://business.stust.edu.tw/tc/node/conference",
-      "submission_url": "https://business.stust.edu.tw/tc/node/conference",
+      "homepage_url": "https://business.stust.edu.tw/tc/node/2026Conference",
+      "submission_url": "https://business.stust.edu.tw/tc/node/2026Conference",
       "registration_url": "https://docs.google.com/forms/d/1a1leUXF6TmnUeB2dAm-cjTfMmf1NnQsKkCHjHVp9lUs/preview",
       "event_start": "2026-10-20",
       "event_end": "2026-10-21",

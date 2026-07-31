@@ -44,6 +44,10 @@ const els = {
   englishPresentation: document.querySelector("#englishPresentationFilter"),
   trackedOnly: document.querySelector("#trackedOnlyFilter"),
   sort: document.querySelector("#sortSelect"),
+  customSortPanel: document.querySelector("#customSortPanel"),
+  customSortPrimary: document.querySelector("#customSortPrimary"),
+  customSortSecondary: document.querySelector("#customSortSecondary"),
+  customSortTertiary: document.querySelector("#customSortTertiary"),
   reset: document.querySelector("#resetFilters"),
   recurringList: document.querySelector("#recurringList"),
   grantList: document.querySelector("#grantList"),
@@ -118,6 +122,8 @@ const ratingDimensions = [
   ["networking_value", "交流價值"],
   ["cost_value", "費用時間"],
 ];
+
+const RECENT_BADGE_DAYS = 14;
 
 let reportTarget = null;
 let ratingTarget = null;
@@ -343,11 +349,27 @@ function toggleTracked(conferenceId) {
   applyFilters();
 }
 
-function isRecent(item) {
-  const updated = parseDate(item.last_changed || item.created_at);
+function isWithinRecentWindow(value) {
+  const updated = parseDate(value);
   if (!updated) return false;
   const diffDays = (today - updated) / 86400000;
-  return diffDays <= 14;
+  return diffDays >= 0 && diffDays <= RECENT_BADGE_DAYS;
+}
+
+function isNewlyAdded(item) {
+  if (item.review_status === "candidate") return false;
+  const marker = item.created_at || item.first_seen || (item.change_status === "new" ? item.last_changed : "");
+  return isWithinRecentWindow(marker);
+}
+
+function isNewCandidate(item) {
+  if (item.review_status !== "candidate") return false;
+  return isWithinRecentWindow(item.first_seen || item.last_changed || item.created_at);
+}
+
+function hasRecentInformationChange(item) {
+  if (item.change_status !== "changed") return false;
+  return isWithinRecentWindow(item.last_changed);
 }
 
 function isDeadlineOpen(item) {
@@ -513,8 +535,8 @@ function sortItems() {
     deadline_asc: byDate("submission_deadline"),
     name_asc: (a, b) => a.title.localeCompare(b.title, "zh-Hant"),
     updated_desc: (a, b) => {
-      const av = parseDate(a.last_checked || a.last_changed)?.getTime() || 0;
-      const bv = parseDate(b.last_checked || b.last_changed)?.getTime() || 0;
+      const av = parseDate(a.last_changed || a.created_at || a.last_checked)?.getTime() || 0;
+      const bv = parseDate(b.last_changed || b.created_at || b.last_checked)?.getTime() || 0;
       return bv - av;
     },
     rating_desc: (a, b) => {
@@ -523,9 +545,32 @@ function sortItems() {
       const averageDifference = (bRating?.average || 0) - (aRating?.average || 0);
       return averageDifference || (bRating?.count || 0) - (aRating?.count || 0) || byDate("event_start")(a, b);
     },
+    quality_desc: (a, b) => {
+      const av = Number(a.information_quality?.score || 0);
+      const bv = Number(b.information_quality?.score || 0);
+      return bv - av;
+    },
   };
 
+  if (sort === "custom") {
+    const criteria = [els.customSortPrimary?.value, els.customSortSecondary?.value, els.customSortTertiary?.value]
+      .filter(Boolean);
+    state.filtered.sort((a, b) => {
+      for (const criterion of criteria) {
+        const result = (sorters[criterion] || sorters.event_asc)(a, b);
+        if (result) return result;
+      }
+      return sorters.event_asc(a, b) || a.title.localeCompare(b.title, "zh-Hant");
+    });
+    return;
+  }
+
   state.filtered.sort(sorters[sort] || sorters.event_asc);
+}
+
+function updateCustomSortVisibility() {
+  if (!els.customSortPanel || !els.sort) return;
+  els.customSortPanel.hidden = els.sort.value !== "custom";
 }
 
 function sortPastItems(items) {
@@ -707,7 +752,7 @@ function renderRatingSummary(item) {
 
 function render() {
   els.visibleCount.textContent = state.filtered.length;
-  els.newCount.textContent = state.filtered.filter(isRecent).length;
+  els.newCount.textContent = state.filtered.filter(isNewlyAdded).length;
   els.deadlineCount.textContent = state.filtered.filter(isDeadlineOpen).length;
   els.upcomingCount.textContent = state.activeConferences.length;
   const filteredHistory = getFilteredHistory();
@@ -733,7 +778,9 @@ function getFilteredHistory() {
 }
 
 function renderCard(item) {
-  const recent = isRecent(item);
+  const newlyAdded = isNewlyAdded(item);
+  const newCandidate = isNewCandidate(item);
+  const recentlyChanged = hasRecentInformationChange(item);
   const tracked = isTracked(item);
   const tags = (item.fields || []).map((field) => `<span class="field-tag">${escapeHtml(field)}</span>`).join("");
   const notes = (item.attention_notes || [])
@@ -773,10 +820,12 @@ function renderCard(item) {
     : "";
 
   return `
-    <article class="conference-card ${recent ? "is-new" : ""} ${tracked ? "is-tracked" : ""}">
+    <article class="conference-card ${newlyAdded || newCandidate ? "is-new" : ""} ${tracked ? "is-tracked" : ""}">
       <div>
         <h2 class="card-title">
-          ${recent ? '<span class="new-badge">[NEW!]</span>' : ""}
+          ${newlyAdded ? '<span class="new-badge">[NEW!]</span>' : ""}
+          ${newCandidate ? '<span class="candidate-new-badge">新發現</span>' : ""}
+          ${recentlyChanged ? '<span class="updated-badge">資訊異動</span>' : ""}
           <span>${escapeHtml(item.title)}</span>
           ${item.review_status === "candidate" ? '<span class="status-badge">待確認</span>' : ""}
           ${tracked ? '<span class="tracked-badge">追蹤中</span>' : ""}
@@ -1362,11 +1411,12 @@ function bindEvents() {
   window.addEventListener("hashchange", () => {
     setActiveTab(window.location.hash === "#grants" ? "grants" : "conferences", false);
   });
-  [els.keyword, els.field, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.trackedOnly, els.sort].forEach((input) => {
+  [els.keyword, els.field, els.month, els.location, els.eventStatus, els.deadlineBefore, els.deadlineStatus, els.format, els.englishPresentation, els.trackedOnly, els.sort, els.customSortPrimary, els.customSortSecondary, els.customSortTertiary].forEach((input) => {
     if (!input) return;
     input.addEventListener("input", applyFilters);
     input.addEventListener("change", applyFilters);
   });
+  els.sort?.addEventListener("change", updateCustomSortVisibility);
   els.reset.addEventListener("click", () => {
     els.keyword.value = "";
     els.field.value = "";
@@ -1379,6 +1429,10 @@ function bindEvents() {
     els.englishPresentation.value = "";
     if (els.trackedOnly) els.trackedOnly.checked = false;
     els.sort.value = "event_asc";
+    if (els.customSortPrimary) els.customSortPrimary.value = "event_asc";
+    if (els.customSortSecondary) els.customSortSecondary.value = "";
+    if (els.customSortTertiary) els.customSortTertiary.value = "";
+    updateCustomSortVisibility();
     applyFilters();
   });
   [els.historyKeyword, els.historyYear].forEach((input) => {
@@ -1435,6 +1489,7 @@ async function init() {
   hydrateHistoryYearFilter();
   hydrateDashboardYearFilter();
   bindEvents();
+  updateCustomSortVisibility();
   const initialTab = window.location.hash === "#grants" ? "grants" : "conferences";
   setActiveTab(initialTab, false);
   if (initialTab === "grants") {

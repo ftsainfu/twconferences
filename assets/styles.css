@@ -241,6 +241,38 @@ a:focus-visible {
   color: var(--muted);
 }
 
+.sort-help {
+  display: block;
+  max-width: 220px;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.custom-sort-panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 12px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: #fbfdfb;
+}
+
+.custom-sort-panel[hidden] {
+  display: none;
+}
+
+.custom-sort-panel legend {
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
 .calendar-dashboard {
   margin: 18px 0 28px;
   padding: 20px;
@@ -471,6 +503,8 @@ a:focus-visible {
 }
 
 .new-badge,
+.candidate-new-badge,
+.updated-badge,
 .status-badge,
 .tracked-badge,
 .field-tag {
@@ -487,6 +521,16 @@ a:focus-visible {
 .new-badge {
   background: var(--new-bg);
   color: var(--warning);
+}
+
+.candidate-new-badge {
+  background: #fff3cd;
+  color: #8a5a00;
+}
+
+.updated-badge {
+  background: #f0e8ff;
+  color: #5a3ca0;
 }
 
 .status-badge {
