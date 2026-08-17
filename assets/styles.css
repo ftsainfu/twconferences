@@ -845,6 +845,15 @@ a:focus-visible {
   background: #f6f9fe;
 }
 
+.candidate-verification-note {
+  margin: 10px 0 0;
+  padding: 9px 11px;
+  border-left: 3px solid #6d8fbd;
+  background: #edf4ff;
+  color: #294f80;
+  font-size: 0.9rem;
+}
+
 .archive-toolbar {
   display: grid;
   grid-template-columns: minmax(220px, 2fr) minmax(140px, 1fr);

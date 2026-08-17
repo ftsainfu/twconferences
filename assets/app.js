@@ -818,6 +818,9 @@ function renderCard(item) {
   const corroboration = item.is_corroborated
     ? `<p class="corroboration-note">已由 ${Number(item.independent_source_count) || 2} 個獨立來源交叉發現</p>`
     : "";
+  const verificationNote = item.review_status === "candidate" && item.auto_verify_note
+    ? `<p class="candidate-verification-note">待確認原因：${escapeHtml(item.auto_verify_note)}</p>`
+    : "";
 
   return `
     <article class="conference-card ${newlyAdded || newCandidate ? "is-new" : ""} ${tracked ? "is-tracked" : ""}">
@@ -848,6 +851,7 @@ function renderCard(item) {
         </div>
         ${item.change_summary ? `<p class="change-note">${escapeHtml(item.change_summary)}</p>` : ""}
         ${item.link_health_summary ? `<p class="link-health-note">${escapeHtml(item.link_health_summary)}</p>` : ""}
+        ${verificationNote}
         ${corroboration}
         ${publications ? `<section class="publication-info"><h3>合作期刊／專刊投稿</h3><ul>${publications}</ul></section>` : ""}
         ${notes ? `<ul class="notes">${notes}</ul>` : ""}

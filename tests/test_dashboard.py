@@ -51,6 +51,8 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("function updateCustomSortVisibility", script)
         self.assertIn("quality_desc", script)
         self.assertIn("els.customSortPrimary", script)
+        self.assertIn("待確認原因：", script)
+        self.assertIn("candidate-verification-note", script)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]

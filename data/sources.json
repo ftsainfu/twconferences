@@ -618,9 +618,9 @@
       "id": "tiibs-2023-business-management",
       "title": "2023 年 TIIBS 第十二屆商學與管理學術研討會",
       "organizer": "中華民國多國籍企業研究學會、中國文化大學國際企業管理學系暨碩博士班等",
-      "homepage_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "homepage_url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
       "submission_url": "https://forms.gle/K66gtjxMYEt8o86M8",
-      "registration_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "registration_url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
       "event_start": "2023-05-12",
       "event_end": "2023-05-12",
       "location": "台北（中國文化大學）",
@@ -920,9 +920,9 @@
       "id": "papertone-2026-business-law",
       "title": "2026 中華民國商管及法律論文研討會",
       "organizer": "開南大學商學院",
-      "homepage_url": "https://papertone.net/",
-      "submission_url": "https://papertone.net/",
-      "registration_url": "https://papertone.net/",
+      "homepage_url": "http://papertone.net/",
+      "submission_url": "http://papertone.net/",
+      "registration_url": "http://papertone.net/",
       "event_start": "2026-01-31",
       "event_end": "2026-01-31",
       "location": "桃園",
@@ -1129,9 +1129,9 @@
       "id": "ntub-2026-digital-business",
       "title": "2026 全國數位商管創能與實務應用研討會",
       "organizer": "德明財經科技大學管理學院",
-      "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-      "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-      "registration_url": "",
+      "homepage_url": "https://sites.google.com/gs.takming.edu.tw/2026conference",
+      "submission_url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+      "registration_url": "https://forms.gle/PaahLU8BrptiQB7ZA",
       "event_start": "2026-06-13",
       "event_end": "2026-06-13",
       "location": "台北",
@@ -1148,7 +1148,8 @@
         "zh"
       ],
       "attention_notes": [
-        "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
+        "論文全文投稿截止日為 2026-05-15；審查結果通知日為 2026-05-22，定稿截止日為 2026-05-29。",
+        "原德明管理學院公告網址已失效，已改用主辦單位公告的 Google Sites 官網及 Google 表單。"
       ]
     },
     {
@@ -1281,6 +1282,367 @@
         "2026 年會議地點為國立高雄科技大學，主題為供應鏈韌性。",
         "屬物流、運輸與供應鏈管理領域，和商管中的運籌管理高度相關。",
         "依使用者回報 #5 修正：原報名網址誤連至 2023 年論文頁。"
+      ]
+    },
+    {
+      "id": "just-2026-business-practice",
+      "title": "2026 年商管學術與實務研討會",
+      "organizer": "景文科技大學科技管理學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/2026/",
+      "submission_url": "https://irnas.just.edu.tw/conference/2026/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2026/",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "新北",
+      "submission_deadline": "2026-02-10",
+      "acceptance_notification_date": "2026-03-11",
+      "registration_fee": "現場發表每篇新台幣 600 元；海報發表每篇新台幣 900 元（含海報印刷費）。",
+      "fields": [
+        "企業管理",
+        "行銷與流通",
+        "財務金融",
+        "國際貿易",
+        "資訊管理",
+        "觀光餐旅"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "官方徵稿說明列示 2026-02-10 全文截稿、2026-03-11 接受通知、2026-04-24 舉辦。",
+        "舉辦地點為景文科技大學行政大樓 5 樓。"
+      ]
+    },
+    {
+      "id": "uch-2026-management-practice",
+      "title": "2026 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院",
+      "homepage_url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "submission_url": "https://forms.gle/HEVcvoMZ7UDQJGtC9",
+      "registration_url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "event_start": "2026-04-30",
+      "event_end": "2026-04-30",
+      "location": "桃園",
+      "submission_deadline": "2026-04-01",
+      "acceptance_notification_date": "2026-04-14",
+      "fields": [
+        "企業管理",
+        "財務金融",
+        "會計管理",
+        "數位行銷",
+        "資訊管理",
+        "人力資源管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "官方頁列示 2026-04-01 全文截稿、2026-04-14 審查結果公告、2026-04-21 定稿與報名截止。",
+        "會議地點為健行科技大學。"
+      ]
+    },
+    {
+      "id": "ctbc-2026-ifba",
+      "title": "2026 智慧金融與企業管理學術研討會",
+      "organizer": "中信金融管理學院、中國文化大學財務金融學系",
+      "homepage_url": "https://ifba.ctbc.edu.tw/ifba2026/website/index.html",
+      "submission_url": "https://forms.gle/Ro4fmxWc6sZhxkWU9",
+      "registration_url": "https://forms.gle/3SU1f2f54gangqCX7",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "台南",
+      "submission_deadline": "2026-03-13",
+      "acceptance_notification_date": "2026-03-20",
+      "registration_fee": "每篇論文新台幣 1,000 元。",
+      "fields": [
+        "智慧金融",
+        "金融科技",
+        "ESG",
+        "企業管理",
+        "數位轉型",
+        "風險管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "online"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "摘要投稿截止日已展延至 2026-03-13，接受通知日為 2026-03-20。",
+        "研討會採實體與線上同步，實體地點為中信金融管理學院。"
+      ]
+    },
+    {
+      "id": "chihlee-2026-business-management-practice",
+      "title": "2026 商務管理實務研討會",
+      "organizer": "致理科技大學商務管理學院、財務金融系",
+      "homepage_url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-05-21",
+      "event_end": "2026-05-21",
+      "location": "新北",
+      "submission_deadline": "2026-03-23",
+      "acceptance_notification_date": "2026-04-30",
+      "submission_fee": "免費；官方徵稿說明載明無須繳交報名費。",
+      "registration_fee": "免費。",
+      "fields": [
+        "企業經營管理",
+        "行銷與流通",
+        "財務金融",
+        "會計資訊",
+        "觀光休閒",
+        "永續管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "全文以電子郵件寄至 isrc@gm.chihlee.edu.tw；主辦單位未提供獨立投稿表單網址。",
+        "最佳論文獎新台幣 8,000 元，優秀論文獎新台幣 5,000 元。"
+      ]
+    },
+    {
+      "id": "ocu-2026-icbee",
+      "title": "2026 商學專業與品德學術研討會",
+      "organizer": "僑光科技大學商學與管理學院",
+      "homepage_url": "https://bms.ocu.edu.tw/p/412-1016-6104.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "台中",
+      "submission_deadline": "2026-03-31",
+      "acceptance_notification_date": "2026-04-10",
+      "fields": [
+        "財務金融",
+        "財經法律",
+        "會計資訊",
+        "行銷物流",
+        "國際貿易",
+        "企業管理",
+        "ESG",
+        "AI應用"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "僑光學報",
+          "journal_url": "https://bms.ocu.edu.tw/",
+          "submission_url": "",
+          "notes": "研討會官方頁說明，參與論文發表者經作者同意後可再投稿僑光學報。"
+        }
+      ],
+      "attention_notes": [
+        "官方頁列示 2026-03-31 全文截稿、2026-04-10 接受通知、2026-04-24 舉辦。",
+        "投稿須將電子檔寄至 ICBEE@ocu.edu.tw，另依官方規定繳交紙本資料。"
+      ]
+    },
+    {
+      "id": "ntub-2026-international-business-forum",
+      "title": "2026 第二十五屆北商大學術論壇暨國際企業經營管理研討會",
+      "organizer": "國立臺北商業大學國際商務系暨碩士班",
+      "homepage_url": "https://ib.ntub.edu.tw/p/404-1039-116270.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "https://www.beclass.com/rid=30525cf69a65253dcf52",
+      "event_start": "2026-05-15",
+      "event_end": "2026-05-15",
+      "location": "台北",
+      "submission_deadline": "2026-05-03",
+      "acceptance_notification_date": "2026-05-08",
+      "fields": [
+        "國際貿易",
+        "企業管理",
+        "財務金融",
+        "供應鏈管理",
+        "策略管理",
+        "行銷管理",
+        "資訊管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "全文以電子郵件寄至 ntcbib100@gmail.com；報名採 BeClass 表單。",
+        "官方頁的審查結果年份誤植為 113 年；依會議年份及日期脈絡記錄為 2026-05-08。"
+      ]
+    },
+    {
+      "id": "mcut-2026-formosa-management-innovation",
+      "title": "2026 FORMOSA 產業個案與管理創新國際研討會",
+      "organizer": "明志科技大學經營管理系",
+      "homepage_url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-03-27",
+      "event_end": "2026-03-28",
+      "location": "新北",
+      "submission_deadline": "2026-02-15",
+      "fields": [
+        "產業創新",
+        "企業永續",
+        "ESG",
+        "跨域管理",
+        "智慧科技",
+        "個案研究"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "全文或長摘要以電子郵件寄至 formosa@mail.mcut.edu.tw。",
+        "官方頁列示 2026-02-15 截稿、2026-03-05 公布議程、2026-03-27 至 03-28 舉辦。"
+      ]
+    },
+    {
+      "id": "cyut-2026-ssim",
+      "title": "第六屆社會科學與智能管理國際研討會（SSIM 2026）",
+      "organizer": "朝陽科技大學",
+      "homepage_url": "https://ssim2026.cyut.edu.tw/",
+      "submission_url": "https://ssim2026.cyut.edu.tw/",
+      "registration_url": "https://ssim2026.cyut.edu.tw/",
+      "event_start": "2026-12-17",
+      "event_end": "2026-12-19",
+      "location": "台中",
+      "submission_deadline": "2026-09-10",
+      "fields": [
+        "智能管理",
+        "人工智慧",
+        "數位轉型",
+        "永續數位生態",
+        "社會科學"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
+      "attention_notes": [
+        "國科會活動訊息與會議官網交叉確認：2026-09-10 摘要截稿、2026-12-17 至 12-19 舉辦。",
+        "會議地點為朝陽科技大學。"
+      ]
+    },
+    {
+      "id": "nthu-2026-icrm",
+      "title": "2026 韌性與管理國際研討會（ICRM 2026）",
+      "organizer": "國立清華大學韌性研究中心",
+      "homepage_url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "submission_url": "https://residemyedu.wixsite.com/icrm2026/call-for-papers",
+      "registration_url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "event_start": "2026-11-26",
+      "event_end": "2026-11-27",
+      "location": "新竹",
+      "fields": [
+        "韌性管理",
+        "永續治理",
+        "風險管理",
+        "組織調適",
+        "科技轉型"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "科技管理學刊",
+          "journal_url": "https://csmot.org.tw/",
+          "submission_url": "",
+          "notes": "主辦公告說明，研討會將擇優推薦論文投稿 TSSCI《科技管理學刊》特刊，仍須經期刊審查。"
+        }
+      ],
+      "attention_notes": [
+        "清華大學韌性研究中心官方頁確認會議日期為 2026-11-26 至 11-27，地點為國立清華大學。",
+        "投稿截止日尚未在可讀取的官方頁面明確列示，使用前請開啟徵稿頁確認。"
+      ]
+    },
+    {
+      "id": "chapf-2026-annual",
+      "title": "中華財政學會 2026 年會員大會暨學術研討會",
+      "organizer": "中華財政學會、國立政治大學財政學系",
+      "homepage_url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-12-12",
+      "event_end": "2026-12-12",
+      "location": "台北",
+      "submission_deadline": "2026-11-06",
+      "fields": [
+        "財政學",
+        "國際租稅",
+        "所得稅制",
+        "地方財政",
+        "企業租稅規劃",
+        "淨零政策"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "投稿以電子郵件寄至 chapf.org@gmail.com 或 joy_hsu@nccu.edu.tw。",
+        "轉知頁將投稿截止年份誤植為 112 年；依 2026 年新公告、星期與會議時序判定為 2026-11-06，建議投稿前再向主辦單位確認。"
+      ]
+    },
+    {
+      "id": "nkuht-2026-tourism-hospitality-sustainability",
+      "title": "第 22 屆觀光休閒暨餐旅產業永續經營學術研討會",
+      "organizer": "國立高雄餐旅大學",
+      "homepage_url": "https://sca.nkuht.edu.tw/p/406-1026-42910%2Cr41.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-11-13",
+      "event_end": "2026-11-13",
+      "location": "高雄",
+      "submission_deadline": "2026-09-07",
+      "acceptance_notification_date": "2026-09-28",
+      "fields": [
+        "觀光管理",
+        "餐旅管理",
+        "服務創新",
+        "休閒產業",
+        "永續經營"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "論文摘要與投稿人簡歷以電子郵件寄至 piokuo@live.nkuht.edu.tw。",
+        "官方徵稿頁確認 2026-09-07 摘要截稿、2026-09-28 接受通知、2026-10-26 報告者註冊截止。"
       ]
     }
   ]

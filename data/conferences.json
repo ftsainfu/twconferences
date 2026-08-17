@@ -1,29 +1,20 @@
 {
-  "generated_at": "2026-08-17 05:36:10 UTC+08:00",
-  "source_count": 80,
-  "errors": [
-    "papertone-2026-business-law: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
-    "ntub-2026-digital-business: <urlopen error curl: (22) The requested URL returned error: 404>",
-    "papertone-2026-business-law.homepage_url: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
-    "papertone-2026-business-law.submission_url: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
-    "papertone-2026-business-law.registration_url: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
-    "ntub-2026-digital-business.homepage_url: <urlopen error curl: (22) The requested URL returned error: 404>",
-    "ntub-2026-digital-business.submission_url: <urlopen error curl: (22) The requested URL returned error: 404>"
-  ],
+  "generated_at": "2026-08-17 20:15:49 UTC+08:00",
+  "source_count": 91,
+  "errors": [],
   "warnings": [
-    "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached>",
+    "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10006 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10004 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10006 ms: Timeout was reached>",
     "organizer:開南大學商學院: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
-    "organizer:中華民國多國籍企業研究學會: <urlopen error curl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached>",
-    "reference:SSRN Conferences: <urlopen error curl: (22) The requested URL returned error: 403>",
-    "historical_backfill:中華民國多國籍企業研究學會活動資訊: <urlopen error curl: (28) Connection timed out after 10001 milliseconds>"
+    "reference:SSRN Conferences: <urlopen error curl: (56) The requested URL returned error: 403>",
+    "auto_verified:organizer-www-finance-org-tw-17e4c6ff: 2026 Three Asian Countries Finance Conference(2026/9/4)"
   ],
   "health": {
-    "status": "degraded",
-    "source_error_count": 2,
-    "link_error_count": 5,
-    "discovery_warning_count": 5,
-    "verified_count": 33,
-    "candidate_count": 13
+    "status": "healthy",
+    "source_error_count": 0,
+    "link_error_count": 0,
+    "discovery_warning_count": 4,
+    "verified_count": 45,
+    "candidate_count": 14
   },
   "conferences": [
     {
@@ -47,7 +38,6 @@
         "財務會計"
       ],
       "presentation_formats": [
-        "online",
         "oral"
       ],
       "presentation_languages": [
@@ -132,7 +122,6 @@
         "永續金融"
       ],
       "presentation_formats": [
-        "online",
         "oral"
       ],
       "presentation_languages": [
@@ -216,7 +205,6 @@
         "金融市場"
       ],
       "presentation_formats": [
-        "online",
         "oral"
       ],
       "presentation_languages": [
@@ -301,7 +289,6 @@
         "服務創新"
       ],
       "presentation_formats": [
-        "online",
         "oral",
         "poster"
       ],
@@ -379,7 +366,6 @@
         "服務創新"
       ],
       "presentation_formats": [
-        "online",
         "oral"
       ],
       "presentation_languages": [
@@ -685,11 +671,11 @@
         "組織管理"
       ],
       "presentation_formats": [
-        "online",
         "oral",
         "poster"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -701,9 +687,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-08-17",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -755,10 +741,10 @@
         "人力資源"
       ],
       "presentation_formats": [
-        "online",
         "oral"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -837,6 +823,7 @@
         "poster"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -912,6 +899,7 @@
         "oral"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -968,9 +956,9 @@
       "id": "tiibs-2023-business-management",
       "title": "2023 年 TIIBS 第十二屆商學與管理學術研討會",
       "organizer": "中華民國多國籍企業研究學會、中國文化大學國際企業管理學系暨碩博士班等",
-      "homepage_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "homepage_url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
       "submission_url": "https://forms.gle/K66gtjxMYEt8o86M8",
-      "registration_url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+      "registration_url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
       "event_start": "2023-05-12",
       "event_end": "2023-05-12",
       "location": "台北（中國文化大學）",
@@ -1008,14 +996,14 @@
       "last_attempted_at": "2026-08-17",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-07-21",
+      "last_changed": "2026-08-17",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
-          "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+          "url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
           "status": "ok",
           "last_attempted_at": "2026-08-17",
           "last_successful_at": "2026-08-17",
@@ -1029,7 +1017,7 @@
           "consecutive_failures": 0
         },
         "registration_url": {
-          "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
+          "url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
           "status": "ok",
           "last_attempted_at": "2026-08-17",
           "last_successful_at": "2026-08-17",
@@ -1101,7 +1089,7 @@
       "last_attempted_at": "2026-08-17",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-08-12",
+      "last_changed": "2026-08-17",
       "change_status": "unchanged",
       "change_label": "已檢查",
       "change_summary": "",
@@ -1240,11 +1228,11 @@
         "商管"
       ],
       "presentation_formats": [
-        "online",
         "oral",
         "other"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -1644,9 +1632,9 @@
       "id": "papertone-2026-business-law",
       "title": "2026 中華民國商管及法律論文研討會",
       "organizer": "開南大學商學院",
-      "homepage_url": "https://papertone.net/",
-      "submission_url": "https://papertone.net/",
-      "registration_url": "https://papertone.net/",
+      "homepage_url": "http://papertone.net/",
+      "submission_url": "http://papertone.net/",
+      "registration_url": "http://papertone.net/",
       "event_start": "2026-01-31",
       "event_end": "2026-01-31",
       "location": "桃園",
@@ -1662,46 +1650,45 @@
         "oral"
       ],
       "presentation_languages": [
-        "zh",
-        "en"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "須附中英文摘要各一份，各約 300 字以內，並附 3 到 5 個中英文關鍵詞。"
       ],
-      "last_checked": "2026-08-11",
+      "acceptance_notification_date": "",
+      "last_checked": "2026-08-17",
       "last_attempted_at": "2026-08-17",
-      "check_status": "error",
-      "check_error": "<urlopen error curl: (35) Recv failure: Connection reset by peer>",
-      "last_changed": "2026-06-05",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
-          "url": "https://papertone.net/",
-          "status": "broken",
+          "url": "http://papertone.net/",
+          "status": "ok",
           "last_attempted_at": "2026-08-17",
-          "last_successful_at": "2026-08-11",
-          "consecutive_failures": 6
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
         },
         "submission_url": {
-          "url": "https://papertone.net/",
-          "status": "broken",
+          "url": "http://papertone.net/",
+          "status": "ok",
           "last_attempted_at": "2026-08-17",
-          "last_successful_at": "2026-08-11",
-          "consecutive_failures": 6
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
         },
         "registration_url": {
-          "url": "https://papertone.net/",
-          "status": "broken",
+          "url": "http://papertone.net/",
+          "status": "ok",
           "last_attempted_at": "2026-08-17",
-          "last_successful_at": "2026-08-11",
-          "consecutive_failures": 6
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
         }
       },
-      "link_health_summary": "會議主頁、投稿連結、報名連結檢查異常；已連續失敗才會標示為失效。",
-      "link_status": "reported_broken",
       "information_quality": {
         "score": 5,
         "max_score": 5,
@@ -1813,6 +1800,7 @@
         "poster"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -1824,9 +1812,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-08-17",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -1941,7 +1929,6 @@
         "公司治理"
       ],
       "presentation_formats": [
-        "online",
         "oral",
         "other"
       ],
@@ -2023,6 +2010,7 @@
         "poster"
       ],
       "presentation_languages": [
+        "en",
         "zh"
       ],
       "attention_notes": [
@@ -2036,9 +2024,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-08-17",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -2098,7 +2086,6 @@
         "資訊管理"
       ],
       "presentation_formats": [
-        "online",
         "oral",
         "poster"
       ],
@@ -2159,9 +2146,9 @@
       "id": "ntub-2026-digital-business",
       "title": "2026 全國數位商管創能與實務應用研討會",
       "organizer": "德明財經科技大學管理學院",
-      "homepage_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-      "submission_url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-      "registration_url": "",
+      "homepage_url": "https://sites.google.com/gs.takming.edu.tw/2026conference",
+      "submission_url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+      "registration_url": "https://forms.gle/PaahLU8BrptiQB7ZA",
       "event_start": "2026-06-13",
       "event_end": "2026-06-13",
       "location": "台北",
@@ -2172,51 +2159,60 @@
         "管理"
       ],
       "presentation_formats": [
+        "oral",
         "other"
       ],
       "presentation_languages": [
         "zh"
       ],
       "attention_notes": [
-        "論文全文投稿截止日為 2026-05-15；徵稿簡章與附件以主辦公告為準。"
+        "論文全文投稿截止日為 2026-05-15；審查結果通知日為 2026-05-22，定稿截止日為 2026-05-29。",
+        "原德明管理學院公告網址已失效，已改用主辦單位公告的 Google Sites 官網及 Google 表單。"
       ],
-      "last_checked": "2026-07-27",
-      "last_attempted_at": "2026-08-17",
-      "check_status": "error",
-      "check_error": "<urlopen error curl: (22) The requested URL returned error: 404>",
+      "acceptance_notification_date": "2026-05-29",
       "submission_fee": "",
       "registration_fee": "",
-      "last_changed": "2026-06-13",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
       "change_status": "unchanged",
-      "change_label": "檢查失敗",
-      "change_summary": "本次來源檢查失敗，保留前次資料。",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
-          "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-          "status": "broken",
+          "url": "https://sites.google.com/gs.takming.edu.tw/2026conference",
+          "status": "ok",
           "last_attempted_at": "2026-08-17",
-          "last_successful_at": "2026-07-27",
-          "consecutive_failures": 21
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
         },
         "submission_url": {
-          "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw",
-          "status": "broken",
+          "url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+          "status": "ok",
           "last_attempted_at": "2026-08-17",
-          "last_successful_at": "2026-07-27",
-          "consecutive_failures": 21
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
         }
       },
-      "link_health_summary": "會議主頁、投稿連結檢查異常；已連續失敗才會標示為失效。",
-      "link_status": "reported_broken",
       "information_quality": {
-        "score": 3,
+        "score": 4,
         "max_score": 5,
-        "label": "基本完整",
+        "label": "資訊完整",
         "criteria": [
           "官方來源已確認",
           "日期與地點完整",
-          "投稿方式完整"
+          "投稿方式完整",
+          "領域與發表資訊完整"
         ]
       }
     },
@@ -2324,7 +2320,8 @@
         "poster"
       ],
       "presentation_languages": [
-        "en"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "投稿截止日期為 2026-07-31，投稿錄取公告日期為 2026-08-31。",
@@ -2534,6 +2531,880 @@
       }
     },
     {
+      "id": "just-2026-business-practice",
+      "title": "2026 年商管學術與實務研討會",
+      "organizer": "景文科技大學科技管理學院",
+      "homepage_url": "https://irnas.just.edu.tw/conference/2026/",
+      "submission_url": "https://irnas.just.edu.tw/conference/2026/",
+      "registration_url": "https://irnas.just.edu.tw/conference/2026/",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "新北",
+      "submission_deadline": "2026-02-10",
+      "acceptance_notification_date": "2026-03-11",
+      "registration_fee": "現場發表每篇新台幣 600 元；海報發表每篇新台幣 900 元（含海報印刷費）。",
+      "fields": [
+        "企業管理",
+        "行銷與流通",
+        "財務金融",
+        "國際貿易",
+        "資訊管理",
+        "觀光餐旅"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "zh"
+      ],
+      "attention_notes": [
+        "官方徵稿說明列示 2026-02-10 全文截稿、2026-03-11 接受通知、2026-04-24 舉辦。",
+        "舉辦地點為景文科技大學行政大樓 5 樓。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://irnas.just.edu.tw/conference/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://irnas.just.edu.tw/conference/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://irnas.just.edu.tw/conference/2026/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "uch-2026-management-practice",
+      "title": "2026 全國管理實務暨學術研討會",
+      "organizer": "健行科技大學商管學院",
+      "homepage_url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "submission_url": "https://forms.gle/HEVcvoMZ7UDQJGtC9",
+      "registration_url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "event_start": "2026-04-30",
+      "event_end": "2026-04-30",
+      "location": "桃園",
+      "submission_deadline": "2026-04-01",
+      "acceptance_notification_date": "2026-04-14",
+      "fields": [
+        "企業管理",
+        "財務金融",
+        "會計管理",
+        "數位行銷",
+        "資訊管理",
+        "人力資源管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "官方頁列示 2026-04-01 全文截稿、2026-04-14 審查結果公告、2026-04-21 定稿與報名截止。",
+        "會議地點為健行科技大學。"
+      ],
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://forms.gle/HEVcvoMZ7UDQJGtC9",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "ctbc-2026-ifba",
+      "title": "2026 智慧金融與企業管理學術研討會",
+      "organizer": "中信金融管理學院、中國文化大學財務金融學系",
+      "homepage_url": "https://ifba.ctbc.edu.tw/ifba2026/website/index.html",
+      "submission_url": "https://forms.gle/Ro4fmxWc6sZhxkWU9",
+      "registration_url": "https://forms.gle/3SU1f2f54gangqCX7",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "台南",
+      "submission_deadline": "2026-03-13",
+      "acceptance_notification_date": "2026-03-20",
+      "registration_fee": "每篇論文新台幣 1,000 元。",
+      "fields": [
+        "智慧金融",
+        "金融科技",
+        "ESG",
+        "企業管理",
+        "數位轉型",
+        "風險管理"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "摘要投稿截止日已展延至 2026-03-13，接受通知日為 2026-03-20。",
+        "研討會採實體與線上同步，實體地點為中信金融管理學院。"
+      ],
+      "submission_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ifba.ctbc.edu.tw/ifba2026/website/index.html",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://forms.gle/Ro4fmxWc6sZhxkWU9",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://forms.gle/3SU1f2f54gangqCX7",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 5,
+        "max_score": 5,
+        "label": "資訊很完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整",
+          "報名與費用資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "chihlee-2026-business-management-practice",
+      "title": "2026 商務管理實務研討會",
+      "organizer": "致理科技大學商務管理學院、財務金融系",
+      "homepage_url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-05-21",
+      "event_end": "2026-05-21",
+      "location": "新北",
+      "submission_deadline": "2026-03-23",
+      "acceptance_notification_date": "2026-04-30",
+      "submission_fee": "免費；官方徵稿說明載明無須繳交報名費。",
+      "registration_fee": "免費。",
+      "fields": [
+        "企業經營管理",
+        "行銷與流通",
+        "財務金融",
+        "會計資訊",
+        "觀光休閒",
+        "永續管理"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "全文以電子郵件寄至 isrc@gm.chihlee.edu.tw；主辦單位未提供獨立投稿表單網址。",
+        "最佳論文獎新台幣 8,000 元，優秀論文獎新台幣 5,000 元。"
+      ],
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "ocu-2026-icbee",
+      "title": "2026 商學專業與品德學術研討會",
+      "organizer": "僑光科技大學商學與管理學院",
+      "homepage_url": "https://bms.ocu.edu.tw/p/412-1016-6104.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-04-24",
+      "event_end": "2026-04-24",
+      "location": "台中",
+      "submission_deadline": "2026-03-31",
+      "acceptance_notification_date": "2026-04-10",
+      "fields": [
+        "財務金融",
+        "財經法律",
+        "會計資訊",
+        "行銷物流",
+        "國際貿易",
+        "企業管理",
+        "ESG",
+        "AI應用"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "僑光學報",
+          "journal_url": "https://bms.ocu.edu.tw/",
+          "submission_url": "",
+          "notes": "研討會官方頁說明，參與論文發表者經作者同意後可再投稿僑光學報。"
+        }
+      ],
+      "attention_notes": [
+        "官方頁列示 2026-03-31 全文截稿、2026-04-10 接受通知、2026-04-24 舉辦。",
+        "投稿須將電子檔寄至 ICBEE@ocu.edu.tw，另依官方規定繳交紙本資料。"
+      ],
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://bms.ocu.edu.tw/p/412-1016-6104.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "ntub-2026-international-business-forum",
+      "title": "2026 第二十五屆北商大學術論壇暨國際企業經營管理研討會",
+      "organizer": "國立臺北商業大學國際商務系暨碩士班",
+      "homepage_url": "https://ib.ntub.edu.tw/p/404-1039-116270.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "https://www.beclass.com/rid=30525cf69a65253dcf52",
+      "event_start": "2026-05-15",
+      "event_end": "2026-05-15",
+      "location": "台北",
+      "submission_deadline": "2026-05-03",
+      "acceptance_notification_date": "2026-05-08",
+      "fields": [
+        "國際貿易",
+        "企業管理",
+        "財務金融",
+        "供應鏈管理",
+        "策略管理",
+        "行銷管理",
+        "資訊管理"
+      ],
+      "presentation_formats": [
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "全文以電子郵件寄至 ntcbib100@gmail.com；報名採 BeClass 表單。",
+        "官方頁的審查結果年份誤植為 113 年；依會議年份及日期脈絡記錄為 2026-05-08。"
+      ],
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ib.ntub.edu.tw/p/404-1039-116270.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://www.beclass.com/rid=30525cf69a65253dcf52",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "mcut-2026-formosa-management-innovation",
+      "title": "2026 FORMOSA 產業個案與管理創新國際研討會",
+      "organizer": "明志科技大學經營管理系",
+      "homepage_url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-03-27",
+      "event_end": "2026-03-28",
+      "location": "新北",
+      "submission_deadline": "2026-02-15",
+      "fields": [
+        "產業創新",
+        "企業永續",
+        "ESG",
+        "跨域管理",
+        "智慧科技",
+        "個案研究"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "全文或長摘要以電子郵件寄至 formosa@mail.mcut.edu.tw。",
+        "官方頁列示 2026-02-15 截稿、2026-03-05 公布議程、2026-03-27 至 03-28 舉辦。"
+      ],
+      "acceptance_notification_date": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "cyut-2026-ssim",
+      "title": "第六屆社會科學與智能管理國際研討會（SSIM 2026）",
+      "organizer": "朝陽科技大學",
+      "homepage_url": "https://ssim2026.cyut.edu.tw/",
+      "submission_url": "https://ssim2026.cyut.edu.tw/",
+      "registration_url": "https://ssim2026.cyut.edu.tw/",
+      "event_start": "2026-12-17",
+      "event_end": "2026-12-19",
+      "location": "台中",
+      "submission_deadline": "2026-09-10",
+      "fields": [
+        "智能管理",
+        "人工智慧",
+        "數位轉型",
+        "永續數位生態",
+        "社會科學"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
+      "attention_notes": [
+        "國科會活動訊息與會議官網交叉確認：2026-09-10 摘要截稿、2026-12-17 至 12-19 舉辦。",
+        "會議地點為朝陽科技大學。"
+      ],
+      "acceptance_notification_date": "2026-06-11",
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://ssim2026.cyut.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://ssim2026.cyut.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://ssim2026.cyut.edu.tw/",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 4,
+        "max_score": 5,
+        "label": "資訊完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "nthu-2026-icrm",
+      "title": "2026 韌性與管理國際研討會（ICRM 2026）",
+      "organizer": "國立清華大學韌性研究中心",
+      "homepage_url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "submission_url": "https://residemyedu.wixsite.com/icrm2026/call-for-papers",
+      "registration_url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "event_start": "2026-11-26",
+      "event_end": "2026-11-27",
+      "location": "新竹",
+      "fields": [
+        "韌性管理",
+        "永續治理",
+        "風險管理",
+        "組織調適",
+        "科技轉型"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral"
+      ],
+      "presentation_languages": [
+        "en"
+      ],
+      "publication_opportunities": [
+        {
+          "journal_name": "科技管理學刊",
+          "journal_url": "https://csmot.org.tw/",
+          "submission_url": "",
+          "notes": "主辦公告說明，研討會將擇優推薦論文投稿 TSSCI《科技管理學刊》特刊，仍須經期刊審查。"
+        }
+      ],
+      "attention_notes": [
+        "清華大學韌性研究中心官方頁確認會議日期為 2026-11-26 至 11-27，地點為國立清華大學。",
+        "投稿截止日尚未在可讀取的官方頁面明確列示，使用前請開啟徵稿頁確認。"
+      ],
+      "submission_deadline": "",
+      "acceptance_notification_date": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://residemyedu.wixsite.com/icrm2026/call-for-papers",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "registration_url": {
+          "url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "chapf-2026-annual",
+      "title": "中華財政學會 2026 年會員大會暨學術研討會",
+      "organizer": "中華財政學會、國立政治大學財政學系",
+      "homepage_url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-12-12",
+      "event_end": "2026-12-12",
+      "location": "台北",
+      "submission_deadline": "2026-11-06",
+      "fields": [
+        "財政學",
+        "國際租稅",
+        "所得稅制",
+        "地方財政",
+        "企業租稅規劃",
+        "淨零政策"
+      ],
+      "presentation_formats": [
+        "online",
+        "oral",
+        "poster"
+      ],
+      "presentation_languages": [
+        "en",
+        "ja",
+        "zh"
+      ],
+      "attention_notes": [
+        "投稿以電子郵件寄至 chapf.org@gmail.com 或 joy_hsu@nccu.edu.tw。",
+        "轉知頁將投稿截止年份誤植為 112 年；依 2026 年新公告、星期與會議時序判定為 2026-11-06，建議投稿前再向主辦單位確認。"
+      ],
+      "acceptance_notification_date": "2025-05-01",
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "nkuht-2026-tourism-hospitality-sustainability",
+      "title": "第 22 屆觀光休閒暨餐旅產業永續經營學術研討會",
+      "organizer": "國立高雄餐旅大學",
+      "homepage_url": "https://sca.nkuht.edu.tw/p/406-1026-42910%2Cr41.php?Lang=zh-tw",
+      "submission_url": "",
+      "registration_url": "",
+      "event_start": "2026-11-13",
+      "event_end": "2026-11-13",
+      "location": "高雄",
+      "submission_deadline": "2026-09-07",
+      "acceptance_notification_date": "2026-09-28",
+      "fields": [
+        "觀光管理",
+        "餐旅管理",
+        "服務創新",
+        "休閒產業",
+        "永續經營"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "en",
+        "zh"
+      ],
+      "attention_notes": [
+        "論文摘要與投稿人簡歷以電子郵件寄至 piokuo@live.nkuht.edu.tw。",
+        "官方徵稿頁確認 2026-09-07 摘要截稿、2026-09-28 接受通知、2026-10-26 報告者註冊截止。"
+      ],
+      "submission_fee": "",
+      "registration_fee": "",
+      "last_checked": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "last_changed": "2026-08-17",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
+      "review_status": "verified",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://sca.nkuht.edu.tw/p/406-1026-42910%2Cr41.php?Lang=zh-tw",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 3,
+        "max_score": 5,
+        "label": "基本完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "organizer-www-finance-org-tw-17e4c6ff",
+      "title": "2026 Three Asian Countries Finance Conference(2026/9/4)",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/51",
+      "submission_url": "https://www.finance.org.tw/fnnews/51",
+      "registration_url": "",
+      "event_start": "2026-09-04",
+      "event_end": "2026-09-04",
+      "location": "會議地點：國立政治大學商學院6樓義育廳",
+      "submission_deadline": "",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "學術消息",
+        "專題研討會",
+        "財務金融",
+        "財金",
+        "資訊管理"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
+        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。",
+        "本項目由每日更新自動驗證升級；使用前仍建議開啟官方頁確認最新公告。"
+      ],
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "change_status": "new",
+      "change_label": "自動升級",
+      "change_summary": "每日更新已自動驗證官方頁、日期、地點、領域與發表資訊後升級為正式收錄。",
+      "review_status": "verified",
+      "evidence_sources": [
+        {
+          "name": "臺灣財務金融學會",
+          "url": "https://www.finance.org.tw/",
+          "type": "organizer"
+        },
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 2,
+      "independent_source_count": 2,
+      "is_corroborated": true,
+      "first_seen": "2026-06-20",
+      "last_seen": "2026-08-17",
+      "candidate_status": "auto_verified",
+      "review_notes": "",
+      "is_stale": false,
+      "acceptance_notification_date": "",
+      "auto_verified_at": "2026-08-17",
+      "last_attempted_at": "2026-08-17",
+      "check_status": "ok",
+      "check_error": "",
+      "link_health": {
+        "homepage_url": {
+          "url": "https://www.finance.org.tw/fnnews/51",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        },
+        "submission_url": {
+          "url": "https://www.finance.org.tw/fnnews/51",
+          "status": "ok",
+          "last_attempted_at": "2026-08-17",
+          "last_successful_at": "2026-08-17",
+          "consecutive_failures": 0
+        }
+      },
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "官方來源已確認",
+          "日期與地點完整"
+        ]
+      }
+    },
+    {
       "id": "reference-sysi-nccu-edu-tw-7a61ac9d",
       "title": "2026 永續發展與企業社會責任(ESG)學術研討會",
       "organizer": "政治大學商學院信義書院",
@@ -2582,6 +3453,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (6) Could not resolve host: sysi.nccu.edu.tw>",
       "information_quality": {
         "score": 2,
         "max_score": 5,
@@ -2699,6 +3572,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "頁面未通過商管正式研討會語意檢查。",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -2756,6 +3631,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (7) Failed to connect to ihp.knu.edu.tw port 80 after 71 ms: Couldn't connect to server>",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -2813,6 +3690,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (28) Operation timed out after 10004 milliseconds with 0 bytes received>",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -2870,6 +3749,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "頁面文字無法確認候選標題。",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -2927,6 +3808,8 @@
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "頁面文字無法確認候選標題。",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -2934,125 +3817,6 @@
         "criteria": [
           "日期與地點完整"
         ]
-      }
-    },
-    {
-      "id": "organizer-www-finance-org-tw-17e4c6ff",
-      "title": "2026 Three Asian Countries Finance Conference(2026/9/4)",
-      "organizer": "臺灣財務金融學會",
-      "homepage_url": "https://www.finance.org.tw/fnnews/51",
-      "submission_url": "https://www.finance.org.tw/fnnews/51",
-      "registration_url": "",
-      "event_start": "2026-09-04",
-      "event_end": "2026-09-04",
-      "location": "會議地點：國立政治大學商學院6樓義育廳",
-      "submission_deadline": "",
-      "submission_fee": "",
-      "registration_fee": "",
-      "publication_opportunities": [],
-      "fields": [
-        "財務金融",
-        "專題研討會",
-        "學術消息"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
-        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。"
-      ],
-      "last_checked": "2026-08-17",
-      "last_changed": "2026-08-17",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate",
-      "evidence_sources": [
-        {
-          "name": "臺灣財務金融學會",
-          "url": "https://www.finance.org.tw/",
-          "type": "organizer"
-        },
-        {
-          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
-          "url": "https://twconference-1010569583715.asia-east1.run.app",
-          "type": "reference"
-        }
-      ],
-      "evidence_source_count": 2,
-      "independent_source_count": 2,
-      "is_corroborated": true,
-      "first_seen": "2026-06-20",
-      "last_seen": "2026-08-17",
-      "candidate_status": "pending",
-      "review_notes": "",
-      "is_stale": false,
-      "information_quality": {
-        "score": 1,
-        "max_score": 5,
-        "label": "資料有限",
-        "criteria": [
-          "日期與地點完整"
-        ]
-      }
-    },
-    {
-      "id": "organizer-www-nstc-gov-tw-063e6307",
-      "title": "第六屆社會科學與智能管理國際研討會(SSIM2026)徵稿啟事",
-      "organizer": "國家科學及技術委員會活動訊息（第 1 頁）",
-      "homepage_url": "https://www.nstc.gov.tw/folksonomy/detail/cf8eaee4-a18d-4ea7-a43e-c4a732880e13?l=ch",
-      "submission_url": "https://www.nstc.gov.tw/folksonomy/detail/cf8eaee4-a18d-4ea7-a43e-c4a732880e13?l=ch",
-      "registration_url": "",
-      "event_start": "",
-      "event_end": "",
-      "location": "待確認",
-      "submission_deadline": "",
-      "submission_fee": "",
-      "registration_fee": "",
-      "publication_opportunities": [],
-      "fields": [
-        "待確認"
-      ],
-      "presentation_formats": [
-        "other"
-      ],
-      "presentation_languages": [
-        "unknown"
-      ],
-      "attention_notes": [
-        "由「國家科學及技術委員會活動訊息（第 1 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
-      ],
-      "last_checked": "2026-08-17",
-      "last_changed": "2026-07-08",
-      "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate",
-      "discovered_from_url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
-      "evidence_sources": [
-        {
-          "name": "國家科學及技術委員會活動訊息（第 1 頁）",
-          "url": "https://www.nstc.gov.tw/folksonomy/list/e25373b0-6a33-4a48-ae74-85cae48f1b72?l=ch",
-          "type": "government"
-        }
-      ],
-      "evidence_source_count": 1,
-      "independent_source_count": 1,
-      "is_corroborated": false,
-      "first_seen": "2026-07-08",
-      "last_seen": "2026-08-17",
-      "candidate_status": "pending",
-      "review_notes": "",
-      "is_stale": false,
-      "information_quality": {
-        "score": 0,
-        "max_score": 5,
-        "label": "資料不足",
-        "criteria": []
       }
     },
     {
@@ -3272,6 +4036,208 @@
         "max_score": 5,
         "label": "資料不足",
         "criteria": []
+      }
+    },
+    {
+      "id": "manual-asia-2026-ftsid",
+      "title": "2026 金融科技與永續創新發展國際研討會",
+      "organizer": "亞洲大學金融科技與創新管理研究中心、財務金融學系",
+      "homepage_url": "https://ftimc.asia.edu.tw/international-academic-conference/submission/",
+      "submission_url": "https://cmt3.research.microsoft.com/ACFTSID2026/Submission/Index",
+      "registration_url": "",
+      "event_start": "",
+      "event_end": "",
+      "location": "台中",
+      "submission_deadline": "2026-09-30",
+      "acceptance_notification_date": "2026-11-16",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [
+        {
+          "journal_name": "亞洲智能與創新學報",
+          "journal_url": "https://ftimc.asia.edu.tw/",
+          "submission_url": "",
+          "notes": "優秀論文將推薦特刊，仍須經期刊審查。"
+        }
+      ],
+      "fields": [
+        "金融科技",
+        "永續金融",
+        "ESG",
+        "財務金融",
+        "創新創業",
+        "公司治理",
+        "AI應用"
+      ],
+      "presentation_formats": [
+        "oral"
+      ],
+      "presentation_languages": [
+        "zh",
+        "en"
+      ],
+      "attention_notes": [
+        "官方頁僅公告 2026 年 12 月舉辦，確切日期待公告，因此先列入待確認名單。",
+        "全文投稿截止日為 2026-09-30，審查通知期間為 2026-11-16 至 11-20，報名截止日為 2026-11-20。"
+      ],
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "官方頁已開放投稿，但確切會議日期尚未公告。",
+      "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "亞洲大學金融科技與創新管理研究中心",
+          "url": "https://ftimc.asia.edu.tw/international-academic-conference/submission/",
+          "type": "university_college"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-08-17",
+      "last_seen": "2026-08-17",
+      "candidate_status": "pending",
+      "manual_candidate": true,
+      "auto_verify_disabled": true,
+      "review_notes": "待官方公告 2026 年 12 月的確切會議日期。",
+      "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "官方頁尚未公告確切舉辦日期。",
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "投稿方式完整",
+          "領域與發表資訊完整"
+        ]
+      }
+    },
+    {
+      "id": "organizer-www-finance-org-tw-9bdcf3d1",
+      "title": "[徵稿通知]2026年臺灣風險與保險學會年會暨國際學術研討會",
+      "organizer": "臺灣財務金融學會",
+      "homepage_url": "https://www.finance.org.tw/fnnews/52",
+      "submission_url": "https://www.finance.org.tw/fnnews/52",
+      "registration_url": "",
+      "event_start": "2026-12-12",
+      "event_end": "2026-12-12",
+      "location": "臺灣風險與保險學會（TRIA）謹定於 2026年12月12日（星期六），假 國立中央大學（桃園市中壢區中大路300號）舉辦「2026年臺灣風險與保險學會年會暨國",
+      "submission_deadline": "2026-10-10",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "財務金融",
+        "學術消息"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
+        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。"
+      ],
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "臺灣財務金融學會",
+          "url": "https://www.finance.org.tw/",
+          "type": "organizer"
+        },
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 2,
+      "independent_source_count": 2,
+      "is_corroborated": true,
+      "first_seen": "2026-08-17",
+      "last_seen": "2026-08-17",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": false,
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
+      }
+    },
+    {
+      "id": "reference-con-ctu-edu-tw-e3e447ac",
+      "title": "2026 非營利組織與社會企業管理國際研討會",
+      "organizer": "建國科技大學經營管理系暨服務與科技管理研究所",
+      "homepage_url": "https://con.ctu.edu.tw/review-system/frontend/login.php",
+      "submission_url": "https://con.ctu.edu.tw/review-system/frontend/login.php",
+      "registration_url": "",
+      "event_start": "2026-11-06",
+      "event_end": "2026-11-06",
+      "location": "彰化縣",
+      "submission_deadline": "2026-09-30",
+      "submission_fee": "",
+      "registration_fee": "",
+      "publication_opportunities": [],
+      "fields": [
+        "付費",
+        "報名中",
+        "實體活動"
+      ],
+      "presentation_formats": [
+        "other"
+      ],
+      "presentation_languages": [
+        "unknown"
+      ],
+      "attention_notes": [
+        "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
+      ],
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "change_status": "new",
+      "change_label": "候選新增",
+      "change_summary": "每日來源掃描發現的新候選項目。",
+      "review_status": "candidate",
+      "evidence_sources": [
+        {
+          "name": "國立虎尾科技大學財務金融系商管研討會資訊網",
+          "url": "https://twconference-1010569583715.asia-east1.run.app",
+          "type": "reference"
+        }
+      ],
+      "evidence_source_count": 1,
+      "independent_source_count": 1,
+      "is_corroborated": false,
+      "first_seen": "2026-08-17",
+      "last_seen": "2026-08-17",
+      "candidate_status": "pending",
+      "review_notes": "",
+      "is_stale": false,
+      "auto_verify_status": "needs_review",
+      "auto_verify_note": "頁面文字無法確認候選標題。",
+      "information_quality": {
+        "score": 2,
+        "max_score": 5,
+        "label": "部分完整",
+        "criteria": [
+          "日期與地點完整",
+          "投稿方式完整"
+        ]
       }
     }
   ]

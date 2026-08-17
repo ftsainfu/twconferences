@@ -7,6 +7,9 @@ from datetime import date
 
 from scripts.update_conferences import (
     assess_information_quality,
+    auto_verify_candidate,
+    auto_verify_candidates,
+    auto_verify_priority,
     canonical_url,
     check_conference_links,
     current_year_markers,
@@ -15,10 +18,12 @@ from scripts.update_conferences import (
     government_organizer_sources,
     infer_acceptance_notification_date,
     infer_fee_information,
+    infer_languages,
     is_relevant_conference_text,
     merge_candidate_store,
     merge_discovered_candidates,
     parse_ics_events,
+    persisted_auto_verified_candidates,
     discover_from_organizers,
     discover_historical_backfill_leads,
     discover_from_ics_reference,
@@ -119,6 +124,22 @@ class FetchTests(unittest.TestCase):
 
 
 class LinkHealthTests(unittest.TestCase):
+    @patch("scripts.update_conferences.today_iso", return_value="2026-08-17")
+    @patch("scripts.update_conferences.fetch_url")
+    def test_identical_action_links_reuse_successful_homepage_check(self, fetch, _today):
+        item = {
+            "id": "same-links",
+            "review_status": "verified",
+            "homepage_url": "https://conference.example.edu.tw/",
+            "submission_url": "https://conference.example.edu.tw/",
+            "registration_url": "https://conference.example.edu.tw/",
+            "check_status": "ok",
+        }
+        errors = check_conference_links([item], {"links": {}})
+        self.assertEqual(errors, [])
+        self.assertEqual(fetch.call_count, 0)
+        self.assertTrue(all(record["status"] == "ok" for record in item["link_health"].values()))
+
     @patch("scripts.update_conferences.today_iso", return_value="2026-07-04")
     @patch("scripts.update_conferences.fetch_url", side_effect=TimeoutError("timeout"))
     def test_link_health_marks_warning_before_consecutive_failure_threshold(self, _fetch, _today):
@@ -457,6 +478,16 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(merged[0]["first_seen"], "2026-01-01")
         self.assertFalse(merged[0]["is_stale"])
 
+    def test_merge_keeps_manual_official_candidate_visible_when_date_is_tba(self):
+        stored = [{
+            "id": "manual-date-tba",
+            "candidate_status": "pending",
+            "manual_candidate": True,
+            "event_start": "",
+        }]
+        merged = merge_candidate_store([], stored)
+        self.assertFalse(merged[0]["is_stale"])
+
     def test_afa_ics_keeps_future_taiwan_finance_conference(self):
         raw = """BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:Taiwan Finance Conference 2027\nLOCATION:Taipei, Taiwan\nDTSTART;VALUE=DATE:20270710\nDTEND;VALUE=DATE:20270712\nURL:https://finance.example.org/2027\nDESCRIPTION:Annual conference in financial economics\nEND:VEVENT\nEND:VCALENDAR"""
         self.assertEqual(parse_ics_events(raw)[0]["summary"], "Taiwan Finance Conference 2027")
@@ -493,6 +524,154 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0]["submission_deadline"], "2027-05-31")
+
+    def test_infer_languages_ignores_unknown_fallback(self):
+        self.assertEqual(infer_languages("本研討會接受中文與英文論文發表", ["unknown"]), ["en", "zh"])
+
+    @patch("scripts.update_conferences.today_iso", return_value="2026-08-17")
+    @patch("scripts.update_conferences.fetch_url")
+    def test_auto_verify_candidate_promotes_complete_official_candidate(self, fetch, _today):
+        fetch.return_value = (
+            """
+            <html><body>
+            <h1>2026 世新大學財務金融國際學術研討會</h1>
+            <p>研討會日期：2026年10月23日，地點：台北世新大學。</p>
+            <p>投稿截止日：2026年9月15日。接受中文與英文口頭發表。</p>
+            <p>主題包含財務金融、人工智慧、永續與ESG。</p>
+            </body></html>
+            """,
+            "utf-8",
+        )
+        candidate = {
+            "id": "candidate-shu",
+            "title": "2026 世新大學財務金融國際學術研討會",
+            "organizer": "世新大學財務金融學系",
+            "homepage_url": "https://fin.example.edu.tw/conference",
+            "submission_url": "https://fin.example.edu.tw/conference",
+            "registration_url": "",
+            "event_start": "",
+            "event_end": "",
+            "location": "待確認",
+            "submission_deadline": "",
+            "fields": ["待確認"],
+            "presentation_formats": ["other"],
+            "presentation_languages": ["unknown"],
+            "attention_notes": [],
+            "candidate_status": "pending",
+            "review_status": "candidate",
+        }
+        promoted, message = auto_verify_candidate(candidate)
+        self.assertEqual(message, "已自動升級。")
+        self.assertEqual(promoted["review_status"], "verified")
+        self.assertEqual(promoted["candidate_status"], "auto_verified")
+        self.assertEqual(promoted["event_start"], "2026-10-23")
+        self.assertEqual(promoted["location"], "台北")
+        self.assertEqual(promoted["submission_deadline"], "2026-09-15")
+        self.assertIn("財金", promoted["fields"])
+        self.assertIn("oral", promoted["presentation_formats"])
+        self.assertEqual(promoted["presentation_languages"], ["en", "zh"])
+
+    @patch("scripts.update_conferences.fetch_url")
+    def test_auto_verify_candidate_keeps_incomplete_candidate_pending(self, fetch):
+        fetch.return_value = (
+            "<h1>2026 財務金融研討會</h1><p>徵稿中，地點台北，接受英文發表。</p>",
+            "utf-8",
+        )
+        candidate = {
+            "id": "candidate-incomplete",
+            "title": "2026 財務金融研討會",
+            "homepage_url": "https://finance.example.edu.tw/conference",
+            "location": "待確認",
+            "fields": ["待確認"],
+            "presentation_formats": ["other"],
+            "presentation_languages": ["unknown"],
+            "candidate_status": "pending",
+        }
+        promoted, message = auto_verify_candidate(candidate)
+        self.assertIsNone(promoted)
+        self.assertIn("舉辦日期", message)
+
+    @patch("scripts.update_conferences.auto_verify_candidate")
+    def test_auto_verify_candidates_marks_promoted_candidate_store(self, verifier):
+        verifier.return_value = ({
+            "id": "candidate-auto",
+            "title": "2026 財務金融研討會",
+            "homepage_url": "https://finance.example.edu.tw/conference",
+            "review_status": "verified",
+        }, "已自動升級。")
+        store = [{
+            "id": "candidate-auto",
+            "title": "2026 財務金融研討會",
+            "homepage_url": "https://finance.example.edu.tw/conference",
+            "candidate_status": "pending",
+        }]
+        promoted, warnings = auto_verify_candidates(store, set(), set())
+        self.assertEqual(len(promoted), 1)
+        self.assertEqual(store[0]["candidate_status"], "auto_verified")
+        self.assertEqual(store[0]["review_status"], "verified")
+        self.assertEqual(store[0]["auto_verify_status"], "auto_verified")
+        self.assertTrue(warnings[0].startswith("auto_verified:candidate-auto"))
+
+    @patch("scripts.update_conferences.auto_verify_candidate")
+    def test_auto_verify_skips_candidate_waiting_for_exact_official_date(self, verifier):
+        store = [{
+            "id": "candidate-date-tba",
+            "title": "2026 金融科技研討會",
+            "homepage_url": "https://example.edu.tw/conference",
+            "candidate_status": "pending",
+            "auto_verify_disabled": True,
+        }]
+        promoted, warnings = auto_verify_candidates(store, set(), set())
+        self.assertEqual(promoted, [])
+        self.assertEqual(warnings, [])
+        verifier.assert_not_called()
+
+    def test_auto_verified_candidate_persists_in_formal_list_on_next_run(self):
+        store = [{
+            "id": "candidate-persisted",
+            "title": "2026 財務金融研討會",
+            "homepage_url": "https://finance.example.edu.tw/conference",
+            "event_start": "2026-12-12",
+            "location": "台北",
+            "fields": ["財金"],
+            "candidate_status": "auto_verified",
+            "review_status": "verified",
+            "is_stale": False,
+        }]
+        persisted = persisted_auto_verified_candidates(store, set(), set())
+        self.assertEqual(len(persisted), 1)
+        self.assertEqual(persisted[0]["review_status"], "verified")
+
+    def test_auto_verified_candidate_does_not_duplicate_manual_source(self):
+        store = [{
+            "id": "candidate-duplicate",
+            "title": "2026 財務金融研討會",
+            "homepage_url": "https://finance.example.edu.tw/conference",
+            "candidate_status": "auto_verified",
+            "review_status": "verified",
+            "is_stale": False,
+        }]
+        persisted = persisted_auto_verified_candidates(
+            store,
+            {canonical_url("https://finance.example.edu.tw/conference")},
+            set(),
+        )
+        self.assertEqual(persisted, [])
+
+    def test_auto_verify_priority_checks_soon_event_before_newer_undated_candidate(self):
+        reference = date(2026, 8, 17)
+        urgent = {
+            "event_start": "2026-09-25",
+            "first_seen": "2026-06-05",
+        }
+        newer_undated = {
+            "event_start": "",
+            "first_seen": "2026-08-16",
+        }
+        self.assertLess(
+            auto_verify_priority(urgent, reference),
+            auto_verify_priority(newer_undated, reference),
+        )
 
 
 class ValidationTests(unittest.TestCase):

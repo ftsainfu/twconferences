@@ -72,6 +72,8 @@ LINK_RE = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>
 LINK_HEALTH_FIELDS = ("homepage_url", "submission_url", "registration_url")
 LINK_FAILURE_THRESHOLD = 2
 HISTORICAL_BACKFILL_LOOKBACK_YEARS = 3
+AUTO_VERIFY_CANDIDATE_LIMIT = 8
+AUTO_VERIFY_URGENT_DAYS = 60
 
 
 def now_tw() -> datetime:
@@ -256,7 +258,7 @@ def check_conference_links(conferences: list[dict], history: dict) -> list[str]:
                     ok, error = False, str(exc)
                     if google_forms_requires_login(error, url):
                         ok, error = True, ""
-                checked_urls[canonical] = (ok, error)
+            checked_urls[canonical] = (ok, error)
 
             record = build_link_health_record(previous, url=url, ok=ok, error=error)
             history_links[health_key] = record
@@ -351,8 +353,38 @@ def find_dates(text: str) -> list[str]:
                 ).isoformat()
             )
         except ValueError:
-            continue
+                continue
     return sorted(set(dates))
+
+
+def find_dates_in_text_order(text: str) -> list[str]:
+    ordered: list[tuple[int, str]] = []
+    for pattern in DATE_PATTERNS:
+        for match in pattern.finditer(text):
+            try:
+                ordered.append((match.start(), roc_to_iso(match)))
+            except ValueError:
+                continue
+    for match in ENGLISH_DATE_PATTERN.finditer(text):
+        try:
+            ordered.append((
+                match.start(),
+                date(
+                    int(match.group("year")),
+                    ENGLISH_MONTHS[match.group("month").lower()],
+                    int(match.group("day")),
+                ).isoformat(),
+            ))
+        except ValueError:
+            continue
+    seen: set[str] = set()
+    dates: list[str] = []
+    for _position, value in sorted(ordered, key=lambda item: item[0]):
+        if value in seen:
+            continue
+        seen.add(value)
+        dates.append(value)
+    return dates
 
 
 def infer_deadline(text: str, fallback: str) -> str:
@@ -377,8 +409,11 @@ def infer_event_date(text: str, fallback: str) -> str:
     candidates: list[str] = []
     for match in window_matches:
         snippet = text[match.start() : min(len(text), match.end() + 40)]
-        candidates.extend(find_dates(snippet))
-    return sorted(set(candidates))[0] if candidates else fallback
+        dates = find_dates_in_text_order(snippet)
+        if dates:
+            return dates[0]
+        candidates.extend(dates)
+    return candidates[0] if candidates else fallback
 
 
 def infer_acceptance_notification_date(text: str, fallback: str) -> str:
@@ -402,15 +437,13 @@ def infer_formats(text: str, fallback: list[str]) -> list[str]:
         formats.add("oral")
     if "海報" in text or "poster" in text.lower():
         formats.add("poster")
-    if "線上" in text or "online" in text.lower():
+    if re.search(r"(線上|online|virtual).{0,8}(發表|會議|研討會|presentation|conference)", text, flags=re.I):
         formats.add("online")
     return sorted(formats) if formats else ["other"]
 
 
 def infer_languages(text: str, fallback: list[str]) -> list[str]:
-    if fallback:
-        return sorted(set(fallback))
-    languages = set(fallback)
+    languages = {value for value in fallback if value != "unknown"}
     lower_text = text.lower()
     if "英文" in text or "英語" in text or "english" in lower_text:
         languages.add("en")
@@ -458,6 +491,251 @@ def infer_fee_information(text: str, fallback: str, keywords: tuple[str, ...]) -
                 snippet = snippet[:239].rstrip(" ：:，,；;") + "…"
             return snippet
     return ""
+
+
+def infer_fields(text: str, fallback: list[str]) -> list[str]:
+    existing = [value for value in fallback if value and value != "待確認"]
+    fields = set(existing)
+    lower_text = text.lower()
+    field_rules = {
+        "財金": ("財金", "財務", "金融", "投資", "證券", "銀行", "finance", "financial"),
+        "會計": ("會計", "accounting"),
+        "經濟": ("經濟", "economics"),
+        "管理": ("管理", "經營", "management"),
+        "行銷": ("行銷", "marketing"),
+        "國際企業": ("國際企業", "國貿", "國際貿易", "international business", "trade"),
+        "永續": ("永續", "ESG", "csr", "sustainability"),
+        "資訊管理": ("資訊管理", "人工智慧", "數位", "AI", "information management", "business analytics"),
+        "健康管理": ("健康", "醫療", "照護", "healthcare", "health care"),
+        "供應鏈管理": ("供應鏈", "物流", "運輸", "supply chain", "logistics"),
+    }
+    for field, keywords in field_rules.items():
+        if any(keyword.lower() in lower_text for keyword in keywords):
+            fields.add(field)
+    return sorted(fields) if fields else fallback
+
+
+def infer_location(text: str, fallback: str) -> str:
+    if fallback and "待確認" not in fallback:
+        return fallback
+    institution_rules = [
+        ("台北", ("世新大學", "東吳大學", "臺灣大學", "台灣大學", "政治大學", "臺北商業大學", "台北商業大學")),
+        ("新竹", ("陽明交通大學", "清華大學")),
+        ("台南", ("南臺科技大學", "成功大學")),
+        ("高雄", ("高雄科技大學", "中山大學")),
+    ]
+    location_rules = [
+        ("台北", ("台北", "臺北", "taipei")),
+        ("新北", ("新北", "new taipei")),
+        ("基隆", ("基隆", "keelung")),
+        ("桃園", ("桃園", "taoyuan")),
+        ("新竹", ("新竹", "hsinchu")),
+        ("苗栗", ("苗栗", "miaoli")),
+        ("台中", ("台中", "臺中", "taichung")),
+        ("彰化", ("彰化", "changhua")),
+        ("南投", ("南投", "nantou")),
+        ("雲林", ("雲林", "yunlin")),
+        ("嘉義", ("嘉義", "chiayi")),
+        ("台南", ("台南", "臺南", "tainan")),
+        ("高雄", ("高雄", "kaohsiung")),
+        ("屏東", ("屏東", "pingtung")),
+        ("宜蘭", ("宜蘭", "yilan")),
+        ("花蓮", ("花蓮", "hualien")),
+        ("台東", ("台東", "臺東", "taitung")),
+        ("澎湖", ("澎湖", "penghu")),
+        ("金門", ("金門", "kinmen")),
+        ("連江", ("連江", "馬祖", "lienchiang", "matsu")),
+    ]
+    lower_text = text.lower()
+    for label, markers in institution_rules:
+        if any(marker in text for marker in markers):
+            return label
+    for label, markers in location_rules:
+        if any(marker.lower() in lower_text for marker in markers):
+            return label
+    if re.search(r"(線上|online|virtual).{0,8}(研討會|會議|conference)", text, flags=re.I):
+        return "線上"
+    if "taiwan" in lower_text or "台灣" in text or "臺灣" in text:
+        return "台灣（城市待確認）"
+    return fallback
+
+
+def title_matches_page(title: str, text: str) -> bool:
+    key = candidate_title_key(title)
+    page_key = candidate_title_key(text[:20000])
+    if key and key in page_key:
+        return True
+    title_tokens = [
+        token
+        for token in re.findall(r"[A-Za-z]{4,}|[\u4e00-\u9fff]{2,}|20\d{2}", title.lower())
+        if token not in {"研討會", "學術", "國際", "全國", "conference", "symposium", "2026", "2027"}
+    ]
+    if not title_tokens:
+        return False
+    hits = sum(1 for token in title_tokens[:10] if token in text.lower())
+    return hits >= max(2, min(4, len(title_tokens) // 2))
+
+
+def is_auto_verifiable_conference_text(text: str) -> bool:
+    lower_text = text.lower()
+    if not any(marker in text for marker in current_year_markers()):
+        return False
+    if not any(word in text for word in CONFERENCE_WORDS) and not any(word in lower_text for word in CONFERENCE_WORDS):
+        return False
+    if not any(word.lower() in lower_text for word in KEYWORDS):
+        return False
+    return any(word in text for word in FORMAL_CONFERENCE_WORDS) or any(
+        word in lower_text for word in FORMAL_CONFERENCE_WORDS
+    )
+
+
+def auto_verify_candidate(candidate: dict) -> tuple[dict | None, str]:
+    """Promote a candidate only when official page content supports a safe formal entry."""
+    if candidate.get("candidate_status", "pending") != "pending" or candidate.get("is_stale"):
+        return None, "候選已非待確認或已過期。"
+    url = str(candidate.get("homepage_url") or "")
+    if not validate_url(url):
+        return None, "候選缺少有效官方頁。"
+    try:
+        raw, _ = fetch_url(url, timeout=10, attempts=1, allow_invalid_tls=bool(candidate.get("allow_invalid_tls")))
+    except (urllib.error.URLError, TimeoutError, UnicodeDecodeError) as exc:
+        return None, f"候選頁無法讀取：{exc}"
+    text = normalize_text(raw)
+    combined = f"{candidate.get('title', '')} {text}"
+    if not is_auto_verifiable_conference_text(combined):
+        return None, "頁面未通過商管正式研討會語意檢查。"
+    if not title_matches_page(str(candidate.get("title") or ""), text):
+        return None, "頁面文字無法確認候選標題。"
+
+    promoted = dict(candidate)
+    promoted["event_start"] = infer_event_date(combined, str(promoted.get("event_start") or ""))
+    if promoted.get("event_start") and not promoted.get("event_end"):
+        promoted["event_end"] = promoted["event_start"]
+    promoted["submission_deadline"] = infer_deadline(combined, str(promoted.get("submission_deadline") or ""))
+    promoted["acceptance_notification_date"] = infer_acceptance_notification_date(
+        combined,
+        str(promoted.get("acceptance_notification_date") or ""),
+    )
+    promoted["location"] = infer_location(combined, str(promoted.get("location") or ""))
+    field_sections = " ".join(
+        match.group(0)
+        for match in re.finditer(r"(徵稿範圍|徵稿主題|研討會主題|主題|議題|領域|topics?).{0,600}", combined, flags=re.I)
+    )
+    promoted["fields"] = infer_fields(
+        f"{candidate.get('title', '')} {field_sections}".strip() or combined,
+        promoted.get("fields") or [],
+    )
+    promoted["presentation_formats"] = infer_formats(combined, promoted.get("presentation_formats") or [])
+    promoted["presentation_languages"] = infer_languages(combined, promoted.get("presentation_languages") or [])
+    promoted["submission_fee"] = infer_fee_information(
+        combined,
+        str(promoted.get("submission_fee") or ""),
+        ("投稿費", "審稿費", "submission fee"),
+    )
+    promoted["registration_fee"] = infer_fee_information(
+        combined,
+        str(promoted.get("registration_fee") or ""),
+        ("註冊費", "報名費", "registration fee"),
+    )
+
+    if not promoted.get("event_start"):
+        return None, "未能自動確認舉辦日期。"
+    if not promoted.get("location") or "待確認" in promoted.get("location", ""):
+        return None, "未能自動確認舉辦地點。"
+    if promoted.get("location") == "台灣（城市待確認）":
+        return None, "未能自動確認舉辦地點。"
+    if promoted.get("fields") in (None, [], ["待確認"]):
+        return None, "未能自動確認商管相關領域。"
+
+    promoted["review_status"] = "verified"
+    promoted["candidate_status"] = "auto_verified"
+    promoted["auto_verified_at"] = today_iso()
+    promoted["last_checked"] = today_iso()
+    promoted["last_attempted_at"] = today_iso()
+    promoted["check_status"] = "ok"
+    promoted["check_error"] = ""
+    promoted["change_status"] = promoted.get("change_status") or "new"
+    promoted["change_label"] = "自動升級"
+    promoted["change_summary"] = "每日更新已自動驗證官方頁、日期、地點、領域與發表資訊後升級為正式收錄。"
+    promoted.setdefault("attention_notes", []).append(
+        "本項目由每日更新自動驗證升級；使用前仍建議開啟官方頁確認最新公告。"
+    )
+    return promoted, "已自動升級。"
+
+
+def auto_verify_priority(candidate: dict, reference: date | None = None) -> tuple[int, date, str]:
+    """Prioritize soon-to-start candidates even when they were discovered earlier."""
+    today = reference or now_tw().date()
+    try:
+        event_day = date.fromisoformat(str(candidate.get("event_start") or ""))
+    except ValueError:
+        event_day = date.max
+    days_until = (event_day - today).days if event_day != date.max else None
+    if days_until is not None and 0 <= days_until <= AUTO_VERIFY_URGENT_DAYS:
+        bucket = 0
+    elif days_until is not None and days_until > AUTO_VERIFY_URGENT_DAYS:
+        bucket = 1
+    elif event_day == date.max:
+        bucket = 2
+    else:
+        bucket = 3
+    return bucket, event_day, str(candidate.get("first_seen") or "")
+
+
+def auto_verify_candidates(candidate_store: list[dict], existing_urls: set[str], existing_titles: set[str]) -> tuple[list[dict], list[str]]:
+    promoted: list[dict] = []
+    warnings: list[str] = []
+    pending_candidates = [
+        candidate
+        for candidate in candidate_store
+        if candidate.get("candidate_status", "pending") == "pending"
+        and not candidate.get("is_stale")
+        and not candidate.get("auto_verify_disabled")
+    ]
+    pending_candidates.sort(key=auto_verify_priority)
+    for candidate in pending_candidates[:AUTO_VERIFY_CANDIDATE_LIMIT]:
+        if candidate.get("candidate_status", "pending") != "pending" or candidate.get("is_stale"):
+            continue
+        if canonical_url(candidate.get("homepage_url", "")) in existing_urls:
+            continue
+        if duplicates_known_title(str(candidate.get("title") or ""), existing_titles):
+            continue
+        upgraded, message = auto_verify_candidate(candidate)
+        if upgraded is None:
+            candidate["auto_verify_status"] = "needs_review"
+            candidate["auto_verify_note"] = message
+            continue
+        candidate.update(upgraded)
+        candidate["candidate_status"] = "auto_verified"
+        candidate["review_status"] = "verified"
+        candidate["auto_verify_status"] = "auto_verified"
+        candidate["auto_verify_note"] = message
+        promoted.append(upgraded)
+        existing_urls.add(canonical_url(upgraded.get("homepage_url", "")))
+        existing_titles.add(title_key(upgraded.get("title", "")))
+        warnings.append(f"auto_verified:{upgraded.get('id')}: {upgraded.get('title')}")
+    return promoted, warnings
+
+
+def persisted_auto_verified_candidates(
+    candidate_store: list[dict],
+    existing_urls: set[str],
+    existing_titles: set[str],
+) -> list[dict]:
+    """Keep prior automatic promotions in the formal list across daily runs."""
+    persisted: list[dict] = []
+    for candidate in candidate_store:
+        if candidate.get("candidate_status") != "auto_verified" or candidate.get("is_stale"):
+            continue
+        url = canonical_url(candidate.get("homepage_url", ""))
+        if url in existing_urls or duplicates_known_title(str(candidate.get("title") or ""), existing_titles):
+            continue
+        item = dict(candidate)
+        item["review_status"] = "verified"
+        persisted.append(item)
+        existing_urls.add(url)
+        existing_titles.add(title_key(item.get("title", "")))
+    return persisted
 
 
 def update_known_conferences(sources: dict, history: dict) -> tuple[list[dict], list[str]]:
@@ -1344,8 +1622,9 @@ def merge_candidate_store(discovered: list[dict], stored: list[dict]) -> list[di
         candidate_id_value = candidate["id"]
         discovered_ids.add(candidate_id_value)
         previous = by_id.get(candidate_id_value, {})
+        merged_candidate = {**candidate, **previous} if previous.get("candidate_status") == "auto_verified" else candidate
         by_id[candidate_id_value] = {
-            **candidate,
+            **merged_candidate,
             "first_seen": previous.get("first_seen") or candidate.get("last_changed") or today,
             "last_seen": today,
             "candidate_status": previous.get("candidate_status", "pending"),
@@ -1355,7 +1634,7 @@ def merge_candidate_store(discovered: list[dict], stored: list[dict]) -> list[di
 
     for candidate_id_value, candidate in by_id.items():
         if candidate_id_value not in discovered_ids:
-            candidate["is_stale"] = True
+            candidate["is_stale"] = not bool(candidate.get("manual_candidate"))
 
     return sorted(by_id.values(), key=lambda item: (item.get("candidate_status", "pending"), item.get("first_seen", ""), item["id"]))
 
@@ -1527,7 +1806,6 @@ def main(argv: list[str] | None = None) -> int:
         item for item in previous_payload.get("conferences", []) if item.get("review_status") == "candidate"
     ]
     conferences, source_errors = update_known_conferences(sources, history)
-    link_errors = check_conference_links(conferences, history)
     existing_ids = {item["id"] for item in conferences}
     existing_urls = {canonical_url(item.get("homepage_url", "")) for item in conferences}
     existing_titles = {title_key(item.get("title", "")) for item in conferences}
@@ -1559,10 +1837,18 @@ def main(argv: list[str] | None = None) -> int:
         merge_discovered_candidates(historical_backfill_leads),
         historical_backfill_payload.get("leads", []),
     )
-    discovery_warnings = organizer_errors + reference_errors + historical_backfill_errors
     stored_candidates = candidate_payload.get("candidates", []) or migrated_candidates
     discovered_candidates = merge_discovered_candidates(organizer_candidates + reference_candidates)
     candidate_store = merge_candidate_store(discovered_candidates, stored_candidates)
+    conferences.extend(persisted_auto_verified_candidates(candidate_store, existing_urls, existing_titles))
+    auto_verified_candidates, auto_verify_warnings = auto_verify_candidates(
+        candidate_store,
+        existing_urls,
+        existing_titles,
+    )
+    conferences.extend(auto_verified_candidates)
+    link_errors = check_conference_links(conferences, history)
+    discovery_warnings = organizer_errors + reference_errors + historical_backfill_errors + auto_verify_warnings
     visible_candidates = [
         item for item in candidate_store if item.get("candidate_status") == "pending" and not item.get("is_stale")
     ]

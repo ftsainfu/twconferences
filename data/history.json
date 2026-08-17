@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "f17e10f670b305c93569fc5f60c25f44e3fce0e02885e42eb19063bf61601800",
+      "hash": "a7c8e882ef208dae453682a92615de532ac85442b15af63056b3a31461a236b8",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "cfa7dd0d1115f9c593dd5a79e3845a42d1d6f2459cc2cbd21dd5059cab66bb6f",
+      "hash": "5b41ad07701a3b09e3a89426155dc14c07b58b76d670aa259ee09be3c52d5819",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
@@ -56,15 +56,15 @@
       "url": "https://www.conference.url.tw/main/"
     },
     "papertone-2026-business-law": {
-      "hash": "f81818e78293d0b656b5feef47fc1bac0e8752f7eb695885e3088613191032c0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "last_attempted_at": "2026-08-17",
-      "last_successful_at": "2026-08-11",
-      "last_checked": "2026-08-11",
-      "last_changed": "2026-06-05",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
       "last_status": "unchanged",
-      "check_status": "error",
-      "last_error": "<urlopen error curl: (35) Recv failure: Connection reset by peer>",
-      "url": "https://papertone.net/"
+      "check_status": "ok",
+      "last_error": "",
+      "url": "http://papertone.net/"
     },
     "mcu-2026-economics-trade-management": {
       "hash": "cde25aece8824396fd034fe2818af1d38766012b05b2c9e0a677d2f901ce2061",
@@ -78,26 +78,26 @@
       "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
     },
     "fgu-2026-sme-management": {
-      "hash": "1f118cf759cf25e0e5c543a57619c528fe7c3103fadb68d468b0be5f43be366e",
+      "hash": "a537a96006077ec0727838da79406b62a217afe1c686e9edfa68f29db63d4da5",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
       "last_changed": "2026-08-17",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
     },
     "ntub-2026-digital-business": {
-      "hash": "a2ab5ea320fe0f482584069ff3450d97f9ac6b4d24bede7a784d62b3dd289908",
+      "hash": "bb2aaea1c7b440f99898b436fa547d2034c2cb9afd3d549450dd1ff338dc77a3",
       "last_attempted_at": "2026-08-17",
-      "last_successful_at": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_changed": "2026-06-13",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
       "last_status": "unchanged",
-      "check_status": "error",
-      "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>",
-      "url": "https://som.ntub.edu.tw/p/406-1017-116631%2Cr335.php?Lang=zh-tw"
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://sites.google.com/gs.takming.edu.tw/2026conference"
     },
     "cmr-2026-marketing": {
       "hash": "7e78793c6966d381f6d76339756692f919e52124d3c9db060aac84784f0da866",
@@ -177,12 +177,12 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "65c623188ba768457680951f301a91cb002e9185573702ffcffe0d05b364742e",
+      "hash": "e09fa2f747a18979eb8c9fa97f2bfc9ad5d2c87188e79f305d6db00dc495f299",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
       "last_changed": "2026-08-17",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://ba.stust.edu.tw/tc/news/63-91967-n"
@@ -199,11 +199,11 @@
       "url": "https://review.management.ntu.edu.tw/news.aspx?lang=cht&pid=336"
     },
     "taa-2026-accounting-education": {
-      "hash": "ccbde6a2a39a54d34606bbafe05a42b8aa6058a51b0c5c6387d682114da62e63",
+      "hash": "6033ee877c792ba3962b2e32e82d9cc271c936affab70ecbe6c266a2e56410e9",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
-      "last_changed": "2026-08-12",
+      "last_changed": "2026-08-17",
       "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
@@ -254,7 +254,7 @@
       "url": "https://www.finance.org.tw/fnnews/21"
     },
     "must-2025-icmsi": {
-      "hash": "0178b395f7d2d06926903a483d48dabf9a75b355ea77580f9ff0e55a105b1e68",
+      "hash": "9f6b7f113431262c6711ee6c1c3bca2aa7256601a67aa0bf9579ee9e863610d6",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
@@ -298,7 +298,7 @@
       "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1"
     },
     "uch-2024-management-practice": {
-      "hash": "ba1e90136e48f963f14c51e8af97c543645a3dc6c5ec455aaf6545ccfa4f6820",
+      "hash": "479d0f8c4999c79a999eeca189f259290d21127e1e32bd66855ee38c1f68e798",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
@@ -309,12 +309,12 @@
       "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024"
     },
     "uch-2023-management-practice": {
-      "hash": "7287180ffb48b5a3cc78cf57320b2b6e96ac1698a9ecec681212d626ba4841a4",
+      "hash": "22da6b49f2693dd1faf3e7212ed8a94d7249bc3f19e60c1ce7afdd58fb8da229",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
       "last_changed": "2026-08-17",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://www.im.uch.edu.tw/zh_tw/News/2023%E5%85%A8%E5%9C%8B%E7%AE%A1%E7%90%86%E5%AF%A6%E5%8B%99%E6%9A%A8%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83-12429077"
@@ -353,15 +353,136 @@
       "url": "https://finance.cyut.edu.tw/p/404-1025-34618.php?Lang=zh-tw"
     },
     "tiibs-2023-business-management": {
-      "hash": "3fb75dcbbdf7427643477f0a2f897fc2ddc4b22964cfff1fc6cc3e472d4a751f",
+      "hash": "bbc15c2667cced0efbed79d86bd1d7d867a095594f1e466b8f21b1c2ffa1d616",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
       "last_checked": "2026-08-17",
-      "last_changed": "2026-07-21",
+      "last_changed": "2026-08-17",
       "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
-      "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw"
+      "url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw"
+    },
+    "just-2026-business-practice": {
+      "hash": "5d5b9de6d9b95f3e0c950afe742a5bb39cb25f6e6e886c10603310b7bf3cba35",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://irnas.just.edu.tw/conference/2026/"
+    },
+    "uch-2026-management-practice": {
+      "hash": "028ee96e4ca572e8c28db0e3937eb0cbb57e967b2474c6caf0d8e3ad8109b961",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "changed",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference"
+    },
+    "ctbc-2026-ifba": {
+      "hash": "50d351721a334b8eb697b65eec6b132feafbaaa13b6a3d5a531a2a61196446f8",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://ifba.ctbc.edu.tw/ifba2026/website/index.html"
+    },
+    "chihlee-2026-business-management-practice": {
+      "hash": "944fa77d5184f80c65474678cc78a9338ee4144e1af855dc45586d3fe6e91f7c",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw"
+    },
+    "ocu-2026-icbee": {
+      "hash": "ad2b4d7bebf854fd3e290a1ea390f8c9a9ebece079fdde3bbf33b308ef71c047",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://bms.ocu.edu.tw/p/412-1016-6104.php?Lang=zh-tw"
+    },
+    "ntub-2026-international-business-forum": {
+      "hash": "ff3fcb5ff0706f14bdc8bb15349b1caf1b93c526818f2eced82f62047d7b8d45",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://ib.ntub.edu.tw/p/404-1039-116270.php?Lang=zh-tw"
+    },
+    "mcut-2026-formosa-management-innovation": {
+      "hash": "732d9aaa44bc87ed5d873883b64c656d2a7403da25a9ec162e4f4666e547dee4",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw"
+    },
+    "cyut-2026-ssim": {
+      "hash": "fecbc306cfdd8dafcb10f9b06503bc25f06fb822bedc59849345a949bc647d2e",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://ssim2026.cyut.edu.tw/"
+    },
+    "nthu-2026-icrm": {
+      "hash": "dc5932f8d2d6f64385309d12e2a7ac6593cf5005547370a91ac9f171ed8aeb44",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management"
+    },
+    "chapf-2026-annual": {
+      "hash": "67d8552832dcc9c71d13dabb2125fd83c23176554a87c49bd6568b535129ed9e",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2"
+    },
+    "nkuht-2026-tourism-hospitality-sustainability": {
+      "hash": "6d201f45266add0e3006de10a8f0010eade59d083b852675ea01864e010d87bc",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "last_checked": "2026-08-17",
+      "last_changed": "2026-08-17",
+      "last_status": "unchanged",
+      "check_status": "ok",
+      "last_error": "",
+      "url": "https://sca.nkuht.edu.tw/p/406-1026-42910%2Cr41.php?Lang=zh-tw"
     }
   },
   "links": {
@@ -530,7 +651,7 @@
       "status": "broken",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-11",
-      "consecutive_failures": 6,
+      "consecutive_failures": 8,
       "last_error": "<urlopen error curl: (35) Recv failure: Connection reset by peer>"
     },
     "papertone-2026-business-law:submission_url:https://papertone.net": {
@@ -538,7 +659,7 @@
       "status": "broken",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-11",
-      "consecutive_failures": 6,
+      "consecutive_failures": 8,
       "last_error": "<urlopen error curl: (35) Recv failure: Connection reset by peer>"
     },
     "papertone-2026-business-law:registration_url:https://papertone.net": {
@@ -546,7 +667,7 @@
       "status": "broken",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-11",
-      "consecutive_failures": 6,
+      "consecutive_failures": 8,
       "last_error": "<urlopen error curl: (35) Recv failure: Connection reset by peer>"
     },
     "mcu-2026-economics-trade-management:homepage_url:https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management": {
@@ -682,7 +803,7 @@
       "status": "broken",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-07-27",
-      "consecutive_failures": 21,
+      "consecutive_failures": 22,
       "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>"
     },
     "ntub-2026-digital-business:submission_url:https://som.ntub.edu.tw/p/406-1017-116631,r335.php": {
@@ -690,7 +811,7 @@
       "status": "broken",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-07-27",
-      "consecutive_failures": 21,
+      "consecutive_failures": 22,
       "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>"
     },
     "meiho-2026-health-tech-management:homepage_url:https://conf.meiho.edu.tw/Public/ActSym/ActSymList.aspx": {
@@ -1071,11 +1192,11 @@
     },
     "tiibs-2023-business-management:homepage_url:https://crrmba.pccu.edu.tw/p/406-1188-110527,r823.php": {
       "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
-      "status": "ok",
+      "status": "warning",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
-      "consecutive_failures": 0,
-      "last_error": ""
+      "consecutive_failures": 1,
+      "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>"
     },
     "tiibs-2023-business-management:submission_url:https://forms.gle/K66gtjxMYEt8o86M8": {
       "url": "https://forms.gle/K66gtjxMYEt8o86M8",
@@ -1087,11 +1208,11 @@
     },
     "tiibs-2023-business-management:registration_url:https://crrmba.pccu.edu.tw/p/406-1188-110527,r823.php": {
       "url": "https://crrmba.pccu.edu.tw/p/406-1188-110527%2Cr823.php?Lang=zh-tw",
-      "status": "ok",
+      "status": "warning",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
-      "consecutive_failures": 0,
-      "last_error": ""
+      "consecutive_failures": 1,
+      "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>"
     },
     "must-2025-icmsi:submission_url:https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392": {
       "url": "https://acade.must.edu.tw/news/page.aspx?UnitID=47&id=25392",
@@ -1199,6 +1320,302 @@
     },
     "stust-2026-knowledge-global-management:submission_url:https://business.stust.edu.tw/tc/node/2026Conference": {
       "url": "https://business.stust.edu.tw/tc/node/2026Conference",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-www-finance-org-tw-9bdcf3d1:homepage_url:https://www.finance.org.tw/fnnews/52": {
+      "url": "https://www.finance.org.tw/fnnews/52",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-www-finance-org-tw-9bdcf3d1:submission_url:https://www.finance.org.tw/fnnews/52": {
+      "url": "https://www.finance.org.tw/fnnews/52",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-fin-wp-shu-edu-tw-58c180e2:homepage_url:https://fin.wp.shu.edu.tw?page_id=262": {
+      "url": "https://fin.wp.shu.edu.tw/?page_id=262",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-fin-wp-shu-edu-tw-58c180e2:submission_url:https://fin.wp.shu.edu.tw?page_id=262": {
+      "url": "https://fin.wp.shu.edu.tw/?page_id=262",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-www-finance-org-tw-17e4c6ff:homepage_url:https://www.finance.org.tw/fnnews/51": {
+      "url": "https://www.finance.org.tw/fnnews/51",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "organizer-www-finance-org-tw-17e4c6ff:submission_url:https://www.finance.org.tw/fnnews/51": {
+      "url": "https://www.finance.org.tw/fnnews/51",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tiibs-2023-business-management:homepage_url:https://crrmba.pccu.edu.tw/p/16-1188-110527.php": {
+      "url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "tiibs-2023-business-management:registration_url:https://crrmba.pccu.edu.tw/p/16-1188-110527.php": {
+      "url": "https://crrmba.pccu.edu.tw/p/16-1188-110527.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ntub-2026-digital-business:homepage_url:https://sites.google.com/gs.takming.edu.tw/2026conference": {
+      "url": "https://sites.google.com/gs.takming.edu.tw/2026conference",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ntub-2026-digital-business:submission_url:https://forms.gle/PaahLU8BrptiQB7ZA": {
+      "url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ntub-2026-digital-business:registration_url:https://forms.gle/PaahLU8BrptiQB7ZA": {
+      "url": "https://forms.gle/PaahLU8BrptiQB7ZA",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2026-business-practice:homepage_url:https://irnas.just.edu.tw/conference/2026": {
+      "url": "https://irnas.just.edu.tw/conference/2026/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2026-business-practice:submission_url:https://irnas.just.edu.tw/conference/2026": {
+      "url": "https://irnas.just.edu.tw/conference/2026/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "just-2026-business-practice:registration_url:https://irnas.just.edu.tw/conference/2026": {
+      "url": "https://irnas.just.edu.tw/conference/2026/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2026-management-practice:homepage_url:https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference": {
+      "url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2026-management-practice:submission_url:https://forms.gle/HEVcvoMZ7UDQJGtC9": {
+      "url": "https://forms.gle/HEVcvoMZ7UDQJGtC9",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "uch-2026-management-practice:registration_url:https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference": {
+      "url": "https://www.mdm.uch.edu.tw/zh_tw/MENUCONF/conference",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ctbc-2026-ifba:homepage_url:https://ifba.ctbc.edu.tw/ifba2026/website/index.html": {
+      "url": "https://ifba.ctbc.edu.tw/ifba2026/website/index.html",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ctbc-2026-ifba:submission_url:https://forms.gle/Ro4fmxWc6sZhxkWU9": {
+      "url": "https://forms.gle/Ro4fmxWc6sZhxkWU9",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ctbc-2026-ifba:registration_url:https://forms.gle/3SU1f2f54gangqCX7": {
+      "url": "https://forms.gle/3SU1f2f54gangqCX7",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "chihlee-2026-business-management-practice:homepage_url:https://bm100.chihlee.edu.tw/p/403-1023-11-1.php": {
+      "url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ocu-2026-icbee:homepage_url:https://bms.ocu.edu.tw/p/412-1016-6104.php": {
+      "url": "https://bms.ocu.edu.tw/p/412-1016-6104.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ntub-2026-international-business-forum:homepage_url:https://ib.ntub.edu.tw/p/404-1039-116270.php": {
+      "url": "https://ib.ntub.edu.tw/p/404-1039-116270.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "ntub-2026-international-business-forum:registration_url:https://www.beclass.com/rid=30525cf69a65253dcf52": {
+      "url": "https://www.beclass.com/rid=30525cf69a65253dcf52",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "mcut-2026-formosa-management-innovation:homepage_url:https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php": {
+      "url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cyut-2026-ssim:homepage_url:https://ssim2026.cyut.edu.tw": {
+      "url": "https://ssim2026.cyut.edu.tw/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cyut-2026-ssim:submission_url:https://ssim2026.cyut.edu.tw": {
+      "url": "https://ssim2026.cyut.edu.tw/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "cyut-2026-ssim:registration_url:https://ssim2026.cyut.edu.tw": {
+      "url": "https://ssim2026.cyut.edu.tw/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "nthu-2026-icrm:homepage_url:https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management": {
+      "url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "nthu-2026-icrm:submission_url:https://residemyedu.wixsite.com/icrm2026/call-for-papers": {
+      "url": "https://residemyedu.wixsite.com/icrm2026/call-for-papers",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "nthu-2026-icrm:registration_url:https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management": {
+      "url": "https://crr.proj.nthu.edu.tw/zh/events/2026-international-conference-on-resilience-and-management",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "chapf-2026-annual:homepage_url:https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2": {
+      "url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "nkuht-2026-tourism-hospitality-sustainability:homepage_url:https://gitm.nkuht.edu.tw/p/406-1022-43037,r614.php": {
+      "url": "https://gitm.nkuht.edu.tw/p/406-1022-43037%2Cr614.php?Lang=zh-tw",
+      "status": "warning",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "",
+      "consecutive_failures": 1,
+      "last_error": "<urlopen error curl: (22) The requested URL returned error: 404>"
+    },
+    "papertone-2026-business-law:homepage_url:http://papertone.net": {
+      "url": "http://papertone.net/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "papertone-2026-business-law:submission_url:http://papertone.net": {
+      "url": "http://papertone.net/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "papertone-2026-business-law:registration_url:http://papertone.net": {
+      "url": "http://papertone.net/",
+      "status": "ok",
+      "last_attempted_at": "2026-08-17",
+      "last_successful_at": "2026-08-17",
+      "consecutive_failures": 0,
+      "last_error": ""
+    },
+    "nkuht-2026-tourism-hospitality-sustainability:homepage_url:https://sca.nkuht.edu.tw/p/406-1026-42910,r41.php": {
+      "url": "https://sca.nkuht.edu.tw/p/406-1026-42910%2Cr41.php?Lang=zh-tw",
       "status": "ok",
       "last_attempted_at": "2026-08-17",
       "last_successful_at": "2026-08-17",
