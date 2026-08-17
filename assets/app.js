@@ -531,6 +531,20 @@ function sortItems() {
   };
 
   const sorters = {
+    recommended: (a, b) => {
+      const aDeadline = parseDate(a.submission_deadline);
+      const bDeadline = parseDate(b.submission_deadline);
+      const aOpen = Boolean(aDeadline && aDeadline >= today);
+      const bOpen = Boolean(bDeadline && bDeadline >= today);
+
+      if (aOpen !== bOpen) return aOpen ? -1 : 1;
+      if (aOpen && bOpen) {
+        const deadlineDifference = aDeadline.getTime() - bDeadline.getTime();
+        if (deadlineDifference) return deadlineDifference;
+      }
+
+      return byDate("event_start")(a, b) || a.title.localeCompare(b.title, "zh-Hant");
+    },
     event_asc: byDate("event_start"),
     deadline_asc: byDate("submission_deadline"),
     name_asc: (a, b) => a.title.localeCompare(b.title, "zh-Hant"),
@@ -565,7 +579,7 @@ function sortItems() {
     return;
   }
 
-  state.filtered.sort(sorters[sort] || sorters.event_asc);
+  state.filtered.sort(sorters[sort] || sorters.recommended);
 }
 
 function updateCustomSortVisibility() {
@@ -1432,7 +1446,7 @@ function bindEvents() {
     els.format.value = "";
     els.englishPresentation.value = "";
     if (els.trackedOnly) els.trackedOnly.checked = false;
-    els.sort.value = "event_asc";
+    els.sort.value = "recommended";
     if (els.customSortPrimary) els.customSortPrimary.value = "event_asc";
     if (els.customSortSecondary) els.customSortSecondary.value = "";
     if (els.customSortTertiary) els.customSortTertiary.value = "";

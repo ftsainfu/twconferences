@@ -46,6 +46,10 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("state.filtered.filter(isNewlyAdded).length", script)
         self.assertIn("a.last_changed || a.created_at || a.last_checked", script)
         self.assertIn("不因每日檢查而提前", html)
+        sort_options = html.split('<select id="sortSelect">', 1)[1].split("</select>", 1)[0]
+        self.assertLess(sort_options.index('value="recommended"'), sort_options.index('value="event_asc"'))
+        self.assertIn('els.sort.value = "recommended";', script)
+        self.assertIn("aOpen !== bOpen", script)
         self.assertIn('<option value="custom">自訂排序</option>', html)
         self.assertIn('id="customSortPanel"', html)
         self.assertIn("function updateCustomSortVisibility", script)

@@ -111,6 +111,7 @@
         <label>
           排序
           <select id="sortSelect">
+            <option value="recommended">建議排序（可投稿優先）</option>
             <option value="event_asc">舉辦日期由近到遠</option>
             <option value="updated_desc">最近更新優先</option>
             <option value="rating_desc">參加者推薦度最高</option>
@@ -118,7 +119,7 @@
             <option value="name_asc">名稱 A-Z</option>
             <option value="custom">自訂排序</option>
           </select>
-          <small class="sort-help">預設依舉辦日排序；最近更新依實際資訊異動日排序，不因每日檢查而提前。</small>
+          <small class="sort-help">預設將仍可投稿者排前面，再依投稿截止日及舉辦日排序；最近更新依實際資訊異動日排序，不因每日檢查而提前。</small>
         </label>
         <fieldset id="customSortPanel" class="custom-sort-panel" hidden>
           <legend>自訂排序</legend>
