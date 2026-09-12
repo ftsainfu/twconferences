@@ -45,7 +45,7 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("資訊異動", script)
         self.assertIn("state.filtered.filter(isNewlyAdded).length", script)
         self.assertIn("a.last_changed || a.created_at || a.last_checked", script)
-        self.assertIn("不因每日檢查而提前", html)
+        self.assertIn("預設：可投稿、截止日、舉辦日", html)
         sort_options = html.split('<select id="sortSelect">', 1)[1].split("</select>", 1)[0]
         self.assertLess(sort_options.index('value="recommended"'), sort_options.index('value="event_asc"'))
         self.assertIn('els.sort.value = "recommended";', script)
@@ -69,6 +69,9 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('class="card-details"', script)
         self.assertIn('import(`./assets/app.js?v=${Date.now()}`)', html)
         self.assertNotIn('src="assets/app.js?v=20260715d"', html)
+        self.assertIn('id="advancedFilters"', html)
+        self.assertIn('class="filter-primary"', html)
+        self.assertIn("els.advancedFilters.open = true", script)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]

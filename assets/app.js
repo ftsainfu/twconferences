@@ -44,6 +44,7 @@ const els = {
   englishPresentation: document.querySelector("#englishPresentationFilter"),
   trackedOnly: document.querySelector("#trackedOnlyFilter"),
   sort: document.querySelector("#sortSelect"),
+  advancedFilters: document.querySelector("#advancedFilters"),
   customSortPanel: document.querySelector("#customSortPanel"),
   customSortPrimary: document.querySelector("#customSortPrimary"),
   customSortSecondary: document.querySelector("#customSortSecondary"),
@@ -597,6 +598,7 @@ function sortItems() {
 function updateCustomSortVisibility() {
   if (!els.customSortPanel || !els.sort) return;
   els.customSortPanel.hidden = els.sort.value !== "custom";
+  if (els.sort.value === "custom" && els.advancedFilters) els.advancedFilters.open = true;
 }
 
 function sortPastItems(items) {
@@ -1468,6 +1470,7 @@ function bindEvents() {
     if (els.customSortPrimary) els.customSortPrimary.value = "event_asc";
     if (els.customSortSecondary) els.customSortSecondary.value = "";
     if (els.customSortTertiary) els.customSortTertiary.value = "";
+    if (els.advancedFilters) els.advancedFilters.open = false;
     updateCustomSortVisibility();
     applyFilters();
   });

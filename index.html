@@ -37,129 +37,137 @@
 
       <div id="conferencesPanel" role="tabpanel" aria-labelledby="conferencesTab">
       <section class="toolbar" aria-label="篩選排序">
-        <label>
-          關鍵字
-          <input id="keywordFilter" type="search" placeholder="研討會、主辦單位、領域" />
-        </label>
-        <label>
-          領域
-          <select id="fieldFilter">
-            <option value="">全部領域</option>
-            <option value="finance">財金／金融</option>
-            <option value="management">管理</option>
-            <option value="marketing">行銷</option>
-            <option value="trade">國貿／國際企業</option>
-            <option value="sustainability">永續／ESG</option>
-            <option value="technology">資訊科技</option>
-            <option value="health">健康管理</option>
-          </select>
-        </label>
-        <label>
-          舉辦年月
-          <input id="monthFilter" type="month" />
-        </label>
-        <label>
-          地點
-          <select id="locationFilter">
-            <option value="">全部地點</option>
-          </select>
-        </label>
-        <label>
-          舉辦狀態
-          <select id="eventStatusFilter">
-            <option value="">全部狀態</option>
-            <option value="upcoming">即將舉辦</option>
-            <option value="ongoing">進行中</option>
-            <option value="unknown">未公告日期</option>
-          </select>
-        </label>
-        <label>
-          投稿截止日在
-          <input id="deadlineBeforeFilter" type="date" />
-        </label>
-        <label>
-          投稿狀態
-          <select id="deadlineStatusFilter">
-            <option value="">全部狀態</option>
-            <option value="open">投稿未截止</option>
-            <option value="closed">投稿已截止</option>
-            <option value="unknown">未公告截止日</option>
-          </select>
-        </label>
-        <label>
-          發表形式
-          <select id="formatFilter">
-            <option value="">全部形式</option>
-            <option value="oral">口頭發表</option>
-            <option value="poster">海報發表</option>
-            <option value="online">線上發表</option>
-            <option value="other">其他或未明</option>
-          </select>
-        </label>
-        <label>
-          英文發表
-          <select id="englishPresentationFilter">
-            <option value="">全部</option>
-            <option value="accepted">接受英文發表</option>
-            <option value="not_accepted">未標示接受英文</option>
-          </select>
-        </label>
-        <label class="inline-check">
-          <input id="trackedOnlyFilter" type="checkbox" />
-          只看追蹤
-        </label>
-        <label>
-          排序
-          <select id="sortSelect">
-            <option value="recommended">建議排序（可投稿優先）</option>
-            <option value="event_asc">舉辦日期由近到遠</option>
-            <option value="updated_desc">最近更新優先</option>
-            <option value="rating_desc">參加者推薦度最高</option>
-            <option value="deadline_asc">投稿截止由近到遠</option>
-            <option value="name_asc">名稱 A-Z</option>
-            <option value="custom">自訂排序</option>
-          </select>
-          <small class="sort-help">預設將仍可投稿者排前面，再依投稿截止日及舉辦日排序；最近更新依實際資訊異動日排序，不因每日檢查而提前。</small>
-        </label>
-        <fieldset id="customSortPanel" class="custom-sort-panel" hidden>
-          <legend>自訂排序</legend>
+        <div class="filter-primary">
+          <label class="keyword-filter">
+            關鍵字
+            <input id="keywordFilter" type="search" placeholder="研討會、主辦單位、領域" />
+          </label>
           <label>
-            第一排序
-            <select id="customSortPrimary">
-              <option value="event_asc">舉辦日期近到遠</option>
-              <option value="deadline_asc">投稿截止近到遠</option>
-              <option value="updated_desc">資訊異動新到舊</option>
-              <option value="rating_desc">推薦度高到低</option>
-              <option value="quality_desc">資料完整度高到低</option>
-              <option value="name_asc">名稱 A-Z</option>
+            領域
+            <select id="fieldFilter">
+              <option value="">全部領域</option>
+              <option value="finance">財金／金融</option>
+              <option value="management">管理</option>
+              <option value="marketing">行銷</option>
+              <option value="trade">國貿／國際企業</option>
+              <option value="sustainability">永續／ESG</option>
+              <option value="technology">資訊科技</option>
+              <option value="health">健康管理</option>
             </select>
           </label>
           <label>
-            第二排序
-            <select id="customSortSecondary">
-              <option value="">不指定</option>
-              <option value="event_asc">舉辦日期近到遠</option>
-              <option value="deadline_asc">投稿截止近到遠</option>
-              <option value="updated_desc">資訊異動新到舊</option>
-              <option value="rating_desc">推薦度高到低</option>
-              <option value="quality_desc">資料完整度高到低</option>
-              <option value="name_asc">名稱 A-Z</option>
+            投稿狀態
+            <select id="deadlineStatusFilter">
+              <option value="">全部狀態</option>
+              <option value="open">投稿未截止</option>
+              <option value="closed">投稿已截止</option>
+              <option value="unknown">未公告截止日</option>
             </select>
           </label>
           <label>
-            第三排序
-            <select id="customSortTertiary">
-              <option value="">不指定</option>
-              <option value="event_asc">舉辦日期近到遠</option>
-              <option value="deadline_asc">投稿截止近到遠</option>
-              <option value="updated_desc">資訊異動新到舊</option>
-              <option value="rating_desc">推薦度高到低</option>
-              <option value="quality_desc">資料完整度高到低</option>
+            排序
+            <select id="sortSelect">
+              <option value="recommended">建議排序（可投稿優先）</option>
+              <option value="event_asc">舉辦日期由近到遠</option>
+              <option value="updated_desc">最近更新優先</option>
+              <option value="rating_desc">參加者推薦度最高</option>
+              <option value="deadline_asc">投稿截止由近到遠</option>
               <option value="name_asc">名稱 A-Z</option>
+              <option value="custom">自訂排序</option>
             </select>
+            <small class="sort-help">預設：可投稿、截止日、舉辦日</small>
           </label>
-        </fieldset>
-        <button id="resetFilters" type="button">清除</button>
+          <label class="inline-check">
+            <input id="trackedOnlyFilter" type="checkbox" />
+            只看追蹤
+          </label>
+          <button id="resetFilters" type="button">清除篩選</button>
+        </div>
+
+        <details id="advancedFilters" class="advanced-filters">
+          <summary>更多篩選 <span>月份、地點、形式、語言</span></summary>
+          <div class="advanced-filter-grid">
+            <label>
+              舉辦年月
+              <input id="monthFilter" type="month" />
+            </label>
+            <label>
+              地點
+              <select id="locationFilter">
+                <option value="">全部地點</option>
+              </select>
+            </label>
+            <label>
+              舉辦狀態
+              <select id="eventStatusFilter">
+                <option value="">全部狀態</option>
+                <option value="upcoming">即將舉辦</option>
+                <option value="ongoing">進行中</option>
+                <option value="unknown">未公告日期</option>
+              </select>
+            </label>
+            <label>
+              投稿截止日在
+              <input id="deadlineBeforeFilter" type="date" />
+            </label>
+            <label>
+              發表形式
+              <select id="formatFilter">
+                <option value="">全部形式</option>
+                <option value="oral">口頭發表</option>
+                <option value="poster">海報發表</option>
+                <option value="online">線上發表</option>
+                <option value="other">其他或未明</option>
+              </select>
+            </label>
+            <label>
+              英文發表
+              <select id="englishPresentationFilter">
+                <option value="">全部</option>
+                <option value="accepted">接受英文發表</option>
+                <option value="not_accepted">未標示接受英文</option>
+              </select>
+            </label>
+          </div>
+          <fieldset id="customSortPanel" class="custom-sort-panel" hidden>
+            <legend>自訂排序</legend>
+            <label>
+              第一排序
+              <select id="customSortPrimary">
+                <option value="event_asc">舉辦日期近到遠</option>
+                <option value="deadline_asc">投稿截止近到遠</option>
+                <option value="updated_desc">資訊異動新到舊</option>
+                <option value="rating_desc">推薦度高到低</option>
+                <option value="quality_desc">資料完整度高到低</option>
+                <option value="name_asc">名稱 A-Z</option>
+              </select>
+            </label>
+            <label>
+              第二排序
+              <select id="customSortSecondary">
+                <option value="">不指定</option>
+                <option value="event_asc">舉辦日期近到遠</option>
+                <option value="deadline_asc">投稿截止近到遠</option>
+                <option value="updated_desc">資訊異動新到舊</option>
+                <option value="rating_desc">推薦度高到低</option>
+                <option value="quality_desc">資料完整度高到低</option>
+                <option value="name_asc">名稱 A-Z</option>
+              </select>
+            </label>
+            <label>
+              第三排序
+              <select id="customSortTertiary">
+                <option value="">不指定</option>
+                <option value="event_asc">舉辦日期近到遠</option>
+                <option value="deadline_asc">投稿截止近到遠</option>
+                <option value="updated_desc">資訊異動新到舊</option>
+                <option value="rating_desc">推薦度高到低</option>
+                <option value="quality_desc">資料完整度高到低</option>
+                <option value="name_asc">名稱 A-Z</option>
+              </select>
+            </label>
+          </fieldset>
+        </details>
       </section>
 
       <section id="healthAlert" class="health-alert" role="status" hidden></section>
