@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12 07:18:56 UTC+08:00",
+  "generated_at": "2026-09-12 21:44:45 UTC+08:00",
   "source_count": 91,
   "errors": [
     "ocu-2026-icbee: <urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>",
@@ -8,12 +8,12 @@
     "nkuht-2026-tourism-hospitality-sustainability.homepage_url: <urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
   ],
   "warnings": [
-    "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10001 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached>",
+    "organizer:明新科技大學民生學院: <urlopen error curl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to icmsi.must.edu.tw port 443 after 10002 ms: Timeout was reached>",
     "organizer:開南大學商學院: <urlopen error curl: (35) Recv failure: Connection reset by peer>",
     "organizer:中華民國多國籍企業研究學會: <urlopen error curl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached\ncurl: (28) Failed to connect to www.tiibs.org.tw port 443 after 10002 ms: Timeout was reached>",
     "organizer:中華民國資訊管理學會: <urlopen error curl: (60) SSL certificate problem: certificate has expired\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>",
     "reference:SSRN Conferences: <urlopen error curl: (22) The requested URL returned error: 403>",
-    "historical_backfill:中華民國多國籍企業研究學會活動資訊: <urlopen error curl: (28) Connection timed out after 10000 milliseconds>"
+    "historical_backfill:中華民國多國籍企業研究學會活動資訊: <urlopen error curl: (28) Connection timed out after 10002 milliseconds>"
   ],
   "health": {
     "status": "degraded",
@@ -1746,9 +1746,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-09-12",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -1819,9 +1819,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-09-12",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -2342,9 +2342,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-09-12",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -2809,9 +2809,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-09-12",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -2891,7 +2891,7 @@
           "status": "broken",
           "last_attempted_at": "2026-09-12",
           "last_successful_at": "2026-08-17",
-          "consecutive_failures": 26
+          "consecutive_failures": 27
         }
       },
       "link_health_summary": "會議主頁檢查異常；已連續失敗才會標示為失效。",
@@ -3075,10 +3075,10 @@
       "last_attempted_at": "2026-09-12",
       "check_status": "ok",
       "check_error": "",
-      "last_changed": "2026-09-01",
-      "change_status": "unchanged",
-      "change_label": "已檢查",
-      "change_summary": "",
+      "last_changed": "2026-09-12",
+      "change_status": "changed",
+      "change_label": "資訊異動",
+      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -3239,9 +3239,9 @@
       "check_status": "ok",
       "check_error": "",
       "last_changed": "2026-09-12",
-      "change_status": "changed",
-      "change_label": "資訊異動",
-      "change_summary": "來源頁面內容有異動，請檢查主辦單位最新公告。",
+      "change_status": "unchanged",
+      "change_label": "已檢查",
+      "change_summary": "",
       "review_status": "verified",
       "link_health": {
         "homepage_url": {
@@ -3309,7 +3309,7 @@
           "status": "broken",
           "last_attempted_at": "2026-09-12",
           "last_successful_at": "2026-08-17",
-          "consecutive_failures": 26
+          "consecutive_failures": 27
         }
       },
       "link_health_summary": "會議主頁檢查異常；已連續失敗才會標示為失效。",
@@ -4167,7 +4167,7 @@
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
       "last_checked": "2026-09-12",
-      "last_changed": "2026-09-11",
+      "last_changed": "2026-09-12",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",

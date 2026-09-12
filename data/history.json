@@ -12,7 +12,7 @@
       "url": "https://management.nqu.edu.tw/p/406-1006-28000%2Cr17.php?Lang=zh-tw"
     },
     "must-2026-icmsi": {
-      "hash": "6c542820f0369e145a80b6c0c9da4a57033716aed2baa33e6ceaa8e9af4b9ec9",
+      "hash": "535eb30a07210912b3ce4e8b5ca59a72ea5196892da804dbd482f1e819b938bf",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -45,7 +45,7 @@
       "url": "https://ibm.nycu.edu.tw/2026-taiop-%E5%B9%B4%E6%9C%83%E6%9A%A8%E5%9C%8B%E9%9A%9B%E5%AD%B8%E8%A1%93%E7%A0%94%E8%A8%8E%E6%9C%83%EF%BD%9C%E5%85%AC%E9%96%8B%E5%BE%B5%E7%A8%BF/"
     },
     "urltw-2026-business-paper": {
-      "hash": "00af88faa7b09af3ca84efee724c120a18ed93768d3d354f809fcf6dd30ca88b",
+      "hash": "7e9d3ecbdc5009db6df726b6bbdc2679ccad0832990bd152382bae13d5f3f2f8",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -72,7 +72,7 @@
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
       "last_changed": "2026-09-12",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://ib.mcu.edu.tw/en/2025/12/24/the-21st-academic-conference-on-economics-international-trade-and-global-business-management/"
@@ -83,7 +83,7 @@
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
       "last_changed": "2026-09-12",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://management.fgu.edu.tw/zh_tw/honor/-7896621"
@@ -149,7 +149,7 @@
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
       "last_changed": "2026-09-12",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://ihc.fy.edu.tw/"
@@ -177,7 +177,7 @@
       "url": "https://www.finance.org.tw/fnmeeting_year_item/77"
     },
     "stust-2026-business-decision": {
-      "hash": "175f7d0fa7c89d2cb4235a26a8f381c3902a8a641dc12931ebb2a10d3769e29d",
+      "hash": "344a56b1fe35dc2ef32a40cf0dde957bda90e429a3a9d29a855344b4852b5fd1",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -254,7 +254,7 @@
       "url": "https://www.finance.org.tw/fnnews/21"
     },
     "must-2025-icmsi": {
-      "hash": "1710a65d96f3fe72c87daf462cfb598e95e10f7a7293d4d7968d2cb04024ec08",
+      "hash": "f4d85ab1cfff534e15fe93fae6e3975ca6a87f2617b71a4285cfe3490a026df0",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -298,7 +298,7 @@
       "url": "https://irnas.just.edu.tw/conference/public/confer2023/V_MR1"
     },
     "uch-2024-management-practice": {
-      "hash": "ec21efebb7718fe1bfcb0438da2154e6a0a4b889653024fececdebd9e36db661",
+      "hash": "df6eb0f0cfd6ee557375b5a0edfc18eac2475e381342aca05f1cb8a0b66969c5",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -309,7 +309,7 @@
       "url": "https://www.fd.uch.edu.tw/zh_tw/nmpas2024"
     },
     "uch-2023-management-practice": {
-      "hash": "c4b0dfd1a75a66850ba78ca4008c05f688725d7f80bfc4844e142ed7c9ca4771",
+      "hash": "6e227ef7bddb98202b30c71dfeb9130a3c8db6c7bfceb168703d4763e62b5c67",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -375,7 +375,7 @@
       "url": "https://irnas.just.edu.tw/conference/2026/"
     },
     "uch-2026-management-practice": {
-      "hash": "5202dd0d3895725ad3f1d2587835662866e5918bd3570fb969aaf430672fbd88",
+      "hash": "f983358071c8f11e95ea780877a23f7a962190cc56801b9b2b41d337ed3297c1",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
@@ -402,7 +402,7 @@
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
       "last_changed": "2026-09-12",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://bm100.chihlee.edu.tw/p/403-1023-11-1.php?Lang=zh-tw"
@@ -441,12 +441,12 @@
       "url": "https://bm.mcut.edu.tw/p/405-1046-75405,c3112.php?Lang=zh-tw"
     },
     "cyut-2026-ssim": {
-      "hash": "ec06174511c2bca77aea8d9edea55988668025e4bef0bced01adf2351dfa1b00",
+      "hash": "457e84248e3a84a14ce1be8cb447331a9f6447eb195d7318550cc5642792d141",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
-      "last_changed": "2026-09-01",
-      "last_status": "unchanged",
+      "last_changed": "2026-09-12",
+      "last_status": "changed",
       "check_status": "ok",
       "last_error": "",
       "url": "https://ssim2026.cyut.edu.tw/"
@@ -468,7 +468,7 @@
       "last_successful_at": "2026-09-12",
       "last_checked": "2026-09-12",
       "last_changed": "2026-09-12",
-      "last_status": "changed",
+      "last_status": "unchanged",
       "check_status": "ok",
       "last_error": "",
       "url": "https://www.acc.ntpu.edu.tw/news.php?id=69&ids=2"
@@ -1499,7 +1499,7 @@
       "status": "broken",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-08-17",
-      "consecutive_failures": 26,
+      "consecutive_failures": 27,
       "last_error": "<urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
     },
     "ntub-2026-international-business-forum:homepage_url:https://ib.ntub.edu.tw/p/404-1039-116270.php": {
@@ -1619,7 +1619,7 @@
       "status": "broken",
       "last_attempted_at": "2026-09-12",
       "last_successful_at": "2026-08-17",
-      "consecutive_failures": 26,
+      "consecutive_failures": 27,
       "last_error": "<urlopen error curl: (60) SSL certificate problem: unable to get local issuer certificate\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.>"
     }
   }
