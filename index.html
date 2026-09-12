@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>台灣商管研討會資訊站</title>
     <meta name="description" content="每日整理台灣商管、財金、行銷與管理研討會的日期、投稿期限及官方連結。" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260715d" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260912a" />
   </head>
   <body>
     <header class="site-header">
@@ -508,6 +508,9 @@
       </form>
     </dialog>
 
-    <script src="assets/app.js?v=20260715d" type="module"></script>
+    <script type="module">
+      // Always load the current application bundle after a deployment.
+      import(`./assets/app.js?v=${Date.now()}`);
+    </script>
   </body>
 </html>

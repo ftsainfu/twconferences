@@ -67,6 +67,8 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('<details class="recurring-details">', html)
         self.assertIn('class="card-quick-facts"', script)
         self.assertIn('class="card-details"', script)
+        self.assertIn('import(`./assets/app.js?v=${Date.now()}`)', html)
+        self.assertNotIn('src="assets/app.js?v=20260715d"', html)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]
