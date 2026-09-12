@@ -149,19 +149,25 @@ function setActiveTab(tabName, updateHash = true) {
   }
 }
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+const taipeiDateParts = Object.fromEntries(
+  new Intl.DateTimeFormat("en", {
+    timeZone: "Asia/Taipei",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+    .formatToParts(new Date())
+    .filter((part) => part.type !== "literal")
+    .map((part) => [part.type, part.value]),
+);
+const today = new Date(
+  `${taipeiDateParts.year}-${taipeiDateParts.month}-${taipeiDateParts.day}T00:00:00+08:00`,
+);
 
 function parseDate(value) {
   if (!value) return null;
   const date = new Date(`${value}T00:00:00+08:00`);
   return Number.isNaN(date.getTime()) ? null : date;
-}
-
-function parseGeneratedDate(value) {
-  if (!value) return today;
-  const match = String(value).match(/\d{4}-\d{2}-\d{2}/);
-  return match ? parseDate(match[0]) || today : today;
 }
 
 function formatDate(value) {
@@ -835,6 +841,7 @@ function renderCard(item) {
   const verificationNote = item.review_status === "candidate" && item.auto_verify_note
     ? `<p class="candidate-verification-note">待確認原因：${escapeHtml(item.auto_verify_note)}</p>`
     : "";
+  const deadline = deadlineLabel(item);
 
   return `
     <article class="conference-card ${newlyAdded || newCandidate ? "is-new" : ""} ${tracked ? "is-tracked" : ""}">
@@ -848,27 +855,32 @@ function renderCard(item) {
           ${tracked ? '<span class="tracked-badge">追蹤中</span>' : ""}
         </h2>
         <div>${tags}</div>
-        ${renderRatingSummary(item)}
-        ${renderDateTimeline(item)}
-        <div class="meta-grid">
-          <div><span>舉辦日期</span><strong>${formatDate(item.event_start)}</strong></div>
-          <div><span>地點</span><strong>${escapeHtml(item.location || "未公告")}</strong></div>
-          <div><span>舉辦狀態</span><strong>${escapeHtml(eventStatusLabel(item))}</strong></div>
-          <div><span>投稿截止</span><strong>${escapeHtml(deadlineLabel(item))}</strong></div>
-          <div><span>審查結果</span><strong>${formatDate(item.acceptance_notification_date)}</strong>${acceptanceCalendarLink(item)}</div>
-          <div class="fee-meta"><span>投稿／審稿費</span><strong>${feeLabel(item.submission_fee)}</strong></div>
-          <div class="fee-meta"><span>註冊／報名費</span><strong>${feeLabel(item.registration_fee)}</strong></div>
-          <div><span>主辦單位</span><strong>${escapeHtml(item.organizer || "未公告")}</strong></div>
-          <div><span>發表形式</span><strong>${escapeHtml(presentationLabel(item))}</strong></div>
-          <div><span>發表語言</span><strong>${escapeHtml(languageLabel(item))}</strong></div>
-          <div><span>更新狀態</span><strong>${escapeHtml(item.change_label || "已檢查")}</strong></div>
+        <div class="card-quick-facts">
+          <span><small>舉辦</small><strong>${formatDate(item.event_start)}</strong></span>
+          <span><small>投稿截止</small><strong>${escapeHtml(deadline)}</strong></span>
+          <span><small>地點</small><strong>${escapeHtml(item.location || "未公告")}</strong></span>
         </div>
-        ${item.change_summary ? `<p class="change-note">${escapeHtml(item.change_summary)}</p>` : ""}
-        ${item.link_health_summary ? `<p class="link-health-note">${escapeHtml(item.link_health_summary)}</p>` : ""}
         ${verificationNote}
-        ${corroboration}
-        ${publications ? `<section class="publication-info"><h3>合作期刊／專刊投稿</h3><ul>${publications}</ul></section>` : ""}
-        ${notes ? `<ul class="notes">${notes}</ul>` : ""}
+        <details class="card-details">
+          <summary>查看完整資訊</summary>
+          ${renderRatingSummary(item)}
+          ${renderDateTimeline(item)}
+          <div class="meta-grid">
+            <div><span>舉辦狀態</span><strong>${escapeHtml(eventStatusLabel(item))}</strong></div>
+            <div><span>審查結果</span><strong>${formatDate(item.acceptance_notification_date)}</strong>${acceptanceCalendarLink(item)}</div>
+            <div class="fee-meta"><span>投稿／審稿費</span><strong>${feeLabel(item.submission_fee)}</strong></div>
+            <div class="fee-meta"><span>註冊／報名費</span><strong>${feeLabel(item.registration_fee)}</strong></div>
+            <div><span>主辦單位</span><strong>${escapeHtml(item.organizer || "未公告")}</strong></div>
+            <div><span>發表形式</span><strong>${escapeHtml(presentationLabel(item))}</strong></div>
+            <div><span>發表語言</span><strong>${escapeHtml(languageLabel(item))}</strong></div>
+            <div><span>更新狀態</span><strong>${escapeHtml(item.change_label || "已檢查")}</strong></div>
+          </div>
+          ${item.change_summary ? `<p class="change-note">${escapeHtml(item.change_summary)}</p>` : ""}
+          ${item.link_health_summary ? `<p class="link-health-note">${escapeHtml(item.link_health_summary)}</p>` : ""}
+          ${corroboration}
+          ${publications ? `<section class="publication-info"><h3>合作期刊／專刊投稿</h3><ul>${publications}</ul></section>` : ""}
+          ${notes ? `<ul class="notes">${notes}</ul>` : ""}
+        </details>
       </div>
       <div class="card-actions">
         ${item.review_status === "candidate" ? "" : `
@@ -1491,7 +1503,8 @@ async function init() {
   state.conferences = payload.conferences || [];
   state.historicalStats = (historicalStatsPayload.entries || []).map((item) => ({ ...item, stats_only: true }));
   state.trackedIds = loadTrackedIds();
-  state.referenceDate = parseGeneratedDate(payload.generated_at);
+  // Conference visibility follows Taiwan's current date, not a potentially stale data-build date.
+  state.referenceDate = today;
   const verified = state.conferences.filter((item) => item.review_status !== "candidate");
   state.candidates = state.conferences.filter((item) => item.review_status === "candidate");
   state.activeConferences = verified.filter((item) => eventStatus(item) !== "past");

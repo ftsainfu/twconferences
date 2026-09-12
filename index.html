@@ -210,7 +210,7 @@
         <div class="section-heading">
           <p class="section-kicker">Current Conferences</p>
           <h2 id="currentTitle">尚未舉辦研討會清單</h2>
-          <p>主頁面僅顯示舉辦日期在資料更新日之後，或目前仍在進行中的研討會。</p>
+          <p>主頁面僅顯示依台灣當日日期尚未舉辦，或目前仍在進行中的研討會。</p>
           <p class="rating-help">「資料完整度」由官方來源與欄位完整性計算；「參加者推薦」由已報名或已參加者評分，兩者分開顯示。</p>
         </div>
         <section id="conferenceList" class="conference-list" aria-live="polite"></section>
@@ -223,27 +223,32 @@
         <div class="section-heading">
           <p class="section-kicker">Pending Review</p>
           <h2 id="candidateTitle">新發現／待確認候選研討會</h2>
-          <p>下列資料由每日自動掃描新發現，尚未列入正式統計；使用前請先查閱來源頁。</p>
-          <small><span id="candidateCount">0</span> 筆待確認資料</small>
         </div>
-        <section id="candidateList" class="conference-list compact-list"></section>
+        <details class="candidate-details">
+          <summary>查看 <span id="candidateCount">0</span> 筆待確認資料</summary>
+          <p>下列資料由每日自動掃描新發現，尚未列入正式統計；使用前請先查閱來源頁。</p>
+          <section id="candidateList" class="conference-list compact-list"></section>
+        </details>
       </section>
 
       <section class="list-section history-section" aria-labelledby="historyTitle">
         <div class="section-heading">
           <p class="section-kicker">Archive</p>
           <h2 id="historyTitle">歷年研討會清單</h2>
-          <p>舉辦日期已早於資料更新日的研討會會自動移至此處，保留官方連結與投稿資訊供查詢。</p>
+          <p>依台灣當日日期已結束的研討會會自動移至此處，保留官方連結與投稿資訊供查詢。</p>
           <small><span id="historyCount">0</span> 筆歷年資料</small>
         </div>
-        <div class="archive-toolbar">
-          <label>搜尋歷年資料<input id="historyKeyword" type="search" placeholder="名稱、主辦單位、領域" /></label>
-          <label>年份<select id="historyYear"><option value="">全部年份</option></select></label>
-        </div>
-        <section id="historyList" class="conference-list compact-list" aria-live="polite"></section>
-        <section id="historyEmpty" class="empty-state" hidden>
-          目前沒有歷年研討會資料。
-        </section>
+        <details class="archive-details">
+          <summary>展開歷史研討會</summary>
+          <div class="archive-toolbar">
+            <label>搜尋歷年資料<input id="historyKeyword" type="search" placeholder="名稱、主辦單位、領域" /></label>
+            <label>年份<select id="historyYear"><option value="">全部年份</option></select></label>
+          </div>
+          <section id="historyList" class="conference-list compact-list" aria-live="polite"></section>
+          <section id="historyEmpty" class="empty-state" hidden>
+            目前沒有歷年研討會資料。
+          </section>
+        </details>
       </section>
 
       <section class="recurring-section" aria-labelledby="recurringTitle">
@@ -254,20 +259,23 @@
             這些會議通常定期舉辦，系統會每日掃描其主辦單位或官方管道；若發現最新年度徵稿或會議頁，會先列為待確認候選。
           </p>
         </div>
-        <div class="recurring-table-wrap">
-          <table class="recurring-table">
-            <thead>
-              <tr>
-                <th>研討會</th>
-                <th>主辦／承辦</th>
-                <th>慣例月份</th>
-                <th>領域</th>
-                <th>官方管道</th>
-              </tr>
-            </thead>
-            <tbody id="recurringList"></tbody>
-          </table>
-        </div>
+        <details class="recurring-details">
+          <summary>展開常態性研討會追蹤清單</summary>
+          <div class="recurring-table-wrap">
+            <table class="recurring-table">
+              <thead>
+                <tr>
+                  <th>研討會</th>
+                  <th>主辦／承辦</th>
+                  <th>慣例月份</th>
+                  <th>領域</th>
+                  <th>官方管道</th>
+                </tr>
+              </thead>
+              <tbody id="recurringList"></tbody>
+            </table>
+          </div>
+        </details>
       </section>
       </div>
 

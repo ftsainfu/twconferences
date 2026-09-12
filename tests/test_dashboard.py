@@ -57,6 +57,15 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("els.customSortPrimary", script)
         self.assertIn("待確認原因：", script)
         self.assertIn("candidate-verification-note", script)
+        self.assertIn('timeZone: "Asia/Taipei"', script)
+        self.assertIn("state.referenceDate = today;", script)
+        self.assertNotIn("state.referenceDate = parseGeneratedDate", script)
+        self.assertIn('<details class="archive-details">', html)
+        self.assertIn("展開歷史研討會", html)
+        self.assertIn('<details class="candidate-details">', html)
+        self.assertIn('<details class="recurring-details">', html)
+        self.assertIn('class="card-quick-facts"', script)
+        self.assertIn('class="card-details"', script)
 
     def test_verified_data_can_populate_both_dashboard_series(self):
         verified = [item for item in self.payload["conferences"] if item.get("review_status") != "candidate"]

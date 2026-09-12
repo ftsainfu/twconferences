@@ -837,6 +837,54 @@ a:focus-visible {
   border-top: 1px solid var(--line);
 }
 
+.archive-details > summary,
+.candidate-details > summary,
+.recurring-details > summary,
+.card-details > summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.archive-details[open] > summary,
+.candidate-details[open] > summary,
+.recurring-details[open] > summary,
+.card-details[open] > summary {
+  margin-bottom: 16px;
+}
+
+.candidate-details > p {
+  color: var(--muted);
+}
+
+.card-quick-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.card-quick-facts > span {
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f8faf9;
+}
+
+.card-quick-facts small,
+.card-quick-facts strong {
+  display: block;
+}
+
+.card-quick-facts small {
+  color: var(--muted);
+}
+
+.card-details {
+  margin-top: 12px;
+}
+
 .candidate-section {
   margin-top: 28px;
   padding: 2px 16px 18px;
@@ -1422,6 +1470,7 @@ footer {
   .toolbar,
   .summary-row,
   .dashboard-highlights,
+  .card-quick-facts,
   .meta-grid,
   .archive-toolbar,
   .grant-detail-grid,
