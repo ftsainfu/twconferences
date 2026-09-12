@@ -58,6 +58,7 @@ class DashboardTests(unittest.TestCase):
         self.assertIn("待確認原因：", script)
         self.assertIn("candidate-verification-note", script)
         self.assertIn('timeZone: "Asia/Taipei"', script)
+        self.assertIn("function parseGeneratedDate", script)
         self.assertIn("state.referenceDate = today;", script)
         self.assertNotIn("state.referenceDate = parseGeneratedDate", script)
         self.assertIn('<details class="archive-details">', html)

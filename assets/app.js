@@ -170,6 +170,12 @@ function parseDate(value) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
+function parseGeneratedDate(value) {
+  if (!value) return today;
+  const match = String(value).match(/\d{4}-\d{2}-\d{2}/);
+  return match ? parseDate(match[0]) || today : today;
+}
+
 function formatDate(value) {
   const date = parseDate(value);
   if (!date) return "未公告";
