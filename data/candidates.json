@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25 07:57:13 UTC+08:00",
+  "generated_at": "2026-09-26 08:03:22 UTC+08:00",
   "candidates": [
     {
       "id": "reference-business-stust-edu-tw-13a51a40",
@@ -112,7 +112,7 @@
       "independent_source_count": 2,
       "is_corroborated": true,
       "first_seen": "2026-06-20",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "auto_verified",
       "review_notes": "",
       "is_stale": false,
@@ -152,7 +152,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-05",
       "change_status": "new",
       "change_label": "候選新增",
@@ -169,12 +169,10 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-05",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
-      "auto_verify_status": "needs_review",
-      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (6) Could not resolve host: sysi.nccu.edu.tw>",
       "information_quality": {
         "score": 2,
         "max_score": 5,
@@ -213,7 +211,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-05",
       "change_status": "new",
       "change_label": "候選新增",
@@ -230,7 +228,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-05",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -273,7 +271,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -290,7 +288,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -332,7 +330,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -349,12 +347,12 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
       "auto_verify_status": "needs_review",
-      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (28) Connection timed out after 10002 milliseconds>",
+      "auto_verify_note": "候選頁無法讀取：<urlopen error curl: (28) Connection timed out after 10001 milliseconds>",
       "information_quality": {
         "score": 1,
         "max_score": 5,
@@ -391,7 +389,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -408,7 +406,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -450,7 +448,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -467,7 +465,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -509,7 +507,7 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-06-07",
       "change_status": "new",
       "change_label": "候選新增",
@@ -526,7 +524,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-06-07",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -847,8 +845,8 @@
       "attention_notes": [
         "由「逢甲大學商學院」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
-      "last_changed": "2026-09-25",
+      "last_checked": "2026-09-26",
+      "last_changed": "2026-09-26",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -865,7 +863,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-07-16",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1010,8 +1008,8 @@
       "attention_notes": [
         "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
-      "last_changed": "2026-09-25",
+      "last_checked": "2026-09-26",
+      "last_changed": "2026-09-26",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -1027,7 +1025,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-08-04",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1173,7 +1171,7 @@
       "attention_notes": [
         "由「國家科學及技術委員會活動訊息（第 2 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-08-06",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1191,7 +1189,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-08-06",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1294,25 +1292,32 @@
       "registration_fee": "",
       "publication_opportunities": [],
       "fields": [
+        "學術消息",
+        "永續",
+        "管理",
+        "經濟",
         "財務金融",
-        "學術消息"
+        "財金"
       ],
       "presentation_formats": [
-        "other"
+        "other",
+        "poster"
       ],
       "presentation_languages": [
-        "unknown"
+        "en",
+        "zh"
       ],
       "attention_notes": [
         "由常態性研討會或主辦單位官方頁每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。",
-        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。"
+        "已由 2 個不同網域來源交叉發現；正式資料仍以會議主辦單位公告為準。",
+        "本項目由每日更新自動驗證升級；使用前仍建議開啟官方頁確認最新公告。"
       ],
-      "last_checked": "2026-09-25",
-      "last_changed": "2026-09-25",
+      "last_checked": "2026-09-26",
+      "last_changed": "2026-09-26",
       "change_status": "new",
-      "change_label": "候選新增",
-      "change_summary": "每日來源掃描發現的新候選項目。",
-      "review_status": "candidate",
+      "change_label": "自動升級",
+      "change_summary": "每日更新已自動驗證官方頁、日期、地點、領域與發表資訊後升級為正式收錄。",
+      "review_status": "verified",
       "evidence_sources": [
         {
           "name": "臺灣財務金融學會",
@@ -1329,19 +1334,17 @@
       "independent_source_count": 2,
       "is_corroborated": true,
       "first_seen": "2026-08-17",
-      "last_seen": "2026-09-25",
-      "candidate_status": "pending",
+      "last_seen": "2026-09-26",
+      "candidate_status": "auto_verified",
       "review_notes": "",
       "is_stale": false,
-      "information_quality": {
-        "score": 2,
-        "max_score": 5,
-        "label": "部分完整",
-        "criteria": [
-          "日期與地點完整",
-          "投稿方式完整"
-        ]
-      }
+      "acceptance_notification_date": "",
+      "auto_verified_at": "2026-09-26",
+      "last_attempted_at": "2026-09-26",
+      "check_status": "ok",
+      "check_error": "",
+      "auto_verify_status": "auto_verified",
+      "auto_verify_note": "已自動升級。"
     },
     {
       "id": "reference-con-ctu-edu-tw-e3e447ac",
@@ -1371,8 +1374,8 @@
       "attention_notes": [
         "由外部研討會資訊站「國立虎尾科技大學財務金融系商管研討會資訊網」每日比對發現，須回到主辦單位官方頁確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
-      "last_changed": "2026-09-24",
+      "last_checked": "2026-09-26",
+      "last_changed": "2026-09-25",
       "change_status": "new",
       "change_label": "候選新增",
       "change_summary": "每日來源掃描發現的新候選項目。",
@@ -1388,7 +1391,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-08-17",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
@@ -1430,7 +1433,7 @@
       "attention_notes": [
         "由「國家科學及技術委員會活動訊息（第 1 頁）」官方網站每日掃描發現，已通過正式研討會初步篩選，仍待人工確認日期、投稿與發表形式。"
       ],
-      "last_checked": "2026-09-25",
+      "last_checked": "2026-09-26",
       "last_changed": "2026-09-18",
       "change_status": "new",
       "change_label": "候選新增",
@@ -1448,7 +1451,7 @@
       "independent_source_count": 1,
       "is_corroborated": false,
       "first_seen": "2026-09-18",
-      "last_seen": "2026-09-25",
+      "last_seen": "2026-09-26",
       "candidate_status": "pending",
       "review_notes": "",
       "is_stale": false,
